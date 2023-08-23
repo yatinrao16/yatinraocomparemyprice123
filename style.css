@@ -2344,7 +2344,7 @@ footer {
     position: absolute;
     display: flex;
     top: 11rem;
-    left: 8.5rem;
+    left: 9rem;
   }
 
   #hotdeals {
@@ -2426,8 +2426,8 @@ footer {
   }
 
   .red img:hover {
-    image-rendering: auto;
-    filter: drop-shadow(1px 1px 1px black);
+    image-rendering: none;
+    filter:none;
     zoom: 0;
   }
 
