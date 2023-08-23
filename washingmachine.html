@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+    <title>E-commerce Site</title>
+    <link rel="stylesheet" href="allcss.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+   
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+    <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+        <div class="brand">
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter">
+                <option value="">All Brands</option>
+                <option value="Samsung">Samsung</option>
+                <option value="LG">LG</option>
+                <option value="Croma">Croma</option>
+                <option value="IFB">IFB</option>
+            </select>
+        </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+        // Paste the provided product data here
+        const products = [
+
+            {
+                name: "Samsung WW80T4040CX1TL 8 kg Front Load Washing Machine",
+                brand: "Samsung ",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/samsung-ww80t4040cx1tl-8-kg-fully-automatic-ppd1rl5rw0te",
+                image:
+                    "https://cdn1.smartprix.com/rx-iGs9GKJ21-w103-h125/samsung-ww80t4040cx1.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/samsung-ww80t4040cx1tl-8-kg-fully-automatic-ppd1rl5rw0te",
+                pricef: "38,500",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Front load",
+                    },
+                    {
+                        name: "8 kg",
+                    },
+                    {
+                        name: "Pulsator",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Yes Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Timer, Self Clean",
+                    },
+                    {
+                        name: "Child Lock",
+                    },
+                ],
+            },
+            {
+                name: "Samsung WT70M3200HB 7 kg Semi Automatic Washing Machine",
+                brand: " Samsung",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/samsung-wt70m3200hb-7-kg-semi-automatic-top-ppd1sfhmvqk3",
+                image:
+                    "https://cdn1.smartprix.com/rx-iM6JwZZo0-w103-h125/samsung-wt70m3200hb.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/samsung-wt70m3200hb-7-kg-semi-automatic-top-ppd1sfhmvqk3",
+                pricef: "8,390",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Semi Automatic, Top load",
+                    },
+                    {
+                        name: "7 kg",
+                    },
+                    {
+                        name: "Pulsator",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Rust Free Body, Fibre tub",
+                    },
+                    {
+                        name: "Timer",
+                    },
+                    {
+                        name: "Shock Proof",
+                    },
+                    {
+                        name: "Quick Wash, Spin Only",
+                    },
+                ],
+            },
+            {
+                name: "IFB Senator Neo SXS 8012 8 Kg Fully Automatic Front Loading Washing Machine",
+                brand: "IFB ",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/ifb-senator-neo-sxs-8012-8-kg-fully-automatic-ppd18a0enqjw",
+                image:
+                    "https://cdn1.smartprix.com/rx-iVKT4ZJZT-w103-h125/ifb-senator-neo-sxs.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/ifb-senator-neo-sxs-8012-8-kg-fully-automatic-ppd18a0enqjw",
+                pricef: "32,990",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Front load",
+                    },
+                    {
+                        name: "8 kg",
+                    },
+                    {
+                        name: "Tumble Wash",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Yes Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer",
+                    },
+                    {
+                        name: "Door Lock, Child Lock, Shock Proof",
+                    },
+                ],
+            },
+            {
+                name: "IFB Executive MXC 9014 9 kg Fully Automatic Front Load Washing Machine",
+                brand: "IFB ",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/ifb-executive-mxc-9014-9-kg-fully-automatic-ppd1wjdiahg0",
+                image:
+                    "https://cdn1.smartprix.com/rx-iUQjtaZan-w103-h125/ifb-executive-mxc-90.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/ifb-executive-mxc-9014-9-kg-fully-automatic-ppd1wjdiahg0",
+                pricef: "48,792",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Front load",
+                    },
+                    {
+                        name: "9 kg",
+                    },
+                    {
+                        name: "Tumble Wash",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "LED Touch Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer, Self Clean",
+                    },
+                    {
+                        name: "Door Lock, Child Lock, Shock Proof",
+                    },
+                ],
+            },
+            {
+                name: "IFB Executive Plus MXC 1014 10 kg Fully Automatic Front Load Washing Machine",
+                brand: " IFB",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/ifb-executive-plus-mxc-10-kg-fully-automatic-ppd1tqubk9w6",
+                image:
+                    "https://cdn1.smartprix.com/rx-iiDh98bI1-w103-h125/ifb-executive-plus-m.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/ifb-executive-plus-mxc-10-kg-fully-automatic-ppd1tqubk9w6",
+                pricef: "49,990",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Front load",
+                    },
+                    {
+                        name: "10 kg",
+                    },
+                    {
+                        name: "Tumble Wash",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "LED Touch Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer, Self Clean",
+                    },
+                    {
+                        name: "Door Lock, Child Lock, Shock Proof",
+                    },
+                ],
+            },
+            {
+                name: "LG FHM1409BDM 9 Kg Fully Automatic Front Load Washing Machine",
+                brand: "LG",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/lg-fhm1409bdm-9-kg-fully-automatic-front-ppd1qdpaqbj1",
+                image:
+                    "https://cdn1.smartprix.com/rx-iKN56gjvS-w103-h125/lg-fhm1409bdm-9-kg-f.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/lg-fhm1409bdm-9-kg-fully-automatic-front-ppd1qdpaqbj1",
+                pricef: "37,990",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Front load",
+                    },
+                    {
+                        name: "9 kg",
+                    },
+                    {
+                        name: "Tumble",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Digital Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer, Self Clean",
+                    },
+                    {
+                        name: "Door Lock, Child Lock, Shock Proof",
+                    },
+                ],
+            },
+            {
+                name: "LG FHP1208A5M 8 kg Fully Automatic Front Load Washing Machine",
+                brand: " LG",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/lg-fhp1208a5m-8-kg-fully-automatic-front-ppd1mj5uhujf",
+                image:
+                    "https://cdn1.smartprix.com/rx-ia5VZYZ7U-w103-h125/lg-fhp1208a5m-8-kg-f.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/lg-fhp1208a5m-8-kg-fully-automatic-front-ppd1mj5uhujf",
+                pricef: "39,990",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Front load",
+                    },
+                    {
+                        name: "8 kg",
+                    },
+                    {
+                        name: "Steam + Turbo Wash",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "LED Display",
+                    },
+                    {
+                        name: "Steel Rust Proof Body, Stainless Steel tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer",
+                    },
+                    {
+                        name: "Door Lock, Child Lock",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Ecobubble WA80BG4441BD 8 kg Fully Automatic Top Load Washing Machine",
+                brand: " Samsung",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/samsung-ecobubble-wa80bg4441bd-8-kg-fully-ppd1kn65g8g8",
+                image:
+                    "https://cdn1.smartprix.com/rx-iEcKgUwcq-w103-h125/samsung-ecobubble-wa.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/samsung-ecobubble-wa80bg4441bd-8-kg-fully-ppd1kn65g8g8",
+                pricef: "19,900",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Top load",
+                    },
+                    {
+                        name: "8 kg",
+                    },
+                    {
+                        name: "PP Dual Wing Pulsator",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Red LED Display",
+                    },
+                    {
+                        name: "Timer, Self Clean",
+                    },
+                    {
+                        name: "Child Lock",
+                    },
+                    {
+                        name: "Quick Wash, Water Level Selector",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Ecobubble WA70BG4441BY 7 kg Fully Automatic Top Load Washing Machine",
+                brand: " Samsung",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/samsung-ecobubble-wa70bg4441by-7-kg-fully-ppd1pp5iqgo8",
+                image:
+                    "https://cdn1.smartprix.com/rx-i9gwhc5IT-w103-h125/samsung-ecobubble-wa.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/samsung-ecobubble-wa70bg4441by-7-kg-fully-ppd1pp5iqgo8",
+                pricef: "18,100",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Top load",
+                    },
+                    {
+                        name: "7 kg",
+                    },
+                    {
+                        name: "PP Dual Wing Pulsator",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Red LED Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Timer, Self Clean",
+                    },
+                    {
+                        name: "Child Lock",
+                    },
+                ],
+            },
+            {
+                name: "LG P8015SGAZ 8 kg Semi Automatic Top Load Washing Machine",
+                brand: "LG ",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/lg-p8015sgaz-8-kg-semi-automatic-top-load-ppd1afgoqxu6",
+                image:
+                    "https://cdn1.smartprix.com/rx-iWKooyhZE-w103-h125/lg-p8015sgaz-8-kg-se.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/lg-p8015sgaz-8-kg-semi-automatic-top-load-ppd1afgoqxu6",
+                pricef: "14,499",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Semi Automatic, Top load",
+                    },
+                    {
+                        name: "8 kg",
+                    },
+                    {
+                        name: "Roller Jet Pulsator",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Plastic body, Plastic tub",
+                    },
+                    {
+                        name: "Timer",
+                    },
+                    {
+                        name: "Shock Proof",
+                    },
+                    {
+                        name: "Quick Wash, Spin Only, Water Level Selector",
+                    },
+                ],
+            },
+            {
+                name: "LG THD09SWM 9 kg Fully Automatic Top Load Washing Machine",
+                brand: " LG",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/lg-thd09swm-9-kg-fully-automatic-top-load-ppd16st0272l",
+                image:
+                    "https://cdn1.smartprix.com/rx-izDUuHKhc-w103-h125/lg-thd09swm-9-kg-ful.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/lg-thd09swm-9-kg-fully-automatic-top-load-ppd16st0272l",
+                pricef: "29,490",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Top load",
+                    },
+                    {
+                        name: "9 kg",
+                    },
+                    {
+                        name: "Pulsator",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Digital Display",
+                    },
+                    {
+                        name: "Stainless Steel tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer, Self Clean",
+                    },
+                    {
+                        name: "Child Lock",
+                    },
+                ],
+            },
+
+            {
+                name: "Croma CRLW080FAF202302 8 kg Fully Automatic Top Load Washing Machine",
+                brand: " Croma",
+                category: "WahingMachine",
+                url: "https://www.smartprix.com/washing_machines/croma-crlw080faf202302-8-kg-fully-automatic-ppd1fbxhkncx",
+                image:
+                    "https://cdn1.smartprix.com/rx-iP35wEH83-w103-h125/croma-crlw080faf2023.jpg",
+                image_url:
+                    "https://www.smartprix.com/washing_machines/croma-crlw080faf202302-8-kg-fully-automatic-ppd1fbxhkncx",
+                pricef: "19,490",
+                pricea: "42,499",
+                pricec: "45,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Washing Machine with dryer",
+                    },
+                    {
+                        name: "Fully Automatic, Top load",
+                    },
+                    {
+                        name: "8 kg",
+                    },
+                    {
+                        name: "Digital Display",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Steel Inner Drum | Crescent Bubble Drum tub",
+                    },
+                    {
+                        name: "Inbuilt Heater, Timer, Self Clean",
+                    },
+                    {
+                        name: "Door Lock, Child Lock",
+                    },
+                    {
+                        name: "Spin Only, Water Level Selector",
+                    },
+                ],
+            },
+
+        ];
+
+
+       
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

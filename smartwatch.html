@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+    <title>E-commerce Site</title>
+    <link rel="stylesheet" href="allcss.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+    <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+        <div class="brand">
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter">
+                <option value="">All Brands</option>
+                <option value="Fireboltt">Fireboltt</option>
+                <option value="Crossbeat">Crossbeat</option>
+                <option value="Noise">Noise</option>
+                <option value="Amazefit">Amazefit</option>
+                <option value="BeatXP">BeatXP</option>
+                <option value="Apple">Apple</option>
+            </select>
+        </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+        // Paste the provided product data here
+        const products = [
+
+            {
+                name: "Noise NoiseFit Vortex Smartwatch",
+                brand: "Noise",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/noise-noisefit-vortex-smartwatch-ppd1w5hoqmsa",
+                image:
+                    "https://cdn1.smartprix.com/rx-iXTARhtiE-w103-h125/noise-noisefit-vorte.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/noise-noisefit-vortex-smartwatch-ppd1w5hoqmsa",
+                pricef: "2,499",
+                pricea: "2,499",
+                pricec: "2,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.3",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.46 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Dagger Luxe Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-dagger-luxe-smartwatch-ppd13eth1lt0",
+                image:
+                    "https://cdn1.smartprix.com/rx-i4ib0S0jj-w103-h125/fire-boltt-dagger-lu.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-dagger-luxe-smartwatch-ppd13eth1lt0",
+                pricef: "3,999",
+                pricea: "4,499",
+                pricec: "4,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.43 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Amazfit Pop 3S Smartwatch",
+                brand: "Amazefit ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/amazfit-pop-3s-smartwatch-ppd12pje7hzc",
+                image:
+                    "https://cdn1.smartprix.com/rx-i0El0MdPk-w103-h125/amazfit-pop-3s-smart.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/amazfit-pop-3s-smartwatch-ppd12pje7hzc",
+                pricef: "4,999",
+                pricea: "4,499",
+                pricec: "4,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.96 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Quantum Smartwatch",
+                brand: " Fireboltt",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-quantum-smartwatch-ppd1f515skgi",
+                image:
+                    "https://cdn1.smartprix.com/rx-iLJv75lQb-w103-h125/fire-boltt-quantum-s.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-quantum-smartwatch-ppd1f515skgi",
+                pricef: "2,999",
+                pricea: "2,499",
+                pricec: "2,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "128 MB Inbuilt",
+                    },
+                    {
+                        name: "1.28 inches Touch Display",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Water Resistant, IP67",
+                    },
+                    {
+                        name: "Scratch Resistant, Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor, Blood Pressure Monitor",
+                    },
+                ],
+            },
+            {
+                name: "Noise ColorFit Icon 2 Smartwatch",
+                brand: "Noise ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/noise-colorfit-icon-2-smartwatch-ppd10elxjjlo",
+                image:
+                    "https://cdn1.smartprix.com/rx-iN6MkniET-w103-h125/noise-colorfit-icon.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/noise-colorfit-icon-2-smartwatch-ppd10elxjjlo",
+                pricef: "1,599",
+                pricea: "1,499",
+                pricec: "1,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.8 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP67",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant, Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor, Blood Pressure Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Ninja Call 2 Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-ninja-calling-smartwatch-ppd1by9fiwe5",
+                image:
+                    "https://cdn1.smartprix.com/rx-idcbAzKFm-w103-h125/fire-boltt-ninja-cal.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-ninja-calling-smartwatch-ppd1by9fiwe5",
+                pricef: "1,499",
+                pricea: "1,499",
+                pricec: "1,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.69 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP67",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Orion Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-orion-smartwatch-ppd1aeadgvvs",
+                image:
+                    "https://cdn1.smartprix.com/rx-irO9eut45-w103-h125/fire-boltt-orion-sma.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-orion-smartwatch-ppd1aeadgvvs",
+                pricef: "1,399",
+                pricea: "1,499",
+                pricec: "1,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "128 MB Inbuilt",
+                    },
+                    {
+                        name: "1.3 inches Touch Display",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Water Resistant, IP67",
+                    },
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Invincible Plus Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-invincible-plus-smartwatch-ppd1wizxapdv",
+                image:
+                    "https://cdn1.smartprix.com/rx-i3Q5f6bA8-w103-h125/fire-boltt-invincibl.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-invincible-plus-smartwatch-ppd1wizxapdv",
+                pricef: "4,499",
+                pricea: "4,499",
+                pricec: "4,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "4 GB Inbuilt",
+                    },
+                    {
+                        name: "1.43 inches Touch Display",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Water Resistant, IP67",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Apple Watch Ultra",
+                brand: " Apple",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/apple-watch-ultra-ppd1o0b8p3q3",
+                image:
+                    "https://cdn1.smartprix.com/rx-iGjLy2u73-w103-h125/apple-watch-ultra.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/apple-watch-ultra-ppd1o0b8p3q3",
+                pricef: "79,999",
+                pricea: "72,499",
+                pricec: "75,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Wi-Fi, Bluetooth 5.3, GPS, NFC",
+                    },
+                    {
+                        name: "GPRS, 3G, 4G",
+                    },
+                    {
+                        name: "Voice Calling, Bluetooth Calling",
+                    },
+                    {
+                        name: "32 GB Inbuilt",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "1.92 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, 100 m, WR100",
+                    },
+                    {
+                        name: "Scratch Resistant, Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                ],
+            },
+            {
+                name: "Crossbeats Armour Dive Smartwatch",
+                brand: " Crossbeat",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/crossbeats-armour-dive-smartwatch-ppd14kxs9wkr",
+                image:
+                    "https://cdn1.smartprix.com/rx-ic00m50ie-w103-h125/crossbeats-armour-di.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/crossbeats-armour-dive-smartwatch-ppd14kxs9wkr",
+                pricef: "3,999",
+                pricea: "3,499",
+                pricec: "3,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.3",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.43 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68, MLT-STD 810H",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant, Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor, Blood Pressure Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Phoenix Pro Smartwatch",
+                brand: " Fireboltt",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-phoenix-pro-smartwatch-ppd1d6fo8a7b",
+                image:
+                    "https://cdn1.smartprix.com/rx-i7GAHviv9-w103-h125/fire-boltt-phoenix-p.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-phoenix-pro-smartwatch-ppd1d6fo8a7b",
+                pricef: "1,699",
+                pricea: "1,499",
+                pricec: "1,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.39 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Noise NoiseFit Evolve 3 Smartwatch",
+                brand: "Noise ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/noise-noisefit-evolve-3-smartwatch-ppd13f1se0pc",
+                image:
+                    "https://cdn1.smartprix.com/rx-iRjdUltOT-w103-h125/noise-noisefit-evolv.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/noise-noisefit-evolve-3-smartwatch-ppd13f1se0pc",
+                pricef: "2,999",
+                pricea: "2,499",
+                pricec: "2,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.3",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.43 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor, Blood Pressure Monitor",
+                    },
+                    {
+                        name: "Altimeter, Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Legacy Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-legacy-smartwatch-ppd1716ktmnt",
+                image:
+                    "https://cdn1.smartprix.com/rx-i1DBK6xkR-w103-h125/fire-boltt-legacy-sm.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-legacy-smartwatch-ppd1716ktmnt",
+                pricef: "3,399",
+                pricea: "3,499",
+                pricec: "3,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.43 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, 1 m, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "beatXP Flux Smartwatch",
+                brand: "BeatXP ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/beatxp-flux-smartwatch-ppd1zdwt53oq",
+                image:
+                    "https://cdn1.smartprix.com/rx-idxkVcrp9-w103-h125/beatxp-flux-smartwat.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/beatxp-flux-smartwatch-ppd1zdwt53oq",
+                pricef: "2,999",
+                pricea: "2,499",
+                pricec: "2,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.45 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP67",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Noise NoiseFit Halo Smartwatch",
+                brand: "Noise ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/noise-noisefit-halo-smartwatch-ppd1qx27s135",
+                image:
+                    "https://cdn1.smartprix.com/rx-ipoHdFFo7-w103-h125/noise-noisefit-halo.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/noise-noisefit-halo-smartwatch-ppd1qx27s135",
+                pricef: "3,499",
+                pricea: "2,499",
+                pricec: "5,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.3",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.43 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Hunter Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-hunter-smartwatch-ppd12ddg99bz",
+                image:
+                    "https://cdn1.smartprix.com/rx-ie7Gs3ac5-w103-h125/fire-boltt-hunter-sm.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-hunter-smartwatch-ppd12ddg99bz",
+                pricef: "1,699",
+                pricea: "2,499",
+                pricec: "1,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "2.01 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, 1 m, IP67",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                    {
+                        name: "6 days Battery",
+                    },
+                ],
+            },
+            {
+                name: "Amazfit Cheetah Smartwatch",
+                brand: "Amazfit ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/amazfit-cheetah-smartwatch-ppd1bn446k5v",
+                image:
+                    "https://cdn1.smartprix.com/rx-ivlqxHL4N-w103-h125/amazfit-cheetah-smar.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/amazfit-cheetah-smartwatch-ppd1bn446k5v",
+                pricef: "7,499",
+                pricea: "4,499",
+                pricec: "4,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.3, GPS",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.43 inches Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor, Blood Pressure Monitor",
+                    },
+                    {
+                        name: "Altimeter, Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Noise ColorFit Ultra 3 Smartwatch",
+                brand: "Noise ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/noise-colorfit-ultra-3-smartwatch-ppd1xsm4cowr",
+                image:
+                    "https://cdn1.smartprix.com/rx-ioeRR8gSC-w103-h125/noise-colorfit-ultra.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/noise-colorfit-ultra-3-smartwatch-ppd1xsm4cowr",
+                pricef: "4,499",
+                pricea: "4,499",
+                pricec: "4,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.3",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.96 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Sphere Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-sphere-smartwatch-ppd1hgcdujg2",
+                image:
+                    "https://cdn1.smartprix.com/rx-idPCqd9rz-w103-h125/fire-boltt-sphere-sm.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-sphere-smartwatch-ppd1hgcdujg2",
+                pricef: "2,499",
+                pricea: "2,499",
+                pricec: "5,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.6 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, 1 m, IP68",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant, Dust Proof",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Pedometer, Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+            {
+                name: "Fire Boltt Supernova Smartwatch",
+                brand: "Fireboltt ",
+                category: "Smartwatch",
+                url: "https://www.smartprix.com/smartwatches/fire-boltt-supernova-smartwatch-ppd18evgaxfz",
+                image:
+                    "https://cdn1.smartprix.com/rx-i8e4GZvVM-w103-h125/fire-boltt-supernova.jpg",
+                image_url:
+                    "https://www.smartprix.com/smartwatches/fire-boltt-supernova-smartwatch-ppd18evgaxfz",
+                pricef: "2,699",
+                pricea: "2,499",
+                pricec: "5,490",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Bluetooth 5.0",
+                    },
+                    {
+                        name: "Bluetooth Calling",
+                    },
+                    {
+                        name: "1.78 inches Touch Display",
+                    },
+                    {
+                        name: "Water Resistant, 1 m, IP67",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "Scratch Resistant",
+                    },
+                    {
+                        name: "Heart Rate Monitor",
+                    },
+                    {
+                        name: "SpO2 (Blood Oxygen) Monitor",
+                    },
+                    {
+                        name: "Sleep Monitor, Calorie Count, Step Count",
+                    },
+                ],
+            },
+        ];
+
+
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

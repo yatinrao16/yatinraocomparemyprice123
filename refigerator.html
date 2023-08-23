@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+      <div class="brand">
+        <label for="brand-filter">Brand:</label>
+        <select id="brand-filter">
+          <option value="">All Brands</option>
+          <option value="LG">LG</option>
+          <option value="Xiaomi">Xiaomi</option>
+          <option value="Tropicool">Tropicool</option>
+          <option value="Samsung">Samsung</option>
+          <option value="Lloyd">Lloyd</option>
+        </select>
+      </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+    const products = [
+      {
+        name: "Candy CSD1761RM 165 L 1 Star Single Door Refrigerator",
+        brand: "Candy ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/candy-csd1761rm-165-l-1-star-single-door-ppd1o3xiwh6w",
+        image:
+          "https://cdn1.smartprix.com/rx-ivHikKF3I-w103-h125/candy-csd1761rm-165.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/candy-csd1761rm-165-l-1-star-single-door-ppd1o3xiwh6w",
+        pricef: "9,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "165 L Capacity",
+          },
+          {
+            name: "1 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Normal Compressor",
+          },
+        ],
+      },
+      {
+        name: "Samsung RT28C3021GS 236 L 1 Star Double Door Refrigerator",
+        brand: "Samsung ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/samsung-rt28c3021gs-236-l-1-star-double-door-ppd1gr2za569",
+        image:
+          "https://cdn1.smartprix.com/rx-iydAJCc11-w103-h125/samsung-rt28c3021gs.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/samsung-rt28c3021gs-236-l-1-star-double-door-ppd1gr2za569",
+        pricef: "22,800",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Multi Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "236 L Capacity",
+          },
+          {
+            name: "1 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+          {
+            name: "Frost Free",
+          },
+          {
+            name: "Deodorizer",
+          },
+          {
+            name: "Door Alarm",
+          },
+        ],
+      },
+      {
+        name: "Panasonic SCR-CH300D1C 282 L Double Door Deep Freezer",
+        brand: " Panasonic",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/panasonic-scr-ch300d1c-282-l-double-door-ppd1uq0pwftd",
+        image:
+          "https://cdn1.smartprix.com/rx-iWhCi87zB-w103-h125/panasonic-scr-ch300d.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/panasonic-scr-ch300d1c-282-l-double-door-ppd1uq0pwftd",
+        pricef: "25,490",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Chest Freezer",
+          },
+          {
+            name: "282 L Capacity",
+          },
+          {
+            name: "Convertible",
+          },
+        ],
+        selection2: [
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "1 year Product warranty",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Voltas CF HT 500 DD P 500 L Double Door Deep Freezer",
+        brand: " Voltas",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/voltas-cf-ht-500-dd-p-500-l-double-door-deep-ppd1k53gfanj",
+        image:
+          "https://cdn1.smartprix.com/rx-iVtUTlgyV-w103-h125/voltas-cf-ht-500-dd.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/voltas-cf-ht-500-dd-p-500-l-double-door-deep-ppd1k53gfanj",
+        pricef: "37,900",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Chest Freezer",
+          },
+          {
+            name: "500 L Capacity",
+          },
+          {
+            name: "Convertible",
+          },
+          {
+            name: "Door Lock",
+          },
+        ],
+        selection2: [
+          {
+            name: "1 year Product warranty",
+          },
+          {
+            name: "3 years Compressor warranty",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Haier ‎HRB-2872PMG-P 276 L 2 Star Double Door Refrigerator",
+        brand: "Haier ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/haier-hrb-2872pmg-p-276-l-2-star-double-door-ppd1h6uyrkbl",
+        image:
+          "https://cdn1.smartprix.com/rx-i1lKmrv8r-w103-h125/haier-hrb-2872pmg-p.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/haier-hrb-2872pmg-p-276-l-2-star-double-door-ppd1h6uyrkbl",
+        pricef: "28,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Multi Door",
+          },
+          {
+            name: "Freezer Bottom mounted",
+          },
+          {
+            name: "276 L Capacity",
+          },
+          {
+            name: "LED Display",
+          },
+        ],
+        selection2: [
+          {
+            name: "2 Star",
+          },
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+          {
+            name: "Frost Free",
+          },
+          {
+            name: "Door Alarm",
+          },
+        ],
+      },
+      {
+        name: "Voltas Beko RDC205C 173 L 3 Star Single Door Refrigerator",
+        brand: "Voltas ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/voltas-beko-rdc205c-173-l-3-star-single-door-ppd19ncxq9ig",
+        image:
+          "https://cdn1.smartprix.com/rx-iJunakE3L-w103-h125/voltas-beko-rdc205c.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/voltas-beko-rdc205c-173-l-3-star-single-door-ppd19ncxq9ig",
+        pricef: "13,290",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "173 L Capacity",
+          },
+          {
+            name: "3 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Reciprocating Compressor",
+          },
+          {
+            name: "1 year Product warranty",
+          },
+        ],
+      },
+      {
+        name: "Haier HED-223TS-P 215 L 3 Star Single Door Refrigerator",
+        brand: "Haier ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/haier-hed-223ts-p-215-l-3-star-single-door-ppd1ok2qfz9g",
+        image:
+          "https://cdn1.smartprix.com/rx-iUqYwiwWN-w103-h125/haier-hed-223ts-p-21.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/haier-hed-223ts-p-215-l-3-star-single-door-ppd1ok2qfz9g",
+        pricef: "16,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "215 L Capacity",
+          },
+          {
+            name: "3 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Normal Compressor",
+          },
+        ],
+      },
+      {
+        name: "Lloyd GLDC213SBWT1PB 200 L 3 Star Single Door Refrigerator",
+        brand: " Lloyd",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lloyd-gldc213sbwt1pb-200-l-3-star-single-ppd102u5tv1o",
+        image:
+          "https://cdn1.smartprix.com/rx-iQn3i0mTy-w103-h125/lloyd-gldc213sbwt1pb.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lloyd-gldc213sbwt1pb-200-l-3-star-single-ppd102u5tv1o",
+        pricef: "22,890",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "200 L Capacity",
+          },
+          {
+            name: "3 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Inverter Compressor",
+          },
+        ],
+      },
+      {
+        name: "Haier HRD-2105PKO-P 190 L 5 Star Single Door Refrigerator",
+        brand: "Haier ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/haier-hrd-2105pko-p-190-l-5-star-single-door-ppd1zgtk0ldu",
+        image:
+          "https://cdn1.smartprix.com/rx-iHTdNQv1T-w103-h125/haier-hrd-2105pko-p.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/haier-hrd-2105pko-p-190-l-5-star-single-door-ppd1zgtk0ldu",
+        pricef: "20,300",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "190 L Capacity",
+          },
+          {
+            name: "5 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Inverter Compressor",
+          },
+        ],
+      },
+      {
+        name: "Lloyd GLDC203SFBT4JC 188 L 3 Star Single Door Refrigerator",
+        brand: "Lloyd ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lloyd-gldc203sfbt4jc-188-l-3-star-single-ppd1qtf4py6j",
+        image:
+          "https://cdn1.smartprix.com/rx-iAG88yuAp-w103-h125/lloyd-gldc203sfbt4jc.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lloyd-gldc203sfbt4jc-188-l-3-star-single-ppd1qtf4py6j",
+        pricef: "14,590",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "188 L Capacity",
+          },
+          {
+            name: "3 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Inverter Compressor",
+          },
+          {
+            name: "1 year Product warranty",
+          },
+        ],
+      },
+      {
+        name: "LG GL-M051RSWE 43 L 4 Star Single Door Mini Refrigerator",
+        brand: "LG ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lg-gl-m051rswe-43-l-4-star-single-door-mini-ppd1q1ewbs6v",
+        image:
+          "https://cdn1.smartprix.com/rx-i5V8KLy3s-w103-h125/lg-gl-m051rswe-43-l.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lg-gl-m051rswe-43-l-4-star-single-door-mini-ppd1q1ewbs6v",
+        pricef: "9,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "43 L Capacity",
+          },
+          {
+            name: "4 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Normal",
+          },
+          {
+            name: "1 year Product warranty",
+          },
+          {
+            name: "10 years Compressor warranty",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "LG GL-N292BBEY 242 L 2 Star Double Door Refrigerator",
+        brand: "LG ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lg-gl-n292bbey-242-l-2-star-double-door-ppd14wyvh0o6",
+        image:
+          "https://cdn1.smartprix.com/rx-i3BY24DYt-w103-h125/lg-gl-n292bbey-242-l.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lg-gl-n292bbey-242-l-2-star-double-door-ppd14wyvh0o6",
+        pricef: "24,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Multi Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "242 L Capacity",
+          },
+          {
+            name: "2 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Frost Free",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+        ],
+      },
+
+      {
+        name: "Xiaomi Mijia 118 L Double Door Small Refrigerator",
+        brand: "Xiaomi ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/xiaomi-mijia-118-l-double-door-small-refrigerator-ppd1wmna7brd",
+        image:
+          "https://cdn1.smartprix.com/rx-isPQtGd6x-w103-h125/xiaomi-mijia-118-l-d.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/xiaomi-mijia-118-l-double-door-small-refrigerator-ppd1wmna7brd",
+        pricef: "9,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Multi Door",
+          },
+          {
+            name: "118 L Capacity",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Frost Free",
+          },
+        ],
+      },
+      {
+        name: "Tropicool PC05 5L 5 Star Single Door Mini Refrigerator",
+        brand: "Tropicool ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/tropicool-pc05-5l-5-star-single-door-mini-ppd1j13e96sh",
+        image:
+          "https://cdn1.smartprix.com/rx-i3CtlKERP-w103-h125/tropicool-pc05-5l-5.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/tropicool-pc05-5l-5-star-single-door-mini-ppd1j13e96sh",
+        pricef: "4,949",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "5 L Capacity",
+          },
+          {
+            name: "5 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "1 year Product warranty",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Samsung RR20C2723CR 183 L 3 Star Single Door Refrigerator",
+        brand: "Samsung ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/samsung-rr20c2723cr-183-l-3-star-single-door-ppd1atymv8l4",
+        image:
+          "https://cdn1.smartprix.com/rx-i3oLBgjkR-w103-h125/samsung-rr20c2723cr.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/samsung-rr20c2723cr-183-l-3-star-single-door-ppd1atymv8l4",
+        pricef: "15,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "183 L Capacity",
+          },
+          {
+            name: "3 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Deodorizer",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Digital Inverter Compressor",
+          },
+        ],
+      },
+      {
+        name: "Xiaomi MIJIA 213 L Triple door Refrigerator",
+        brand: "Xiaomi",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/xiaomi-mijia-213-l-triple-door-refrigerator-ppd1cp129l4t",
+        image:
+          "https://cdn1.smartprix.com/rx-i5m9ZLlT4-w103-h125/xiaomi-mijia-213-l-t.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/xiaomi-mijia-213-l-triple-door-refrigerator-ppd1cp129l4t",
+        pricef: "12,999",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Multi Door",
+          },
+          {
+            name: "Freezer Bottom mounted",
+          },
+          {
+            name: "213 L Capacity",
+          },
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+        ],
+        selection2: [
+          {
+            name: "Door Alarm",
+          },
+          {
+            name: "1 year Product warranty",
+          },
+          {
+            name: "10 years Compressor warranty",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "LG GL-B199OSJB 190L 1 Star Single Door Refrigerator",
+        brand: "LG ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lg-gl-b199osjb-190l-1-star-single-door-r-ppd1h189d3t0",
+        image:
+          "https://cdn1.smartprix.com/rx-ipDLjVrV7-w103-h125/lg-gl-b199osjb-190l.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lg-gl-b199osjb-190l-1-star-single-door-r-ppd1h189d3t0",
+        pricef: "14,600",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "190 L Capacity",
+          },
+          {
+            name: "1 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "RECIPROCATING COMPRESSOR",
+          },
+        ],
+      },
+      {
+        name: "LG GL-N292BSEY 242 L 2 Star Double Door Refrigerator",
+        brand: "LG ",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lg-gl-n292bsey-242-l-2-star-double-door-ppd1ih95v6tv",
+        image:
+          "https://cdn1.smartprix.com/rx-iHeg94QfK-w103-h125/lg-gl-n292bsey-242-l.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lg-gl-n292bsey-242-l-2-star-double-door-ppd1ih95v6tv",
+        pricef: "24,999",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Multi Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "242 L Capacity",
+          },
+          {
+            name: "2 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass",
+          },
+          {
+            name: "Frost Free",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+        ],
+      },
+      {
+        name: "LG GL-D201ASCU 185 L 5 Star Single Door Refrigerator",
+        brand: " LG",
+        category: "Refigerator",
+        url: "https://www.smartprix.com/refrigerators/lg-gl-d201ascu-185-l-5-star-single-door-ppd1gr5f49o4",
+        image:
+          "https://cdn1.smartprix.com/rx-isVwfAlJA-w103-h125/lg-gl-d201ascu-185-l.jpg",
+        image_url:
+          "https://www.smartprix.com/refrigerators/lg-gl-d201ascu-185-l-5-star-single-door-ppd1gr5f49o4",
+        pricef: "16,990",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "185 L Capacity",
+          },
+          {
+            name: "5 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Smart Inverter Compressor",
+          },
+        ],
+      },
+      {
+        name: "LG Gl-B199OBJB 190L 1 Star Single Door Refrigerator",
+        brand: " LG",
+        category: "Refigerator",
+
+        url: "https://www.smartprix.com/refrigerators/lg-gl-b199objb-190l-one-star-single-door-ppd16wbwcqn1",
+        image:
+          "https://cdn1.smartprix.com/rx-iiFnzcgbK-w103-h125/lg-gl-b199objb-190l.jpg",
+        pricef: "14,900",
+        pricea: "14,900",
+        pricec: "14,900",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Single Door",
+          },
+          {
+            name: "Freezer Top mounted",
+          },
+          {
+            name: "190 L Capacity",
+          },
+          {
+            name: "1 Star",
+          },
+        ],
+        selection2: [
+          {
+            name: "Toughened Glass, Moisture Control",
+          },
+          {
+            name: "Door Lock",
+          },
+          {
+            name: "Removable Gasket",
+          },
+          {
+            name: "Digital Inverter",
+          },
+        ],
+
+      },
+      ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

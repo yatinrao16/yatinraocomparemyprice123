@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+      <div class="brand">
+        <label for="brand-filter">Brand:</label>
+        <select id="brand-filter">
+          <option value="">All Brands</option>
+          <option value="Samsung">Samsung</option>
+          <option value="SONY">Sony</option>
+          <option value="LG">LG</option>
+          <option value="TCL">TCL</option>
+          <option value="OnePlus">OnePlus</option>
+          <option value="Motorola">Motorola</option>
+          <option value="Xiaomi">Xiaomi</option>
+        </select>
+      </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+        var products = [
+              {
+                name: "Motorola Envision X 55 inch Ultra HD 4K Smart QLED TV (55UHDGQMWS5Q)",
+                 brand:"Motorola ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/motorola-envision-x-55-inch-ultra-hd-4k-smart-ppd1ke2po25s",
+                image:
+                  "https://cdn1.smartprix.com/rx-iu4tDpLSx-w103-h125/motorola-envision-x.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/motorola-envision-x-55-inch-ultra-hd-4k-smart-ppd1ke2po25s",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "55 in, QLED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "MediaTek Processor, 2 GB RAM",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "35,999",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Samsung UA32T4380AKXXL 32-inch HD Ready Smart LED TV",
+                 brand:"Samsung ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/samsung-ua32t4380akxxl-32-inch-hd-ready-smart-ppd1j6msilxs",
+                image:
+                  "https://cdn1.smartprix.com/rx-i2VtbWzA1-w103-h125/samsung-ua32t4380akx.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/samsung-ua32t4380akxxl-32-inch-hd-ready-smart-ppd1j6msilxs",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "32 in, LED TV",
+                  },
+                  {
+                    name: "1366 x 768 pixels",
+                  },
+                  {
+                    name: "Wifi",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "2 HDMI Ports, 1 USB Ports",
+                  },
+                  {
+                    name: "Screen Mirroring / Miracast Support",
+                  },
+                  {
+                    name: "50 Hz",
+                  },
+                ],
+                pricef: "11,999",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Sony Bravia X82L 65 inch Ultra HD 4K Smart LED TV (KD-65X82L)",
+                 brand:"SONY ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/sony-bravia-x82l-65-inch-ultra-hd-4k-smart-ppd1fmijn58w",
+                image:
+                  "https://cdn1.smartprix.com/rx-iWOdjXYgT-w103-h125/sony-bravia-x82l-65.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/sony-bravia-x82l-65-inch-ultra-hd-4k-smart-ppd1fmijn58w",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "65 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 10 W Output",
+                  },
+                  {
+                    name: "32 GB Storage",
+                  },
+                  {
+                    name: "4 HDMI Ports, 2 USB Ports",
+                  },
+                  {
+                    name: "Supports Apps & Games",
+                  },
+                ],
+                pricef: "1,18 ,000",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Motorola Envision X 65 inch Ultra HD 4K Smart QLED TV (65UHDGQMWS5Q)",
+                 brand:" Motorola",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/motorola-envision-x-65-inch-ultra-hd-4k-smart-ppd1hwn399l1",
+                image:
+                  "https://cdn1.smartprix.com/rx-im2ewrr0f-w103-h125/motorola-envision-x.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/motorola-envision-x-65-inch-ultra-hd-4k-smart-ppd1hwn399l1",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "65 in, QLED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "MediaTek Processor, 2 GB RAM",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "49,999",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Sony Bravia X75L 55 inch Ultra HD 4K Smart LED TV (KD-55X75L)",
+                 brand:"SONY ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/sony-bravia-x75l-55-inch-ultra-hd-4k-smart-ppd1gu0b7w9d",
+                image:
+                  "https://cdn1.smartprix.com/rx-ieot5Aa64-w103-h125/sony-bravia-x75l-55.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/sony-bravia-x75l-55-inch-ultra-hd-4k-smart-ppd1gu0b7w9d",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "55 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 10 W Output",
+                  },
+                  {
+                    name: "16 GB Storage",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                  {
+                    name: "Supports Apps & Games",
+                  },
+                ],
+                pricef: "67,430",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "TCL T6G 55 inch Ultra HD 4K Smart QLED TV (55T6G)",
+                 brand:" TCL",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/tcl-t6g-55-inch-ultra-hd-4k-smart-qled-tv-ppd13w1x9d06",
+                image:
+                  "https://cdn1.smartprix.com/rx-iSODBSW9S-w103-h125/tcl-t6g-55-inch-ultr.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/tcl-t6g-55-inch-ultra-hd-4k-smart-qled-tv-ppd13w1x9d06",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "55 in, QLED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 30 W Output",
+                  },
+                  {
+                    name: "Quad Core Processor, 2 GB RAM, 16 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 1 USB Ports",
+                  },
+                ],
+                pricef: "54,990",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Samsung UA43AU7600KXXL 43 inch Ultra HD 4K Smart LED TV",
+                 brand:"Samsung ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/samsung-ua43au7600kxxl-43-inch-ultra-hd-4k-ppd17u64oq4i",
+                image:
+                  "https://cdn1.smartprix.com/rx-iX4gILFT0-w103-h125/samsung-ua43au7600kx.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/samsung-ua43au7600kxxl-43-inch-ultra-hd-4k-ppd17u64oq4i",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "Crystal Processor 4K Processor",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 1 USB Ports",
+                  },
+                ],
+                pricef: "32,490",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Sony Bravia X70L 43 inch Ultra HD 4K Smart LED TV (KD-43X70L)",
+                 brand:"SONY ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/sony-bravia-x70l-43-inch-ultra-hd-4k-smart-ppd17r4c6t5b",
+                image:
+                  "https://cdn1.smartprix.com/rx-iDrQzBJim-w103-h125/sony-bravia-x70l-43.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/sony-bravia-x70l-43-inch-ultra-hd-4k-smart-ppd17r4c6t5b",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 1 USB Ports",
+                  },
+                  {
+                    name: "Supports Apps & Games",
+                  },
+                ],
+                pricef: "47,490",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "OnePlus Y1S Pro 43 inch Ultra HD 4K Smart LED TV",
+                 brand:" OnePlus",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/oneplus-y1s-pro-43-inch-ultra-hd-4k-smart-ppd1lnqf2mon",
+                image:
+                  "https://cdn1.smartprix.com/rx-iEotS5pml-w103-h125/oneplus-y1s-pro-43-i.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/oneplus-y1s-pro-43-inch-ultra-hd-4k-smart-ppd1lnqf2mon",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 24 W Output",
+                  },
+                  {
+                    name: "2 GB RAM, 8 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "28,888",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Xiaomi Smart TV 5A 32 inch HD Ready Smart LED TV",
+                 brand:"Xiaomi ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/xiaomi-smart-tv-5a-32-inch-hd-ready-smart-ppd1zicae1ig",
+                image:
+                  "https://cdn1.smartprix.com/rx-iBKCrHI7G-w103-h125/xiaomi-smart-tv-5a-3.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/xiaomi-smart-tv-5a-32-inch-hd-ready-smart-ppd1zicae1ig",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "32 in, LED TV",
+                  },
+                  {
+                    name: "1366 x 768 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "Cortex A35 64-bit Quad Core Processor, 1 GB RAM, 8 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "2 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "11,999",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Xiaomi Mi TV 4A 40-inch Full HD Smart LED TV",
+                 brand:"Xiaomi ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/xiaomi-mi-tv-4a-40-inch-full-hd-smart-led-ppd1w1ncczod",
+                image:
+                  "https://cdn1.smartprix.com/rx-iCN61fOge-w103-h125/xiaomi-mi-tv-4a-40-i.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/xiaomi-mi-tv-4a-40-inch-full-hd-smart-led-ppd1w1ncczod",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "40 in, LED TV",
+                  },
+                  {
+                    name: "Full HD, 1920 x 1080 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "Quad Core Processor, 1 GB RAM, 8 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "13,999",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Sony Bravia X75L 43 inch Ultra HD 4K Smart LED TV (KD-43X75L)",
+                 brand:" SONY",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/sony-bravia-x75l-43-inch-ultra-hd-4k-smart-ppd1vzwuqyj8",
+                image:
+                  "https://cdn1.smartprix.com/rx-iVWdttClB-w103-h125/sony-bravia-x75l-43.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/sony-bravia-x75l-43-inch-ultra-hd-4k-smart-ppd1vzwuqyj8",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 10 W Output",
+                  },
+                  {
+                    name: "16 GB Storage",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                  {
+                    name: "Supports Apps & Games",
+                  },
+                ],
+                pricef: "49,390",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Xiaomi Redmi X43 43 inch Ultra HD 4K Smart LED TV",
+                 brand:" Xiaomi",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/xiaomi-redmi-x43-43-inch-ultra-hd-4k-smart-ppd1z6gy76ne",
+                image:
+                  "https://cdn1.smartprix.com/rx-izPb1yqdh-w103-h125/xiaomi-redmi-x43-43.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/xiaomi-redmi-x43-43-inch-ultra-hd-4k-smart-ppd1z6gy76ne",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 30 W Output",
+                  },
+                  {
+                    name: "Cortex-A55 Processor, 2 GB RAM, 16 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "24,999",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Xiaomi Mi TV 5 65-inch Ultra HD 4K Smart QLED TV",
+                 brand:"Xiaomi ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/xiaomi-mi-tv-5-65-inch-ultra-hd-4k-smart-ppd19zzr6wjh",
+                image:
+                  "https://cdn1.smartprix.com/rx-iMDNYlo9A-w103-h125/xiaomi-mi-tv-5-65-in.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/xiaomi-mi-tv-5-65-inch-ultra-hd-4k-smart-ppd19zzr6wjh",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "65 in, QLED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "4 Speakers",
+                  },
+                  {
+                    name: "Amlogic T972 Processor, 3 GB RAM, 32 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 2 USB Ports",
+                  },
+                ],
+                pricef: "40,990",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Samsung CU7700 43 inch Ultra HD 4K Smart LED TV (UA43CU7700KLXL)",
+                 brand:"Samsung ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/samsung-7-series-ua43cu7700klxl-43-inch-ultra-ppd1xbnyv8fr",
+                image:
+                  "https://cdn1.smartprix.com/rx-iwIescSce-w103-h125/samsung-cu7700-43-in.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/samsung-7-series-ua43cu7700klxl-43-inch-ultra-ppd1xbnyv8fr",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "2 HDMI Ports, 1 USB Ports",
+                  },
+                  {
+                    name: "Supports Apps & Games",
+                  },
+                ],
+                pricef: "43,990",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "LG 43UQ8050PSB 43 inch Ultra HD 4K LED Smart TV",
+                 brand:" LG",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/lg-43uq8050psb-53-inch-ultra-hd-4k-led-smart-ppd1dqxvyth4",
+                image:
+                  "https://cdn1.smartprix.com/rx-i05LRufSa-w103-h125/lg-43uq8050psb-43-in.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/lg-43uq8050psb-53-inch-ultra-hd-4k-led-smart-ppd1dqxvyth4",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "4 HDMI Ports, 3 USB Ports",
+                  },
+                  {
+                    name: "Screen Mirroring / Miracast Support",
+                  },
+                ],
+                pricef: "40,990",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "TCL C645 55 inch Ultra HD 4K Smart QLED TV (55C645)",
+                 brand:"TCL ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/tcl-c645-55-inch-ultra-hd-4k-smart-qled-tv-ppd11shh78g3",
+                image:
+                  "https://cdn1.smartprix.com/rx-i5HbH2DtP-w103-h125/tcl-c645-55-inch-ult.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/tcl-c645-55-inch-ultra-hd-4k-smart-qled-tv-ppd11shh78g3",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "55 in, QLED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "56 W Output",
+                  },
+                  {
+                    name: "Quad Core Processor, 2 GB RAM, 16 GB Storage",
+                  },
+                  {
+                    name: "Ultra Slim",
+                  },
+                  {
+                    name: "3 HDMI Ports, 1 USB Ports",
+                  },
+                ],
+                pricef: "56,990",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "TCL T6G 43 inch Ultra HD 4K Smart QLED TV (43T6G)",
+                 brand:" TCL",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/tcl-t6g-43-inch-ultra-hd-4k-smart-qled-tv-ppd108fbc7xh",
+                image:
+                  "https://cdn1.smartprix.com/rx-ipCHEwSL7-w103-h125/tcl-t6g-43-inch-ultr.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/tcl-t6g-43-inch-ultra-hd-4k-smart-qled-tv-ppd108fbc7xh",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "43 in, QLED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 30 W Output",
+                  },
+                  {
+                    name: "Quad Core Processor, 2 GB RAM, 16 GB Storage",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3 HDMI Ports, 1 USB Ports",
+                  },
+                ],
+                pricef: "38,990",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "LG 55UQ8050PSB 55 inch Ultra HD 4K LED Smart TV",
+                 brand:"LG ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/lg-55uq8050psb-55-inch-ultra-hd-4k-led-smart-ppd1q9d7ekh3",
+                image:
+                  "https://cdn1.smartprix.com/rx-irpp4TXM9-w103-h125/lg-55uq8050psb-55-in.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/lg-55uq8050psb-55-inch-ultra-hd-4k-led-smart-ppd1q9d7ekh3",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "55 in, LED TV",
+                  },
+                  {
+                    name: "4K Resolution, 3840 x 2160 pixels",
+                  },
+                  {
+                    name: "Wifi, Ethernet",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "2 Speakers, 20 W Output",
+                  },
+                  {
+                    name: "178 ° Viewing Angle",
+                  },
+                  {
+                    name: "4 HDMI Ports, 3 USB Ports",
+                  },
+                  {
+                    name: "Screen Mirroring / Miracast Support",
+                  },
+                ],
+                pricef: "57,490",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+              {
+                name: "Samsung The Wall Luxury 292-inch Ultra HD 8K Smart MicroLED TV",
+                brand:"Samsung ",
+                category:"TV",
+                url: "https://www.smartprix.com/tvs/samsung-the-wall-luxury-292-inch-ultra-hd-ppd1jcdv3ltf",
+                image:
+                  "https://cdn1.smartprix.com/rx-iYDrAGWDj-w103-h125/samsung-the-wall-lux.jpg",
+                image_url:
+                  "https://www.smartprix.com/tvs/samsung-the-wall-luxury-292-inch-ultra-hd-ppd1jcdv3ltf",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                  {
+                    name: "292 in, MicroLED TV",
+                  },
+                  {
+                    name: "8K Resolution, 7680 x 4320 pixels",
+                  },
+                  {
+                    name: "Wifi",
+                  },
+                  {
+                    name: "Smart TV",
+                  },
+                ],
+                selection2: [
+                  {
+                    name: "Ultra Slim, 178 ° Viewing Angle",
+                  },
+                  {
+                    name: "3D TV: No",
+                  },
+                  {
+                    name: "Screen Mirroring / Miracast Support",
+                  },
+                  {
+                    name: "120 Hz",
+                  },
+                ],
+                pricef: "88 ,000",
+                pricea: "42,499",
+                pricec: "45,490",
+              },
+            ];
+
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Styles go here */
+        /* Styles go here */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+            background: #2c3e50;
+        }
+
+        .container {
+            width: 84rem;
+            left: 3rem;
+            height: 200px;
+            position: relative;
+            border: 1px solid #ddd;
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        ul {
+            width: 9999%;
+            height: 100%;
+            list-style: none;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: flex;
+            transition: all 0.75s ease;
+        }
+
+        li {
+            width: 28rem;
+            height: 100%;
+            float: left;
+        }
+
+        li:nth-child(1) {
+            background: #1abc9c;
+        }
+
+        li:nth-child(2) {
+            background: #e74c3c;
+        }
+
+        li:nth-child(3) {
+            background: #27ae60;
+        }
+
+        li:nth-child(4) {
+            background: #e67e22;
+        }
+
+        li:nth-child(5) {
+            background: #8e44ad;
+        }
+
+        li:nth-child(6) {
+            background: #22a6b3;
+        }
+
+        li:nth-child(7) {
+            background: #30336b;
+        }
+
+        li:nth-child(8) {
+            background: pink;
+        }
+
+        li:nth-child(9) {
+            background: #eb4d4b;
+        }
+
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 2rem;
+            padding: 5px 3px;
+            background: white;
+            text-align: center;
+            transform: translateY(-50%);
+            transition: all 0.15s ease;
+            border: 1px solid #ddd;
+            border-radius: 0 3px 3px 0;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        #prev:hover,
+        #next:hover {
+            color: #888;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <link data-require="fontawesome@5.5.0" data-semver="5.5.0" rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <a href="#" id="prev"><i class="fas fa-angle-left"></i></a>
+            <a href="#" id="next"><i class="fas fa-angle-right"></i></a>
+
+        </div>
+
+        <script>
+
+            const slider = document.querySelector('.container');
+            let sliderWidth = slider.offsetWidth / 3;
+            const sliderList = document.querySelector('ul');
+            let items = sliderList.querySelectorAll('li').length - 2;
+            let count = 1;
+
+
+            function prevSlide() {
+                if (count > 1) {
+                    count = count - 2;
+                    sliderList.style.left = '-' + count * sliderWidth + 'px';
+                    count++;
+                } else if (count == 1) {
+                    count = items - 1;
+                    sliderList.style.left = '-' + count * sliderWidth + 'px';
+                    count++;
+                }
+
+            }
+            function nextSlide() {
+                if (count < items) {
+                    sliderList.style.left = '-' + count * sliderWidth + 'px';
+                    count++;
+
+                } else if (count == items) {
+                    sliderList.style.left = '0px';
+                    count = 1;
+
+                }
+            }
+            prev.addEventListener('click', prevSlide);
+            next.addEventListener('click', nextSlide);
+            // setInterval(function () {
+            //     nextSlide();
+            // }, 4000);
+
+
+        </script>
+    </body>
+
+    </html>
