@@ -609,7 +609,7 @@ section img {
   text-align: center;
   background-color: burlywood;
   padding-top: 10px;
-  width: 89rem;
+  width: 90rem;
   top: 3rem;
 }
 
@@ -1914,6 +1914,10 @@ footer {
   display: none;
 }
 
+.remove-button1{
+  display: none;
+}
+
 @media screen and (max-width: 376px) {
   * {
     margin: 0;
@@ -1922,7 +1926,7 @@ footer {
   header {
     background-color: #0a3a75;
     color: white;
-    width: 24rem;
+    width: 22.5rem;
     display: flex;
     position: absolute;
     top: 0;
@@ -1944,13 +1948,17 @@ footer {
     font-size: 2rem;
     cursor: pointer;
     top: 0.4rem;
-    z-index: 2;
     left: 19.7rem;
+    width: 2rem;
+    height: 2rem;
+    z-index: 25;
+    color:white;
+    background-color: #0a3a75;
   }
 
   .menu.active{
     transition-delay: 0s;
-  left: 14.8rem;
+  left: 14rem;
   }
 
   .menu {
@@ -1959,10 +1967,11 @@ footer {
     border: 1px solid white;
     background-color: #0a3a75;
     top: 3rem;
-    left: -14.3rem;
+    left: -14rem;
     width: 6rem;
     height: 12rem;
     padding-top: .5rem;
+    z-index: 1000;
   }
 
   .menu .allnone{
@@ -1974,7 +1983,7 @@ footer {
     display: flex;
     left: -4rem;
     font-size: 1rem;
-    width: 6rem;
+    width: 7rem;
     line-height: 1.5;
   }
 
@@ -2088,10 +2097,10 @@ footer {
   .logintap{
     display: flex;
     height: 2rem;
-    width: 2rem;
+    width: 1.7rem;
     padding-top: .5rem;
     padding-left: .5rem;
-    left: 17rem;
+    left: 16.7rem;
     font-size: 1.5rem;
     position: absolute;
     top: 1px;
@@ -2174,7 +2183,6 @@ footer {
   }
 
 
-
   .more a {
     display: none;
   
@@ -2248,7 +2256,7 @@ footer {
     top: 3rem;
     height: 30px;
     display: flex;
-    width: 22.5rem;
+    width: 21.3rem;
     background-color: #f3c1c1;
     position: absolute;
     margin: 0;
@@ -2276,6 +2284,10 @@ footer {
     display: inline-block;
   }
 
+  section a:hover{
+    zoom: 0;
+  }
+
   section span {
     display: none;
   }
@@ -2286,7 +2298,7 @@ footer {
   }
 
   .mySlides img {
-    width: 23.3rem;
+    width: 22.4rem;
     height: 10rem;
     top: 1rem;
     position: relative;
@@ -2309,8 +2321,8 @@ footer {
   }
   .next {
     position: absolute;
-    padding-right: 2rem;
-    left: 21rem;
+    padding-right: 1.2rem;
+    left: 20.3rem;
   }
   .prev1,
   .next1 {
@@ -2332,7 +2344,7 @@ footer {
     position: absolute;
     display: flex;
     top: 11rem;
-    left: 9rem;
+    left: 8.5rem;
   }
 
   #hotdeals {
@@ -2367,7 +2379,7 @@ footer {
   .red {
     position: absolute;
     top: 16.5rem;
-    width: 22rem;
+    width: 20rem;
     display: flex;
   }
 
@@ -2376,37 +2388,47 @@ footer {
     position: relative;
     display: flex;
     height: 5rem;
-    left: .4rem;
+    left: 0rem;
     font-size: 10px;
     width: 3rem;
     border: 1px solid black;
+    text-align: center;
   }
 
   .red a img {
     position: relative;
     height: 3rem;
-    width: 3rem;
+    width: 2.5rem;
+    left: .2rem;
   }
 
   .red a span {
     position: relative;
     top: 10px;
-    left: -3px;
+    left: -3.5px;
+    text-align: center;
+    align-items: center;
   }
 
   .red {
     display: grid;
-    grid-template-columns: 65px 65px 65px 65px 65px;
-    grid-gap: 6.5px;
+    grid-template-columns: 67px 67px 67px 67px 67px;
+    grid-gap: 4px;
     height: 170px;
     margin: 0;
-    padding-left: 1rem;
+    padding-left: -1rem;
     padding: 5px;
-    width: 23rem;
+    width: 22rem;
     background-color: burlywood;
     text-align: center;
     align-items: center;
     justify-content: contain;
+  }
+
+  .red img:hover {
+    image-rendering: auto;
+    filter: drop-shadow(1px 1px 1px black);
+    zoom: 0;
   }
 
   .item3 {
@@ -2451,8 +2473,7 @@ footer {
   .latestproducts {
     position: absolute;
     top: 28rem;
-    border: 1px solid black;
-    width: 21.8rem;
+    width: 21rem;
     height: 20rem;
   }
   .latestproducts h2 {
@@ -2464,7 +2485,7 @@ footer {
     display: grid;
     grid-template-columns: 82px 82px 82px 82px;
     grid: 20px;
-    margin-left: 2.4rem;
+    margin-left: 1.9rem;
     height: 17rem;
     width: 22rem;
     left: -3rem;
@@ -2473,7 +2494,7 @@ footer {
     position: absolute;
     top: 50rem;
     height: 15rem;
-    width: 23.5rem;
+    width: 22.6rem;
   }
   .popular h2 {
     position: relative;
@@ -2485,7 +2506,7 @@ footer {
     position: relative;
     width: 20.2rem;
     top: -1rem;
-    left: 1.5rem;
+    left: 1rem;
     height: 15rem;
     overflow: hidden;
     scroll-behavior: smooth;
@@ -2576,7 +2597,7 @@ footer {
     position: absolute;
     top: 65.6rem;
     height: 18rem;
-    width: 22.5rem;
+    width: 21.4rem;
   }
   .prev2 {
     padding-left: 5px;
@@ -2584,7 +2605,7 @@ footer {
     border-radius: 3px 0 0 3px;
   }
   .next2 {
-    left: 21.9rem;
+    left: 20.9rem;
     padding-right: 10px;
     padding-left: 0.2rem;
     padding-top: 1rem;
@@ -2596,12 +2617,12 @@ footer {
     position: relative;
     display: grid;
     grid-template-columns: 55px 55px 55px;
-    grid: 15px;
+    grid: 10px;
     border: 1px solid black;
     height: 15rem;
     width: 22rem;
-    left: -2.7rem;
-    padding-left: 1rem;
+    left: -5rem;
+    padding-left:0rem;
   }
   .upcomingproducts h2 {
     position: relative;
@@ -2611,7 +2632,7 @@ footer {
   .item2 {
     margin: 5px;
     top: 5px;
-    left: 10px;
+    left: 5px;
     display: inline-block;
     position: relative;
     text-decoration: none;
@@ -2651,7 +2672,7 @@ footer {
     position: absolute;
     top: 84.6rem;
     padding: 20px;
-    width: 23.5rem;
+    width: 20.2rem;
     background-color: rgb(17, 17, 104);
     height: 19rem;
     color: #f2f2f2;
@@ -2669,7 +2690,7 @@ footer {
     position: relative;
     color: white;
     text-decoration: none;
-    left: -17rem;
+    left: -18.5rem;
     top: 2.5rem;
     font-size: 0.8rem;
     line-height: 1.5;
@@ -2677,17 +2698,17 @@ footer {
 
   .nav-item {
     position: relative;
-    width: 5rem;
+    width: 7rem;
   }
   .websitename1 {
     position: relative;
     top: -1rem;
-    left: .5rem;
+    left: -.5rem;
   }
   .copyright {
     position: relative;
-    top: 4.5rem;
-    font-size: 0.8rem;
+    top: 3rem;
+    font-size: 0.7rem;
     left: -1.5rem;
   }
   .copyright p {
@@ -2703,12 +2724,13 @@ footer {
 
   .centre {
     position: relative;
-    top: 2.3rem;
+    top: 2rem;
+    left: -1.5rem;
   }
 
   .col-4 {
     position: relative;
-    left: -25rem;
+    left: -29.5rem;
     font: 1rem;
     top: 5rem;
   }
@@ -2723,7 +2745,7 @@ footer {
   }
 
   .col-4 h5 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     position: relative;
     top: 4.5rem;
     left: -4rem;
@@ -2731,9 +2753,9 @@ footer {
   }
   .col-4 p {
     position: relative;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     top: 4.5rem;
-    left: -7.5rem;
+    left: -7rem;
     width: 20rem;
   }
   .col-4 .btn {
@@ -3168,6 +3190,26 @@ footer {
     left: 13rem;
   }
 
+  .remove-button1{
+    display: flex; 
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: red;
+    left: 20rem;
+    top: .6rem;
+    border-radius: 50%;
+  }
+  .remove-button1 i{
+    position: relative;
+    display: flex;
+    padding-top:0;
+    padding-left:0;
+    top: -.2rem;
+    font-size: 1.9rem;
+    left: -.2rem;
+  }
+
 
   
 }
@@ -3207,7 +3249,7 @@ footer {
 
   .menu.active{
     transition-delay: 0s;
-  left: 14.8rem;
+  left: 13rem;
   }
 
   .menu {
@@ -3216,10 +3258,11 @@ footer {
     border: 1px solid white;
     background-color: #0a3a75;
     top: 3rem;
-    left: -14.3rem;
+    left: -13rem;
     width: 6rem;
     height: 12rem;
     padding-top: .5rem;
+    z-index: 100;
   }
 
   .menu .allnone{
@@ -3229,10 +3272,11 @@ footer {
   .menu li {
     position: relative;
     display: flex;
-    left: -4rem;
+    left: -6rem;
     font-size: 1rem;
     width: 6rem;
     line-height: 1.5;
+    border: 1px solid black;
   }
 
   .sm-dropdown {
