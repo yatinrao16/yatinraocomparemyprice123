@@ -1918,6 +1918,7 @@ footer {
   display: none;
 }
 
+
 @media screen and (max-width: 376px) {
   * {
     margin: 0;
@@ -2097,7 +2098,7 @@ footer {
   .logintap{
     display: flex;
     height: 2rem;
-    width: 2rem;
+    width: 1.7rem;
     padding-top: .5rem;
     padding-left: .5rem;
     left: 16.7rem;
@@ -2344,7 +2345,7 @@ footer {
     position: absolute;
     display: flex;
     top: 11rem;
-    left: 9rem;
+    left: 8.5rem;
   }
 
   #hotdeals {
@@ -2413,9 +2414,24 @@ footer {
     align-items: center;
   }
 
+  .red {
+    display: grid;
+    grid-template-columns: 67px 67px 67px 67px 67px;
+    grid-gap: 4px;
+    height: 170px;
+    margin: 0;
+    padding-left: -1rem;
+    padding: 5px;
+    width: 22rem;
+    background-color: burlywood;
+    text-align: center;
+    align-items: center;
+    justify-content: contain;
+  }
+
   .red img:hover {
     image-rendering: none;
-    filter:none;
+    filter: none;
     zoom: 0;
   }
 
