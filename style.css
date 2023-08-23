@@ -2389,7 +2389,7 @@ footer {
     display: flex;
     height: 5rem;
     left: 0rem;
-    font-size: 10px;
+    font-size: 9px;
     width: 3rem;
     border: 1px solid black;
     text-align: center;
@@ -2399,30 +2399,18 @@ footer {
     position: relative;
     height: 3rem;
     width: 2.5rem;
-    left: .2rem;
+    top:0rem;
+    margin-left:0;
   }
 
   .red a span {
     position: relative;
-    top: 10px;
-    left: -3.5px;
-    text-align: center;
+    top:.5rem;
+    width: 5rem;
+    height: 5rem;
+    left:-.1rem;
+    justify-content: center;
     align-items: center;
-  }
-
-  .red {
-    display: grid;
-    grid-template-columns: 67px 67px 67px 67px 67px;
-    grid-gap: 4px;
-    height: 170px;
-    margin: 0;
-    padding-left: -1rem;
-    padding: 5px;
-    width: 22rem;
-    background-color: burlywood;
-    text-align: center;
-    align-items: center;
-    justify-content: contain;
   }
 
   .red img:hover {
