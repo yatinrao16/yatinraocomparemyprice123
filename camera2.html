@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+  <title>E-commerce Site</title>
+
+  <link rel="stylesheet" href="allcss.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <div class="websitelogo">
+        <img src="oie_png.png" alt="image" width="50px" />
+      </div>
+      <div class="websitename">
+        <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+      </div>
+    </div>
+    <div class="Search">
+      <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+      <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+      <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+    </div>
+<div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+  </header>
+  <div class="popup-background" id="popupBackground"></div>
+  <div id="suggestionContainer"></div>
+  <div class="filters">
+
+    <div class="brand">
+      <label for="brand-filter">Brand:</label>
+      <select id="brand-filter">
+        <option value="">All Brands</option>
+        <option value="Nikon">Nikon</option>
+        <option value="Canon">Canon</option>
+        <option value="SONY">SONY</option>
+        <option value="GoPro">GoPro</option>
+      </select>
+    </div>
+    <div class="price">
+      <div class="flip">
+        <a href="" class="">Flipkart</a>
+        <div class="min">
+          <label for="min-pricef"></label>
+
+          <input type="number" id="min-pricef" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricef"></label>
+          <input type="number" id="max-pricef" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="amaze">
+        <a href="" class=" ">Amazon</a>
+        <div class="min">
+          <label for="min-pricea"></label>
+          <input type="number" id="min-pricea" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricea"></label>
+          <input type="number" id="max-pricea" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="crom">
+        <a href="" class=" ">Croma</a>
+        <div class="min">
+          <label for="min-pricec"></label>
+          <input type="number" id="min-pricec" placeholder="min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricec"></label>
+          <input type="number" id="max-pricec" placeholder="Max()" />
+        </div>
+      </div>
+    </div>
+
+    <button id="apply-filter-btn">Apply Filters</button>
+    <button id="removeFiltersBtn">Remove Filters</button>
+  </div>
+  <div class="productlist">
+    <div id="products-container" class="products-container"></div>
+  </div>
+  <div class="comparison-popup" id="comparisonPopup">
+    <div class="comparison-content">
+      <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+      <h1>Comparison</h1>
+
+      <div class="content">
+        <a class="image">Product Image</a>
+        <a class="name">Product Name</a>
+        <a class="brand">Product Brand</a>
+        <a class="price">Product Prices</a>
+        <a class="productdetails"> Product Desc.</a>
+      </div>
+      <div class="comparison-container" id="comparison-container"></div>
+      <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+    </div>
+  </div>
+  <script>
+    // Paste the provided product data here
+    const products = [
+      {
+        name: "Nikon Z50 20.9MP Mirrorless Camera with Nikkor Z 24-200mm F/4-6.3 VR Lens",
+        brand: " Nikon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iQrb6TpMj-w103-h125/nikon-z50-20-9mp-mir.jpg",
+
+        pricea: "1,35 ,000",
+        pricef: "",
+        pricec: "",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12ZvSs1HGUklAwXnSUkm9FFP68mhrhArnrysuhyihDRPwGSGmxwRh-hrhhaFhrhrhhacBrWahrhrBi5rXPulbighrFB5vISp0Wm17agj",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "21 MP Camera",
+          },
+          {
+            name: "4K @ 30 fps UHD Video Recording",
+          },
+          {
+            name: "APS-C (23.5 x 15.7 mm) CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "1M dots, Touch Screen Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Sony ILME-FX30 20.1MP Cinema Line Camera (Body Only)",
+
+        brand: "SONY",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-isE7ftf1M-w103-h125/sony-ilme-fx30-20-1m.jpg",
+
+        pricef: "1,80,000",
+        pricea: "42,499",
+        pricec: "45,490",
+
+        flipkart:
+          "https://l.smartprix.com/l?k=1271-0yB7y-sW_tanduluKxsrohrhAgTYBOr3Uh7FsuIcYTnacgDZPcnY33s3TaFFcArna3rc6siIcDT3thYTacFCBa3Z4cAsnBrAUcgYTnnrOhNcFcAYuaUhFciCrT6rFaYFsh-hDh8rHl4AGaribPHihmBYihkKmm7dofzvxVf~V1.hrhhaFhrhrhhacBrWahrhrBi5u66iUPPrhrFB5qIu9-unj5Cmg ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "26 MP Camera",
+          },
+          {
+            name: "4K @ 120 fps UHD Video Recording",
+          },
+          {
+            name: "APS-C (23.4 x 15.6 mm) BSI-CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 2.4M dots, Touch Screen Display",
+          },
+          {
+            name: "1/8000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Nikon Z8 45.7MP Mirrorless Camera (Body Only)",
+        brand: "Nikon",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iYjJX1tIl-w103-h125/nikon-z8-45-7mp-mirr.jpg",
+
+        pricea: "3,44,000",
+        pricef: "",
+        pricec: "",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=12ZvSs1HGUklAQwQVvnAY2Rvu~yhrhArnrysuhyihDRPw4-RzRxxh-hrhhaFhrhrhhacBrWahrhrBi5g5l4YPXChrFB5~kOAK0Aw2XC1 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "46 MP Camera",
+          },
+          {
+            name: "8K @ 30 fps UHD Video Recording",
+          },
+          {
+            name: "Full frame (35.9 x 23.9 mm) Stacked CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3.2 in, 2.1M dots, LCD, Touch Screen Display",
+          },
+          {
+            name: "1/32000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS R100 24MP Mirrorless Camera (Body Only)",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-i9NEjiMxo-w103-h125/canon-eos-r100-24mp.jpg",
+
+        pricef: "",
+        pricea: "56,989",
+        pricec: "59,999",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=1257xmZWIG3qjDXG50qHOOEvJ6hrhArnrysuhyihDRPwXSwm~0wh-hrhhaFhrhrhhacBrWahrhrBi5nb3FWss4hrFB5sDrB~oamFb25 ",
+        croma:
+          "https://l.smartprix.com/l?k=1257qBiG8YHHD878zYQHwV5Zn7hrhAA3snrh7ArusucasFc35PPcoHc5nBciFT3cArna3rc5XcH4cnncTauFciYWYAcXcB3sAaFFs3ch-hDoGHZolhrhhaFhrhrhhacBrWahrhrBi5nb3FWss4hrFB5HGlAQ1WDz2rS ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "24 MP Camera",
+          },
+          {
+            name: "4K @ 24 fps UHD Video Recording",
+          },
+          {
+            name: "APS-C (22.3 x 14.9 mm) CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 1M dots, LCD Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS 1500D 24.1MP DSLR Camera (EF-S 18-55mm IS II Lens)",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-ioX3htv6I-w103-h125/canon-eos-1500d-24-1.jpg",
+
+        pricef: "38,559",
+        pricea: "38,989",
+        pricec: "41,999",
+        flipkart:
+          "https://l.smartprix.com/l?k=12b5Kk.UXH3Tl~drj1SVe9yVphrhAgTYBOr3Uh7ArusucasFc54PPiciFT3cArna3rc6siIc5Xc44cnncYYcTauFh-hDh8PZZ5G4Aa6HiiihmBYihkKmmxjqJqoo.jqv_7hrhhaFhrhrhhacBrWahrhr5HP55GYuy4ahrFB5I71-DgH9q~se ",
+        amazon:
+          "https://l.smartprix.com/l?k=1257xmZtZkyzXwZeQR7m_Ri68yhrhArnrysuhyihDRPGReHz-HZh-hrhhaFhrhrhhacBrWahrhr5HP55GYuy4ahrFB557Zz4SeszbYC ",
+        croma:
+          "https://l.smartprix.com/l?k=1257qBiX5yw-2wf.Wf4Xvgt-QWhrhAA3snrh7ArusucasFc54PPicoHc5nBciFT3cArna3rc5Xc44cnncTauFcoocZcDc5HclcnncFauFs3csBUYArTcYnrWacFUr6YTYyrUh3ch-hDobGlblhrhhaFhrhrhhacBrWahrhr5HP55GYuy4ahrFB54yJD9vBmCxPj ",
+        selection1: [
+          {
+            name: "DSLR",
+          },
+          {
+            name: "24.1 MP Camera",
+          },
+          {
+            name: "1080p @ 30 fps FHD Video Recording",
+          },
+          {
+            name: "22.3 x 14.9 mm , APS-C inch CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 920k dots, LCD Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "35x Zoom, f/3.5-f/5.6 Aperture Lens",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+        ],
+      },
+
+      {
+        name: "Sony a7 IV 33MP Mirrorless Camera",
+        brand: " SONY ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iAJlJf4ri-w103-h125/sony-a7-iv-33mp-mirr.jpg",
+
+        pricea: "2,18 ,000",
+        pricef: "2,13,490",
+        pricec: "",
+        flipkart:
+          " https://l.smartprix.com/l?k=1271-0yB7yVJfDurSRVAN2p.n_hrhAgTYBOr3Uh7FsuIcrTBtrcYTAacGnHcgCTTcg3rnacnY33s3TaFFcArna3rc6siIcgarUC3hNcaIacrgcHOcns2Yac3aAs3ihNh-hDh8g4Hr6Hir4bgHihmBYihkKmm7RVp.E.VefEEvhrhhaFhrhrhhacBrWahrhrBi5GyCblIOOhrFB52Xo3jj-6DtAW",
+        amazon:
+          "https://l.smartprix.com/l?k=12ZvSs1HpS4AkdwNFDAk.~rfNnIhrhArnrysuhyihDRPleRbSXGbh-hrhhaFhrhrhhacBrWahrhrBi5GyCblIOOhrFB5AbJrgqPiPdG~ ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "33 MP Camera",
+          },
+          {
+            name: "4K @ 60 fps UHD Video Recording",
+          },
+          {
+            name: "Full frame (35.6 x 23.8 mm) BSI-CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 1M dots, Touch Screen Display",
+          },
+          {
+            name: "1/8000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+
+      {
+        name: "Sony ALPHA ILCE-7M2K Mirrorless Camera (Body with SEL28-70 Lens)",
+        brand: " SONY ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iAgF6vP9A-w103-h125/sony-alpha-ilce-7m2k.jpg",
+
+        pricef: "77,990",
+        pricea: "",
+        pricec: "",
+        flipkart:
+          "https://l.smartprix.com/l?k=12b5Kk.UXHlzn8Ex7pPf8NXm.hrhAgTYBOr3Uh7FsuIcrTBtrcgCTTcg3rnacYTAacGnoOc6NcYu4cnY33s3TaFFcArna3rc6siIcoXcGPcnncTauFh-hDh8loiglHiAbXggghmBYihkKmmxb~.1dVz~peX-hrhhaFhrhrhhacBrWahrhr5HP5oYgP6DHhrFB55XlemF3OD~rk ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "24.3 MP Camera",
+          },
+          {
+            name: "1080p FHD Video Recording",
+          },
+          {
+            name: "35.8 x 23.9 mm, FullFrame inch CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 1.2M dots, LCD Display",
+          },
+          {
+            name: "1/8000 sec Max Shutter Speed",
+          },
+          {
+            name: "2x Zoom, f/3.5-f/5.6 Aperture Lens",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS R100 24MP Mirrorless Camera with RF-S18-45mm F/4.5-6.3 IS STM Lens",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-ip8oX1xwH-w420-h420/canon-eos-r100-24mp.webp",
+
+        pricef: "",
+        pricea: "56,989",
+        pricec: "59,999",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=1257xmZWIG3qjDXG50qHOOEvJ6hrhArnrysuhyihDRPwXSwm~0wh-hrhhaFhrhrhhacBrWahrhrBi5nb3FWss4hrFB5sDrB~oamFb25 ",
+        croma:
+          "https://l.smartprix.com/l?k=1257qBiG8YHHD878zYQHwV5Zn7hrhAA3snrh7ArusucasFc35PPcoHc5nBciFT3cArna3rc5XcH4cnncTauFciYWYAcXcB3sAaFFs3ch-hDoGHZolhrhhaFhrhrhhacBrWahrhrBi5nb3FWss4hrFB5HGlAQ1WDz2rS ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "24 MP Camera",
+          },
+          {
+            name: "4K @ 30 fps UHD Video Recording",
+          },
+          {
+            name: "APS-C (22.3 x 14.9 mm) CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 162k dots, LCD, Touch Screen Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS 3000D DSLR Camera (EF-S 18-55mm kit lens)",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iBjdPISi9-w103-h125/canon-eos-3000d-dslr.jpg",
+
+        pricef: "28,499",
+        pricea: "33,490",
+        pricec: "",
+        flipkart:
+          "https://l.smartprix.com/l?k=12b5Kk.UXHlQdO6zngGNk14WHhrhAgTYBOr3Uh7ArusucasFcZPPPiciFT3cArna3rc5c6siIc5Xc44cnncTauFh-hDh8bgbb4garlG6AohmBYihkwjpxZKS-Ev1qpdvdhrhhaFhrhrhhacBrWahrhr5HP542B5aaghrFB5g_AFlxf5qD9P ",
+        amazon:
+          " https://l.smartprix.com/l?k=1257xmZtZkITbz3R9xWdTglIbbhrhArnrysuhyihDRPGRvJfb_0h-hrhhaFhrhrhhacBrWahrhr5HP542B5aaghrFB5GwgrwKpU2yQ7",
+        croma: " ",
+        selection1: [
+          {
+            name: "DSLR",
+          },
+          {
+            name: "18 MP Camera",
+          },
+          {
+            name: "1080p FHD Video Recording",
+          },
+          {
+            name: "22.3 x 14.9mm CMOS (APS-C) Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "2.7 in, LCD Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "View Finder",
+          },
+        ],
+      },
+      {
+        name: "Sony ZV-E1 12MP Mirrorless Vlog Camera (Body Only)",
+        brand: " SONY ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-i00wp5Cnq-w103-h125/sony-zv-e1-12mp-mirr.jpg",
+
+        pricef: "61,489",
+        pricea: "61,489",
+        pricec: "",
+        flipkart:
+          " https://l.smartprix.com/l?k=12b5Kk.I1RWgeRKDBxN0oPV.AhrhAgTYBOr3Uh7FsuIcy2ca5PTcnY33s3TaFFcArna3rc6siIc5b4PcnncBs8a3cyssncTauFc2TsWh-hDh8aiPGA66blHHHHhmBYihkKmm7b7XEX1od7qS7hrhhaFhrhrhhacBrWahrhrBi5bPFN5Wn5hrFB5fHJnOBI41srG",
+        amazon:
+          "https://l.smartprix.com/l?k=1257xmZWIG3qRPrZTpJJmJIO9OhrhArnrysuhyihDRPlxl~GoXGh-hrhhaFhrhrhhacBrWahrhrBi5bPFN5Wn5hrFB5GJ4EmPEWVpZB ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "12 MP Camera",
+          },
+          {
+            name: "4K @ 60 fps UHD Video Recording",
+          },
+          {
+            name: "Full frame (35.6 x 23.8 mm) BSI-CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 1M dots, LCD, Touch Screen Display",
+          },
+          {
+            name: "1/8000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "GoPro Hero 11 27MP Sports and Action Camera",
+        brand: " GoPro ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iUaNjbx5b-w103-h125/gopro-hero-11-27mp-s.jpg",
+
+        pricef: "39,199",
+        pricea: "42,499",
+        pricec: "45,490",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Sports and Action Camera",
+          },
+          {
+            name: "23 MP Camera",
+          },
+          {
+            name: "5.3K @ 60 fps Video Recording",
+          },
+          {
+            name: "20 CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "2.27 in, LCD, Touch Screen Display",
+          },
+          {
+            name: "1/8 to 30 Seconds in Photo Mode, 1/30 to 1/480 Seconds in Video Mode Max Shutter Speed",
+          },
+          {
+            name: "Wifi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Sony a7s III 12MP Mirrorless Camera",
+        brand: "SONY",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-ik8c7cieY-w103-h125/sony-a7s-iii-12mp-mi.jpg",
+
+        pricef: "",
+        pricea: "4,36,543",
+        pricec: "",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12ZvSs1HGUklAISp-nDRuwPaKJghrhArnrysuhyihDRPR_VGmveKh-hrhhaFhrhrhhacBrWahrhrBi5OZCnyUCyhrFB55dIeobwaSffI",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "12 MP Camera",
+          },
+          {
+            name: "4K @ 120 fps UHD Video Recording",
+          },
+          {
+            name: "Full frame (35.6 x 23.8 mm) BSI-CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "1.4M dots, Touch Screen Display",
+          },
+          {
+            name: "1/8000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Sony a7 III 24.2 Mirrorless Camera with FE 28-70mm F/3.5-5.6 OSS Lens",
+        brand: " SONY ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iomYRbver-w103-h125/sony-a7-iii-24-2-mir.jpg",
+
+        pricef: "1,60,000",
+        pricea: "1,59,989",
+        pricec: "",
+        flipkart:
+          " https://l.smartprix.com/l?k=1271-JPZaa3SnDl6H60PEswsmfhrhAgTYBOr3Uh7FsuIcrTBtrcYTAacGnZOcgCTTcg3rnacnY33s3TaFFcArna3rcoXcGPcnncyssncTauFgarUC3hNcaIacrgcHOcns2Yac3aAs3ihNh-hDh84bogGgZora6Z6hmBYihkKmmxG7R7JfdR4e.VhrhhaFhrhrhhacBrWahrhrBi55CIsW2B4hrFB5-EVeQfkxTH~U",
+        amazon:
+          "https://l.smartprix.com/l?k=12ZvSs1HGU~4AuYNGFKD3X8ED_RhrhArnrysuhyihDRPGK1e~vxxh-hrhhaFhrhrhhacBrWahrhrBi55CIsW2B4hrFB5i_OrW7tjRopV ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "24.2 MP Camera",
+          },
+          {
+            name: "4K UHD Video Recording",
+          },
+          {
+            name: "35.6 x 23.8 mm, FullFrame inch CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 921.6k dots, LCD, Touch Screen Display",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+          {
+            name: "View Finder",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS R6 Mark II 24MP Mirrorless Camera (RF 24-105mm F/4L IS USM Lens)",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-i9eG8s2MR-w103-h125/canon-eos-r10-24-2mp.jpg",
+
+        pricef: "3,15,990",
+        pricea: "2,58,499",
+        pricec: "2,71,995",
+        flipkart:
+          "https://l.smartprix.com/l?k=1271-JP9opVHRH.CgI9uCp-R-uhrhAgTYBOr3Uh7ArusucasFc3bcnr3OcYYcnY33s3TaFFcArna3rc6siIcoHc5P4nncCFncTauFh-hDh8laiAloiaAPAlGhmBYihkKmm7V7Jf_0f~SSxehrhhaFhrhrhhacBrWahrhrBi56WYbCuo8hrFB5OyZPiVN20WgH ",
+        amazon:
+          " https://l.smartprix.com/l?k=12ZvSs1HGUe5iA0nVjuP9ldevbYhrhArnrysuhyihDRPR~fR~0eHh-hrhhaFhrhrhhacBrWahrhrBi56WYbCuo8hrFB50dKu2.5Se4ue",
+        croma:
+          "https://l.smartprix.com/l?k=12Zv7~QagolZ_G7.plvYqX_1ZoZhrhAA3snrh7ArusucasFc3bcnr3OcYYcoHconBciFT3cArna3rcoHc5P4cnncTauFcAnsFcFauFs3ciYWYAcDcB3sAaFFs3ch-hDob4blZhrhhaFhrhrhhacBrWahrhrBi56WYbCuo8hrFB5gw88kZ_BvmJx ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "24 MP Camera",
+          },
+          {
+            name: "4K @ 30 fps UHD Video Recording",
+          },
+          {
+            name: "APS-C (22.2 x 14.8 mm) CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "Touch Screen Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS R5 C 45 MP Mirrorless Camera",
+        brand: "Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-i5bZCnWXh-w103-h125/canon-eos-r5-c-45-mp.jpg",
+
+        pricef: "",
+        pricea: "out of stock",
+        pricec: "out of stock",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "45 MP Camera",
+          },
+          {
+            name: "8192 x 4320 px @ 30 fps Video Recording",
+          },
+          {
+            name: "Full frame (36 x 24 mm) CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3.2 in, 2.1M dots, LCD, Touch Screen Display",
+          },
+          {
+            name: "1/8000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Microphone",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS R50 Mark II 24.1MP Mirrorless Camera (EF-M15-45mm F/3.5-6.3 IS STM)",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iKISMPTbQ-w103-h125/canon-eos-m50-mark-i.jpg",
+
+        pricef: "69,989",
+        pricea: "69,989",
+        pricec: "71,999",
+        flipkart:
+          "https://l.smartprix.com/l?k=12b5Kk.I1wktRQNH~Xi~NZAEkhrhAgTYBOr3Uh7ArusucasFc34PcnY33s3TaFFcArna3rc6siIc3gcFc5XcH4cnncgcHc4cbcZcFUnh-hDh855Alag5irP6rPhmBYihkKmm7doJR.b--eZ--hrhhaFhrhrhhacBrWahrhrBi5BrQa4ZOFhrFB5kd49xdGXYf~3 ",
+        amazon:
+          "https://l.smartprix.com/l?k=1257xmZWIG38wOXg3D1-SmooKJhrhArnrysuhyihDRPRf.SKvdbh-hrhhaFhrhrhhacBrWahrhrBi5BrQa4ZOFhrFB5y_rH3OITnalj ",
+        croma:
+          " https://l.smartprix.com/l?k=1257qBiX5yw-2Eqxq1jW-Vg~tahrhAA3snrh7ArusucasFc34PcoHconBcnY33s3TaFFcArna3rc5XcH4cnncTauFc4crDYFcaTaAU3suYAcYnrWacFUr6YTYyrUh3ch-hDoGPGo5hrhhaFhrhrhhacBrWahrhrBi5BrQa4ZOFhrFB5imO1VKuXTxiS",
+        selection1: [
+          {
+            name: "Mirrorless",
+          },
+          {
+            name: "24 MP Camera",
+          },
+          {
+            name: "4K @ 23 fps UHD Video Recording",
+          },
+          {
+            name: "APS-C (22.3 x 14.9 mm) CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "1M dots, Touch Screen Display",
+          },
+          {
+            name: "1/4000 sec Max Shutter Speed",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+          {
+            name: "Pict Bridge, Microphone",
+          },
+        ],
+      },
+      {
+        name: "Canon EOS 200D II 24.1MP DSLR Camera with EF-S 18-55mm F/4-5.6 IS STM Lens",
+        brand: " Canon ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iB4aIVrKh-w103-h125/canon-eos-200d-ii-24.jpg",
+
+        pricef: "58,989",
+        pricea: "58,989",
+        pricec: "59,999",
+        flipkart:
+          "https://l.smartprix.com/l?k=12b5Kk.I1wkt4kJkHfN6XQNwShrhAgTYBOr3Uh7ArusucasFcoPPicYYciFT3cArna3rcagcF5Xc44nncFUnh-hDh84ibaHHgGgilGbhmBYihkKmmxxd0Kf7~dl_wehrhhaFhrhrhhacBrWahrhrBi5PNrbG4Q5hrFB53COirX57NkG4 ",
+        amazon:
+          "https://l.smartprix.com/l?k=1257xmZWIG38wiupR6BJ~O0js-hrhArnrysuhyihDRPGv-JR4HXh-hrhhaFhrhrhhacBrWahrhrBi5PNrbG4Q5hrFB5dG2YtZN1mITS ",
+        croma:
+          "https://l.smartprix.com/l?k=1257qBiX5yw-2pHfKRBB0JOyBHhrhAA3snrh7ArusucasFcoPPicYYcoHc5cnBciFT3cArna3rc5Xc44cnncTauFcoocZcDc5HclcnncsBUYArTcYnrWacFUr6YTYyrUh3ch-hDobGlbXhrhhaFhrhrhhacBrWahrhrBi5PNrbG4Q5hrFB5Ib8kCjDXUK1T ",
+        selection1: [
+          {
+            name: "DSLR",
+          },
+          {
+            name: "24.2 MP Camera",
+          },
+          {
+            name: "1080p FHD Video Recording",
+          },
+          {
+            name: "22.3 x 14.9 mm, APS-C inch CMOS Sensor",
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 1M dots, LCD, Touch Screen Display",
+          },
+          {
+            name: "1/4000-30 sec Max Shutter Speed",
+          },
+          {
+            name: "f/4-f/5.6 Aperture Lens",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+        ],
+      },
+      {
+        name: "Sony Cybershot DSC-HX9V 16.2 MP Point & Shoot Camera",
+        brand: " SONY ",
+        category: "Camera",
+
+        image:
+          "https://cdn1.smartprix.com/rx-iHdG5us6K-w103-h125/sony-cybershot-dsc-h.jpg",
+
+        pricef: "6,990",
+        pricea: "",
+        pricec: "",
+        flipkart:
+          "https://l.smartprix.com/l?k=12ow2P.C_nGlHRHmSEg_qwkZhrhAgTYBOr3Uh7FsuIcAI6a3FtsUciFAc8XPPc6AcYu4h-hDh8aXWXIgIi3u882hmBYihkwjpK07E7SV_dSf_RhrhhaFhrhrhhacBrWahrhr5HP5aQbgPyahrFB59UC_WA0H3FCf ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Point & Shoot",
+          },
+          {
+            name: "16 MP Camera",
+          },
+          {
+            name: "1080p @ 60 fps FHD Video Recording",
+          },
+          {
+            name: '1/2.3" (6.17 x 4.55 mm) BSI-CMOS Sensor',
+          },
+        ],
+        selection2: [
+          {
+            name: "3 in, 921k dots, LCD Display",
+          },
+          {
+            name: "1/1600 sec Max Shutter Speed",
+          },
+          {
+            name: "16x Zoom Lens",
+          },
+          {
+            name: "Wifi, Hdmi",
+          },
+        ],
+      },
+    ];
+
+
+
+
+  </script>
+  <script src="alljs.js"></script>
+</body>
+
+</html>

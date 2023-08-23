@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+  <link rel="stylesheet" href="allcss.css">
+  <title>E-commerce Site</title>
+
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <div class="websitelogo">
+        <img src="oie_png.png" alt="image" width="50px" />
+      </div>
+      <div class="websitename">
+        <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+      </div>
+    </div>
+    <div class="Search">
+      <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+      <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+      <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+    </div>
+    <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+  </header>
+  <div id="suggestionContainer"></div>
+  <div class="popup-background" id="popupBackground"></div>
+  <div class="filters">
+
+    <div class="brand">
+      <label for="brand-filter">Brand:</label>
+      <select id="brand-filter">
+        <option value="">All Brands</option>
+        <option value="OPPO">OPPO</option>
+        <option value="Realme">Realme</option>
+        <option value="OnePlus">OnePlus</option>
+        <option value="IQOO">IQOO</option>
+        <option value="Boat">Boat</option>
+        <option value="ptron">Ptron</option>
+        <option value="Xiaomi">Xiaomi</option>
+      </select>
+    </div>
+    <div class="price">
+      <div class="flip">
+        <a href="" class="">Flipkart</a>
+        <div class="min">
+          <label for="min-pricef"></label>
+
+          <input type="number" id="min-pricef" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricef"></label>
+          <input type="number" id="max-pricef" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="amaze">
+        <a href="" class=" ">Amazon</a>
+        <div class="min">
+          <label for="min-pricea"></label>
+          <input type="number" id="min-pricea" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricea"></label>
+          <input type="number" id="max-pricea" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="crom">
+        <a href="" class=" ">Croma</a>
+        <div class="min">
+          <label for="min-pricec"></label>
+          <input type="number" id="min-pricec" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricec"></label>
+          <input type="number" id="max-pricec" placeholder="Max()" />
+        </div>
+      </div>
+    </div>
+
+    <button id="apply-filter-btn">Apply Filters</button>
+    <button id="removeFiltersBtn">Remove Filters</button>
+  </div>
+  <div class="productlist">
+    <div id="products-container" class="products-container"></div>
+  </div>
+  <div class="comparison-popup" id="comparisonPopup">
+    <div class="comparison-content">
+      <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+      <h1>Comparison</h1>
+
+      <div class="content">
+        <a class="image">Product Image</a>
+        <a class="name">Product Name</a>
+        <a class="brand">Product Brand</a>
+        <a class="price">Product Prices</a>
+        <a class="productdetails"> Product Desc.</a>
+      </div>
+      <div class="comparison-container" id="comparison-container"></div>
+      <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      {
+        name: "Intel NUC 11 RNUC11PAHi70Z00 Mini PC Barebone Kit (11th Gen Core i7)",
+        brand: "Intel",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1ixlhs2wz",
+        image:
+          "https://cdn1.smartprix.com/rx-i8Di6Xz0r-w103-h125/intel-nuc-11-rnuc11p.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1ixlhs2wz",
+        pricea: "49,800",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=12GBtd~Q2GHJi1BWp3QUQAG2ZhrhArnrysuhyihDRPwHZGwwp1h-hrhhaFhrhrhhacBrWahrhrBi5YDTtFo8yhrFB5TfnjH.PwRYQY ",
+        croma: " ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i7 1165G7",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "Intel Iris Xe Graphics",
+          },
+          {
+            name: "3 Year Warranty",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel HD Graphics 2000",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Asus AiO A5 A5402WVAT-BA007WS (13th Gen Core i5/ 16 GB RAM/ 512 GB SSD/ Win 11)",
+        brand: "Asus ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1fk2anyxm",
+        image:
+          "https://cdn1.smartprix.com/rx-iEDOWT2ux-w103-h125/asus-aio-a5-a5402wva.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1fk2anyxm",
+        pricef: "94,990",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          " https://l.smartprix.com/l?k=126ka1bmduvHfWq84vdU9CNthrhAgTYBOr3Uh7rFCFcrYscr4cFa3YaFcUsCAtFA3aaucYuUaTcBcFa3YaFcAs3acY4c5bcW6cii3Hc45ocFFic8Yuis8Fc55ctsnacoZcXcYuAtcFA3aaucr4HPo82rUc6rPPG8FcnFcsggYAah-hDh8glbrP6aPll6oAhmBYihkj9k7~Rp7XKefdSXShrhhaFhrhrhhacBrWahrhrBi5gOoruIDnhrFB5JVpUCPZ-Cqy8",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i5 1340P",
+          },
+          {
+            name: "12 Cores (4P + 8E), 16 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Iris Xe Graphics",
+          },
+          {
+            name: "23.8 inches, 1920 x 1080 pixels, Touch Screen",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Apple Mac Studio MQH73HN/A (Apple M2 Max/ 32 GB RAM/ 512 GB SSD/ macOS/ 30-core GPU)",
+        brand: "Apple ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1f7akxjb0",
+        image:
+          "https://cdn1.smartprix.com/rx-ipducWDI5-w103-h125/apple-mac-studio-mqh.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1f7akxjb0",
+        pricef: "2,10 ,000",
+        pricea: "2,10 ,000",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=125i8wXagyVE31Y.DwwudnCJ_ZhrhAgTYBOr3Uh7rBBTacnocnrDcAtYBcZocW6c3rncYuUaW3rUaicZPcAs3acWBCcW3rBtYAFc45ocFFicArBrAYUIcnrAsFc2auUC3rcnYuYcUs8a3h-hDh84io65PXolHHoXhmBYihkw1E7~jo-E04bGS0vhrhhaFhrhrhhacBrWahrhrBi5gGrODQ6PhrFB5KC-bTGHSSV.o ",
+        amazon:
+          "https://l.smartprix.com/l?k=12mV_.eR2QYeUaS1vBVV.IfdlOhrhAA3snrh7rBBTacnrAcFUCiYscnocnrDcAtYBcoPoZcnYuYcUs8a3cZoW6c45oW6cFFicrBBTacZPcAs3acWBCcnrAsFcFYThCch-hDoGZXXZhrhhaFhrhrhhacBrWahrhrBi5gGrODQ6PhrFB5PzqlnWjlEXxS ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Apple M2 Max",
+          },
+          {
+            name: "12 Cores (8P + 4E)",
+          },
+          {
+            name: "32 GB RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Apple 30-Core Gpu",
+          },
+          {
+            name: "Mac OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Inspiron DT 3891 MT Tower PC (10th Gen Core i3/ 8 GB RAM/ 1 TB HDD/ 256 GB SSD/ Win 11)",
+        brand: "Dell ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd16pnvlkoj",
+        image:
+          "https://cdn1.smartprix.com/rx-iwslVF6bQ-w103-h125/dell-inspiron-dt-389.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd16pnvlkoj",
+        pricea: "59,500",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12GBtd~Q2GHJQw..m~~~qUIP9hrhArnrysuhyihDRPlbm~bJGxh-hrhhaFhrhrhhacBrWahrhrBi5bBu2TOsQhrFB5b8GT6p_oN3KP",
+        croma: " ",
+        selection1: [
+          {
+            name: "10th Gen Intel Core i3 10105",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "1 TB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "256 GB SSD",
+          },
+          {
+            name: "Intel UHD Graphics 630",
+          },
+          {
+            name: "21.5 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "DOS OS",
+          },
+        ],
+      },
+      {
+        name: "Asus AiO A5 A5402WVAT-BA007WS (13th Gen Core i5/ 16 GB RAM/ 512 GB SSD/ Win 11)",
+        brand: "Asus ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1fk2anyxm",
+        image:
+          "https://cdn1.smartprix.com/rx-iEDOWT2ux-w103-h125/asus-aio-a5-a5402wva.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1fk2anyxm",
+        pricef: "94,990",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          " https://l.smartprix.com/l?k=126ka1bmduvHfWq84vdU9CNthrhAgTYBOr3Uh7rFCFcrYscr4cFa3YaFcUsCAtFA3aaucYuUaTcBcFa3YaFcAs3acY4c5bcW6cii3Hc45ocFFic8Yuis8Fc55ctsnacoZcXcYuAtcFA3aaucr4HPo82rUc6rPPG8FcnFcsggYAah-hDh8glbrP6aPll6oAhmBYihkj9k7~Rp7XKefdSXShrhhaFhrhrhhacBrWahrhrBi5gOoruIDnhrFB5JVpUCPZ-Cqy8",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i5 1340P",
+          },
+          {
+            name: "12 Cores (4P + 8E), 16 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Iris Xe Graphics",
+          },
+          {
+            name: "23.8 inches, 1920 x 1080 pixels, Touch Screen",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+        ],
+      },
+      {
+        name: "HP M01-F3486in Tower PC (AMD Ryzen 3 5300G/ 4 GB RAM/ 256 GB SSD/ Win 11)",
+        brand: "HP ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1sw4wzooy",
+        image:
+          "https://cdn1.smartprix.com/rx-iYsmlLc5s-w103-h125/hp-m01-f3486in-tower.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1sw4wzooy",
+        pricea: "28,999",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12GBtd~Q2GHJvxHojRtaVw9TZhrhArnrysuhyihDRPRfep__VVh-hrhhaFhrhrhhacBrWahrhrBi5F8H8yssIhrFB5HExwIGnZeqC-",
+        croma: " ",
+        selection1: [
+          {
+            name: "5th Gen AMD Ryzen 3 5300G",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "4 GB DDR4 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Graphics",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Vostro 3710 Tower PC (12th Gen Core i3/ 8 GB RAM/ 512 GB SSD/ Win 11)",
+        brand: "Dell ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd17vvzccjl",
+        image:
+          "https://cdn1.smartprix.com/rx-iYftkFqXt-w103-h125/dell-vostro-3710-tow.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd17vvzccjl",
+        pricef: "54,500",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=126ka1bmdu~WBaX0n3Y3mlRRhrhAgTYBOr3Uh7iaTTcYZc5o5PPcXcW6c3rncYuUaTcYuUaW3rUaicW3rBtYAFc45ocFFicArBrAYUIc8Yuis8Fc55ctsnacbHc6YUcnYuYcUs8a3cnFcsggYAah-hDh8Po564a5rXXZlXhmBYihkw1E7vfZSwff~S~-JhrhhaFhrhrhhacBrWahrhrBi5G22yAAQThrFB5DdDYjavxDsym ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i3 12100",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel UHD Graphics 730",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "3 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Zoonis MA-10 Gaming Tower PC (1st Gen Core i5/ 8 GB RAM/ 256 GB SSD/ Win 10/ 2 GB Graphics)",
+        brand: "Zoonis ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1j5he8pak",
+        image:
+          "https://cdn1.smartprix.com/rx-ifXMiYLJc-w103-h125/zoonis-ma-10-gaming.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1j5he8pak",
+        pricef: "13,999",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          " https://l.smartprix.com/l?k=126ka1bmdu~9ICOYuAUS2elmhrhAgTYBOr3Uh7yssuYFctsnacsggYAacAs3acYZcXcW6cii3Zc4PPcW6c5oXcFFic8Yuis8Fc5PcB3sc5lcYuAtcFA3aaucnrc5Pc6aFUc6aFOUsBcsuTYuac8s3OcaiCArUh3cnFh-hDh8HHZlbo4X66Z6bhmBYihkj9k7.Eb7SJ_~xKvvhrhhaFhrhrhhacBrWahrhrBi5lH4Wl646hrFB5aXj1Kl.pyTk1",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Intel Core i5 750",
+          },
+          {
+            name: "Quad Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "2 GB NVIDIA GeForce GT 610",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Zoonis Budget Gaming Desktop PC (1st Gen Core i5/ 8 GB RAM/ 500 GB HDD/ 128 GB SSD/ Win 10/ 2 GB Graphics)",
+        brand: "Zoonis ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1gaf0tpd8",
+        image:
+          "https://cdn1.smartprix.com/rx-i0tnmyCTv-w103-h125/zoonis-budget-gaming.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1gaf0tpd8",
+        pricef: "19,999",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=126ka1bmdu~mtzTlTx__.DwvhrhAgTYBOr3Uh7yssuYFc6CiWaUcWrnhNciaFOUsBcgY3acWUrcAs3acY4cXcW6cii3Zc4PPcW6c5oXcFFic8Yuis8Fc5PcB3scocW6c5lcYuAtcFA3aauc6CiWaUcoW6cW3rBtYAFcAr3icnFcsggYAah-hDh8545HgGZ4iXb6XhmBYihkj9k71xxZ-EGpRSJ-hrhhaFhrhrhhacBrWahrhrBi5WrgPUBiXhrFB5R~vNrSbGvE2F ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Intel Core i5 750",
+          },
+          {
+            name: "Quad Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "500 GB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "128 GB SSD",
+          },
+          {
+            name: "2 GB Graphics Card",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+        ],
+      },
+      {
+        name: "Zoonis G-01 Desktop PC (2nd Gen Core i5/ 8 GB RAM/ 256 GB SSD/ Win 10)",
+        brand: "Zoonis ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1n5y9yqbo",
+        image:
+          "https://cdn1.smartprix.com/rx-iqn1GxQ4h-w103-h125/zoonis-g-01-desktop.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1n5y9yqbo",
+        pricef: "16,999",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=126ka1bmdu~vX6n5WENoFD9ihrhAgTYBOr3Uh7yssuYFcB3anYCncWrnhNciaFOUsBcAs3acY4cbUtcWauc5bcW6cii3Hc45ocFFic8Yuis8Fc5PcB3scHcW6coocYuAtcFA3aaucWcP5cB3anYCncii3cHc5bW6c3rncnFcsggYAah-hDh86Gli56GgGr6iZhmBYihkj9k7vfZ-jvppo-w1hrhhaFhrhrhhacBrWahrhrBi5CtIZHItnhrFB5PNpdg006NnnF ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "2nd Gen Intel Core i5 2400",
+          },
+          {
+            name: "Quad Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel HD Graphics 2000",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Vostro 3710 Tower PC (12th Gen Core i3/ 8 GB RAM/ 512 GB SSD/ Win 11)",
+        brand: "Dell ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd17vvzccjl",
+        image:
+          "https://cdn1.smartprix.com/rx-iYftkFqXt-w103-h125/dell-vostro-3710-tow.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd17vvzccjl",
+        pricef: "54,500",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=126ka1bmdu~WBaX0n3Y3mlRRhrhAgTYBOr3Uh7iaTTcYZc5o5PPcXcW6c3rncYuUaTcYuUaW3rUaicW3rBtYAFc45ocFFicArBrAYUIc8Yuis8Fc55ctsnacbHc6YUcnYuYcUs8a3cnFcsggYAah-hDh8Po564a5rXXZlXhmBYihkw1E7vfZSwff~S~-JhrhhaFhrhrhhacBrWahrhrBi5G22yAAQThrFB5DdDYjavxDsym ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i3 12100",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel UHD Graphics 730",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "3 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Zoonis MA-10 Gaming Tower PC (1st Gen Core i5/ 8 GB RAM/ 256 GB SSD/ Win 10/ 2 GB Graphics)",
+        brand: "Zoonis ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1j5he8pak",
+        image:
+          "https://cdn1.smartprix.com/rx-ifXMiYLJc-w103-h125/zoonis-ma-10-gaming.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1j5he8pak",
+        pricef: "13,999",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          " https://l.smartprix.com/l?k=126ka1bmdu~9ICOYuAUS2elmhrhAgTYBOr3Uh7yssuYFctsnacsggYAacAs3acYZcXcW6cii3Zc4PPcW6c5oXcFFic8Yuis8Fc5PcB3sc5lcYuAtcFA3aaucnrc5Pc6aFUc6aFOUsBcsuTYuac8s3OcaiCArUh3cnFh-hDh8HHZlbo4X66Z6bhmBYihkj9k7.Eb7SJ_~xKvvhrhhaFhrhrhhacBrWahrhrBi5lH4Wl646hrFB5aXj1Kl.pyTk1",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Intel Core i5 750",
+          },
+          {
+            name: "Quad Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "2 GB NVIDIA GeForce GT 610",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Zoonis Budget Gaming Desktop PC (1st Gen Core i5/ 8 GB RAM/ 500 GB HDD/ 128 GB SSD/ Win 10/ 2 GB Graphics)",
+        brand: "Zoonis ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1gaf0tpd8",
+        image:
+          "https://cdn1.smartprix.com/rx-i0tnmyCTv-w103-h125/zoonis-budget-gaming.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1gaf0tpd8",
+        pricef: "19,999",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=126ka1bmdu~mtzTlTx__.DwvhrhAgTYBOr3Uh7yssuYFc6CiWaUcWrnhNciaFOUsBcgY3acWUrcAs3acY4cXcW6cii3Zc4PPcW6c5oXcFFic8Yuis8Fc5PcB3scocW6c5lcYuAtcFA3aauc6CiWaUcoW6cW3rBtYAFcAr3icnFcsggYAah-hDh8545HgGZ4iXb6XhmBYihkj9k71xxZ-EGpRSJ-hrhhaFhrhrhhacBrWahrhrBi5WrgPUBiXhrFB5R~vNrSbGvE2F ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Intel Core i5 750",
+          },
+          {
+            name: "Quad Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "500 GB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "128 GB SSD",
+          },
+          {
+            name: "2 GB Graphics Card",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+        ],
+      },
+      {
+        name: "Zoonis G-01 Desktop PC (2nd Gen Core i5/ 8 GB RAM/ 256 GB SSD/ Win 10)",
+        brand: "Zoonis ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1n5y9yqbo",
+        image:
+          "https://cdn1.smartprix.com/rx-iqn1GxQ4h-w103-h125/zoonis-g-01-desktop.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1n5y9yqbo",
+        pricef: "16,999",
+        pricea: "",
+        pricec: " --",
+        flipkart:
+          "https://l.smartprix.com/l?k=126ka1bmdu~vX6n5WENoFD9ihrhAgTYBOr3Uh7yssuYFcB3anYCncWrnhNciaFOUsBcAs3acY4cbUtcWauc5bcW6cii3Hc45ocFFic8Yuis8Fc5PcB3scHcW6coocYuAtcFA3aaucWcP5cB3anYCncii3cHc5bW6c3rncnFcsggYAah-hDh86Gli56GgGr6iZhmBYihkj9k7vfZ-jvppo-w1hrhhaFhrhrhhacBrWahrhrBi5CtIZHItnhrFB5PNpdg006NnnF ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "2nd Gen Intel Core i5 2400",
+          },
+          {
+            name: "Quad Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel HD Graphics 2000",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Intel NUC 11 RNUC11PAHi70Z00 Mini PC Barebone Kit (11th Gen Core i7)",
+        brand: "Intel",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1ixlhs2wz",
+        image:
+          "https://cdn1.smartprix.com/rx-i8Di6Xz0r-w103-h125/intel-nuc-11-rnuc11p.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1ixlhs2wz",
+        pricea: "49,800",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=12GBtd~Q2GHJi1BWp3QUQAG2ZhrhArnrysuhyihDRPwHZGwwp1h-hrhhaFhrhrhhacBrWahrhrBi5YDTtFo8yhrFB5TfnjH.PwRYQY ",
+        croma: " ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i7 1165G7",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "Intel Iris Xe Graphics",
+          },
+          {
+            name: "3 Year Warranty",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel HD Graphics 2000",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell All in One Inspiron 5420 (13th Gen Core i5/ 16 GB RAM/ 512 GB SSD/ Win 11/ 2 GB Graphics)",
+        brand: "Dell ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1dd69awxr",
+        image:
+          "https://cdn1.smartprix.com/rx-iL098sfb1-w103-h125/dell-all-in-one-insp.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1dd69awxr",
+        pricea: "86,044",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=12GBtd~Q2GHJymFHrppFdnlprhrhArnrysuhyihDRPw4-_xRH7h-hrhhaFhrhrhhacBrWahrhrBi5iiblr8D3hrFB52b1Dsi7myGt_ ",
+        croma: " ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i5 1335U",
+          },
+          {
+            name: "10 Cores (2P + 8E), 12 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "2 GB NVIDIA GeForce MX550",
+          },
+          {
+            name: "23.8 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "3 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "HP Victus 15L TG02-0102in Gaming Tower PC (AMD Ryzen 5 5600G/ 16 GB RAM/ 512 GB SSD/ Win 11/ 4 GB Graphics)",
+        brand: "HP ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1hyipt8lt",
+        image:
+          "https://cdn1.smartprix.com/rx-izLP01X03-w103-h125/hp-victus-15l-tg02-0.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1hyipt8lt",
+        pricea: "67,629",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=12GBtd~Q2GHJsqKEGX_897aQ_hrhArnrysuhyihDRPwoSdG~poh-hrhhaFhrhrhhacBrWahrhrBi5tIYBUXTUhrFB5bByaRWfkdrR4 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "5th Gen AMD Ryzen 5 5600G",
+          },
+          {
+            name: "Hexa Core, 12 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 GB AMD Radeon RX 6400",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Asus S501MD-512400016W Tower PC (12th Gen Core i5/ 8 GB RAM/ 512 GB SSD/ Win 11)",
+        brand: "Asus",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1oh202l9z",
+        image:
+          "https://cdn1.smartprix.com/rx-im07Urnbb-w103-h125/asus-s501md-51240001.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1oh202l9z",
+        pricea: "71,990",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12GBtd~Q2GHJ3J19i6uY8D0.lhrhArnrysuhyihDRPwlw750f0h-hrhhaFhrhrhhacBrWahrhrBi5stoPoTlyhrFB5T3Zw9HwmVCJS",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i5 12400",
+          },
+          {
+            name: "Hexa Core, 12 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel UHD Graphics 730",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Lenovo IdeaCentre 3 90MV00MLIN Tower PC (AMD 3020e/ 4 GB RAM/ 256 GB SSD/ DOS)",
+        brand: "Lenovo ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1jt51wifu",
+        image:
+          "https://cdn1.smartprix.com/rx-iE0vyl0Gi-w103-h125/lenovo-ideacentre-3.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1jt51wifu",
+        pricea: "20,990",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          "https://l.smartprix.com/l?k=12GBtd~Q2GHJdAwK358rjnP54hrhArnrysuhyihDRPwb4Jd5f1h-hrhhaFhrhrhhacBrWahrhrBi5QU458YgChrFB5dTdC0rIPNk2F ",
+        croma: " ",
+        selection1: [
+          {
+            name: "AMD Athlon 3020e",
+          },
+          {
+            name: "Dual Core, 2 Threads",
+          },
+          {
+            name: "4 GB DDR4 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Graphics",
+          },
+          {
+            name: "DOS OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "HP M01-F3486in Tower PC (AMD Ryzen 3 5300G/ 4 GB RAM/ 256 GB SSD/ Win 11)",
+        brand: "HP ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1sw4wzooy",
+        image:
+          "https://cdn1.smartprix.com/rx-iYsmlLc5s-w103-h125/hp-m01-f3486in-tower.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1sw4wzooy",
+        pricea: "28,999",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12GBtd~Q2GHJvxHojRtaVw9TZhrhArnrysuhyihDRPRfep__VVh-hrhhaFhrhrhhacBrWahrhrBi5F8H8yssIhrFB5HExwIGnZeqC-",
+        croma: " ",
+        selection1: [
+          {
+            name: "5th Gen AMD Ryzen 3 5300G",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "4 GB DDR4 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Graphics",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Zoonis MA-10 Desktop PC (2nd Gen Core i3/ 8 GB RAM/ 500 GB HDD/ 128 GB SSD/ Win 10)",
+        brand: " Zoonis",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1945g9b5b",
+        image:
+          "https://cdn1.smartprix.com/rx-itnImKezO-w103-h125/zoonis-ma-10-desktop.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1945g9b5b",
+        pricef: "13,999",
+        pricea: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "2nd Gen Intel Core i3 2120",
+          },
+          {
+            name: "Dual Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR3 RAM",
+          },
+          {
+            name: "500 GB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "128 GB SSD",
+          },
+          {
+            name: "Intel HD Graphics 2000",
+          },
+          {
+            name: "19 inches",
+          },
+          {
+            name: "Windows 10 OS",
+          },
+        ],
+      },
+      {
+        name: "Asus ROG Strix G10DK-73700X072W Gaming Tower PC (AMD Ryzen7 3700X/ 16GB RAM/ 1 TB HDD/512GB SSD",
+        brand: " Asus",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd1n3hlkgwk",
+        image:
+          "https://cdn1.smartprix.com/rx-ikeD8HiZk-w103-h125/asus-rog-strix-g10dk.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1n3hlkgwk",
+        pricef: "",
+        pricea: "76,990",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12GBtd~Q2GHJUnFzVOlAZwI2NhrhArnrysuhyihDRPRRJHH01ph-hrhhaFhrhrhhacBrWahrhrBi5uZtTOW8OhrFB5oIW9naNSWrJB",
+        croma: " ",
+        selection1: [
+          {
+            name: "3rd Gen AMD Ryzen 7 3700X",
+          },
+          {
+            name: "Octa Core, 16 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "1 TB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "512 GB SSD",
+          },
+          {
+            name: "6 GB NVIDIA GeForce GTX 1660 TI",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "3 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Inspiron DT 3891 MT Tower PC (10th Gen Core i3/ 8 GB RAM/ 1 TB HDD/ 256 GB SSD/ Win 11)",
+        brand: "Dell ",
+        category: "Computer",
+        url: "https://www.smartprix.com/nf/pd/pd16pnvlkoj",
+        image:
+          "https://cdn1.smartprix.com/rx-iwslVF6bQ-w103-h125/dell-inspiron-dt-389.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd16pnvlkoj",
+        pricea: "59,500",
+        pricef: "",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          " https://l.smartprix.com/l?k=12GBtd~Q2GHJQw..m~~~qUIP9hrhArnrysuhyihDRPlbm~bJGxh-hrhhaFhrhrhhacBrWahrhrBi5bBu2TOsQhrFB5b8GT6p_oN3KP",
+        croma: " ",
+        selection1: [
+          {
+            name: "10th Gen Intel Core i3 10105",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "1 TB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "256 GB SSD",
+          },
+          {
+            name: "Intel UHD Graphics 630",
+          },
+          {
+            name: "21.5 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "DOS OS",
+          },
+        ],
+      },
+    ];
+  </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

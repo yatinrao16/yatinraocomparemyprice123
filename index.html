@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>comparemyprice</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="onlycss.css">
+  <link rel="stylesheet" href="resposive.css">
+  <link rel="stylesheet" href="home.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+</head>
+
+<body class="body">
+
+  <header>
+    <div class="logo">
+      <div class="websitelogo">
+        <img src="oie_png.png" alt="image" width="50px" />
+      </div>
+      <div class="websitename">
+        <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+      </div>
+    </div>
+    <div class="search">
+      <input type="text" id="searchBox" class="searchbar" placeholder="Search products...">
+      <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+      <button id="searchButton" class="button"><i class="fas fa-search"></i>.</button>
+    </div>
+
+    <div class="bx bx-menu" id="menu-icon" class="menu-icon"></div>
+    <div class="logintap" id="logintap" ><i class="uis uis-house-user"></i></div>
+    <div id="menu-icon2" class="menu-icon2 hidden"><i id="menuicon2" class="uil uil-filter"></i><a>Filters</a></div>
+    <div class="guest">
+
+      <div class="logon1">
+        <div class="login">
+          <img src="guest.png" alt="" width="40px" />
+          <a href="#">Login <i class="fa-solid fa-caret-down"></i></a>
+          <div class="sm-dropdown2">
+            <ul class="menu1">
+              <li><a onclick="openPopup()" target="_blank "><span> Login</span> </a></li>
+              <li><a onclick="openPopup()" target="_blank "><span> SignUp </span> </a></li>
+          </div>
+        </div>
+        <div class="more">
+          <a href="#">More <i class="fa-solid fa-caret-down"></i></a>
+          <div class="sm-dropdown1">
+            <ul>
+              <li>
+                <a href=""><i class="fa-solid fa-id-badge"></i> Contact Us</a>
+              </li>
+              <li>
+                <a href=""><i class="fa-brands fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a href=""><i class="fa-brands fa-twitter"></i> Twitter</a>
+              </li>
+              <li>
+                <a href=""><i class="fa-brands fa-instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a href=""><i class="fa-brands fa-telegram"></i> Telegram </a>
+              </li>
+              <li>
+                <a href=""><i class="fa-brands fa-google-play"></i> Android App
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparisonicon visible section">
+      <div class="static">
+        <a onclick="openback()">
+          <img src="comparisonmobile.webp" alt="" width="75px" height="75px" border-radius="50%" /><span>
+            Comparison</span></a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <nav class="section visible">
+
+      <ul class="menu">
+
+        <li class="allnone"><a href="all.html">All</a></li>
+        <li><a href="mobile2.html"> Mobiles</a></li>
+        <li><a href="laptop.html">Laptops</a></li>
+        <li><a href="tv.html">TVs</a></li>
+        <li>
+          <a href="#">Electronics <i class="fa-solid fa-caret-down"></i> </a>
+          <div class="sm-dropdown">
+            <ul>
+              <li>
+                <a href="smartwatch.html" class="section_link"><img src="smartwatch.jpg" alt="" />
+                  Smartwatches</a>
+              </li>
+              <li>
+                <a href="camera2.html" class="section_link"><img src="camera.jpg" alt="" /> Cameras</a>
+              </li>
+              <li>
+                <a href="gaming.html" class="section_link"><img src="gaming console.jpg" alt="" /> Gaming
+                  Consoles</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="">Appliance <i class="fa-solid fa-caret-down"></i></a>
+          <div class="sm-dropdown">
+            <ul>
+              <li>
+                <a href="ac2.html" class="section_link"><img src="ac.jpg" alt="" width="50px" height="50px" />
+                  ACs
+                </a>
+              </li>
+              <li>
+                <a href="refigerator.html" class="section_link"><img src="refrigrators.jpg" alt="" width="50px"
+                    height="50px" />
+                  Refrigerators
+                </a>
+              </li>
+              <li>
+                <a href="washingmachine.html" class="section_link"><img src="washing machine.jpg" alt="" width="50px"
+                    height="50px" />
+                  Washing Machine
+                </a>
+              </li>
+              <li>
+                <a href="cooler2.html" class="section_link"><img src="aircooler.jpg" alt="" width="50px" height="50px" />
+                  Air Coolers
+                </a>
+              </li>
+              <li>
+                <a href="greyson.html" class="section_link"><img src="geyser.jpg" alt="" width="50px" height="50px" />
+                  Geysers
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="">Computers <i class="fa-solid fa-caret-down"></i></a>
+          <div class="sm-dropdown">
+            <ul>
+              <li>
+                <a href="laptop.html" class="section_link"><img src="laptop.jpg" alt="" width="50px" height="50px" />
+                  Laptops
+                </a>
+              </li>
+              <li>
+                <a href="computer.html" class="section_link"><img src="computer.jpg" alt="" width="50px"
+                    height="50px" />
+                  Computers
+                </a>
+              </li>
+              <li>
+                <a href="monitor.html" class="section_link"><img src="monitor.jpg" alt="" width="50px" height="50px" />
+                  Monitors
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="">Accessories <i class="fa-solid fa-caret-down"></i></a>
+          <div class="sm-dropdown">
+            <ul>
+              <li>
+                <a href="headphoine.html" class="section_link"><img src="headphones.jpg" alt="" width="50px"
+                    height="50px" />
+                  Headphones And Earphones</a>
+              </li>
+              <li>
+                <a href="memorycard.html" class="section_link"><img src="memory card.jpg" alt="" width="50px"
+                    height="50px" />
+                  Memory Cards</a>
+              </li>
+              <li>
+                <a href="harddisk.html" class="section_link"><img src="harddisk.jpg" alt="" width="50px"
+                    height="50px" />
+                  External Hard Disks</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    </div>
+    <div class="visible section">
+      <section>
+        <a href="http://amazon.in" target="_blank" class="section_link"><img src="amazon1.jpg" width="50px"
+            height="50px" /><span>
+            Amazon</span></a>
+        <a href="http://flipkart.in" target="_blank" class="section_link"><img src="flipkart1.jpg" width="50px"
+            height="50px" /><span>
+            Flipkart</span></a>
+        <a href="http://croma.com" target="_blank" class="section_link"><img src="croma1.jpg" width="50px"
+            height="50px" /><span>
+            Croma</span></a>
+        <a href="http://myntra.com" target="_blank" class="section_link"><img src="myntra1.jpg" width="50px"
+            height="50px" /><span>
+            Myntra</span></a>
+        <a href="http://apple.com" target="_blank" class="section_link"><img src="Apple-logo-black-and-white.png"
+            width="50px" height="50px" /><span> Apple</span></a>
+      </section>
+    </div>
+    <div class="visible section">
+      <div class="image_offer">
+        <div class="slideshow-container">
+
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 4</div>
+            <img src="amazonoffer.png">
+
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 4</div>
+            <img src="myntraoffer.png">
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 4</div>
+            <img src="flipkartoffer.webp">
+
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">4/ 4</div>
+            <img src="croma offer.png">
+
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center" class="dots">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide()"></span>
+        </div>
+
+      </div>
+    </div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div id="hotdeals">
+      <button id="remove-button3" onclick="removePopup2()"><a><i class="uis uis-multiply"></i></a></button>
+      <div class="image_offer1">
+        <div class="slideshow-container1">
+
+          <div class="mySlides1 ">
+            <div class="numbertext1">1 / 10</div>
+            <img src="offers1.webp">
+
+          </div>
+
+          <div class="mySlides1 ">
+            <div class="numbertext1">2 / 10</div>
+            <img src="offers3.webp">
+          </div>
+
+          <div class="mySlides1">
+            <div class="numbertext1">3 / 10</div>
+            <img src="offers4.webp">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">4/ 10</div>
+            <img src="offers5.png">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">5/ 10</div>
+            <img src="offers6.jpg">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">6/ 10</div>
+            <img src="offers7.jpg">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">7/ 10</div>
+            <img src="offers8.webp">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">8/ 10</div>
+            <img src="offers9.webp">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">8/ 10</div>
+            <img src="offers10.jpg">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">9/ 10</div>
+            <img src="offers11.webp">
+
+          </div>
+          <div class="mySlides1">
+            <div class="numbertext1">10/ 10</div>
+            <img src="offers6.jpg">
+
+          </div>
+
+          <a class="prev1" onclick="plusSlides1(-1)">❮</a>
+          <a class="next1" onclick="plusSlides1(1)">❯</a>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="visible section">
+      <div class="red">
+        <a onclick="openPopup2()"><span>
+            <img src="hotdeals.jpg" alt="" width="100px" height="100px" border-radius="50%" />
+            Deals</span></a>
+        <a onclick="openback()"><span>
+            <img src="comparisonmobile.webp" alt="" width="100px" height="100px" border-radius="50%" />
+            Comparison</span></a>
+        <a href="mobile2.html"><span>
+            <img src="applemobile.jpg" alt="" width="100px" height="100px" border-radius="50%" />
+            Mobiles</span></a>
+        <a href="smartwatch.html"><span>
+            <img src="smartwatch1.jpg" alt="" width="100px" height="100px" border-radius="50%" />
+            SmartWatches</span></a>
+        <a href="laptop.html"><span>
+            <img src="laptops.webp" alt="" width="100px" height="100px" border-radius="50%" />
+            Laptops</span></a>
+        <a href="tv.html"><span>
+            <img src="Tvss.webp" alt="" width="100px" height="100px" border-radius="50%" />
+            Tvs</span></a>
+        <a href="camera2.html"><span>
+            <img src="cameras.jpeg" alt="" width="100px" height="100px" border-radius="50%" />
+            Cameras</span>
+        </a>
+        <a href="ac.html"><span>
+            <img src="Ac.avif" alt="" width="100px" height="100px" border-radius="50%" />
+            ACs</span></a>
+        <a href="harddisk.html"><span>
+            <img src="hardisk1.webp" alt="" width="100px" height="100px" border-radius="50%" />
+            Hard Disk</span></a>
+        <a href="headphoine.html"><span>
+            <img src="headphns.webp" alt="" width="100px" height="100px" border-radius="50%" />
+            Headphones</span></a>
+      </div>
+    </div>
+    <div class="visible section">
+      <div class="latestproducts">
+        <h2>Latest Products</h2>
+        <hr />
+        <div class="productlist">
+          <div class="item3">
+            <a
+              href="https://www.apple.com/in/macbook-air/?afid=p238%7CsAF6IlrrV-dc_mtid_187079nc38483_pcrid_665168320683_pgrid_109263622053_pntwk_g_pchan__pexid__&cid=aos-IN-kwgo-mac--slid---product-">
+              <img src="macbook.webp" alt="" /></a>
+            <div class="details">
+              <h4>Macbook Air</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.apple.com/in/shop/buy-iphone/iphone-13"> <img src="iphone13.webp" alt="" /></a>
+            <div class="details">
+              <h4>iphone 13</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.apple.com/in/ipad-air/"> <img src="iPad-Air-5-wallpaper.webp" alt="" /></a>
+            <div class="details">
+              <h4>ipad Air</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.apple.com/in/shop/buy-watch"> <img src="smartwatch1.jpg" alt="" /></a>
+            <div class="details">
+              <h4>Apple Watch 5</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.samsung.com/in/refrigerators/"> <img src="refi.jpg" alt="" /></a>
+            <div class="details">
+              <h4>Samsung refrigrators</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.apple.com/in/airpods-max/"> <img src="headphns.webp" alt="" /></a>
+            <div class="details">
+              <h4>Apple headphones</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.apple.com/in/airpods/"> <img src="airpods2.jpg" alt="" /></a>
+            <div class="details">
+              <h4>Airpods pro</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+          <div class="item3">
+            <a href="https://www.apple.com/in/mac/"> <img src="imac-update.webp" alt="" /></a>
+            <div class="details">
+              <h4>iMac</h4>
+              <h5>10000 off HDFC</h5>
+              <p>Grab now</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="visible section">
+      <div class="popular">
+        <h2>Upcoming Mobiles</h2>
+        <div class="outline">
+          <div class="swiperwrapper">
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-iTVdtkFWf-w103-h125/oppo-reno-10.jpg" alt="">
+              </div>
+              <p class="productName">Jio Bharat K1 Karbonn</p>
+              <p class="productPrice">PRICE: 999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-i8u5ZnBSf-w103-h125/jio-bharat-v2.jpg" alt="">
+              </div>
+              <p class="productName">Jio Bharat V2</p>
+              <p class="productPrice">PRICE: 999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-irPFo8esu-w103-h125/oneplus-nord-3-5g.jpg" alt="">
+              </div>
+              <p class="productName">OnePlus Nord 3 5G</p>
+              <p class="productPrice">PRICE: 33,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ihIBo5dkr-w103-h125/oppo-find-x6-pro.jpg" alt="">
+              </div>
+              <p class="productName">Oppo Find X6 Pro</p>
+              <p class="productPrice">PRICE: 71,990</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ik0pyXzsv-w103-h125/nothing-phone-2.jpg" alt="">
+              </div>
+              <p class="productName">Nothing Phone 2</p>
+              <p class="productPrice">PRICE: 44,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ivcnV6G5S-w103-h125/oneplus-nord-ce-3-5g.jpg" alt="">
+              </div>
+              <p class="productName">OnePlus Nord CE 3 5G</p>
+              <p class="productPrice">PRICE: 26,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-iZy25vD3t-w103-h125/apple-iphone-15-pro.jpg" alt="">
+              </div>
+              <p class="productName">Apple iPhone 15 Pro</p>
+              <p class="productPrice">PRICE: 1,31 ,000</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-i1nFbzsSM-w103-h125/realme-12.jpg" alt="">
+              </div>
+              <p class="productName">Realme 12</p>
+              <p class="productPrice">PRICE: 14,990</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-iTIowfW7M-w103-h125/vivo-y78-plus.jpg" alt="">
+              </div>
+              <p class="productName">Vivo Y78 Plus</p>
+              <p class="productPrice">PRICE: 18,990</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-iTdUYaGUW-w103-h125/vivo-v26-pro.jpg" alt="">
+              </div>
+              <p class="productName">Vivo V26 Pro</p>
+              <p class="productPrice">PRICE: 42,990</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-i0t6eZ3kC-w103-h125/jio-jiophone-5g.jpg" alt="">
+              </div>
+              <p class="productName">Jio JioPhone 5G</p>
+              <p class="productPrice">PRICE: 9,990</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ijrsGvn2I-w103-h125/oneplus-nord-3-5g-16.jpg" alt="">
+              </div>
+              <p class="productName">OnePlus Nord 3 5G</p>
+              <p class="productPrice">PRICE: 37,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ic85kglZW-w103-h125/samsung-galaxy-a74-5.jpg" alt="">
+              </div>
+              <p class="productName">Samsung Galaxy A74 5G</p>
+              <p class="productPrice">PRICE: 42,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ieDYO6q6L-w103-h125/oneplus-11-pro.jpg" alt="">
+              </div>
+              <p class="productName">OnePlus 11 Pro</p>
+              <p class="productPrice">PRICE: 69,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-i0hubqJGv-w103-h125/asus-zenfone-10.jpg" alt="">
+              </div>
+              <p class="productName">Asus Zenfone 10</p>
+              <p class="productPrice">PRICE: 70,990</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-ijmn7laO2-w103-h125/vivo-v29.jpg" alt="">
+              </div>
+              <p class="productName">Vivo V29</p>
+              <p class="productPrice">PRICE: 32,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-iMke2zmd6-w103-h125/oppo-reno-9-pro-plus.jpg" alt="">
+              </div>
+              <p class="productName">OPPO Reno 9 Pro Plus</p>
+              <p class="productPrice">PRICE: 45,999</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+            <div class="swiperslide">
+              <div class="productImage">
+                <img src="https://cdn1.smartprix.com/rx-iiZCizXuF-w103-h125/gionee-g13-pro.jpg" alt="">
+              </div>
+              <p class="productName">Gionee G13 Pro</p>
+              <p class="productPrice">PRICE: 6,190</p>
+              <ul class="selection1">
+                <h3>Product Details</h3>
+                <li>6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole </li>
+                <li>108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera </li>
+                <li>Memory Card (Hybrid), upto 1 TB </li>
+                <li> Android v13</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="prev2" id="prev">❮</a>
+      <a class="next2" id="next">❯</a>
+    </div>
+    <div class="visible section">
+      <div class="upcomingproducts">
+        <h2>Upcoming Events</h2>
+        <hr />
+
+        <div class="Upcoming">
+          <div class="item2">
+            <a href="https://www.apple.com/in/apple-events/"> <img src="apple.png" alt="" /></a>
+            <div class="details">
+              <p>Apple</p>
+
+            </div>
+          </div>
+          <div class="item2">
+            <a href="https://store.google.com/in/?hl=en-GB"> <img src="google.png" alt="" /></a>
+            <div class="details">
+              <p>Google</p>
+
+            </div>
+          </div>
+          <div class="item2">
+            <a
+              href="https://www.oneplus.in/launch/11?tab=115G&gclid=CjwKCAjwt52mBhB5EiwA05YKo3C98uZq3nHs-NFiksINgHjWsy_TXM8s7WZhZX8G6IzuiFsoAyNvAhoCkucQAvD_BwE&gclsrc=aw.ds">
+              <img src="oneplus.webp" alt="" /></a>
+            <div class="details">
+              <p>Oneplus</p>
+
+            </div>
+          </div>
+          <div class="item2">
+            <a href="https://in.nothing.tech/pages/phone-2"> <img src="nothing.png" alt="" /></a>
+            <div class="details">
+              <p>Nothing</p>
+
+            </div>
+          </div>
+          <div class="item2">
+            <a
+              href="https://www.samsung.com/in/smartphones/galaxy-z-fold5/buy/?cid=in_pd_ppc_google_im-mobile-smartphones-fold5-dtc_sales_samsung-fold5-all-2023_eshop-pmax-pla_25jul2023-na_1ur-503064l-2023-eshop-bau-performancemax-cpc_pfm--20403828676------x--&gclid=CjwKCAjwt52mBhB5EiwA05YKoznNnuOtogclhz3fR65QJc1XuqcMP37HP3ZaghCw1snfSPhK8gg14BoC-54QAvD_BwE">
+              <img src="samsung.svg" alt="" /></a>
+            <div class="details">
+              <p>Samsung</p>
+
+            </div>
+          </div>
+          <div class="item2">
+            <a href="https://www.realme.com/in/brand/newsroom"> <img src="realme.png" alt="" /></a>
+            <div class="details">
+              <p>Realme</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+   
+    <div id="filters1" class="filters1 hidden">
+      <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+      <div class="category">
+        <label for="category-filter">Category:</label>
+        <select id="category-filter">
+          <option value="">All Categories</option>
+          <option value="AC">AC</option>
+          <option value="Camera">Camera</option>
+          <option value="Computer">Computer</option>
+          <option value="Cooler">Cooler</option>
+          <option value="Mobile">Mobile</option>
+          <option value="MemoryCard">MemoryCard</option>
+          <option value="Headphone">Headphones</option>
+          <option value="Fitness">FitnessBand</option>
+          <option value="Geyser">Geysar</option>
+          <option value="Harddisk">HardDisk</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Monitor">Monitor</option>
+          <option value="Smartwatch">Smartwatches</option>
+          <option value="Tablet">Tablets</option>
+          <option value="TV">TV</option>
+          <option value="WahingMachine">WashingMachine</option>
+        </select>
+      </div>
+
+      <div class="flip">
+        <a href="" class="">Flipkart</a>
+        <label for="minPrice"></label>
+        <input type="number" id="minPricef" class="minPricef" min="0" placeholder="Min()">
+        <label for="maxPrice"></label>
+        <input type="number" id="maxPricef" class="maxPricef" min="0" placeholder="Max()">
+      </div>
+      <div class="amaze">
+        <a href="" class=" ">Amazon</a>
+        <label for="minPrice"></label>
+        <input type="number" id="minPricea" class="minPricea" min="0" placeholder="Min()">
+        <label for="maxPrice"></label>
+        <input type="number" id="maxPricea" class="maxPricea" min="0" placeholder="Max()">
+      </div>
+      <div class="crom">
+        <a href="" class=" ">Croma</a>
+        <label for="minPrice"></label>
+        <input type="number" id="minPricec" class="minPricec" min="0" placeholder="Min()">
+        <label for="maxPrice"></label>
+        <input type="number" id="maxPricec" class="maxPricec" min="0" placeholder="Max()">
+      </div>
+      <button id="applyFilter">Apply Filter</button>
+      <button id="removeFilters">Remove Filter</button>
+    </div>
+
+    <div id="suggestionContainer"></div>
+    <div id="productlist">
+      <div id="productsContainer" class="productsContainer">
+      </div>
+    </div>
+
+    <div class="comparison-popup" id="comparisonPopup">
+      <div class="comparison-content">
+        <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+        <h1>Comparison</h1>
+
+        <div class="content">
+          <a class="image">Product Image</a>
+          <a class="name">Product Name</a>
+          <a class="brand">Product Brand</a>
+          <a class="price">Product Prices</a>
+          <a class="productdetails">Product Des.</a>
+        </div>
+        <div class="comparison-container" id="comparison-container"></div>
+        <button class="remove-button" onclick="removeComparisonPopup()"><i
+            class="uis uis-arrow-circle-left"></i></button>
+      </div>
+    </div>
+    <div class="box" id="box">
+      <span class="borderline"></span>
+
+      <form action="">
+        <h2>Registration</h2>
+        <button id="remove-button2" onclick="removePopup()"><a><i class="uis uis-multiply"></i></a></button>
+        <div class="inputbox">
+          <input type="text" required="required" /><span>Username</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input type="email" required="required" /><span>E-mail</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input type="password" required="required" /><span>Password</span>
+          <i></i>
+        </div>
+        <div class="remember">
+          <label><input type="checkbox"> Remember me </label>
+        </div>
+        <input type="submit" value="Register" />
+        <div class="links">
+          <a>Already have an account? </a>
+          <a href="login.html" class="login3">Login</a>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="comparisonbody" id="comparisonbody">
+
+      <h1><a href="" onclick="goneBack()"><i class="uis uis-multiply"></i></a>Mobile Comparison</h1>
+
+      <div class="container1">
+        <div class="colu">
+
+          <table class="table">
+            <tr class="upperbox">
+              <th>
+                <p>Select Product</p>
+              </th>
+
+              <th>
+                <select class="formcontrol" id="select1" onchange="item1(this.value)">
+                  <option value="0">-- Select--</option>
+                </select>
+              </th>
+              <th>
+                <select class="formcontrol" id="select2" onchange="item2(this.value)">
+                  <option value="0">-- Select--</option>
+                </select>
+              </th>
+            </tr>
+            <tr class="bg-light1">
+              <th>Product Image</th>
+              <td>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                  id="img1" alt=" ">
+
+              </td>
+              <td>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                  id="img2" alt=" ">
+
+              </td>
+            </tr>
+            <tr class="bg-light">
+              <th class="pp">Product Price</th>
+              <td id="pricef1"></td>
+              <td id="pricea1"></td>
+              <td id="pricec1"></td>
+              <td id="pricef2"></td>
+              <td id="pricea2"></td>
+              <td id="pricec2"></td>
+            </tr>
+            <tr class="bg-light">
+              <th>Camera</th>
+              <td id="desc1"></td>
+              <td id="desc2"></td>
+            </tr>
+            <tr class="bg-light">
+              <th>Storage</th>
+              <td id="brand1"></td>
+              <td id="brand2"></td>
+            </tr>
+            <tr class="bg-light">
+              <th>Battery</th>
+              <td id="batt1"></td>
+              <td id="batt2"></td>
+            </tr>
+            <tr class="bg-light">
+              <th>Processor</th>
+              <td id="proce1"></td>
+              <td id="proce2"></td>
+            </tr>
+            <tr class="bg-light">
+              <th>Display</th>
+              <td id="dis1"></td>
+              <td id="dis2"></td>
+            </tr>
+            <tr class="bg-light bg-light2">
+              <th>Warranty</th>
+              <td id="war1"></td>
+              <td id="war2"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="section visible">
+    <div class="container ">
+      <div class="row">
+        <div class="websitename1">
+          <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+        </div>
+
+        <div class="col-2">
+
+          <ul class="nav flex-column">
+            <li class="nav-item "><a href="camera2.html">Camera</a></li>
+            <li class="nav-item "><a href="mobile2.html">Mobile</a></li>
+            <li class="nav-item "><a href="laptop.html">Laptop</a></li>
+            <li class="nav-item "><a href="smartwatch.html">SmartWatches</a></li>
+            <li class="nav-item "><a href="monitor.html">Headphones</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-2">
+          <ul class="nav flex-column">
+            <li class="nav-item "><a href="#">Home</a></li>
+            <li class="nav-item "><a href="memorycard.html">Memory Card</a></li>
+            <li class="nav-item "><a href="harddisk.html">HardDisk</a></li>
+            <li class="nav-item "><a href="tv.html">Tv</a></li>
+            <li class="nav-item "><a href="compter.html">Computer</a></li>
+          </ul>
+        </div>
+
+
+
+        <div class="col-4">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of whats new and exciting from us.</p>
+            <div class="email">
+              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>
+          "copyright © 2023"
+          <a href="/">comparemyprice.com</a>
+          "All Rights Reserved"
+        </p>
+        <div class="centre">
+          <a href="">Contact Us</a>
+          <a href="">Privacy Policy</a>
+          <a href="">Term of Services</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <script src="javascript.js"></script>
+
+  <script src="data.js"></script>
+  <script>
+    for (var i = 1; i < product.length; i++) {
+      document.getElementById("select1").innerHTML += `
+        <option value="${i}">${product[i].name}</option>
+        `;
+      document.getElementById("select2").innerHTML += `
+        <option value="${i}">${product[i].name}</option>
+        `;
+    }
+
+    function item1(a) {
+      var select2 = document.getElementById("select1").value;
+      if (a != select1) {
+        document.getElementById("img1").src = product[a].image
+        document.getElementById("pricef1").innerHTML = "Rs." + product[a].pricef
+        document.getElementById("pricef1").src = product[a].flipkart
+        document.getElementById("pricea1").innerHTML = "Rs." + product[a].pricea
+        document.getElementById("pricea1").src = product[a].amazon
+        document.getElementById("pricec1").innerHTML = "Rs." + product[a].pricec
+        document.getElementById("pricec1").src = product[a].croma
+        document.getElementById("desc1").innerHTML = product[a].camera
+        document.getElementById("brand1").innerHTML = product[a].storage
+        document.getElementById("proce1").innerHTML = product[a].processor
+        document.getElementById("war1").innerHTML = product[a].warranty
+        document.getElementById("dis1").innerHTML = product[a].display
+        document.getElementById("batt1").innerHTML = product[a].battery
+
+      } else {
+        document.getElementById("select1").selectedIndex = 0;
+        document.getElementById("img1").src = product[0].image
+        document.getElementById("price1").innerHTML = ""
+        document.getElementById("desc1").innerHTML = ""
+        document.getElementById("brand1").innerHTML = ""
+
+      }
+    }
+
+    function item2(a) {
+      var select1 = document.getElementById("select2").value;
+      if (a != select2) {
+        document.getElementById("img2").src = product[a].image
+        document.getElementById("pricef2").innerHTML = "Rs." + product[a].pricef
+        document.getElementById("pricef2").src = product[a].flipkart
+        document.getElementById("pricea2").innerHTML = "Rs." + product[a].pricea
+        document.getElementById("pricea2").src = product[a].amazon
+        document.getElementById("pricec2").innerHTML = "Rs." + product[a].pricec
+        document.getElementById("pricec2").src = product[a].croma
+        document.getElementById("desc2").innerHTML = product[a].camera
+        document.getElementById("brand2").innerHTML = product[a].storage
+        document.getElementById("proce2").innerHTML = product[a].processor
+        document.getElementById("war2").innerHTML = product[a].warranty
+        document.getElementById("dis2").innerHTML = product[a].display
+        document.getElementById("batt2").innerHTML = product[a].battery
+
+      } else {
+        document.getElementById("select2").selectedIndex = 0;
+        document.getElementById("img2").src = product[0].image
+        document.getElementById("price2").innerHTML = ""
+        document.getElementById("desc2").innerHTML = ''
+        document.getElementById("brand2").innerHTML = ""
+
+      }
+    }
+
+    function openback() {
+      const comparisonPopup = document.getElementById('comparisonbody');
+      comparisonPopup.style.display = 'block';
+      document.getElementById('popupBackground').style.display = 'block';
+      document.getElementsByClassName('body').style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeback() {
+      const comparisonPopup = document.getElementById('comparisonbody');
+      comparisonPopup.style.display = 'none';
+      document.getElementById('popupBackground').style.display = 'none';
+      document.body.style.overflow = "auto";
+    }
+
+    function goneback() {
+      closeback();
+    }
+
+    function loginpage() {
+      if ('max-width: 320px') {
+        document.getElementsByClassName('login').display = 'block';
+      }
+    }
+
+  </script>
+
+
+</body>
+
+</html>

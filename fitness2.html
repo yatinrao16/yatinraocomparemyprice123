@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+        <div class="brand">
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter">
+              <option value="">All Brands</option>
+              <option value="Huawei">Huawei</option>
+              <option value="Xiaomi">Xiaomi</option>
+              <option value="Samsung">Samsung</option>
+              <option value="OPPO">Oppo</option>
+              <option value="Amazon">Amazon</option>
+              <option value="Amazefit">Amazefit</option>
+              <option value="Fitbit">Fitbit</option>
+              <option value="Fireboltt">Fireboltt</option>
+            </select>
+          </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+        // Paste the provided product data here
+        const products = [
+      {
+        name: "Huawei Band 8 Fitness Band",
+        brand: " Huawei",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/huawei-band-8-fitness-band-ppd1xgyf2j5a",
+        pricef: "2,849",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-i5ibE457O-w103-h125/huawei-band-8-fitnes.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/huawei-band-8-fitness-band-ppd1xgyf2j5a",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.0",
+          },
+          {
+            name: "1.47 in, 194 x 368 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m, 5ATM",
+          },
+          {
+            name: "Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "HarmonyOS 2 and above, Android 6.0 and above, iOS 9.0 and above Compatible",
+          },
+        ],
+      },
+      {
+        name: "Xiaomi Mi Band 7",
+        brand: " Xiaomi",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/xiaomi-mi-band-7-ppd1mkz3wdwg",
+        pricef: "2,799",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iDzDzAADz-w103-h125/xiaomi-mi-band-7.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/xiaomi-mi-band-7-ppd1mkz3wdwg",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.2",
+          },
+          {
+            name: "1.62 in, 192 x 490 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m, IP65",
+          },
+          {
+            name: "Scratch Resistant, Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android v4.4, iOS 9.0 or above Compatible",
+          },
+        ],
+      },
+      {
+        name: "Xiaomi Mi Band 8 NFC",
+        brand: " Xiaomi",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/xiaomi-mi-band-8-nfc-ppd1oqd2fh7o",
+        pricef: "3,599",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-ipxHq1Bzq-w103-h125/xiaomi-mi-band-8-nfc.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/xiaomi-mi-band-8-nfc-ppd1oqd2fh7o",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.1",
+          },
+          {
+            name: "1.62 in, 192 x 490 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m, IP65",
+          },
+          {
+            name: "Scratch Resistant, Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android v4.4, iOS 9.0 or above Compatible",
+          },
+        ],
+      },
+      {
+        name: "Amazfit Band 8 Fitness Band",
+        brand: "Amazfit ",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/amazfit-band-8-fitness-band-ppd1856dpy18",
+        pricef: "6,999",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-ir9bhPo1p-w103-h125/amazfit-band-8-fitne.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/amazfit-band-8-fitness-band-ppd1856dpy18",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.3",
+          },
+          {
+            name: "1.5 in, 194 x 368 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m, IP68",
+          },
+          {
+            name: "Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer, Altimeter",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android, iOS Compatible",
+          },
+        ],
+      },
+      {
+        name: "Honor Band 7",
+        brand: "Honor ",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/honor-band-7-ppd131iptx0s",
+        pricef: "2,799",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-i4xOdw3az-w103-h125/honor-band-7.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/honor-band-7-ppd131iptx0s",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.0",
+          },
+          {
+            name: "1.47 in, 194 x 368 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m, 5ATM",
+          },
+          {
+            name: "Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "OLED Display",
+          },
+          {
+            name: "Android 6.0 or later, iOS 9.0 or later Compatible",
+          },
+        ],
+      },
+      {
+        name: "Xiaomi Redmi Band 2",
+        brand: "Xiaomi ",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/xiaomi-redmi-band-2-ppd1tsz0ku26",
+        pricef: "1,999",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iZIENf8E8-w103-h125/xiaomi-redmi-band-2.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/xiaomi-redmi-band-2-ppd1tsz0ku26",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.0",
+          },
+          {
+            name: "1.47 in, 172 x 320 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant",
+          },
+          {
+            name: "Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Altimeter",
+          },
+          {
+            name: "TFT Display",
+          },
+          {
+            name: "Android, iOS Compatible",
+          },
+        ],
+      },
+      {
+        name: "Fitbit Charge 6 Fitness Band",
+        brand: "Fitbit ",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/fitbit-charge-6-fitness-band-ppd10ccze2vi",
+        pricef: "13,999",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iJSFZHXmG-w103-h125/fitbit-charge-6-fitn.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/fitbit-charge-6-fitness-band-ppd10ccze2vi",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth",
+          },
+          {
+            name: "Touch Display",
+          },
+          {
+            name: "Water Resistant",
+          },
+          {
+            name: "Shock Resistant",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "Android & iOS Compatible",
+          },
+          {
+            name: "Elastomer Build",
+          },
+        ],
+      },
+      {
+        name: "Xiaomi Smart Band 7 Pro",
+        brand: " Xiamoi",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/xiaomi-mi-band-7-pro-ppd1mnm2u6wv",
+        pricef: "5,999",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iGSNIafrC-w103-h125/xiaomi-smart-band-7.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/xiaomi-mi-band-7-pro-ppd1mnm2u6wv",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.2",
+          },
+          {
+            name: "1.64 in, 280 x 456 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m, IP68",
+          },
+          {
+            name: "Scratch Resistant, Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android v4.4, iOS 9.0 or above Compatible",
+          },
+        ],
+      },
+      {
+        name: "OPPO Band 2",
+        brand: " OPPO",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/oppo-band-2-ppd1gcqsw7oi",
+        pricef: "3,499",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iSutDKN36-w103-h125/oppo-band-2.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/oppo-band-2-ppd1gcqsw7oi",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.1",
+          },
+          {
+            name: "1.91 in, 126 x 264 pixels, Touch Display",
+          },
+          {
+            name: "Water Resistant, IP67",
+          },
+          {
+            name: "Scratch Resistant, Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android, iOS Compatible",
+          },
+        ],
+      },
+      {
+        name: "Samsung Galaxy Fit3",
+        brand: "Samsung ",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/samsung-galaxy-fit3-ppd1cgb0p8o2",
+        pricef: "3,499",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iWXyX693r-w103-h125/samsung-galaxy-fit3.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/samsung-galaxy-fit3-ppd1cgb0p8o2",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.1",
+          },
+          {
+            name: "1.1 in",
+          },
+          {
+            name: "Water Resistant 10 m, Ip68",
+          },
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+        ],
+        selection2: [
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android Compatible",
+          },
+          {
+            name: "Incoming Call, Text Message",
+          },
+        ],
+      },
+      {
+        name: "Amazon Halo View Fitness Tracker",
+        brand: "Amazon ",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/amazon-halo-view-fitness-tracker-ppd1lrx15zzy",
+        pricef: "5,999",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-iGhAIfgnr-w103-h125/amazon-halo-view-fit.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/amazon-halo-view-fitness-tracker-ppd1lrx15zzy",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth 5.0",
+          },
+          {
+            name: "Touch Display",
+          },
+          {
+            name: "Water Resistant 50 m",
+          },
+          {
+            name: "Dust Proof",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "AMOLED Display",
+          },
+          {
+            name: "Android, iOS Compatible",
+          },
+        ],
+      },
+      {
+        name: "Fire Boltt Invincible BSW020 Fitness Band",
+        brand: " FireBoltt",
+        category: "Fitness",
+        url: "https://www.smartprix.com/fitness_bands/fire-boltt-invincible-bsw020-fitness-band-ppd1plu541kl",
+        pricef: "1,999",
+        pricea: "42,499",
+        pricec: "45,490",
+        image:
+          "https://cdn1.smartprix.com/rx-ijDVHH5Jx-w103-h125/fire-boltt-invincibl.jpg",
+        image_url:
+          "https://www.smartprix.com/fitness_bands/fire-boltt-invincible-bsw020-fitness-band-ppd1plu541kl",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Bluetooth",
+          },
+          {
+            name: "1.39 in, Touch Display",
+          },
+          {
+            name: "Water Resistant",
+          },
+          {
+            name: "Shock Resistant",
+          },
+        ],
+        selection2: [
+          {
+            name: "Heart Rate Monitor, Calorie Count, Sleep Monitor",
+          },
+          {
+            name: "Step Count, Pedometer",
+          },
+          {
+            name: "Android & iOS Compatible",
+          },
+          {
+            name: "Accelerometer, Altimeter, Optical Heart-rate Tracker, Vibration Motor, SpO2, ECG",
+          },
+        ],
+      },
+    ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

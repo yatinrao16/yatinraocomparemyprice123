@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Comparison</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 a{
+            position: absolute;
+            color:white;
+            font-size: 2rem;
+            left: 1rem;
+            top: 1.2rem;
+        }
+        h1 a i{
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            position:absolute;
+            background-color:black;
+            padding-top: 1rem;
+            top: -1rem;
+            height: 4rem;
+            width: 97%;
+            border: 1px solid black;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .comparison-container {
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            flex-direction: row;
+            /* border: 1px solid black; */
+            gap: 3rem;
+            top: 6rem;
+            left: 20.7rem;
+            width: 70rem;
+            height: 45rem;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: block;
+            position: relative;
+            width: 30rem;
+            border: 1px solid black;
+            height: 40rem;
+            background-color: wheat;
+            margin-bottom: 3px;
+            border-radius: 0.5rem;
+        }
+
+        .product-card img {
+            position: absolute;
+            top: 1.5rem;
+            left: 10rem;
+            height: 10rem;
+            width:10rem;
+            border-radius: 2rem;
+            margin-right: 10px;
+        }
+
+        .product-card h3 {
+            position: absolute;
+            top: 14rem;
+            left: 1rem;
+            width: 28rem;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+            position:absolute;
+            top: 17.8rem;
+            left: 12rem;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .product-details {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            position: absolute;
+            height: 15rem;
+            width: 27rem;
+            padding-left: 3rem;
+            line-height: 1.5;
+            top: 25rem;
+        }
+
+
+        .product-selection1 {
+            position: absolute;
+            margin-bottom: 5px;
+            display: flex;
+            top: 1rem;
+            width: 15rem;
+            left: 1rem;
+            flex-direction: column;
+        }
+
+        .product-selection2 {
+            position: absolute;
+            top: 1rem;
+            left: 15rem;
+            width: 15rem;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card button {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 2rem;
+        }
+
+        .product-card button.added {
+            background-color: #28a745;
+        }
+
+
+        .flipkart {
+            position: absolute;
+            left: 1rem;
+            background-image: url(flipkart1.jpg);
+            text-decoration: none;
+            background-repeat: no-repeat;
+            color: blue;
+            background-size: contain;
+            border-radius: 20px;
+            top: 21rem;
+            padding-left: 1.5rem;
+            height: 2.5rem;
+            width: 8rem;
+            padding-right: 0;
+            margin-bottom: 4px;
+            border: 0;
+            font-weight: bolder;
+            line-height: 2.5;
+            font-size: 1rem;
+            text-align: center;
+            color: blue;
+            /* text-shadow: 3px 1px 1px #000; */
+            background-color: yellow;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .amazon {
+            position: absolute;
+            left: 11rem;
+            top: 21rem;
+            text-decoration: none;
+            margin-bottom: 4px;
+            padding: 0;
+            border: 0;
+            background-image: url(amazon1.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 2.5rem;
+            border-radius: 20px;
+            font-weight: bolder;
+            padding-left: 1.5rem;
+            width: 8rem;
+            line-height: 2.5;
+            font-size: 1rem;
+            text-align: center;
+            color: #fff;
+            background-color: #de530f;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .croma {
+            position: absolute;
+            text-decoration: none;
+            left: 21rem;
+            height: 2.5rem;
+            top: 21rem;
+            margin-bottom: 4px;
+            background-image: url(croma1.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            border-radius: 20px;
+            font-weight: bolder;
+            border: 0;
+            padding-left: 1.5rem;
+            width: 8rem;
+            line-height: 2.5;
+            font-size: 1rem;
+            text-align: center;
+            color: #fff;
+            background-color: black;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .content {
+            display: block;
+            position: absolute;
+            width: 15rem;
+            height: 40rem;
+            top: 6rem;
+            
+
+        }
+        .image{
+            position:absolute;
+            font-size: 1.1rem;
+            left: 5rem;
+            font-weight: bold;
+            top: 5rem;
+        }
+        .brand{
+            position:absolute;
+            font-size: 1.1rem;
+            left: 5rem;
+            font-weight: bold;
+            top: 18rem;
+        }
+        .name{
+            position:absolute;
+            font-size: 1.1rem;
+            left: 5rem;
+            font-weight: bold;
+            top: 14.5rem;
+        }
+        .price{
+            position:absolute;
+            font-size: 1.1rem;
+            left: 5rem;
+            font-weight: bold;
+            top: 21.5rem;
+        }
+        .productdetails{
+            position:absolute;
+            font-size: 1.1rem;
+            left: 5rem;
+            font-weight: bold;
+            top: 26rem;
+        }
+
+        /* #backButton1{
+            border: 2px solid red;
+            height: 2rem;
+
+        } */
+    </style> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            max-width: 100%;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+        }
+
+        .product-card button {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .product-card button.added {
+            background-color: #28a745;
+        }
+
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+
+        .remove-button {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Product Comparison</h1>
+
+    <div class="popup-container" id="popupContainer">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup()">&times;</span>
+            <h1><a href=""> <button id="backButton1" class="backButton1" onclick="goBack()"><i
+                            class="uis uis-arrow-circle-left"></i></button></a>Comparison</h1>
+
+            <div class="content">
+                <a class="image">Product Image</a>
+                <a class="name">Product Name</a>
+                <a class="brand">Product Brand</a>
+                <a class="price">Product Prices</a>
+                <a class="productdetails"> Product Desc.</a>
+            </div>
+            <div class="comparison-container" id="comparison-container"></div>
+            <button class="remove-button" onclick="removePopup()">Remove</button>
+        </div>
+    </div>
+    <div class="product-container" id="product-container"></div>
+
+    <script>
+        // compare.js
+        function getProductFromUrlParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productData = urlParams.get('products');
+            if (productData) {
+                return JSON.parse(decodeURIComponent(productData));
+            } else {
+                return [];
+            }
+        }
+
+        function createComparisonCard(product) {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+
+            const productImage = document.createElement('img');
+            productImage.src = product.image;
+            productCard.appendChild(productImage);
+
+            const productName = document.createElement('h3');
+            productName.textContent = product.name;
+            productCard.appendChild(productName);
+
+            const productBrand = document.createElement('p');
+            productBrand.textContent =product.brand.toUpperCase();
+            productCard.appendChild(productBrand);
+
+            const flipkartPrice = document.createElement("a");
+            flipkartPrice.classList.add("flipkart");
+            flipkartPrice.href = product.flipkart;
+            flipkartPrice.textContent = "" + product.pricef;
+            productCard.appendChild(flipkartPrice);
+
+            const amazonPrice = document.createElement("a");
+            amazonPrice.classList.add("amazon");
+            amazonPrice.href = product.amazon;
+            amazonPrice.textContent = "" + product.pricea;
+            productCard.appendChild(amazonPrice);
+
+            const cromaPrice = document.createElement("a");
+            cromaPrice.classList.add("croma");
+            cromaPrice.href = product.croma;
+            cromaPrice.textContent = "" + product.pricec;
+            productCard.appendChild(cromaPrice);
+
+            const productDetails = document.createElement("div");
+            productDetails.classList.add("product-details");
+
+            const selection1 = document.createElement("div");
+            selection1.classList.add("product-selection1");
+            product.selection1.forEach((selection) => {
+                const selectionItem = document.createElement("span");
+                selectionItem.textContent = selection.name;
+                selection1.appendChild(selectionItem);
+            });
+            productDetails.appendChild(selection1);
+
+            const selection2 = document.createElement("div");
+            selection2.classList.add("product-selection2");
+            product.selection2.forEach((selection) => {
+                const selectionItem = document.createElement("span");
+                selectionItem.textContent = selection.name;
+                selection2.appendChild(selectionItem);
+            });
+            productDetails.appendChild(selection2);
+            productCard.appendChild(productDetails);
+
+            return productCard;
+        }
+
+        function displayComparisonList() {
+            const comparisonContainer = document.getElementById('comparison-container');
+            const selectedProducts = getProductFromUrlParam();
+
+            comparisonContainer.innerHTML = '';
+            selectedProducts.forEach((product) => {
+                const productCard = createComparisonCard(product);
+                comparisonContainer.appendChild(productCard);
+            });
+        }
+
+        displayComparisonList();
+
+        function goBack() {
+        window.history.back();
+      }
+
+    </script>
+    <script>
+        const products = [
+
+            {
+                name: "Samsung Galaxy M14 (6GB RAM + 128GB)",
+                brand: "Samsung",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-m14-6gb-ram-128gb-ppd1a8ag4z34",
+                image:
+                    "https://cdn1.smartprix.com/rx-irbDTgHsB-w103-h125/samsung-galaxy-m14-6.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-m14-6gb-ram-128gb-ppd1a8ag4z34",
+                pricef: "15,490",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Exynos 1330, Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "6 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "6000 mAh Battery with 25W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.6 inches, 1080 x 2408 px, 90 Hz Display with Water Drop Notch",
+                    },
+                    {
+                        name: "50 MP + 2 MP + 2 MP Triple Rear & 13 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Supported, upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord CE 3 Lite 5G",
+                brand: "OnePlus ",
+                category: "Mobile",
+                brand: " ",
+                category: "OnePlus",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-ppd11rema1vf",
+                image:
+                    "https://cdn1.smartprix.com/rx-iAf9Lqlrt-w103-h125/oneplus-nord-ce-3-li.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-ppd11rema1vf",
+                pricef: "19,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Snapdragon 695 5G, Octa Core, 2.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Galaxy M34 5G",
+                brand: "Samsung ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-m34-5g-ppd1qx01h741",
+                image:
+                    "https://cdn1.smartprix.com/rx-iRTKzK37t-w103-h125/samsung-galaxy-m34-5.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-m34-5g-ppd1qx01h741",
+                pricef: "18,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Exynos 1280 , Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "6 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "6000 mAh Battery with 25W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.5 inches, 1080 x 2340 px, 120 Hz Display with Water Drop Notch",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 13 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme Narzo 60 5G",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-narzo-60-5g-ppd1dtt5t2x9",
+                image:
+                    "https://cdn1.smartprix.com/rx-i2KfXqT6S-w103-h125/realme-narzo-60-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-narzo-60-5g-ppd1dtt5t2x9",
+                pricef: "17,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Dimensity 6020, Octa Core, 2.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 33W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.43 inches, 1080 x 2400 px, 90 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "64 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Supported, upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme Narzo 60 Pro 5G",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-narzo-60-pro-5g-ppd1kgdagy2o",
+                image:
+                    "https://cdn1.smartprix.com/rx-iNlT9UoMT-w103-h125/realme-narzo-60-pro.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-narzo-60-pro-5g-ppd1kgdagy2o",
+                pricef: "23,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "100 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "Realme 11 Pro",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-11-pro-ppd1a0nt0jgz",
+                image:
+                    "https://cdn1.smartprix.com/rx-iHqylMYl8-w103-h125/realme-11-pro.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-11-pro-ppd1a0nt0jgz",
+                pricef: "23,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "100 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "Realme 11 Pro Plus",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-11-pro-plus-5g-ppd1x5qpqidg",
+                image:
+                    "https://cdn1.smartprix.com/rx-iNrcJDIDI-w103-h125/realme-11-pro-plus.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-11-pro-plus-5g-ppd1x5qpqidg",
+                pricef: "27,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Vo5G, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 256 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 100W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "200 MP + 8 MP + 2 MP Triple Rear & 32 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Not Supported",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus 11R 5G",
+                brand: " OnePlus",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-11r-5g-ppd13nudxzb0",
+                image:
+                    "https://cdn1.smartprix.com/rx-iTWs9Sy4Y-w103-h125/oneplus-11r-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-11r-5g-ppd13nudxzb0",
+                pricef: "38,339",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC, IR Blaster",
+                    },
+                    {
+                        name: "Snapdragon 8+ Gen1, Octa Core, 3.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 100W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.74 inches, 1240 x 2772 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord 3 5G",
+                brand: "OnePlus ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-3-5g-ppd1mxnblktf",
+                image:
+                    "https://cdn1.smartprix.com/rx-irPFo8esu-w103-h125/oneplus-nord-3-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-3-5g-ppd1mxnblktf",
+                pricef: "33,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC, IR Blaster",
+                    },
+                    {
+                        name: "Dimensity 9000, Octa Core, 3.05 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 80W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.74 inches, 1240 x 2772 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord CE 3 Lite 5G (8GB RAM + 256GB)",
+                brand: "OnePlus ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-8gb-ram-256gb-ppd13h9ngff4",
+                image:
+                    "https://cdn1.smartprix.com/rx-icoGLev3N-w103-h125/oneplus-nord-ce-3-li.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-8gb-ram-256gb-ppd13h9ngff4",
+                pricef: "21,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Snapdragon 695 5G, Octa Core, 2.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 256 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Galaxy S20 FE 5G",
+                brand: "Samsung ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-s20-fe-5g-ppd1up4uh3hs",
+                image:
+                    "https://cdn1.smartprix.com/rx-i2KgV4jIM-w103-h125/samsung-galaxy-s20-f.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-s20-fe-5g-ppd1up4uh3hs",
+                pricef: "26,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Snapdragon 865, Octa Core, 2.84 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "4500 mAh Battery with Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.5 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "12 MP + 12 MP + 8 MP Triple Rear & 32 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid)",
+                    },
+                    {
+                        name: "Android v10",
+                    },
+                ],
+            },
+            // Your product data here (as mentioned in the original message)
+        ];
+
+        let selectedProducts = [];
+
+        function updateComparisonButton(productIndex) {
+            const addButton = document.getElementById(`addButton${productIndex}`);
+            addButton.classList.toggle('added');
+
+            if (addButton.classList.contains('added')) {
+                selectedProducts.push(products[productIndex]);
+            } else {
+                selectedProducts = selectedProducts.filter(
+                    (product) => product !== products[productIndex]
+                );
+            }
+
+            if (selectedProducts.length >= 2) {
+                // Navigate to the comparison page with selected products
+                const selectedProductsJson = encodeURIComponent(JSON.stringify(selectedProducts));
+                window.location.href = openPopup();
+            }
+        }
+
+        function createProductCard(product, index) {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+
+            const productImage = document.createElement('img');
+            productImage.src = product.image;
+            productCard.appendChild(productImage);
+
+            const productName = document.createElement('h3');
+            productName.textContent = product.name;
+            productCard.appendChild(productName);
+
+            const productBrand = document.createElement('p');
+            productBrand.textContent = `Brand: ${product.brand}`;
+            productCard.appendChild(productBrand);
+
+            const productPrice = document.createElement('p');
+            productPrice.textContent = `Price: ${product.pricea}`;
+            productCard.appendChild(productPrice);
+
+            const addButton = document.createElement('button');
+            addButton.id = `addButton${index}`;
+            addButton.textContent = 'Add to Compare';
+            addButton.addEventListener('click', () => updateComparisonButton(index));
+            productCard.appendChild(addButton);
+
+            return productCard;
+        }
+
+        function displayProductList() {
+            const productContainer = document.getElementById('product-container');
+            products.forEach((product, index) => {
+                const productCard = createProductCard(product, index);
+                productContainer.appendChild(productCard);
+            });
+        }
+
+        displayProductList();
+
+    </script>
+
+    <script>
+        function openPopup() {
+            const popupContainer = document.getElementById('popupContainer');
+            popupContainer.style.display = 'flex';
+        }
+
+        function closePopup() {
+            const popupContainer = document.getElementById('popupContainer');
+            popupContainer.style.display = 'none';
+        }
+
+        function removePopup() {
+            const popupContainer = document.getElementById('popupContainer');
+            popupContainer.parentNode.removeChild(popupContainer);
+        }
+
+        // Close the popup when clicking outside it
+        window.addEventListener('click', (event) => {
+            const popupContainer = document.getElementById('popupContainer');
+            if (event.target === popupContainer) {
+                popupContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

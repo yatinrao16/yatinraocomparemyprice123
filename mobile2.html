@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+        <div class="brand">
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter">
+                <option value="">All Brands</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Realme">Realme</option>
+                <option value="OnePlus">OnePlus</option>
+                <option value="Apple">Apple</option>
+            </select>
+        </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+        // Paste the provided product data here
+        const products = [
+
+            {
+                name: "Samsung Galaxy M14 (6GB RAM + 128GB)",
+                brand: "Samsung",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-m14-6gb-ram-128gb-ppd1a8ag4z34",
+                image:
+                    "https://cdn1.smartprix.com/rx-irbDTgHsB-w103-h125/samsung-galaxy-m14-6.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-m14-6gb-ram-128gb-ppd1a8ag4z34",
+                pricef: "15,490",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Exynos 1330, Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "6 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "6000 mAh Battery with 25W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.6 inches, 1080 x 2408 px, 90 Hz Display with Water Drop Notch",
+                    },
+                    {
+                        name: "50 MP + 2 MP + 2 MP Triple Rear & 13 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Supported, upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord CE 3 Lite 5G",
+                brand: "OnePlus ",
+                category: "Mobile",
+                brand: " ",
+                category: "OnePlus",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-ppd11rema1vf",
+                image:
+                    "https://cdn1.smartprix.com/rx-iAf9Lqlrt-w103-h125/oneplus-nord-ce-3-li.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-ppd11rema1vf",
+                pricef: "19,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Snapdragon 695 5G, Octa Core, 2.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Galaxy M34 5G",
+                brand: "Samsung ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-m34-5g-ppd1qx01h741",
+                image:
+                    "https://cdn1.smartprix.com/rx-iRTKzK37t-w103-h125/samsung-galaxy-m34-5.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-m34-5g-ppd1qx01h741",
+                pricef: "18,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Exynos 1280 , Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "6 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "6000 mAh Battery with 25W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.5 inches, 1080 x 2340 px, 120 Hz Display with Water Drop Notch",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 13 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme Narzo 60 5G",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-narzo-60-5g-ppd1dtt5t2x9",
+                image:
+                    "https://cdn1.smartprix.com/rx-i2KfXqT6S-w103-h125/realme-narzo-60-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-narzo-60-5g-ppd1dtt5t2x9",
+                pricef: "17,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Dimensity 6020, Octa Core, 2.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 33W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.43 inches, 1080 x 2400 px, 90 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "64 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Supported, upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme Narzo 60 Pro 5G",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-narzo-60-pro-5g-ppd1kgdagy2o",
+                image:
+                    "https://cdn1.smartprix.com/rx-iNlT9UoMT-w103-h125/realme-narzo-60-pro.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-narzo-60-pro-5g-ppd1kgdagy2o",
+                pricef: "23,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "100 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "Realme 11 Pro",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-11-pro-ppd1a0nt0jgz",
+                image:
+                    "https://cdn1.smartprix.com/rx-iHqylMYl8-w103-h125/realme-11-pro.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-11-pro-ppd1a0nt0jgz",
+                pricef: "23,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "100 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "Realme 11 Pro Plus",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-11-pro-plus-5g-ppd1x5qpqidg",
+                image:
+                    "https://cdn1.smartprix.com/rx-iNrcJDIDI-w103-h125/realme-11-pro-plus.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-11-pro-plus-5g-ppd1x5qpqidg",
+                pricef: "27,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Vo5G, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 256 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 100W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "200 MP + 8 MP + 2 MP Triple Rear & 32 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Not Supported",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus 11R 5G",
+                brand: " OnePlus",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-11r-5g-ppd13nudxzb0",
+                image:
+                    "https://cdn1.smartprix.com/rx-iTWs9Sy4Y-w103-h125/oneplus-11r-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-11r-5g-ppd13nudxzb0",
+                pricef: "38,339",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC, IR Blaster",
+                    },
+                    {
+                        name: "Snapdragon 8+ Gen1, Octa Core, 3.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 100W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.74 inches, 1240 x 2772 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord 3 5G",
+                brand: "OnePlus ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-3-5g-ppd1mxnblktf",
+                image:
+                    "https://cdn1.smartprix.com/rx-irPFo8esu-w103-h125/oneplus-nord-3-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-3-5g-ppd1mxnblktf",
+                pricef: "33,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC, IR Blaster",
+                    },
+                    {
+                        name: "Dimensity 9000, Octa Core, 3.05 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 80W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.74 inches, 1240 x 2772 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord CE 3 Lite 5G (8GB RAM + 256GB)",
+                brand: "OnePlus ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-8gb-ram-256gb-ppd13h9ngff4",
+                image:
+                    "https://cdn1.smartprix.com/rx-icoGLev3N-w103-h125/oneplus-nord-ce-3-li.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-lite-5g-8gb-ram-256gb-ppd13h9ngff4",
+                pricef: "21,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Snapdragon 695 5G, Octa Core, 2.2 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 256 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.72 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "108 MP + 2 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Galaxy S20 FE 5G",
+                brand: "Samsung ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-s20-fe-5g-ppd1up4uh3hs",
+                image:
+                    "https://cdn1.smartprix.com/rx-i2KgV4jIM-w103-h125/samsung-galaxy-s20-f.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-s20-fe-5g-ppd1up4uh3hs",
+                pricef: "26,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Snapdragon 865, Octa Core, 2.84 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "4500 mAh Battery with Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.5 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "12 MP + 12 MP + 8 MP Triple Rear & 32 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid)",
+                    },
+                    {
+                        name: "Android v10",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Galaxy M34 5G (8GB RAM + 128GB)",
+                brand: " Samsung",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-m34-5g-8gb-ram-128gb-ppd1vqk43t57",
+                image:
+                    "https://cdn1.smartprix.com/rx-iBEoYKhnm-w103-h125/samsung-galaxy-m34-5.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-m34-5g-8gb-ram-128gb-ppd1vqk43t57",
+                pricef: "20,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Exynos 1280 , Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "6000 mAh Battery with 25W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.5 inches, 1080 x 2340 px, 120 Hz Display with Water Drop Notch",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 13 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme Narzo 60 Pro (12GB RAM + 1TB)",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-narzo-60-pro-12gb-ram-1tb-ppd10zmak9j1",
+                image:
+                    "https://cdn1.smartprix.com/rx-i7OKBSEm3-w103-h125/realme-narzo-60-pro.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-narzo-60-pro-12gb-ram-1tb-ppd10zmak9j1",
+                pricef: "29,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Dimensity 7050, Octa Core, 2.6 GHz Processor",
+                    },
+                    {
+                        name: "12 GB RAM, 1 TB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2400 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "100 MP + 2 MP Dual Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                    {
+                        name: "No FM Radio",
+                    },
+                ],
+            },
+            {
+                name: "OnePlus Nord CE 3 5G",
+                brand: " OnePlus",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-5g-ppd1p2vvw021",
+                image:
+                    "https://cdn1.smartprix.com/rx-ivcnV6G5S-w103-h125/oneplus-nord-ce-3-5g.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/oneplus-nord-ce-3-5g-ppd1p2vvw021",
+                pricef: "26,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC, IR Blaster",
+                    },
+                    {
+                        name: "Snapdragon 782G, Octa Core, 2.7 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 80W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2412 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + 8 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Apple iPhone 15 Pro",
+                brand: "Apple ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/apple-iphone-15-pro-ppd10tsnqr74",
+                image:
+                    "https://cdn1.smartprix.com/rx-iZy25vD3t-w103-h125/apple-iphone-15-pro.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/apple-iphone-15-pro-ppd10tsnqr74",
+                pricef: "1,31 ,000",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Bionic A16, Hexa Core, 3.46 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "4852 mAh Battery with Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.06 inches, 1170 x 2532 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + 12 MP + 12 MP Triple Rear & 12 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Not Supported",
+                    },
+                    {
+                        name: "iOS v15",
+                    },
+                ],
+            },
+
+            {
+                name: "Samsung Galaxy S22 Ultra 5G",
+                brand: "Samsung",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-s22-ultra-5g-ppd1ovlxy9nr",
+                image:
+                    "https://cdn1.smartprix.com/rx-izOADfKsq-w103-h125/samsung-galaxy-s22-u.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-s22-ultra-5g-ppd1ovlxy9nr",
+                pricef: "85,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Vo5G, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Snapdragon 8 Gen1, Octa Core, 3 GHz Processor",
+                    },
+                    {
+                        name: "12 GB RAM, 256 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 45W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.8 inches, 1440 x 3080 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "108 MP Quad Rear & 40 MP Front Camera",
+                    },
+                    {
+                        name: "Android v12",
+                    },
+                    {
+                        name: "Bluetooth",
+                    },
+                ],
+            },
+            {
+                name: "Samsung Galaxy F54",
+                brand: " Samsung",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/samsung-galaxy-f54-ppd1n8r3iy4m",
+                image:
+                    "https://cdn1.smartprix.com/rx-iflC8vwCe-w103-h125/samsung-galaxy-f54.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/samsung-galaxy-f54-ppd1n8r3iy4m",
+                pricef: "29,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi, NFC",
+                    },
+                    {
+                        name: "Exynos 1380, Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 256 GB inbuilt",
+                    },
+                    {
+                        name: "6000 mAh Battery with 25W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.7 inches, 1080 x 2408 px, 120 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "108 MP + 8 MP + 2 MP Triple Rear & 32 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card (Hybrid), upto 1 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme Narzo N53",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-narzo-n53-ppd1u4wnikml",
+                image:
+                    "https://cdn1.smartprix.com/rx-iK33utT7h-w103-h125/realme-narzo-n53.jpg",
+                image_url:
+                    "https://www.smartprix.com/mobiles/realme-narzo-n53-ppd1u4wnikml",
+                pricef: "8,999",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Unisoc T612, Octa Core, 1.8 GHz Processor",
+                    },
+                    {
+                        name: "4 GB RAM, 64 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 33W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.74 inches, 720 x 1600 px, 90 Hz Display with Punch Hole",
+                    },
+                    {
+                        name: "50 MP + Depth Sensor Dual Rear & 8 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Supported, upto 2 TB",
+                    },
+                    {
+                        name: "Android v13",
+                    },
+                ],
+            },
+            {
+                name: "Realme 12",
+                brand: "Realme ",
+                category: "Mobile",
+                url: "https://www.smartprix.com/mobiles/realme-12-ppd1y7xtyx0f",
+                image:
+                    "https://cdn1.smartprix.com/rx-i1nFbzsSM-w103-h125/realme-12.jpg",
+                image_url: "https://www.smartprix.com/mobiles/realme-12-ppd1y7xtyx0f",
+                pricef: "14,990",
+                pricea: "36,490",
+                pricec: " --",
+                flipkart: " ",
+                amazon: " ",
+                croma: " ",
+                selection1: [
+                    {
+                        name: "Dual Sim, 3G, 4G, 5G, VoLTE, Wi-Fi",
+                    },
+                    {
+                        name: "Dimensity 810 5G, Octa Core, 2.4 GHz Processor",
+                    },
+                    {
+                        name: "8 GB RAM, 128 GB inbuilt",
+                    },
+                    {
+                        name: "5000 mAh Battery with 67W Fast Charging",
+                    },
+                ],
+                selection2: [
+                    {
+                        name: "6.67 inches, 1080 x 2408 px, 120 Hz Display with Water Drop Notch",
+                    },
+                    {
+                        name: "50 MP + 2 MP Triple Rear & 16 MP Front Camera",
+                    },
+                    {
+                        name: "Memory Card Supported, upto 1 TB",
+                    },
+                    {
+                        name: "Android v14",
+                    },
+                ],
+            },
+
+        ];
+
+
+
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

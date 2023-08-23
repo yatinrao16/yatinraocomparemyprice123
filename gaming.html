@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+      <div class="brand">
+        <label for="brand-filter">Brand:</label>
+        <select id="brand-filter">
+          <option value="">All Brands</option>
+          <option value="Samsung">Asus</option>
+          <option value="AYANEO">AYANEO</option>
+          <option value="Logitech">Logitech</option>
+          <option value="Microsoft">Microsoft</option>
+          <option value="GPD">GPD</option>
+          <option value="Razer">Razer</option>
+          <option value="OneXPlayer">OneXPlayer </option>
+          <option value="SONY">Sony</option>
+        </select>
+      </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+      const products = [
+        {
+          name: "Asus ROG Ally Handheld Gaming Console",
+          brand:"Asus ",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/asus-rog-ally-handheld-gaming-console-ppd1hhn2vowt",
+          pricef: "69,990",
+          pricea:  "",
+          pricec:  "",
+          image:
+            "https://cdn1.smartprix.com/rx-i3s4GbMuU-w103-h125/asus-rog-ally-handhe.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/asus-rog-ally-handheld-gaming-console-ppd1hhn2vowt",
+          flipkart: "https://l.smartprix.com/l?k=12bKwyatrdmyVgbTmSXYoGXx2hrhAgTYBOr3Uh7rFCFc3sWcrTTIc3Iyaucy5csAUrcAs3acaDU3anac5bcW6c45ocW6cFFic8Yuis8Fc55ctsnac3AG5TcutPP58cthYtaTicWrnhNcBAh-hDh85lHgGi4a5HaiahmBYihkwkp7~V~G77dxvXdHhrhhaFhrhrhhacBrWahrhrBi5ttuo2s8UhrFB57CPwyxipt6N8 ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "EA apps, Epic Games, and XBox game pass",
+            },
+            {
+              name: "16 GB RAM",
+            },
+            {
+              name: "512 GB Storage, SSD",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+          ],
+          selection2: [
+            {
+              name: "Vibration",
+            },
+            {
+              name: "1 year",
+            },
+            {
+              name: "Headphone Jack",
+            },
+          ],
+        },
+        {
+          name: "AYANEO Geek 1S Handheld Gaming Console",
+          brand:" AYANEO",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/ayaneo-geek-1s-handheld-gaming-console-ppd1xwf9ozl9",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-inWpVihGy-w103-h125/ayaneo-geek-1s-handh.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/ayaneo-geek-1s-handheld-gaming-console-ppd1xwf9ozl9",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "5.1 GHz, Ryzen 7",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "64 GB RAM",
+            },
+            {
+              name: "SSD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Radeon 780M",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+            {
+              name: "Vibration",
+            },
+            {
+              name: "6 months",
+            },
+          ],
+        },
+        {
+          name: "AYANEO Next 2 Handheld Gaming Console",
+          brand:" AYANEO",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/ayaneo-next-2-handheld-gaming-console-ppd100sqileu",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-ioWcmZUJJ-w103-h125/ayaneo-next-2-handhe.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/ayaneo-next-2-handheld-gaming-console-ppd100sqileu",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Ryzen 7",
+            },
+            {
+              name: "SSD",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+            {
+              name: "Vibration",
+            },
+          ],
+          selection2: [
+            {
+              name: "Headphone Jack",
+            },
+          ],
+        },
+        {
+          name: "Sony PlayStation 5 Pro Gaming Console",
+          brand:" SONY",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/sony-playstation-5-ps5-pro-gaming-console-ppd12uzs1dy9",
+          pricef: "56,290",
+          pricea:  "",
+          pricec:  "",
+          image:
+            "https://cdn1.smartprix.com/rx-iKS2gtq7l-w103-h125/sony-playstation-5-p.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/sony-playstation-5-ps5-pro-gaming-console-ppd12uzs1dy9",
+          flipkart: "https://l.smartprix.com/l?k=12bKwyatrpiD_1~P1a9flNdQHhrhAgTYBOr3Uh7FsuIcBF4cAsuFsTacAsic8noc2Atc6CuiTacAgYc5oPXrP53cXo4W6cFFicW6cArTTciCUIc8nYYcWrnah-hDh844XPgoiog4baXhmBYihk7pw7~SG14jvj.xVVhrhhaFhrhrhhacBrWahrhrBi5unBTt5QrhrFB57f3Ob79N3XyX ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "3.66 GHz",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "16 GB RAM",
+            },
+            {
+              name: "1 TB Storage, SSD",
+            },
+          ],
+          selection2: [
+            {
+              name: "10.28 TFLOPs, RDNA 2 architecture, 2.23 GHz",
+            },
+            {
+              name: "4K Support, HDR Support",
+            },
+            {
+              name: "Wi-Fi, Bluetooth, HDMI",
+            },
+            {
+              name: "Vibration, Motion Control",
+            },
+          ],
+        },
+        {
+          name: "OneXPlayer 2 Handheld Gaming Console",
+          brand:"OneXPlayer ",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/onexplayer-2-handheld-gaming-console-ppd1h0coargf",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-iti9BI3mG-w103-h125/onexplayer-2-handhel.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/onexplayer-2-handheld-gaming-console-ppd1h0coargf",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Ryzen 7",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+            {
+              name: "Vibration",
+            },
+          ],
+          selection2: [
+            {
+              name: "USB",
+            },
+          ],
+        },
+        {
+          name: "Logitech G Cloud Handheld Gaming Console",
+          brand:"Logitech ",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/logitech-g-cloud-handheld-gaming-console-ppd179ju5hqd",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-iHnOYnYVF-w103-h125/logitech-g-cloud-han.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/logitech-g-cloud-handheld-gaming-console-ppd179ju5hqd",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "2.3 GHz, Snapdragon 720G",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+            {
+              name: "Vibration",
+            },
+          ],
+          selection2: [
+            {
+              name: "Limited Hardware Warranty, 2 years",
+            },
+            {
+              name: "USB, Headphone Jack",
+            },
+          ],
+        },
+        {
+          name: "Sony PlayStation Project Q Handheld Gaming Console",
+          brand:" SONY",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/sony-playstation-project-q-handheld-gaming-ppd133c2s9bc",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-iPxtA9qPa-w103-h125/sony-playstation-pro.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/sony-playstation-project-q-handheld-gaming-ppd133c2s9bc",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "SSD",
+            },
+            {
+              name: "4K Support",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+            {
+              name: "Vibration, Motion Control",
+            },
+          ],
+          selection2: [
+            {
+              name: "USB",
+            },
+          ],
+        },
+        {
+          name: "AYANEO LPDDR5X 2S Handheld Gaming Console",
+          brand:"AYANEO ",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/ayaneo-lpddr5x-2s-handheld-gaming-console-ppd1zm4gz3y2",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-iFPzNT8FC-w103-h125/ayaneo-lpddr5x-2s-ha.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/ayaneo-lpddr5x-2s-handheld-gaming-console-ppd1zm4gz3y2",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "5.1 GHz, Ryzen 7",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "64 GB RAM",
+            },
+            {
+              name: "SSD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Radeon 780M",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+            {
+              name: "Vibration",
+            },
+            {
+              name: "6 months",
+            },
+          ],
+        },
+        {
+          name: "AYANEO AIR Plus Handheld Gaming Console",
+          brand:"AYANEO ",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/ayaneo-air-plus-handheld-gaming-console-ppd1irf09eig",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-ibVY8eJLT-w103-h125/ayaneo-air-plus-hand.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/ayaneo-air-plus-handheld-gaming-console-ppd1irf09eig",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Ryzen 5",
+            },
+            {
+              name: "Hexa Core",
+            },
+            {
+              name: "AMD Radeon 610M",
+            },
+            {
+              name: "Vibration, Motion Control",
+            },
+          ],
+          selection2: [
+            {
+              name: "USB",
+            },
+          ],
+        },
+        {
+          name: "Razer Edge Handheld Gaming Comsole",
+          brand:"Razer ",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/razer-edge-handheld-gaming-comsole-ppd1jafful57",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-i8neGMeHO-w103-h125/razer-edge-handheld.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/razer-edge-handheld-gaming-comsole-ppd1jafful57",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Snapdragon G3X Gen 1",
+            },
+            {
+              name: "8 GB RAM",
+            },
+            {
+              name: "128 GB Storage, SSD",
+            },
+            {
+              name: "Wi-Fi, Bluetooth",
+            },
+          ],
+          selection2: [
+            {
+              name: "Vibration",
+            },
+            {
+              name: "1 year",
+            },
+            {
+              name: "USB, Headphone Jack",
+            },
+          ],
+        },
+        {
+          name: "GPD Win 4 Handheld Gaming Console",
+          brand:" GPD",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/gpd-win-4-handheld-gaming-console-ppd11snngouz",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-iGhlAzLuU-w103-h125/gpd-win-4-handheld-g.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/gpd-win-4-handheld-gaming-console-ppd11snngouz",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "2.7 GHz, Ryzen 7",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "16 GB RAM",
+            },
+            {
+              name: "512 GB Storage, SSD",
+            },
+          ],
+          selection2: [
+            {
+              name: "AMD Radeon 680M",
+            },
+            {
+              name: "Wi-Fi, HDMI",
+            },
+            {
+              name: "Vibration, Motion Control",
+            },
+            {
+              name: "USB",
+            },
+          ],
+        },
+        {
+          name: "Microsoft Xbox Series X Halo Infinite Limited Edition Gaming Console",
+          brand:" Microsoft",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/microsoft-xbox-series-x-halo-infinite-limited-ppd1uaxzsewr",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-imAIDH2c0-w103-h125/microsoft-xbox-serie.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/microsoft-xbox-series-x-halo-infinite-limited-ppd1uaxzsewr",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "3.8 GHz, Custom AMD 7nm",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "16 GB RAM",
+            },
+            {
+              name: "1 TB Storage, SSD",
+            },
+          ],
+          selection2: [
+            {
+              name: "12 teraflops 1.825GHz (locked)",
+            },
+            {
+              name: "4K Support, HDR Support",
+            },
+            {
+              name: "Wi-Fi, Bluetooth, HDMI",
+            },
+            {
+              name: "Vibration",
+            },
+          ],
+        },
+      ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

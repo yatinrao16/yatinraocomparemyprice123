@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Toggle Icon</title>
+  <style>
+    .toggle-container {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="toggleContainer" class="toggle-container">
+    <i id="toggleIcon" class="fas fa-filter"></i>
+  </div>
+
+  <script>
+    const toggleContainer = document.getElementById('toggleContainer');
+    const toggleIcon = document.getElementById('toggleIcon');
+    let isCross = false;
+
+    toggleContainer.addEventListener('click', () => {
+      if (isCross) {
+        toggleIcon.classList.remove('fas', 'fa-times');
+        toggleIcon.classList.add('fas', 'fa-filter');
+      } else {
+        toggleIcon.classList.remove('fas', 'fa-filter');
+        toggleIcon.classList.add('fas', 'fa-times');
+      }
+      isCross = !isCross;
+    });
+  </script>
+</body>
+</html>

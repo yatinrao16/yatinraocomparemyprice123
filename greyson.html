@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+         
+    <div class="brand">
+      <label for="brand-filter">Brand:</label>
+      <select id="brand-filter">
+        <option value="">All Brands</option>
+        <option value="Racold">Racold</option>
+        <option value="V-Guard">V-Guard</option>
+        <option value="Bajaj">Bajaj</option>
+        <option value="Jaquar">Jaquar</option>
+        <option value="Havells">Havells</option>
+        <option value="Alvis">Alvis</option>
+        <option value="Glen">Glen</option>
+        <option value="Faber">Faber</option>
+        <option value="Polycab">Polycab</option>
+        <option value="Panasonic">Panasonic</option>
+        <option value="Blowhot">Blowhot</option>
+        <option value="Orient">Orient</option>
+        <option value="Crompton">Crompton</option>
+      </select>
+    </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+     const products = [
+        {
+          name: "Racold Omnis RS 10L Storage Water Geyser",
+           brand:"Racold ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1b70iycvv",
+          image:
+            "https://cdn1.smartprix.com/rx-iz0zlN27F-w103-h125/racold-omnis-rs-10l.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1b70iycvv",
+          pricec: "9,599",
+           pricea:  "",
+          pricef: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12nmXdqd6sR8vfk7IQ1s3dHdhrhAA3snrh73rAsTicsnuYFc3Fc5PcTYU3aFc4cFUr3cFUs3rWac8rhUcWaIFa3coPPPc8rUUFcZ5XPXHPchhgch-hDoGZbbohrhhaFhrhrhhacBrWahrhrBi56GPYIA22hrFB5R7EXXTCPzb_- ",
+          selection1: [
+            {
+              name: "10 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "18 min Heating Time",
+            },
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Thermostat, Temperature Control",
+            },
+          ],
+        },
+        {
+          name: "Racold Omnis DG 25L Storage Water Geyser",
+           brand:"Racold ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd14ofht1be",
+          image:
+            "https://cdn1.smartprix.com/rx-iof95hPmz-w103-h125/racold-omnis-dg-25l.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd14ofht1be",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "25 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "18 min Heating Time",
+            },
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Thermostat, Indicator, Temperature Control",
+            },
+          ],
+        },
+        {
+          name: "V-Guard Vistora 25 L Storage Water Geyser",
+           brand:"V-Guard ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1em733c03",
+          image:
+            "https://cdn1.smartprix.com/rx-inkBf9dWU-w103-h125/v-guard-vistora-25-l.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1em733c03",
+          pricef: "8,299",
+           pricea:  "",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12ZY.QWK-lTP6WGtF--fPGkWhrhAgTYBOr3Uh72cWCr3ico4cTcFUs3rWac8rhUcWaIFa3c2YFUs3rchhgh-hDh8lGoigHZ4G5HlbhmBYihkJ7f7pZ1bKJv~17zJhrhhaFhrhrhhacBrWahrhrBi5anGZZAPZhrFB5RXKKqtAK5YDf ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "25 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "Thermostat",
+            },
+            {
+              name: "Enamel Coating Insulation Material",
+            },
+            {
+              name: "Steel Tank Material",
+            },
+          ],
+        },
+        {
+          name: "Bajaj Caldia NXG 10 L Storage Water Geyser",
+           brand:"Bajaj ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1cusb5rpm",
+          image:
+            "https://cdn1.smartprix.com/rx-i1WJv39jB-w103-h125/bajaj-caldia-nxg-10.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1cusb5rpm",
+          pricef: "6,999",
+           pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "10 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "15 seconds Heating Time",
+            },
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Thermostat, Indicator, Temperature Control",
+            },
+          ],
+        },
+        {
+          name: "Havells Fabia 10 L Storage Water Geyser",
+           brand:" Havells",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1htgv8rco",
+          image:
+            "https://cdn1.smartprix.com/rx-ifpx6GMUC-w103-h125/havells-fabia-10-l-s.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1htgv8rco",
+          pricef: "9,999",
+           pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "10 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "15 min Heating Time",
+            },
+            {
+              name: "Thermostat, Indicator",
+            },
+            {
+              name: "Ultra Thick Steel Tank Material",
+            },
+          ],
+        },
+        {
+          name: "Racold CDR DLX Plus 15 L Storage Water Geyser",
+           brand:"Racold ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1pzahgzr4",
+          image:
+            "https://cdn1.smartprix.com/rx-iGGNKwS2W-w103-h125/racold-cdr-dlx-plus.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1pzahgzr4",
+          pricef: "9,199",
+           pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "15 L Capacity",
+            },
+            {
+              name: "8.5 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "2 years Warranty",
+            },
+          ],
+        },
+        {
+          name: "Bajaj Caldia NXG 25L Water Geyser",
+           brand:"Bajaj ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1utslmnfj",
+          image:
+            "https://cdn1.smartprix.com/rx-in85dqsR1-w103-h125/bajaj-popular-plus-1.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1utslmnfj",
+          pricef: "11,500",
+           pricea:  "",
+          pricec: " --",
+          flipkart: " https://l.smartprix.com/l?k=12jX01JHSK6GINUOw3x00Sv68hrhAgTYBOr3Uh76rQrQco4cTcFUs3rWac8rhUcWaIFa3cArTiYrcuDWco4Tchhgc6TCah-hDh8AZGZa6X54bP4ghmBYihkJ7f7XKfvRjVqefE7hrhhaFhrhrhhacBrWahrhrBi5CIHTHCiAhrFB5g..YqrOpkZ5~",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "15 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "4 Star Rating",
+            },
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Thermostat, Temperature Control",
+            },
+            {
+              name: "Powder Coated Metal Body",
+            },
+          ],
+        },
+        {
+          name: "V-Guard Vistora 10 L Storage Water Geyser",
+           brand:" V-Guard",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1pgfp7em4",
+          image:
+            "https://cdn1.smartprix.com/rx-iu6QQhZki-w103-h125/v-guard-vistora-10-l.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1pgfp7em4",
+          pricef: "6,799",
+           pricea:  "",
+          pricec: " --",
+          flipkart: " https://l.smartprix.com/l?k=12ZY.QWK-lTPfRWVttK_gIfYhrhAgTYBOr3Uh72cWCr3ic5PcTcFUs3rWac8rhUcWaIFa3c2YFUs3rchhgh-hDh8iGbGoHrbZ4gr6hmBYihkJ7f7pZ1Zww7evzv4hrhhaFhrhrhhacBrWahrhrBi5BWgBGanHhrFB5em~Ny6UE4UsO",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "10 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "Thermostat, Temperature Control",
+            },
+            {
+              name: "Enamel Coating Insulation Material",
+            },
+            {
+              name: "Steel With Glass Lined AC Coating Tank Material",
+            },
+          ],
+        },
+        {
+          name: "Jaquar Elena Prime 10L Water Geyser",
+           brand:"Jaquar",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd150qwhwsb",
+          image:
+            "https://cdn1.smartprix.com/rx-iv1TQnUps-w420-h420/jaquar-elena-prime-1.webp",
+          image_url: "https://www.smartprix.com/nf/pd/pd150qwhwsb",
+          pricef:  "",
+           pricea: "9,500",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12nm-C4AjiH9Pdz5kbsXOwGohrhArnrysuhyihDRPXKmJ1xRzh-hrhhaFhrhrhhacBrWahrhrBi52yyUPDlUhrFB5AIVx58WmVHT4",
+          croma: " ",
+          selection1: [
+            {
+              name: "15 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Temperature Control",
+            },
+            {
+              name: "2 years Warranty",
+            },
+          ],
+        },
+        {
+          name: "Alvis Expert 15 L Water Geyser",
+           brand:"Alvis ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1q4mamypl",
+          image:
+            "https://cdn1.smartprix.com/rx-iF721HJuU-w103-h125/alvis-expert-15-l-wa.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1q4mamypl",
+          pricef: "4,699",
+           pricea:  "",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12ZY.QWK-j5HPvP64CpqlC-zhrhAgTYBOr3Uh7rT2YFc54cTcFUs3rWac8rhUcWaIFa3caDBa3UcFa3YaFchhgcY2s3Ih-hDh8ialoZiXil56AZhmBYihkJ7f77j.w1vvzSvK1hrhhaFhrhrhhacBrWahrhrBi5NHnrnIBThrFB5woU-YWP_7awR ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "15 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "Indicator",
+            },
+            {
+              name: "Copper Heating Element",
+            },
+            {
+              name: "1 year Warranty",
+            },
+          ],
+        },
+        {
+          name: "Glen Smart 25L Water Geyser",
+           brand:"Glen ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1tz9lwpzt",
+          image:
+            "https://cdn1.smartprix.com/rx-ilaIkcNRu-w103-h125/glen-smart-25l-water.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1tz9lwpzt",
+          pricea: "12,997",
+           pricef:  "",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12oGnGxU-oIEW9FsjV~aRuDOekhrhArnrysuhyihDRPR7ol4JHKh-hrhhaFhrhrhhacBrWahrhrBi5UylT8ByUhrFB52ymKRPFSfFq7",
+          croma: " ",
+          selection1: [
+            {
+              name: "25 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Instant Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "Temperature Control",
+            },
+            {
+              name: "Steel Tank Material",
+            },
+            {
+              name: "ABS Plastic Body",
+            },
+            {
+              name: "Incoloy Heating Element",
+            },
+          ],
+        },
+        {
+          name: "Bajaj Maestro 15L Storage Water Heater",
+           brand:"Bajaj ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1dtgwgoif",
+          image:
+            "https://cdn1.smartprix.com/rx-iopk26pO1-w103-h125/bajaj-maestro-15l-st.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1dtgwgoif",
+          pricec: "9,900",
+           pricea:  "",
+          pricef: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12nmXdqd6sR8e42CURlTTJD3hrhAA3snrh76rQrQcnraFU3sc54cThs3Fc4cFUr3cFUs3rWac8rhUctarhUcoPPPc8rUUFc54PXlXchhgc63s8uch-hDobbPbHhrhhaFhrhrhhacBrWahrhrBi5iUW8WsYghrFB5lOYOtFm_vEm1 ",
+          selection1: [
+            {
+              name: "15 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Titanium Armour Technology - Titanium Glass lined enamel coated tank for longer life Ins…",
+            },
+            {
+              name: "Magnesium Anode Rod to protect tank from corrossion Tank Material",
+            },
+          ],
+        },
+        {
+          name: "Faber FWG AGNES Instant Water Geyser",
+           brand:"Faber ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1ac4vyp2l",
+          image:
+            "https://cdn1.smartprix.com/rx-ix16eJKBH-w103-h125/faber-fwg-agnes-inst.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1ac4vyp2l",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Instant Type",
+            },
+            {
+              name: "2 years Warranty",
+            },
+          ],
+        },
+        {
+          name: "Orient Electric Cronos 6L Water Geyser",
+           brand:" Orient",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1h003w63r",
+          image:
+            "https://cdn1.smartprix.com/rx-i8gZgh8M6-w103-h125/orient-electric-cron.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1h003w63r",
+          pricef: "4,890",
+           pricea: "6,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "6 L Capacity",
+            },
+            {
+              name: "6.5 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Indicator",
+            },
+            {
+              name: "PUF Insulation Material",
+            },
+            {
+              name: "Stainless Steel Tank Material",
+            },
+          ],
+        },
+        {
+          name: "Polycab Emerald 3L Water Geyser",
+           brand:" Polycab",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1s9fpligw",
+          image:
+            "https://cdn1.smartprix.com/rx-izycLe7JQ-w103-h125/polycab-emerald-3l-w.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1s9fpligw",
+          pricea: "3,900",
+           pricef:  "",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12nm-C4AjiVmVsdv2orJnTXmhrhArnrysuhyihDRPXe~J05.wh-hrhhaFhrhrhhacBrWahrhrBi5FlgBTYW8hrFB5Fj4VguzOYFgs",
+          croma: " ",
+          selection1: [
+            {
+              name: "25 L Capacity",
+            },
+            {
+              name: "5 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "Thermostat, Indicator",
+            },
+            {
+              name: "Poly Urethane Foam (PUF) Insulation Material",
+            },
+            {
+              name: "Metal Body",
+            },
+          ],
+        },
+        {
+          name: "Panasonic Delsy 15L Water Geyser",
+           brand:"Panasonic ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1q9o80wvm",
+          image:
+            "https://cdn1.smartprix.com/rx-inQUURQBw-w103-h125/panasonic-delsy-15l.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1q9o80wvm",
+          pricea: "5,649",
+           pricef:  "",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12nm-C4AjiVmktl0W~yfxoTHhrhArnrysuhyihDRPlx~ZGx~vh-hrhhaFhrhrhhacBrWahrhrBi5NlsXP82nhrFB5KwrYWP063J9G",
+          croma: " ",
+          selection1: [
+            {
+              name: "25 L Capacity",
+            },
+            {
+              name: "5 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Metal Body",
+            },
+            {
+              name: "Copper Heating Element",
+            },
+            {
+              name: "2 years Warranty",
+            },
+          ],
+        },
+        {
+          name: "Venus Brio 6L Water Geyser",
+           brand:" Venus",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1ku6bpytm",
+          image:
+            "https://cdn1.smartprix.com/rx-iBP6cw8gk-w103-h125/venus-brio-6l-water.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1ku6bpytm",
+          pricef: "6,299",
+           pricea:  "",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12ZY.QWK-lTP_plxRaZxFU0whrhAgTYBOr3Uh72auCFc4c4cTcWrFc8rhUcWaIFa3cYuFUruUctarhUchhgh-hDh8gAoloXg5AoZgXhmBYihkJ7f77ZK7jfq70jSjhrhhaFhrhrhhacBrWahrhrBi5OCb6BIUnhrFB5SPR3ICrDBQ9P ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "6 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Gas Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 Star Rating",
+            },
+            {
+              name: "Thermostat, Temperature Control",
+            },
+            {
+              name: "Copper Insulation Material",
+            },
+            {
+              name: "Metal Body",
+            },
+          ],
+        },
+        {
+          name: "Blowhot Mercure 10L Water Geyser",
+           brand:"Blowhot ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1pm4716dw",
+          image:
+            "https://cdn1.smartprix.com/rx-i8u2cGtr2-w103-h125/blowhot-mercure-10l.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1pm4716dw",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "10 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Storage Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "4 Star Rating",
+            },
+            {
+              name: "Temperature Control",
+            },
+            {
+              name: "PUF Insulation Material",
+            },
+            {
+              name: "ABS Body",
+            },
+          ],
+        },
+        {
+          name: "Crompton Insta Bliss 3L Water Geyser",
+           brand:"Crompton ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1031ds2rs",
+          image:
+            "https://cdn1.smartprix.com/rx-i3b4SMJZj-w103-h125/crompton-insta-bliss.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1031ds2rs",
+          pricea: "2,749",
+           pricef:  "",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12nm-C4AjiHSTiU4.ftXz1frhrhArnrysuhyihDRPlJpz-17Gh-hrhhaFhrhrhhacBrWahrhrBi5PZ5iFo3FhrFB5vybXOV_HBNz- ",
+          croma: " ",
+          selection1: [
+            {
+              name: "3 L Capacity",
+            },
+            {
+              name: "6.5 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Instant Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Thermostat, Indicator",
+            },
+            {
+              name: "Copper Heating Element",
+            },
+            {
+              name: "Thermostat",
+            },
+          ],
+        },
+        {
+          name: "Orient Electric Bahubali 6L Water Geyser",
+          brand:"Orient ",
+          category:"Geyser",
+          url: "https://www.smartprix.com/nf/pd/pd1g7rog5dz",
+          image:
+            "https://cdn1.smartprix.com/rx-iVSDQsLOS-w103-h125/orient-electric-bahu.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1g7rog5dz",
+          pricef: "6,369",
+           pricea:  "",
+          pricec: " --",
+          flipkart: " https://l.smartprix.com/l?k=12ZY.QWK-lTP_EHu~Gl6tpUrhrhAgTYBOr3Uh7s3YauUcaTaAU3YAcbcTcWrFc8rhUcWaIFa3c6rtC6rTYchhgh-hDh8AbirbPiiZA6iPhmBYihkJ7f7VooZ-7dSSjx1hrhhaFhrhrhhacBrWahrhrBi5WG3sW4iyhrFB5rUlvsaRHECBC",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "6 L Capacity",
+            },
+            {
+              name: "8 Bar Rated Pressure",
+            },
+            {
+              name: "Vertical Mounting",
+            },
+            {
+              name: "Gas Type",
+            },
+          ],
+          selection2: [
+            {
+              name: "Rust Resistant",
+            },
+            {
+              name: "Thermostat, Indicator, Temperature Control",
+            },
+            {
+              name: "Metal Body",
+            },
+            {
+              name: "Copper Heating Element",
+            },
+          ],
+        },
+      ];
+
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

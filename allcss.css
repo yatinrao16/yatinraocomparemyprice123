@@ -1,0 +1,3516 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  margin: 0;
+  overflow: hidden;
+}
+.filterbutton{
+  display: none;
+}
+
+#menu-icon {
+  position: relative;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  display: none;
+}
+
+.popup-background {
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px); /* Applies the blur effect to the background */
+  z-index: 5;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 600px;
+  display: flex;
+  position: relative;
+  width: 72.5rem;
+  border: 1px solid black;
+  height: 11.8rem;
+  background-color: wheat;
+  margin-bottom: 3px;
+  border-radius: 0.5rem;
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.productlist {
+  position: absolute;
+  display: flex;
+  left: 15.2rem;
+  padding: 0;
+  top: 4.2rem;
+  height: 93%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.product-image {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 2rem;
+  margin-right: 10px;
+}
+
+.product-image:hover {
+  zoom: 1.09;
+}
+
+.product-details {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details h2 {
+  position: absolute;
+  top: 1rem;
+  left: 13rem;
+  width: 47rem;
+  font-size: 18px;
+  margin: 0;
+}
+
+.product-selection1 {
+  position: relative;
+  margin-bottom: 5px;
+  display: flex;
+  top: 3.5rem;
+  width: 20rem;
+  left: 17rem;
+  flex-direction: column;
+}
+
+.product-selection2 {
+  position: absolute;
+  top: 4rem;
+  left: 40rem;
+  width: 20rem;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flipkart:hover {
+  filter: drop-shadow(10px 10px 10px black);
+  font-weight: bolder;
+  zoom: 1.01;
+}
+
+.amazon:hover {
+  filter: drop-shadow(10px 10px 10px black);
+  font-weight: bolder;
+  zoom: 1.01;
+}
+
+.croma:hover {
+  filter: drop-shadow(10px 10px 10px black);
+  font-weight: bolder;
+  zoom: 1.01;
+}
+
+.flipkart {
+  position: absolute;
+  left: 63rem;
+  background-image: url(flipkart1.jpg);
+  text-decoration: none;
+  background-repeat: no-repeat;
+  color: blue;
+  background-size: contain;
+  border-radius: 20px;
+  top: 1rem;
+  padding-left: 1.5rem;
+  height: 2.5rem;
+  width: 8rem;
+  padding-right: 0;
+  margin-bottom: 4px;
+  border: 0;
+  font-weight: bolder;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: blue;
+  background-color: yellow;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.amazon {
+  position: absolute;
+  left: 63rem;
+  top: 5.5rem;
+  text-decoration: none;
+  margin-bottom: 4px;
+  padding: 0;
+  border: 0;
+  background-image: url(amazon1.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2.5rem;
+  border-radius: 20px;
+  font-weight: bolder;
+  padding-left: 1.5rem;
+  width: 8rem;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: #de530f;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.croma {
+  position: absolute;
+  text-decoration: none;
+  left: 63rem;
+  height: 2.5rem;
+  top: 9.5rem;
+  margin-bottom: 4px;
+  background-image: url(croma1.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 20px;
+  font-weight: bolder;
+  border: 0;
+  padding-left: 1.5rem;
+  width: 8rem;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: black;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.category {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+}
+
+#category-filter {
+  width: 12rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.product-card button {
+  border: 0;
+  font-size: 0.8rem;
+  text-align: center;
+  align-items: center;
+  padding-left: 8px;
+  display: flex;
+  position: absolute;
+  top: 10.5rem;
+  height: 2rem;
+  left: 15rem;
+  color: #fff;
+  text-shadow: 3px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgb(22, 82, 39);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.product-card button.added {
+  background-color: #28a745;
+}
+
+#apply-filter-btn {
+  border: 0;
+  line-height: 2.5;
+  padding: 0px 25px;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 37rem;
+  height: 2.5rem;
+  width: 9rem;
+  left: 3rem;
+  color: #fff;
+  text-shadow: 3px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+#removeFiltersBtn {
+  border: 0;
+  line-height: 2.5;
+  padding: 0px 15px;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 41rem;
+  height: 2.5rem;
+  width: 9rem;
+  left: 3rem;
+  color: #fff;
+  text-shadow: 3px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.filters {
+  display: flex;
+  position: absolute;
+  width: 15rem;
+  height: 100%;
+  top: 4rem;
+  border: 1px solid black;
+}
+
+.brand {
+  position: absolute;
+  top: -6rem;
+  left: 1rem;
+}
+
+.brand label {
+  position: absolute;
+  top: -16.5rem;
+}
+
+#brand-filter {
+  width: 12rem;
+  height: 2rem;
+  font-size: 1rem;
+  top: -15rem;
+  left: -3.5rem;
+  position: absolute;
+}
+
+.price {
+  position: relative;
+  top: 10rem;
+  left: 1rem;
+}
+
+header {
+  background-color: #0a3a75;
+  color: white;
+  width: 1440px;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 4rem;
+}
+
+header div {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.websitelogo img {
+  height: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.logo {
+  width: 400px;
+  margin-left: 5px;
+  margin-bottom: 6px;
+}
+
+.websitename {
+  position: relative;
+  top: 1px;
+}
+
+.websitename img {
+  animation-name: logosize;
+  animation-duration: 3s;
+  animation-iteration-count: 2;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes logosize {
+  from {
+    width: 0px;
+  }
+
+  to {
+    width: 300px;
+  }
+}
+
+.Search {
+  width: 800px;
+  align-items: center;
+}
+
+.searchbar {
+  border: 3px solid white;
+  border-radius: 10px;
+  position: relative;
+  left: 70px;
+  width: 400px;
+  height: 28px;
+  top: 10px;
+}
+
+.button {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 30px;
+  font-size: 1rem;
+  text-align: center;
+  position: relative;
+  top: 12px;
+  left: 69px;
+  color: #fff;
+  text-shadow: 3px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.button:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+.button:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.min input {
+  position: relative;
+  top: -10rem;
+  left: -4rem;
+  width: 5rem;
+  height: 2rem;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.max input {
+  position: relative;
+  top: -16.4rem;
+  left: 4rem;
+  width: 5rem;
+  height: 2rem;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.price h5 {
+  position: relative;
+  top: -13rem;
+  left: 2rem;
+}
+
+.flip a {
+  position: absolute;
+  left: -2rem;
+  background-image: url(flipkart.jpg);
+  text-decoration: none;
+  background-repeat: no-repeat;
+  color: rgb(4, 123, 213);
+  background-size: contain;
+  border-radius: 10px;
+  top: -13rem;
+  padding-left: 1rem;
+  height: 2.5rem;
+  width: 8rem;
+  padding-right: 0;
+  margin-bottom: 4px;
+  border: 0;
+  font-weight: bolder;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  background-color: rgb(248, 232, 49);
+}
+
+.amaze a {
+  position: absolute;
+  left: -2rem;
+  top: -4.5rem;
+  text-decoration: none;
+  margin-bottom: 4px;
+  padding: 0;
+  border: 0;
+  background-image: url(amazon1.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2.5rem;
+  border-radius: 10px;
+  font-weight: bolder;
+  padding-left: 1rem;
+  width: 8rem;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: #de530f;
+}
+
+.crom a {
+  position: absolute;
+  text-decoration: none;
+  left: -2rem;
+  height: 2.5rem;
+  top: 4rem;
+  margin-bottom: 4px;
+  background-image: url(croma1.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+  font-weight: bolder;
+  border: 0;
+  padding-left: 1rem;
+  width: 8rem;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: black;
+}
+
+@keyframes logosize1 {
+  0% {
+    width: 50px;
+  }
+
+  50% {
+    width: 11.5rem;
+  }
+
+  100% {
+    width: 50px;
+  }
+}
+
+.static {
+  position: absolute;
+  width: 10rem;
+  left: 1rem;
+}
+.compare-button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.comparison-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.comparison-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 80rem;
+  height: 42.5rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.remove-button {
+  background-color: #f44336;
+  position: relative;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  top: -2rem;
+  margin-top: 10px;
+  z-index: 100;
+}
+
+.comparison-content h1 {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  background-color: black;
+  padding-top: 1rem;
+  left: 3.7rem;
+  top: 2rem;
+  height: 4rem;
+  width: 82.6rem;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.comparison-container {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  flex-direction: row;
+  top: 6rem;
+  left: 20.5rem;
+  width: 70rem;
+  height: 46rem;
+}
+
+.product-card1 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  top: 2.2rem;
+  left: -2rem;
+  display: block;
+  position: relative;
+  width: 31.4rem;
+  border: 1px solid black;
+  height: 39.5rem;
+  background-color: wheat;
+  margin-bottom: 3px;
+  border-radius: 0.3rem;
+}
+
+.product-card1 img {
+  position: absolute;
+  top: 1.5rem;
+  left: 10rem;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 2rem;
+  margin-right: 10px;
+}
+
+.product-card1 h3 {
+  position: absolute;
+  top: 14rem;
+  left: 1rem;
+  width: 28rem;
+  font-size: 18px;
+  margin: 0;
+}
+
+.product-card1 p {
+  margin: 5px 0;
+  position: absolute;
+  top: 17.8rem;
+  left: 14rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.product-card1 .product-details {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  position: absolute;
+  height: 14.5rem;
+  width: 27rem;
+  padding-left: 3rem;
+  line-height: 1.5;
+  top: 25rem;
+}
+
+.product-card1 .product-selection1 {
+  position: absolute;
+  margin-bottom: 5px;
+  display: flex;
+  top: 1rem;
+  width: 15rem;
+  left: 1rem;
+  flex-direction: column;
+}
+
+.product-card1 .product-selection2 {
+  position: absolute;
+  top: 1rem;
+  left: 15rem;
+  width: 15rem;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card1 button {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 2rem;
+}
+
+.product-card1 button.added {
+  background-color: #28a745;
+}
+
+.flipkart1 {
+  position: absolute;
+  left: 1rem;
+  background-image: url(flipkart1.jpg);
+  text-decoration: none;
+  background-repeat: no-repeat;
+  color: blue;
+  background-size: contain;
+  border-radius: 20px;
+  top: 21rem;
+  padding-left: 1.5rem;
+  height: 2.5rem;
+  width: 8rem;
+  padding-right: 0;
+  margin-bottom: 4px;
+  border: 0;
+  font-weight: bolder;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: blue;
+  background-color: yellow;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.amazon1 {
+  position: absolute;
+  left: 11rem;
+  top: 21rem;
+  text-decoration: none;
+  margin-bottom: 4px;
+  padding: 0;
+  border: 0;
+  background-image: url(amazon1.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2.5rem;
+  border-radius: 20px;
+  font-weight: bolder;
+  padding-left: 1.5rem;
+  width: 8rem;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: #de530f;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.croma1 {
+  position: absolute;
+  text-decoration: none;
+  left: 21rem;
+  height: 2.5rem;
+  top: 21rem;
+  margin-bottom: 4px;
+  background-image: url(croma1.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 20px;
+  font-weight: bolder;
+  border: 0;
+  padding-left: 1.5rem;
+  width: 8rem;
+  line-height: 2.5;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: black;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  display: block;
+  position: absolute;
+  width: 15rem;
+  height: 40rem;
+  top: 6rem;
+}
+
+.image {
+  position: absolute;
+  font-size: 1.1rem;
+  left: 5rem;
+  font-weight: bold;
+  top: 5rem;
+}
+
+.brand {
+  position: absolute;
+  font-size: 1.1rem;
+  left: 5rem;
+  font-weight: bold;
+  top: 20rem;
+}
+
+.name {
+  position: absolute;
+  font-size: 1.1rem;
+  left: 5rem;
+  font-weight: bold;
+  top: 16.5rem;
+}
+
+.price {
+  position: absolute;
+  font-size: 1.1rem;
+  left: 5rem;
+  font-weight: bold;
+  top: 24rem;
+}
+
+.productdetails {
+  position: absolute;
+  font-size: 1.1rem;
+  left: 5rem;
+  font-weight: bold;
+  top: 28rem;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  padding-bottom: 2px;
+  top: 2.1rem;
+  width: 3rem;
+  height: 2.3rem;
+  transform: translateY(-50%);
+  border-radius: 12px;
+  font-size: 18px;
+  left: 52.5rem;
+  background: none;
+  text-align: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-icon{
+  display: none;
+}
+
+.clear-button a {
+  position: relative;
+  top: -3.5px;
+  color: black;
+}
+
+#suggestionContainer {
+  display: none;
+  position: absolute;
+  border: 1px solid black;
+  background-color: white;
+  z-index: 100;
+  top: 3rem;
+  width: 24.5rem;
+  height: 15rem;
+  padding-left: 1rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  left: 29.7rem;
+  cursor: pointer;
+}
+
+@media  screen and (max-width:1024px){
+  header {
+    background-color: #0a3a75;
+    color: white;
+    width: 89rem;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    height: 4rem;
+  }
+  .productlist {
+    position: absolute;
+    display: flex;
+    left: 15.2rem;
+    padding: 0;
+    top: 4.2rem;
+    height: 100rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .comparison-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 80rem;
+    height: 42.5rem;
+    position: relative;
+    top: 2rem;
+  }
+
+  .comparison-content h1 {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    background-color: black;
+    padding-top: 1rem;
+    left: 0rem;
+    top: -2rem;
+    height: 4rem;
+    width: 82.6rem;
+  }
+
+  .comparison-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    flex-direction: row;
+    top: 2rem;
+    left: 17rem;
+    width: 70rem;
+    height: 46rem;
+  }
+
+  .brand {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 20rem;
+  }
+  
+  .name {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 16.5rem;
+  }
+  
+  .price {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 24rem;
+  }
+  
+  .productdetails {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 28rem;
+  }
+
+}
+
+@media  screen and (max-width:768px){
+  
+  header {
+    background-color: #0a3a75;
+    color: white;
+    width: 90rem;
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 4rem;
+    z-index: 2;
+  }
+
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 600px;
+    display: flex;
+    position: relative;
+    width: 60rem;
+    border: 1px solid black;
+    height: 11.8rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.5rem;
+  }
+  
+  
+  .productlist {
+    position: absolute;
+    display: flex;
+    left: 15.2rem;
+    padding: 0;
+    top: 5rem;
+    height: 100rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+ 
+
+  
+  .product-details h2 {
+    position: absolute;
+    top: 1rem;
+    left: 13rem;
+    width: 37rem;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .product-selection1 {
+    position: relative;
+    margin-bottom: 5px;
+    display: flex;
+    top: 3rem;
+    width: 17rem;
+    left: 14rem;
+    flex-direction: column;
+  }
+  
+  .product-selection2 {
+    position: absolute;
+    top: 4rem;
+    left: 32rem;
+    width: 20rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flipkart {
+    position: absolute;
+    left: 50rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 1rem;
+    padding-left: 1.5rem;
+    height: 2.5rem;
+    width: 8rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon {
+    position: absolute;
+    left: 50rem;
+    top: 5.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1.5rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma {
+    position: absolute;
+    text-decoration: none;
+    left: 50rem;
+    height: 2.5rem;
+    top: 9.5rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1.5rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+}
+
+
+@media screen and (max-width: 426px) {
+
+  body{
+    overflow: hidden;
+  }
+  
+  header {
+    background-color: #0a3a75;
+    color: white;
+    width: 27rem;
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 3rem;
+    z-index: 2;
+  }
+  .websitelogo {
+    position: relative;
+    display: flex;
+    top: 0.3rem;
+    left: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  #menu-icon {
+    display: flex;
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    top: 0.4rem;
+    z-index: 2;
+    left: 19.7rem;
+  }
+  .websitename img {
+    display: none;
+  }
+
+  .Search {
+    position: relative;
+    display: flex;
+    z-index: 1;
+  }
+
+  .searchbar {
+    border: 3px solid white;
+    border-radius: 10px;
+    position: absolute;
+    width: 14.5rem;
+    height: 20px;
+    top: 10px;
+    left: -3rem;
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 10px;
+    padding-bottom: 4px;
+    top: 17px;
+    width: 2rem;
+    height: 0.01px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    left: 9rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .clear-button a {
+    position: relative;
+    top: -7px;
+    color: black;
+  }
+
+  .button {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 10px;
+    font-size: 1rem;
+    background-position: 1rem;
+    width: 2.3rem;
+    text-align: center;
+    position: absolute;
+    top: 5px;
+    left: 10rem;
+    height: 0.01px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .filterbutton{
+    display: flex;
+    cursor: pointer;
+    position: fixed;
+  }
+
+
+  .filters.active{
+    display: flex;
+    position: absolute;
+    width: 15rem;
+    top: 3rem;
+    left: 0rem;
+    border: 1px solid black;
+    z-index: 2;
+    background-color: wheat;
+
+  }
+  .filters {
+    display: flex;
+    position: absolute;
+    width: 15rem;
+    height:40rem;
+    top: 3rem;
+    left: -100rem;
+    border: 1px solid black;
+    background-color: #fff;
+    z-index: 2;
+  }
+  
+  .filters .brand {
+    position: absolute;
+    top:17rem;
+    left: 5rem;
+  }
+  
+  .brand label {
+    position: absolute;
+    top: -16.5rem;
+  }
+  
+  #brand-filter {
+    width: 12rem;
+    height: 2rem;
+    font-size: 1rem;
+    top: -15rem;
+    left: -3.5rem;
+    position: absolute;
+  }
+  
+  .price {
+    position: relative;
+    top: 20rem;
+    left: 5rem;
+  }
+  
+
+  #apply-filter-btn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0px 25px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 29rem;
+    height: 2.5rem;
+    width: 9rem;
+    left: 3rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  #removeFiltersBtn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0px 15px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 32rem;
+    height: 2.5rem;
+    width: 9rem;
+    left: 3rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  .min input {
+    position: relative;
+    top: -10rem;
+    left: -4rem;
+    width: 5rem;
+    height: 2rem;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  
+  .max input {
+    position: relative;
+    top: -16.4rem;
+    left: 4rem;
+    width: 5rem;
+    height: 2rem;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  
+  .price h5 {
+    position: relative;
+    top: -13rem;
+    left: 2rem;
+  }
+  
+  .flip a {
+    position: absolute;
+    left: -2rem;
+    background-image: url(flipkart.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: rgb(4, 123, 213);
+    background-size: contain;
+    border-radius: 10px;
+    top: -13rem;
+    padding-left: 1rem;
+    height: 2.5rem;
+    width: 8rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(248, 232, 49);
+  }
+  
+  .amaze a {
+    position: absolute;
+    left: -2rem;
+    top: -4.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+  }
+  
+  .crom a {
+    position: absolute;
+    text-decoration: none;
+    left: -2rem;
+    height: 2.5rem;
+    top: 4rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 10px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+  }
+
+  .filterbutton{
+    display: flex;
+    width: 17rem;
+    height: 3rem;
+    position: absolute;
+    top: 41rem;
+    left: 0;
+    z-index: 4;
+    background-color: #000;
+    border: 1px solid black;
+    padding-left: 10rem;
+    padding-top: 1rem;
+  }
+  .filterbutton a{
+    position: absolute;
+    width: 10rem;
+    text-decoration: none;
+    color:white;
+    font-size: 1rem;
+    left: 11rem;
+    font-weight: bold;
+
+  }
+
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    left: .1rem;
+    display: flex;
+    position: relative;
+    width: 25rem;
+    border: 1px solid black;
+    height: 9.2rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.5rem;
+  }
+  
+  .product-price {
+    font-weight: bold;
+  }
+  
+  .productlist {
+    position: absolute;
+    display: flex;
+    left: 0rem;
+    width: 27rem;
+    padding: 0;
+    border: 1px solid black;
+    top: 3rem;
+    height: 39rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  .product-image {
+    position: absolute;
+    top: 4rem;
+    left: 1rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 2px;
+    margin-right: 10px;
+  }
+  
+  .product-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-details h2 {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 25rem;
+    font-size:.9rem;
+    margin: 0;
+  }
+  
+  .product-selection1 {
+    position: relative;
+    margin-bottom: 5px;
+    display: flex;
+    top: 3.5rem;
+    width: 8rem;
+    font-size: .6rem;
+    left: 6rem;
+    flex-direction: column;
+  }
+  
+  .product-selection2 {
+    position: absolute;
+    top: 4rem;
+    left: 15rem;
+    width: 8rem;
+    font-size: .6rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flipkart {
+    position: absolute;
+    left: 9rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 8.5rem;
+    padding-left: 1rem;
+    height: 1.5rem;
+    width: 4rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: .7rem;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon {
+    position: absolute;
+    left: 14rem;
+    top: 8.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 4rem;
+    line-height: 2.5;
+    font-size: .7rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma {
+    position: absolute;
+    text-decoration: none;
+    left: 19rem;
+    height: 1.5rem;
+    top: 8.5rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 4rem;
+    line-height: 2.5;
+    font-size: .7rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .product-card button {
+    border: 0;
+    font-size: 0.7rem;
+    text-align: center;
+    align-items: center;
+    padding-left: 8px;
+    display: flex;
+    position: absolute;
+    top: 8.5rem;
+    height: 1.5rem;
+    left: .5rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(22, 82, 39);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  #suggestionContainer {
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 100;
+    top: 2.4rem;
+    width: 14rem;
+    font-size: .8rem;
+    height: 10rem;
+    padding-left: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    left: 5rem;
+    cursor: pointer;
+  }
+
+  .comparison-popup {
+    display: none;
+    position: fixed;
+    top: 3rem;
+    left: .5rem;
+    width: 22.5rem;
+    height: 35rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .comparison-content .content {
+    display: block;
+    position: absolute;
+    width: 5rem;
+    left: .2rem;
+    height: 30rem;
+    top: .5rem;
+    font-size: .6rem;
+  }
+
+  .comparison-content .content a{
+    font-size: .6rem;
+    left: .1rem;
+    width: 3rem;
+  }
+  
+  .comparison-content {
+    position: absolute;
+    background-color:white;
+    padding: 0px;
+    border-radius: 5px;
+    top:0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 22rem;
+    height: 37.2rem;
+  }
+  
+  .comparison-content .remove-button {
+    position: absolute;
+    color: #fff;
+    border: none;
+    height: 1.5rem;
+    padding-right: 1px;
+    width: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    top: .2rem;
+    left: .5rem;
+    z-index: 100;
+  }
+
+  .comparison-content .remove-button i{
+    position: relative;
+    left: -.9rem;
+    top: -.5rem;
+    font-size: 1rem;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 19rem;
+    top: .5rem;
+    z-index: 2;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .comparison-content h1 {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    background-color: black;
+    padding-top: 1rem;
+    left: 0rem;
+    font-size: 1rem;
+    top: -.7rem;
+    height: 2rem;
+    width: 22.5rem;
+  }
+  
+  /* .filter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  } */
+  
+  .comparison-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    flex-direction: row;
+    top: 2.5rem;
+    left: 12rem;
+    width: 15rem;
+    height: 30rem;
+    border: 1px solid black;
+
+  }
+  
+  .product-card1 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    top: .35rem;
+    left: -6.1rem;
+    display:grid;
+    position:relative;
+    gap: 5px;
+    grid-template-columns: 3.7rem 3.7rem;
+    width: 25rem;
+    border: 1px solid black;
+    height: 33rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.3rem;
+  }
+  
+  .product-card1 img {
+    position: absolute;
+    top: 1.5rem;
+    left: 1rem;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 2rem;
+    margin-right: 10px;
+    border: 1px solid black;
+  }
+  
+  .product-card1 h3 {
+    position: absolute;
+    top: 9rem;
+    left: 1rem;
+    width: 7rem;
+    font-size: .6rem;
+    margin: 0;
+  }
+  
+  .product-card1 p {
+    margin: 5px 0;
+    position: absolute;
+    top: 11.8rem;
+    left: 3rem;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+  
+  .product-card1 .product-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    position: absolute;
+    height: 14.5rem;
+    width: 5.5rem;
+    padding-left: 3rem;
+    line-height: 1.5;
+    top: 19.5rem;
+    left: .2rem;
+  }
+  
+  .product-card1 .product-selection1 {
+    position: absolute;
+    margin-bottom: 5px;
+    display: flex;
+    top: .5rem;
+    width: 8rem;
+    left: .5rem;
+    flex-direction: column;
+  }
+  
+  .product-card1 .product-selection2 {
+    position: absolute;
+    top: 7rem;
+    left: .5rem;
+    width: 6rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card1 button {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 2rem;
+  }
+  
+  .product-card1 button.added {
+    background-color: #28a745;
+  }
+  
+  .flipkart1 {
+    position: absolute;
+    left: 1.5rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 13.5rem;
+    padding-left: 1rem;
+    height: 1.5rem;
+    width: 5rem;
+    padding-right: 0;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: .8rem;
+    padding-bottom: 4px;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon1 {
+    position: absolute;
+    left: 1.5rem;
+    top: 15.5rem;
+    text-decoration: none;
+    padding-bottom: 4px;
+    padding: 0;
+    border: 0;
+    padding-bottom: 4px;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2.5;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma1 {
+    position: absolute;
+    text-decoration: none;
+    left: 1.5rem;
+    height: 1.5rem;
+    top: 17.5rem;
+    padding-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2.5;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .image {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 6rem;
+  }
+  
+  .brand {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 14.5rem;
+  }
+  
+  .name {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 11.5rem;
+  }
+  
+  .price {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 18rem;
+  }
+  
+  .productdetails {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 22rem;
+  }
+  
+
+}
+@media screen and (max-width: 376px) {
+
+  body{
+    overflow: hidden;
+  }
+  
+  header {
+    background-color: #0a3a75;
+    color: white;
+    width: 24rem;
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 3rem;
+    z-index: 2;
+  }
+  .websitelogo {
+    position: relative;
+    display: flex;
+    top: .5rem;
+    left: .3rem;
+    width: 2rem;
+    height: 1.3rem;
+  }
+
+  .websitelogo img{
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    border-radius: .4rem;
+  }
+
+  #menu-icon {
+    display: flex;
+    position: absolute;
+    font-size: 1.5rem;
+    cursor: pointer;
+    top: .3rem;
+    z-index: 20;
+    color: #fff;
+    left: 21rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .menu-icon a{
+    display: flex;
+    position: absolute;
+    font-size: .7rem;
+    top: 1.6rem;
+    left: -.1rem;
+  }
+
+  .websitename img {
+    display: none;
+  }
+
+  .Search {
+    position: relative;
+    display: flex;
+    z-index: 1;
+  }
+
+  .searchbar {
+    border: 3px solid white;
+    border-radius: 10px;
+    position: absolute;
+    width: 15rem;
+    height: 20px;
+    top: 10px;
+    left: -4rem;
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 10px;
+    padding-bottom: 4px;
+    top: 17px;
+    width: 2rem;
+    height: 0.01px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    left: 8.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .clear-button a {
+    position: relative;
+    top: -7px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  .button {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 10px;
+    font-size: 1rem;
+    background-position: 1rem;
+    width: 2.3rem;
+    text-align: center;
+    position: absolute;
+    top: 4px;
+    left: 9.5rem;
+    height: 0.01px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+
+  .filters.active{
+    display: flex;
+    position: absolute;
+    width: 15rem;
+    top: 3rem;
+    left: 8.5rem;
+    border: 1px solid black;
+    z-index: 5;
+    background-color:white;
+
+  }
+  .filters {
+    display: flex;
+    position: absolute;
+    width: 15rem;
+    height:42rem;
+    top: 3rem;
+    left: -100rem;
+    border: 1px solid black;
+    z-index: 5;
+  }
+  
+  .brand {
+    position: absolute;
+    top:17rem;
+    left: 5rem;
+  }
+  
+  .brand label {
+    position: absolute;
+    top: -16.5rem;
+  }
+  
+  #brand-filter {
+    width: 12rem;
+    height: 2rem;
+    font-size: 1rem;
+    top: -15rem;
+    left: -3.5rem;
+    position: absolute;
+  }
+  
+  .price {
+    position: relative;
+    top: 20rem;
+    left: 5rem;
+  }
+  
+
+  #apply-filter-btn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0px 25px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 29rem;
+    height: 2.5rem;
+    width: 9rem;
+    left: 3rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  #removeFiltersBtn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0px 15px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 32rem;
+    height: 2.5rem;
+    width: 9rem;
+    left: 3rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  .min input {
+    position: relative;
+    top: -10rem;
+    left: -4rem;
+    width: 5rem;
+    height: 2rem;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  
+  .max input {
+    position: relative;
+    top: -16.4rem;
+    left: 4rem;
+    width: 5rem;
+    height: 2rem;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  
+  .price h5 {
+    position: relative;
+    top: -13rem;
+    left: 2rem;
+  }
+  
+  .flip a {
+    position: absolute;
+    left: -2rem;
+    background-image: url(flipkart.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: rgb(4, 123, 213);
+    background-size: contain;
+    border-radius: 10px;
+    top: -13rem;
+    padding-left: 1rem;
+    height: 2.5rem;
+    width: 8rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(248, 232, 49);
+  }
+  
+  .amaze a {
+    position: absolute;
+    left: -2rem;
+    top: -4.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+  }
+  
+  .crom a {
+    position: absolute;
+    text-decoration: none;
+    left: -2rem;
+    height: 2.5rem;
+    top: 4rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 10px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+  }
+
+
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    left: .1rem;
+    display: flex;
+    position: relative;
+    width: 22rem;
+    border: 1px solid black;
+    height: 9.2rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.5rem;
+  }
+  
+  .product-price {
+    font-weight: bold;
+  }
+  
+  .productlist {
+    position: absolute;
+    display: flex;
+    left: 0rem;
+    width: 26rem;
+    padding: 0;
+    border: 1px solid black;
+    top: 3rem;
+    height: 44rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  .product-image {
+    position: absolute;
+    top: 3.5rem;
+    left: 1rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 2px;
+    margin-right: 10px;
+  }
+  
+  .product-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-details h2 {
+    position: absolute;
+    top: .6rem;
+    left: 1rem;
+    width: 23rem;
+    font-size:.9rem;
+    margin: 0;
+  }
+  
+  .product-selection1 {
+    position: relative;
+    margin-bottom: 5px;
+    display: flex;
+    top: 2.5rem;
+    width: 8rem;
+    font-size: .6rem;
+    left: 6rem;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .product-selection2 {
+    position: absolute;
+    top: 3rem;
+    left: 15rem;
+    width: 8rem;
+    font-size: .6rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .flipkart {
+    position: absolute;
+    left: 8rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 8.5rem;
+    padding-left: 1rem;
+    height: 1.5rem;
+    width: 4rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: .7rem;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon {
+    position: absolute;
+    left: 13rem;
+    top: 8.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 4rem;
+    line-height: 2.5;
+    font-size: .7rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma {
+    position: absolute;
+    text-decoration: none;
+    left: 18rem;
+    height: 1.5rem;
+    top: 8.5rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 4rem;
+    line-height: 2.5;
+    font-size: .7rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .product-card button {
+    border: 0;
+    font-size: 0.7rem;
+    text-align: center;
+    align-items: center;
+    padding-left: 8px;
+    display: flex;
+    position: absolute;
+    top: 8.5rem;
+    height: 1.5rem;
+    left: .5rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(22, 82, 39);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  #suggestionContainer {
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 100;
+    top: 2.2rem;
+    width: 14.6rem;
+    font-size: .8rem;
+    height: 10rem;
+    padding-left: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    left: 4.2rem;
+    cursor: pointer;
+  }
+
+  .comparison-popup {
+    display: none;
+    position: fixed;
+    top: 3rem;
+    left: .5rem;
+    width: 22.5rem;
+    height: 35rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .comparison-content .content {
+    display: block;
+    position: absolute;
+    width: 5rem;
+    left: .2rem;
+    height: 30rem;
+    top: .5rem;
+    font-size: .6rem;
+  }
+
+  .comparison-content .content a{
+    font-size: .6rem;
+    left: .1rem;
+    width: 3rem;
+  }
+  
+  .comparison-content {
+    position: absolute;
+    background-color:white;
+    padding: 0px;
+    border-radius: 5px;
+    top:0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 22rem;
+    height: 37.2rem;
+  }
+  
+  .comparison-content .remove-button {
+    position: absolute;
+    color: #fff;
+    border: none;
+    height: 1.5rem;
+    padding-right: 1px;
+    width: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    top: .2rem;
+    left: .5rem;
+    z-index: 100;
+  }
+
+  .comparison-content .remove-button i{
+    position: relative;
+    left: -.9rem;
+    top: -.5rem;
+    font-size: 1rem;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 19rem;
+    top: .5rem;
+    z-index: 2;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .comparison-content h1 {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    background-color: black;
+    padding-top: 1rem;
+    left: 0rem;
+    font-size: 1rem;
+    top: -.7rem;
+    height: 2rem;
+    width: 22.5rem;
+  }
+  
+  
+  .comparison-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    flex-direction: row;
+    top: 2.5rem;
+    left: 12rem;
+    width: 15rem;
+    height: 30rem;
+    border: 1px solid black;
+
+  }
+  
+  .product-card1 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    top: .35rem;
+    left: -6.1rem;
+    display:grid;
+    position:relative;
+    gap: 5px;
+    grid-template-columns: 3.7rem 3.7rem;
+    width: 25rem;
+    border: 1px solid black;
+    height: 33rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.3rem;
+  }
+  
+  .product-card1 img {
+    position: absolute;
+    top: 1.5rem;
+    left: 1rem;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 2rem;
+    margin-right: 10px;
+    border: 1px solid black;
+  }
+  
+  .product-card1 h3 {
+    position: absolute;
+    top: 9rem;
+    left: 1rem;
+    width: 7rem;
+    font-size: .6rem;
+    margin: 0;
+  }
+  
+  .product-card1 p {
+    margin: 5px 0;
+    position: absolute;
+    top: 11.8rem;
+    left: 3rem;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+  
+  .product-card1 .product-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    position: absolute;
+    height: 14.5rem;
+    width: 5.5rem;
+    padding-left: 3rem;
+    line-height: 1.5;
+    top: 19.5rem;
+    left: .2rem;
+  }
+  
+  .product-card1 .product-selection1 {
+    position: absolute;
+    margin-bottom: 5px;
+    display: flex;
+    top: .5rem;
+    width: 8rem;
+    left: .5rem;
+    flex-direction: column;
+  }
+  
+  .product-card1 .product-selection2 {
+    position: absolute;
+    top: 7rem;
+    left: .5rem;
+    width: 6rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card1 button {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 2rem;
+  }
+  
+  .product-card1 button.added {
+    background-color: #28a745;
+  }
+  
+  .flipkart1 {
+    position: absolute;
+    left: 1.5rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 13.5rem;
+    padding-left: 1rem;
+    height: 1.5rem;
+    width: 5rem;
+    padding-right: 0;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: .8rem;
+    padding-bottom: 4px;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon1 {
+    position: absolute;
+    left: 1.5rem;
+    top: 15.5rem;
+    text-decoration: none;
+    padding-bottom: 4px;
+    padding: 0;
+    border: 0;
+    padding-bottom: 4px;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2.5;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma1 {
+    position: absolute;
+    text-decoration: none;
+    left: 1.5rem;
+    height: 1.5rem;
+    top: 17.5rem;
+    padding-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2.5;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .image {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 6rem;
+  }
+  
+  .brand {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 14.5rem;
+  }
+  
+  .name {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 11.5rem;
+  }
+  
+  .price {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 18rem;
+  }
+  
+  .productdetails {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 22rem;
+  }
+  
+
+}
+@media screen and (max-width: 320px) {
+
+  
+  body{
+    overflow: hidden;
+  }
+  
+  header {
+    background-color: #0a3a75;
+    color: white;
+    width: 24rem;
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 3rem;
+    z-index: 2;
+  }
+  .websitelogo {
+    position: relative;
+    display: flex;
+    top: .5rem;
+    left: .3rem;
+    width: 2rem;
+    height: 1.3rem;
+  }
+
+  .websitelogo img{
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    border-radius: .4rem;
+  }
+
+  #menu-icon {
+    display: flex;
+    position: absolute;
+    font-size: 1.5rem;
+    cursor: pointer;
+    top: .3rem;
+    z-index: 20;
+    color: #fff;
+    left: 17.6rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .menu-icon a{
+    display: flex;
+    position: absolute;
+    font-size: .7rem;
+    top: 1.6rem;
+    left: -.1rem;
+  }
+
+  .websitename img {
+    display: none;
+  }
+
+  .Search {
+    position: relative;
+    display: flex;
+    z-index: 1;
+  }
+
+  .searchbar {
+    border: 3px solid white;
+    border-radius: 10px;
+    position: absolute;
+    width: 13rem;
+    height: 20px;
+    top: 10px;
+    left: -4.9rem;
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 10px;
+    padding-bottom: 4px;
+    top: 17px;
+    width: 2rem;
+    height: 0.01px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    left: 5.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .clear-button a {
+    position: relative;
+    top: -7px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  .button {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 10px;
+    font-size: 1rem;
+    background-position: 1rem;
+    width: 2.3rem;
+    text-align: center;
+    position: absolute;
+    top: 4px;
+    left: 6.8rem;
+    height: 0.01px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+
+  .filters.active{
+    display: flex;
+    position: absolute;
+    width: 15rem;
+    top: 3rem;
+    left: 7rem;
+    border: 1px solid black;
+    z-index: 5;
+    background-color:white;
+
+  }
+  .filters {
+    display: flex;
+    position: absolute;
+    width: 15rem;
+    height:42rem;
+    top: 3rem;
+    left:-100rem;
+    border: 1px solid black;
+    z-index: 5;
+  }
+  
+  .brand {
+    position: absolute;
+    top:17rem;
+    left: 5rem;
+  }
+  
+  .brand label {
+    position: absolute;
+    top: -16.5rem;
+  }
+  
+  #brand-filter {
+    width: 10rem;
+    height: 2rem;
+    font-size: 1rem;
+    top: -15rem;
+    left: -3.5rem;
+    position: absolute;
+  }
+  
+  .price {
+    position: relative;
+    top: 20rem;
+    left: 5rem;
+  }
+  
+
+  #apply-filter-btn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0px 25px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 29rem;
+    height: 2.5rem;
+    width: 9rem;
+    left: 2rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  #removeFiltersBtn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0px 15px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    top: 32rem;
+    height: 2.5rem;
+    width: 9rem;
+    left: 2rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  .min input {
+    position: relative;
+    top: -10rem;
+    left: -4.5rem;
+    width: 4rem;
+    height: 2rem;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  
+  .max input {
+    position: relative;
+    top: -16.4rem;
+    left: 3rem;
+    width: 4rem;
+    height: 2rem;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  
+  .price h5 {
+    position: relative;
+    top: -13rem;
+    left: 1rem;
+  }
+  
+  .flip a {
+    position: absolute;
+    left: -3rem;
+    background-image: url(flipkart.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: rgb(4, 123, 213);
+    background-size: contain;
+    border-radius: 10px;
+    top: -13rem;
+    padding-left: 1rem;
+    height: 2.5rem;
+    width: 8rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(248, 232, 49);
+  }
+  
+  .amaze a {
+    position: absolute;
+    left: -3rem;
+    top: -4.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+  }
+  
+  .crom a {
+    position: absolute;
+    text-decoration: none;
+    left: -3rem;
+    height: 2.5rem;
+    top: 4rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 10px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 8rem;
+    line-height: 2.5;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+  }
+
+
+  .product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    left: .1rem;
+    display: flex;
+    position: relative;
+    width: 18.5rem;
+    border: 1px solid black;
+    height: 9.2rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.5rem;
+  }
+  
+  .product-price {
+    font-weight: bold;
+  }
+  
+  .productlist {
+    position: absolute;
+    display: flex;
+    left: 0rem;
+    width: 22rem;
+    padding: 0;
+    border: 1px solid black;
+    top: 3rem;
+    height: 44rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  .product-image {
+    position: absolute;
+    top: 3.5rem;
+    left: .5rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 2px;
+    margin-right: 10px;
+  }
+  
+  .product-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-details h2 {
+    position: absolute;
+    top: .6rem;
+    left: .5rem;
+    width: 23rem;
+    font-size:.9rem;
+    margin: 0;
+  }
+  
+  .product-selection1 {
+    position: relative;
+    margin-bottom: 5px;
+    display: flex;
+    top: 2.5rem;
+    width: 7rem;
+    font-size: .5rem;
+    left: 4.2rem;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .product-selection2 {
+    position: absolute;
+    top: 3rem;
+    left: 12rem;
+    width: 7rem;
+    font-size: .5rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .flipkart {
+    position: absolute;
+    left: 6rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 8.5rem;
+    padding-left: 1rem;
+    height: 1.5rem;
+    width: 3.5rem;
+    padding-right: 0;
+    margin-bottom: 4px;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: .6rem;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon {
+    position: absolute;
+    left: 10.5rem;
+    top: 8.5rem;
+    text-decoration: none;
+    margin-bottom: 4px;
+    padding: 0;
+    border: 0;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 3.5rem;
+    line-height: 2.5;
+    font-size: .6rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma {
+    position: absolute;
+    text-decoration: none;
+    left: 15rem;
+    height: 1.5rem;
+    top: 8.5rem;
+    margin-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 3.5rem;
+    line-height: 2.5;
+    font-size: .6rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .product-card button {
+    border: 0;
+    font-size: 0.6rem;
+    text-align: center;
+    align-items: center;
+    padding-left: 8px;
+    display: flex;
+    position: absolute;
+    top: 8.5rem;
+    height: 1.5rem;
+    left: .2rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(22, 82, 39);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  #suggestionContainer {
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 100;
+    top: 2.2rem;
+    width: 12.5rem;
+    font-size: .7rem;
+    height: 10rem;
+    padding-left: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    left: 3.3rem;
+    cursor: pointer;
+  }
+
+  .comparison-popup {
+    display: none;
+    position: fixed;
+    top: 3rem;
+    left: .5rem;
+    width: 18rem;
+    height: 35rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .comparison-content .content {
+    display: block;
+    position: absolute;
+    width: 3rem;
+    left: .2rem;
+    height: 30rem;
+    top: .5rem;
+    font-size: .6rem;
+  }
+
+  .comparison-content .content a{
+    font-size: .5rem;
+    left:-.1rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .comparison-content {
+    position: absolute;
+    background-color:white;
+    padding: 0px;
+    border-radius: 5px;
+    top:0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 18rem;
+    height: 37.2rem;
+  }
+  
+  .comparison-content .remove-button {
+    position: absolute;
+    color: #fff;
+    border: none;
+    height: 1.5rem;
+    padding-right: 1px;
+    width: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    top: .2rem;
+    left: .5rem;
+    z-index: 100;
+  }
+
+  .comparison-content .remove-button i{
+    position: relative;
+    left: -.9rem;
+    top: -.5rem;
+    font-size: 1rem;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 17.5rem;
+    top: .5rem;
+    z-index: 2;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .comparison-content h1 {
+    color: #fff;
+    position: absolute;
+    background-color: black;
+    padding-top: 1rem;
+    left: -1rem;
+    font-size: 1rem;
+    top: -.7rem;
+    height: 2rem;
+    width: 20.5rem;
+  }
+  
+  
+  .comparison-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    flex-direction: row;
+    top: 2.5rem;
+    left: 11.8rem;
+    width: 10rem;
+    height: 30rem;
+    border: 1px solid black;
+
+  }
+  
+  .product-card1 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    top: .35rem;
+    left: -6.1rem;
+    display:grid;
+    position:relative;
+    gap: 5px;
+    grid-template-columns: 3.4rem 3.4rem;
+    width: 20rem;
+    border: 1px solid black;
+    height: 33rem;
+    background-color: wheat;
+    margin-bottom: 3px;
+    border-radius: 0.3rem;
+  }
+  
+  .product-card1 img {
+    position: absolute;
+    top: 1.5rem;
+    left: .7rem;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 2rem;
+    margin-right: 10px;
+    border: 1px solid black;
+  }
+  
+  .product-card1 h3 {
+    position: absolute;
+    top: 9rem;
+    left: 1rem;
+    width: 7rem;
+    font-size: .6rem;
+    margin: 0;
+  }
+  
+  .product-card1 p {
+    margin: 5px 0;
+    position: absolute;
+    top: 11.8rem;
+    left: 3rem;
+    font-size: .9rem;
+    font-weight: bold;
+  }
+  
+  .product-card1 .product-details {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    position: absolute;
+    height: 14.5rem;
+    width: 5.5rem;
+    padding-left: 3rem;
+    line-height: 1.5;
+    top: 19.5rem;
+    left: .2rem;
+  }
+  
+  .product-card1 .product-selection1 {
+    position: absolute;
+    margin-bottom: 5px;
+    display: flex;
+    top: .5rem;
+    width: 8rem;
+    left: .5rem;
+    flex-direction: column;
+  }
+  
+  .product-card1 .product-selection2 {
+    position: absolute;
+    top: 7rem;
+    left: .5rem;
+    width: 6rem;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card1 button {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 2rem;
+  }
+  
+  .product-card1 button.added {
+    background-color: #28a745;
+  }
+  
+  .flipkart1 {
+    position: absolute;
+    left: 1.5rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 13.5rem;
+    padding-left: 1rem;
+    height: 1.5rem;
+    width: 5rem;
+    padding-right: 0;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2.5;
+    font-size: .8rem;
+    padding-bottom: 4px;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon1 {
+    position: absolute;
+    left: 1.5rem;
+    top: 15.5rem;
+    text-decoration: none;
+    padding-bottom: 4px;
+    padding: 0;
+    border: 0;
+    padding-bottom: 4px;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2.5;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma1 {
+    position: absolute;
+    text-decoration: none;
+    left: 1.5rem;
+    height: 1.5rem;
+    top: 17.5rem;
+    padding-bottom: 4px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2.5;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .image {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 6rem;
+  }
+  
+  .brand {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 14.5rem;
+  }
+  
+  .name {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 11.5rem;
+  }
+  
+  .price {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 18rem;
+  }
+  
+  .productdetails {
+    position: absolute;
+    font-size: 1.1rem;
+    left: 5rem;
+    font-weight: bold;
+    top: 22rem;
+  }
+
+  
+
+}

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+      <div class="brand">
+        <label for="brand-filter">Brand:</label>
+        <select id="brand-filter">
+          <option value="">All Brands</option>
+          <option value="Infinix">Infinix</option>
+          <option value="Asus">Asus</option>
+          <option value="MSI">MSI</option>
+          <option value="Dell">Dell</option>
+          <option value="HP">HP</option>
+          <option value="Acer">Acer</option>
+          <option value="Lenovo">Lenovo</option>
+          <option value="Primebook">PrimeBook</option>
+        </select>
+      </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+      const products = [
+      {
+        name: "HP Victus 16-d0333TX Gaming Laptop (11th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 4GB Graph)",
+        brand: "HP ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/hp-victus-16-d0333tx-gaming-laptop-11th-gen-ppd1b9x46zbs",
+        image:
+          "https://cdn1.smartprix.com/rx-ig5tK2dFn-w103-h125/hp-victus-16-d0333tx.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/hp-victus-16-d0333tx-gaming-laptop-11th-gen-ppd1b9x46zbs",
+        pricea: "55,990",
+        pricef: "63,490",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbbZ3GgQ~0i94AeZ1s10hrhAgTYBOr3Uh7tBc2YAUCFcAs3acY4c55UtcWauc5bcW6c45ocW6cFFic8Yuis8Fc55ctsnacHcW3rBtYAFcu2YiYrcWags3AacWUDc5b4Pc5bciPZZZUDcWrnhNcTrBUshDhDh8GbA65ir4iAHaHhmBYihkwkp7.deR1qqfdl7dhrhhaFhrhrhhacBrWahrhrBi56lDHby6FhrFB57XnQKgFQJykv ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.a_UqpD5qkuiyUgITShrhArnrysuhyihDRPwo.bfGHoh-hrhhaFhrhrhhacBrWahrhrBi56lDHby6FhrFB5vCGd9Wp8D_zI ",
+        croma: " ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i5 11400H",
+          },
+          {
+            name: "Hexa Core, 12 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 GB NVIDIA GeForce GTX 1650",
+          },
+          {
+            name: "16.1 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Asus Vivobook 16X 2022 M1603QA-MB502WS Laptop (Ryzen 5-5600H/ 8GB/ 512GB SSD/ Win11 Home)",
+        brand: " Asus",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/asus-vivobook-16x-2022-m1603qa-mb502ws-laptop-ppd1pul9mnne",
+        image:
+          "https://cdn1.smartprix.com/rx-iRUMXjHn3-w103-h125/asus-vivobook-16x-20.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/asus-vivobook-16x-2022-m1603qa-mb502ws-laptop-ppd1pul9mnne",
+        pricef: "46,990",
+        pricea: "46,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.a_Rw.TgxXy2eYNU4XhrhArnrysuhyihDRPRG-K507_h-hrhhaFhrhrhhacBrWahrhrBi5BCTlnuuahrFB5UfV3m1EFZ0sV ",
+        croma: " ",
+        selection1: [
+          {
+            name: "5th Gen AMD Ryzen 5 5600H",
+          },
+          {
+            name: "Hexa Core, 12 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Vega 7",
+          },
+          {
+            name: "16 inches, 1920 x 1200 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "HP 15s-fq2717TU Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)",
+        brand: "HP ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/hp-15s-fq2717tu-laptop-11th-gen-core-i3-8gb-ppd1mbr97mxl",
+        image:
+          "https://cdn1.smartprix.com/rx-i8CnXpWCB-w103-h125/hp-15s-fq2717tu-lapt.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/hp-15s-fq2717tu-laptop-11th-gen-core-i3-8gb-ppd1mbr97mxl",
+        pricef: "37,490",
+        pricea: "37,490",
+        pricec: "39,490",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbbZ3Btl-6tKBNtSgr8BhrhAgTYBOr3Uh7tBcTrBUsBcAs3acYZc55UtcWaucXcW6c45ocW6cFFic8Yuis8Fc55ctsnac54FcgNoG5GUCcUtYucTYWtUh-hDh8oGXoiHHirra6ghmBYihkwkp7Sj7d1VSHjvX0hrhhaFhrhrhhacBrWahrhrBi5n63lGnDThrFB5YFr_Qi0GgO9r ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.af6x3gPTqrV8XgFHYhrhArnrysuhyihDRPR~d5Zmz~h-hrhhaFhrhrhhacBrWahrhrBi5n63lGnDThrFB5bpaHu2NTPkA. ",
+        croma: "https://l.smartprix.com/l?k=12GbaP3i0FIIrkX-JoGx7r33fhrhAA3snrh7tBc54FcgNoG5GUCcYuUaTcAs3acYZc55UtcWauc54cbcYuAtcXW6c45oW6c8Yuis8Fc55ctsnacnFcsggYAacoPo5cYuUaTcCticgticiYFBTrIcurUC3rTcFYThCcGWbtZBrcrAQch-hDobXoXHhrhhaFhrhrhhacBrWahrhrBi5n63lGnDThrFB5WSar6.WRDSld ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i3 1115G4",
+          },
+          {
+            name: "Dual Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel UHD Graphics",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Acer One 14 Z8-415 Laptop (11th Gen Core i3 / 8GB/ 512GB SSD/ Win11 Home)",
+        brand: "Acer",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/acer-one-14-z8-415-laptop-11th-gen-core-i3-ppd164x4cqgs",
+        image:
+          "https://cdn1.smartprix.com/rx-ioXEIfxVI-w103-h125/acer-one-14-z8-415-l.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/acer-one-14-z8-415-laptop-11th-gen-core-i3-ppd164x4cqgs",
+        pricef: "28,990",
+        pricea: "36,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i3 1115G4",
+          },
+          {
+            name: "Dual Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "‎Intel Iris Xe Graphics",
+          },
+          {
+            name: "14 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Lenovo E41-55 Laptop (Athlon Silver 3050U/ 8GB/ 256 SSD/ Win11)",
+        brand: " Lenovo",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/lenovo-e41-55-laptop-athlon-silver-3050u-ppd11g66cius",
+        image:
+          "https://cdn1.smartprix.com/rx-iHJ0zmLA4-w103-h125/lenovo-e41-55-laptop.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/lenovo-e41-55-laptop-athlon-silver-3050u-ppd11g66cius",
+        pricea: "20,500",
+        pricef: "21,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.a_Rwd4W-7jV1SnIUKhrhArnrysuhyihDRPlJomxpxZh-hrhhaFhrhrhhacBrWahrhrBi55WbbAYCFhrFB56XN7PXg06~Cp ",
+        croma: " ",
+        selection1: [
+          {
+            name: "3rd Gen AMD Athlon Silver 3050U",
+          },
+          {
+            name: "Dual Core, 2 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "256 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Graphics",
+          },
+          {
+            name: "14 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Inspiron 5630 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11)",
+        brand: " Dell",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/dell-inspiron-5630-laptop-13th-gen-core-i5-ppd13pep48xo",
+        image:
+          "https://cdn1.smartprix.com/rx-i66WzFcoY-w103-h125/dell-inspiron-5630-l.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/dell-inspiron-5630-laptop-13th-gen-core-i5-ppd13pep48xo",
+        pricea: "76,251",
+        pricef: "76,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.a_RwF1dboj9wNZ93rhrhArnrysuhyihDRPw5HZbZRph-hrhhaFhrhrhhacBrWahrhrBi5ZBaBHXDshrFB5SdxPn8-v3K86 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i5 1340P",
+          },
+          {
+            name: "12 Cores (4P + 8E), 16 Threads",
+          },
+          {
+            name: "16 GB LPDDR5 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Iris Xe Graphics",
+          },
+          {
+            name: "16 inches, 2560 x 1600 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Asus Vivobook 15 X1502ZA-EJ532WS Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11)",
+        brand: "Asus ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/asus-vivobook-15-x1502za-ej532ws-laptop-12th-ppd1tsh0r7y7",
+        image:
+          "https://cdn1.smartprix.com/rx-i8rSgIyFE-w103-h125/asus-vivobook-15-x15.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/asus-vivobook-15-x1502za-ej532ws-laptop-12th-ppd1tsh0r7y7",
+        pricef: "49,990",
+        pricea: "49,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.afry24Bd.bAHUXBfUhrhArnrysuhyihDRPw4ZxR-5lh-hrhhaFhrhrhhacBrWahrhrBi5UFtP3GIGhrFB5W7g5T4xgTiyU ",
+        croma: "https://l.smartprix.com/l?k=12GbaP3fqTvnFFFxWSRN93.vzhrhAA3snrh7rFCFcD54PoyrcYuUaTcAs3acY4c5oUtcWauc54cYuAtcXW6c45oW6c8Yuis8Fc55cnFcsggYAacoPo5cYuUaTcY3YFcDacW3rBtYAFcTaic6huTYWtUciYFBTrIcNCYaUc6TCacD54PoyrcaQ4Zo8Fch-hDoGoo4ZhrhhaFhrhrhhacBrWahrhrBi5UFtP3GIGhrFB55b2emb9vIFfv ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i5 1235U",
+          },
+          {
+            name: "10 Cores (2P + 8E), 12 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Iris Xe",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Asus Vivobook 16X 2022 M1603QA-MB711WS Laptop (Ryzen 7-5800H/ 16GB/ 512GB SSD/ Win11 Home)",
+        brand: "Asus ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/asus-vivobook-16x-2022-m1603qa-mb711ws-laptop-ppd12rzd1s1d",
+        image:
+          "https://cdn1.smartprix.com/rx-iVvwR1dwc-w103-h125/asus-vivobook-16x-20.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/asus-vivobook-16x-2022-m1603qa-mb711ws-laptop-ppd12rzd1s1d",
+        pricef: "60,990",
+        pricea: "57,490",
+        pricec: "57,490",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbRVypiX5I.rWoy.kqo5hrhAgTYBOr3Uh7rFCFc2Y2s6ssOc5bDc3IyaucGcsAUrcAs3ac4XPPtc5bcW6c45ocW6cFFic8Yuis8Fc55ctsnacn5bPZNrcn6G558FcUtYucTYWtUcTrBUshDhDh84oraig55lb45rhmBYihkwkp7qxKE~wRRjfwfhrhhaFhrhrhhacBrWahrhrBi5o3yi5F5ihrFB53gs1eCZ.Srfz ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~a2WXRuasi9n896-60FhrhArnrysuhyihDRPRSb~100xh-hrhhaFhrhrhhacBrWahrhrBi5o3yi5F5ihrFB5-03~x7HZu8~b ",
+        croma: "https://l.smartprix.com/l?k=12GbaP3eDi2GSp4uTwiuWSGEYhrhAA3snrh7rFCFcrnic3IyaucGc5bcYuAtc5bW6c45oW6c8Yuis8Fc55ctsnacnFcsggYAacoPo5crnic3riasuc2aWrcGc8CDWrcYBFciYFBTrIcNCYaUc6TCaclPu6PIX5cnPPo3Pch-hDob4bbZhrhhaFhrhrhhacBrWahrhrBi5o3yi5F5ihrFB56K-qYQeYJI_Z ",
+        selection1: [
+          {
+            name: "5th Gen AMD Ryzen 7 5800H",
+          },
+          {
+            name: "Octa Core, 16 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Vega 7",
+          },
+          {
+            name: "16 inches, 1920 x 1200 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "HP Pavilion 15-eg3081TU Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11 Home)",
+        brand: " HP",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/hp-pavilion-15-eg3081tu-laptop-13th-gen-core-ppd19cikb8j4",
+        image:
+          "https://cdn1.smartprix.com/rx-iwTKv09Ye-w103-h125/hp-pavilion-15-eg308.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/hp-pavilion-15-eg3081tu-laptop-13th-gen-core-ppd19cikb8j4",
+        pricec: "76,990",
+        pricea:  "",
+        pricef: " --",
+        flipkart: " ",
+        amazon: " ",
+        croma: "https://l.smartprix.com/l?k=12GbaP3eDA0HGjVgIIrCUC1g7hrhAA3snrh7tBcBr2YTh3c54caWZPX5UCcYuUaTcAs3acY4c5ZUtcWauc54cbcYuAtc5bW6c45oW6c8Yuis8Fc55ctsnacnFcsggYAacoPo5cYuUaTcY3YFcDacgCTTcticYBFciYFBTrIcgsWc6TCacXG4ubBrch-hDoGoGG5hrhhaFhrhrhhacBrWahrhrBi5lAYO6XQHhrFB55mV6AdNkKv_N ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i5 1340P",
+          },
+          {
+            name: "12 Cores (4P + 8E), 16 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Integrated Integrated",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Primebook 4G Android Laptop (MediaTek Kompanio 500/ 4GB/ 64GB eMMC/ Android 11)",
+        brand: " Primebook",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/primebook-4g-android-laptop-mediatek-kompanio-ppd1n0eewaga",
+        image:
+          "https://cdn1.smartprix.com/rx-i6vI2Dy7k-w103-h125/primebook-4g-android.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/primebook-4g-android-laptop-mediatek-kompanio-ppd1n0eewaga",
+        pricef: "13,990",
+        pricea:  "",
+        pricec: " --",
+        flipkart: " https://l.smartprix.com/l?k=12_IwbPnYFtNV2dZZuR2nJbRhrhAgTYBOr3Uh7B3Yna6ssOcHWchY3sYic6rFaicnaiYrUaOcnUXGXXcHcW6cbHcW6cannAcFUs3rWacB3YnacsFcUtYucTYWtUcTrBUshDhDh8APaPZ6g5oii6AhmBYihkwkp7SodVSZ1Rfd1phrhhaFhrhrhhacBrWahrhrBi5uPaa8rWrhrFB5r5yVr3wGZY-~",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "MediaTek MTK8788",
+          },
+          {
+            name: "Octa Core",
+          },
+          {
+            name: "4 GB LPDDR4 RAM",
+          },
+          {
+            name: "64 GB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "ARM Mali G72",
+          },
+          {
+            name: "11.6 inches, 1366 x 768 pixels",
+          },
+          {
+            name: "Android 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Infinix INBook X2 Slim Series XL23 Laptop (11th Gen Core i5/ 16GB/ 512GB SSD/ Win 11 Home)",
+        brand: " Infinix",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/infinix-inbook-x2-slim-series-xl23-laptop-ppd17iaww5ix",
+        image:
+          "https://cdn1.smartprix.com/rx-ixrS2go2p-w103-h125/infinix-inbook-x2-sl.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/infinix-inbook-x2-slim-series-xl23-laptop-ppd17iaww5ix",
+        pricef: "38,990",
+        pricea:  "",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbPnYFYHdNqDtRKqaT3RhrhAgTYBOr3Uh7YugYuYDcDocFTYncYuUaTcAs3acY4c55UtcWauc5bcW6c45ocW6cFFic8Yuis8Fc55ctsnacDToZcUtYucTYWtUcTrBUshDhDh8AGgliP6XXPoHHhmBYihkwkp71EHG.efeZxw_hrhhaFhrhrhhacBrWahrhrBi5GYr884YDhrFB5l2P1bS-C3opg ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i5 1155G7",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "16 GB LPDDR4X RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Integrated Iris Xe",
+          },
+          {
+            name: "14 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "HP Victus 15-fa0555TX Laptop (12th Gen Core i5/ 16GB/ 512GB SSD/ Win11 Home/ 4GB Graph)",
+        brand: " HP",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/hp-victus-15-fa0555tx-laptop-12th-gen-core-ppd1edlxbh2o",
+        image:
+          "https://cdn1.smartprix.com/rx-iBfuDJxSK-w103-h125/hp-victus-15-fa0555t.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/hp-victus-15-fa0555tx-laptop-12th-gen-core-ppd1edlxbh2o",
+        pricef: "74,300",
+        pricea: "76,490",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbPnYFY1UUA5DTyu5rnUhrhAgTYBOr3Uh7tBcAs3acY4c5oUtcWauc5bcW6c45ocW6cFFic8Yuis8Fc55ctsnacHcW3rBtYAFcu2YiYrcWags3Aac3UDcZP4PcHW6cW3rBtYAFcAr3ic54cgrP444UDcWrnhNcTrBUshDhDh8ia5ZrGiGP5aHHhmBYihkwkp71fxKEJexJVJvhrhhaFhrhrhhacBrWahrhrBi5aiTD6toshrFB51ZI2edpA0Wek ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i5 12450H",
+          },
+          {
+            name: "Octa Core (4P + 4E), 12 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 GB NVIDIA GeForce RTX RTX 3050",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell G15-5520 Gaming Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)",
+        brand: " Dell",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/dell-g15-5520-gaming-laptop-12th-gen-core-ppd15mvwrf1g",
+        image:
+          "https://cdn1.smartprix.com/rx-iXDHYXcGv-w103-h125/dell-g15-5520-gaming.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/dell-g15-5520-gaming-laptop-12th-gen-core-ppd15mvwrf1g",
+        pricef: "67,990",
+        pricea: "71,490",
+        pricec: " --",
+        flipkart: " https://l.smartprix.com/l?k=12_IwbPnQrO5pzvWHpnOr0vzhrhAgTYBOr3Uh7iaTTcAs3acY4c5oUtcWaucXcW6c45ocW6cFFic8Yuis8Fc55ctsnacHcW3rBtYAFcu2YiYrcWags3Aac3UDcZP4PcWrnhNc44oPcTrBUshDhDh8PPbliZr4oZ65ZhmBYihkwkp71l.0Hxe07071hrhhaFhrhrhhacBrWahrhrBi54n283g5WhrFB59SFWU66.obox",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~a2g~j7nBUxFT2~WZYmhrhArnrysuhyihDRPR~-K414oh-hrhhaFhrhrhhacBrWahrhrBi54n283g5WhrFB5-no6XnCsGIO0 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i5 12500H",
+          },
+          {
+            name: "12 Cores (4P + 8E), 16 Threads",
+          },
+          {
+            name: "8 GB DDR5 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 GB NVIDIA GeForce RTX 3050",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "HP 15s-fq5007TU Laptop (12th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)",
+        brand: " HP",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/hp-15s-fq5007tu-laptop-12th-gen-core-i3-8gb-ppd1w8yii9kt",
+        image:
+          "https://cdn1.smartprix.com/rx-icLedCxeu-w103-h125/hp-15s-fq5007tu-lapt.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/hp-15s-fq5007tu-laptop-12th-gen-core-i3-8gb-ppd1w8yii9kt",
+        pricef: "40,990",
+        pricea: "40,490",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbPnQrO5pzvWHpnOr0vzhrhAgTYBOr3Uh7iaTTcAs3acY4c5oUtcWaucXcW6c45ocW6cFFic8Yuis8Fc55ctsnacHcW3rBtYAFcu2YiYrcWags3Aac3UDcZP4PcWrnhNc44oPcTrBUshDhDh8PPbliZr4oZ65ZhmBYihkwkp71l.0Hxe07071hrhhaFhrhrhhacBrWahrhrBi54n283g5WhrFB59SFWU66.obox ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i3 1215U",
+          },
+          {
+            name: "Hexa Core (2P + 4E), 8 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel UHD Graphics",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Lenovo V15 82KDA01BIH Laptop (AMD Ryzen 3 5300U/ 8GB/ 512GB SSD/ Win11 Home)",
+        brand: " Lenovo",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/lenovo-v15-82kda01bih-laptop-amd-ryzen-3-ppd1lenn9shh",
+        image:
+          "https://cdn1.smartprix.com/rx-iHKD1sf2i-w103-h125/lenovo-v15-82kda01bi.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/lenovo-v15-82kda01bih-laptop-amd-ryzen-3-ppd1lenn9shh",
+        pricef: "33,890",
+        pricea: "36,490",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbPnQrza-JD870budHw8hrhAgTYBOr3Uh7Taus2sc254c3IyaucZctaDrcAs3ac4ZPPCcXcW6c45ocW6cFFic8Yuis8Fc55ctsnacWocrTAcUtYucTYWtUcTrBUshDhDh8r6Ab55XA6raiXhmBYihkwkp7.Ze104S-eGlRhrhhaFhrhrhhacBrWahrhrBi5TauulFtthrFB5_3KNzdsGZTPG ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "5th Gen AMD Ryzen 3 5300U",
+          },
+          {
+            name: "Quad Core, 8 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "AMD Radeon Graphics",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Asus TUF Gaming A15 2022 FA577RE-HN055WS Gaming Laptop (AMD Ryzen 7 6800H/ 16GB/ 512GB SSD/ Win11/ 4GB Graph)",
+        brand: "Asus",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/asus-tuf-gaming-a15-2022-fa577re-hn055ws-ppd1qscnrual",
+        image:
+          "https://cdn1.smartprix.com/rx-iBCHsbyMm-w103-h125/asus-tuf-gaming-a15.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/asus-tuf-gaming-a15-2022-fa577re-hn055ws-ppd1qscnrual",
+        pricef: "81,990",
+        pricea: "81,490",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbbZ3Gg8Qd_NRDV2~4D7hrhAgTYBOr3Uh7rFCFc3IyaucGciCrTcAs3ac5PUtcWauc5bcW6c45ocW6cFFic8Yuis8Fc55ctsnacHcW3rBtYAFcgr4GG3actuP448FcTrBUshDhDh8r56Pl4rPX6AZXhmBYihkwkp77KK4vK77vd.ZhrhhaFhrhrhhacBrWahrhrBi5NFAu3CrThrFB5_9JsNgd_AzsB ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.a_UqAs-v7OGX7RDdehrhArnrysuhyihDRPR4b_fHHHh-hrhhaFhrhrhhacBrWahrhrBi5NFAu3CrThrFB5CYzpPiVVDuse ",
+        croma: " ",
+        selection1: [
+          {
+            name: "6th Gen AMD Ryzen 7 6800H",
+          },
+          {
+            name: "Octa Core, 16 Threads",
+          },
+          {
+            name: "16 GB DDR5 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 GB NVIDIA GeForce RTX 3050 Ti",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Inspiron 3511 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)",
+        brand: "Dell ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/dell-inspiron-3511-laptop-11th-gen-core-i3-8gb-512gb-ppd1q30mo346",
+        image:
+          "https://cdn1.smartprix.com/rx-iVpi6VSGr-w103-h125/dell-inspiron-3511-l.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/dell-inspiron-3511-laptop-11th-gen-core-i3-8gb-512gb-ppd1q30mo346",
+        pricef: "86,990",
+        pricea: "89,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12GGlv~.a_RKPiQE8uBugqEfThrhArnrysuhyihDRPwH.X~.J4h-hrhhaFhrhrhhacBrWahrhrBi55btHgbilhrFB5nCfroBxOqplB ",
+        croma: " ",
+        selection1: [
+          {
+            name: "11th Gen Intel Core i3 1115G4",
+          },
+          {
+            name: "Dual Core, 4 Threads",
+          },
+          {
+            name: "8 GB DDR4 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel UHD Graphics",
+          },
+          {
+            name: "15.56 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Dell Inspiron 5630 Laptop (13th Gen Core i7/ 16GB/ 512GB SSD/ Win11)",
+        brand: "Dell ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/dell-inspiron-5630-laptop-13th-gen-core-i7-ppd116h4f6d9",
+        image:
+          "https://cdn1.smartprix.com/rx-ieTAlbooR-w103-h125/dell-inspiron-5630-l.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/dell-inspiron-5630-laptop-13th-gen-core-i7-ppd116h4f6d9",
+        pricef: "89,884",
+        pricea: "89,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: " https://l.smartprix.com/l?k=12GGlv~.a_RKPiQE8uBugqEfThrhArnrysuhyihDRPwH.X~.J4h-hrhhaFhrhrhhacBrWahrhrBi55btHgbilhrFB5nCfroBxOqplB",
+        croma: " ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i7 1360P",
+          },
+          {
+            name: "12 Cores (4P + 8E), 16 Threads",
+          },
+          {
+            name: "16 GB LPDDR5 RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Iris Xe Graphics",
+          },
+          {
+            name: "16 inches, 2560 x 1600 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "Infinix Zerobook 13 ZL513 Laptop (13th Gen Core i7/ 16GB/ 512GB SSD/ Win 11 Home)",
+        brand: "Infinix ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/infinix-zerobook-13-zl513-laptop-13th-gen-ppd1xmz8vpxy",
+        image:
+          "https://cdn1.smartprix.com/rx-iyB9kXdd0-w103-h125/infinix-zerobook-13.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/infinix-zerobook-13-zl513-laptop-13th-gen-ppd1xmz8vpxy",
+        pricef: "64,990",
+        pricea: "66,490",
+        pricec: " --",
+        flipkart: "https://l.smartprix.com/l?k=12_IwbPnYFYVxXvBiaVtI5axhrhAgTYBOr3Uh7YugYuYDcya3s6ssOc5ZcYuUaTcAs3acYGc5ZUtcWauc5bcW6c45ocW6cFFic8Yuis8Fc55ctsnacyT45ZcUtYucTYWtUcTrBUshDhDh8Z4AooPX46ZoZrhmBYihkwkp7vx17KSw-Jjp_hrhhaFhrhrhhacBrWahrhrBi5DnyX2BDIhrFB5prPQwPtSm7Vd ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "13th Gen Intel Core i7 13700H",
+          },
+          {
+            name: "14 Cores (6P + 8E), 20 Threads",
+          },
+          {
+            name: "16 GB LPDDR5X RAM",
+          },
+          {
+            name: "512 GB SSD",
+          },
+        ],
+        selection2: [
+          {
+            name: "Intel Integrated Iris Xe",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+          {
+            name: "1 Year Warranty",
+          },
+        ],
+      },
+      {
+        name: "MSI Thin GF63 12VF-268IN Laptop (12th Gen Core i5/ 16GB/ 1TB 256GB SSD/ Win11/ 8GB Graph)",
+        brand: "MSI ",
+        category: "Laptop",
+        url: "https://www.smartprix.com/laptops/msi-thin-gf63-12vf-268in-laptop-12th-gen-ppd1t4ikpvgj",
+        image:
+          "https://cdn1.smartprix.com/rx-iRlb5mdiu-w103-h125/msi-thin-gf63-12vf-2.jpg",
+        image_url:
+          "https://www.smartprix.com/laptops/msi-thin-gf63-12vf-268in-laptop-12th-gen-ppd1t4ikpvgj",
+        pricef: "86,990",
+        pricea: "86,490",
+        pricec: " --",
+        flipkart: " ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "12th Gen Intel Core i5 12450H",
+          },
+          {
+            name: "Octa Core (4P + 4E), 12 Threads",
+          },
+          {
+            name: "16 GB DDR4 RAM",
+          },
+          {
+            name: "1 TB Hard Disk",
+          },
+        ],
+        selection2: [
+          {
+            name: "256 GB SSD",
+          },
+          {
+            name: "8 GB NVIDIA GeForce RTX 4060",
+          },
+          {
+            name: "15.6 inches, 1920 x 1080 pixels",
+          },
+          {
+            name: "Windows 11 OS",
+          },
+        ],
+      },
+    ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

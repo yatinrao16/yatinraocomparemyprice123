@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+      <div class="brand">
+        <label for="brand-filter">Brand:</label>
+        <select id="brand-filter">
+          <option value="">All Brands</option>
+          <option value="Samsung">Samsung</option>
+          <option value="SanDisk">SanDisk</option>
+          <option value="Lexar">Lexar</option>
+        </select>
+      </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+      const products = [
+        {
+          name: "SanDisk Ultra 128GB UHS-I SDXC SD Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd11q7l0rbm",
+          image:
+            "https://cdn1.smartprix.com/rx-idpVwQuIv-w103-h125/sandisk-ultra-128gb.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd11q7l0rbm",
+          pricef: "1,219",
+            pricea: "1,490",
+          pricec: "1,490",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12H-FFAmUCZ_rm6x2sDUTOJ.hrhAA3snrh7FhYYFOcCTU3rc5oXW6cATrFFc5PcFiDAcCtFcYcFicnans3IcAr3ic5HPcn6BFc3aricFBaaicFiFiCu6c5oXWcWubYuchnch-hDobG4GHhrhhaFhrhrhhacBrWahrhrBi55NGTP36nhrFB5-rZeGq9Hkwmq ",
+          selection1: [
+            {
+              name: "SDXC SD Memory Card",
+            },
+            {
+              name: "128 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "Read Speed-Up to 140Mbps",
+            },
+          ],
+          selection2: [
+            {
+              name: "X-ray Proof, Water Proof, Heat Resistant, Shock Proof",
+            },
+            {
+              name: "5 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Ultra 64GB UHS-I SDXC SD Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd19kz4dohw",
+          image:
+            "https://cdn1.smartprix.com/rx-iBZDSEdO7-w103-h125/sandisk-ultra-64gb-u.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd19kz4dohw",
+          pricec: "659",
+            pricea: "490",
+          pricef: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " https://l.smartprix.com/l?k=125rSwVgnOIQ1KFnjS8mmtThrhAA3snrh7FhYYFOcCTU3rcbHW6cATrFFc5PcFiDAcCtFcYcFicnans3IcAr3ic5HPcn6BFc3aricFBaaicFiFiCu6cPbHWcWubYuchnch-hDobG4GZhrhhaFhrhrhhacBrWahrhrBi5lOyHist8hrFB5z-SwlA-n-Fql",
+          selection1: [
+            {
+              name: "SDXC SD Memory Card",
+            },
+            {
+              name: "64 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "Read Speed-Up to 140Mbps",
+            },
+          ],
+          selection2: [
+            {
+              name: "X-ray Proof, Water Proof, Heat Resistant, Shock Proof",
+            },
+            {
+              name: "5 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Ultra 512GB UHS-I SDXC SD Memory Card",
+           brand:" SanDisk",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1l6bueppq",
+          image:
+            "https://cdn1.smartprix.com/rx-irB4nJviu-w103-h125/sandisk-ultra-512gb.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1l6bueppq",
+          pricef: "4,879",
+            pricea: "4,490",
+          pricec: "4,879",
+          flipkart: " ",
+          amazon: " ",
+          croma: " https://l.smartprix.com/l?k=12H-FFAmUCZ_tClyVjGErjzxhrhAA3snrh7FhYYFOcCTU3rc45oW6cATrFFc5PcFiDAcCtFcYcFicnans3IcAr3ic54Pcn6BFc3aricFBaaicFiFiCuAc45oWcWubYuchnch-hDobG4GbhrhhaFhrhrhhacBrWahrhrBi5Tb6CaBBNhrFB5RQX3WidErnu7",
+          selection1: [
+            {
+              name: "SDXC SD Memory Card",
+            },
+            {
+              name: "512 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "Read Speed-Up to 150Mbps",
+            },
+          ],
+          selection2: [
+            {
+              name: "X-ray Proof, Water Proof, Heat Resistant, Shock Proof",
+            },
+            {
+              name: "1 year",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Ultra 256GB UHS-I SDXC SD Memory Card",
+           brand:" SanDisk",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1d438qod6",
+          image:
+            "https://cdn1.smartprix.com/rx-ixBTezXN0-w103-h125/sandisk-ultra-256gb.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1d438qod6",
+          pricef: "2,439",
+            pricea: "2,490",
+          pricec: "2,439",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12H-FFAmUCZ_A3nBQ7W~tUjuhrhAA3snrh7FhYYFOcCTU3rco4bW6cATrFFc5PcFiDAcCtFcYcFicnans3IcAr3ic54Pcn6BFc3aricFBaaicFiFiCuAco4bWcWubYuchnch-hDobG4G4hrhhaFhrhrhhacBrWahrhrBi5iHZXNsibhrFB5EIx91CpPeGn7 ",
+          selection1: [
+            {
+              name: "SDXC SD Memory Card",
+            },
+            {
+              name: "256 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "Read Speed-Up to 150Mbps",
+            },
+          ],
+          selection2: [
+            {
+              name: "X-ray Proof, Water Proof, Heat Resistant, Shock Proof",
+            },
+            {
+              name: "1 year",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme Pro 64GB UHS-1 200MB/s SDXC Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1fu1flyvw",
+          image:
+            "https://cdn1.smartprix.com/rx-i84i4Zx1B-w103-h125/sandisk-extreme-pro.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1fu1flyvw",
+          pricef: "1,199",
+            pricea: "1,490",
+          pricec: " 1,490",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12H-FFAmUCZ_rSizsr1Y30BdhrhAA3snrh7FhYYFOcaDU3anacB3scFiDAcbHW6cATrFFc5PcoPPn6cFcnans3IcAr3ih-hDobZoZPhrhhaFhrhrhhacBrWahrhrBi5gC5gTI28hrFB5XdXQIoJ6zBD0 ",
+          selection1: [
+            {
+              name: "SDXC Memory Card",
+            },
+            {
+              name: "64 GB",
+            },
+            {
+              name: "UHS Speed Class 3 | Video Speed Class 30 Memory Card",
+            },
+            {
+              name: "Read Speed-Up to 200MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "8.25 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk High Endurance 128GB Class 10 Micro SDXC Memory Card",
+           brand:"SanDisk",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1qyb5ftgm",
+          image:
+            "https://cdn1.smartprix.com/rx-iHk6T9rCf-w103-h125/sandisk-high-enduran.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1qyb5ftgm",
+          pricef: "1,688",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12Vi-zOf3Xwub92pfm54VtnhrhAgTYBOr3Uh7FhYYFOctYWtcauiC3ruAacAr3icnYA3sFiDAcrirBhUcirFtcArnFctsnacFaAC3YUIcArna3rFc5oXcW6cATrFFc5Pc5PPcn6cFcnans3Ih-hDh85H6lAgi5Z44HAhmBYihkjwwx_Jw..0x.ef~~hrhhaFhrhrhhacBrWahrhrBi5NI64gUWnhrFB57aJdDymPqpVH ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "128 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "Read Speed: 100 MB/s",
+            },
+            {
+              name: "Because sometimes you need to capture footage in less than ideal conditions, the SanDisk…",
+            },
+          ],
+          selection2: [
+            {
+              name: "2 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme PRO A2 512GB Class 3 UHS-I Micro SDXC Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1coq41ig6",
+          image:
+            "https://cdn1.smartprix.com/rx-i4nwGqzPO-w103-h125/sandisk-extreme-pro.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1coq41ig6",
+          pricef: "1,089",
+            pricea: "1,490",
+          pricec: "1,669",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12H-FFAmUCZ_6Hubetx0-xgdhrhAA3snrh7FhYYFOcaDU3anacB3scnYA3sFiDAc5oXW6cATrFFcZcoPPn6cFcnans3IcAr3ih-hDobZ5l4hrhhaFhrhrhhacBrWahrhrBi5U6uDDDC3hrFB5QdbKVUQE_Inn ",
+          selection1: [
+            {
+              name: "512 GB",
+            },
+            {
+              name: "class 3 Memory Card",
+            },
+            {
+              name: "Read Speed Up to 200MB/s; Write Speed Up to 140MB/s",
+            },
+            {
+              name: "8.25 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme PRO A2 128GB Class 3 UHS-I Micro SDXC Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1tbnxxxur",
+          image:
+            "https://cdn1.smartprix.com/rx-iJd0otd03-w103-h125/sandisk-extreme-pro.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1tbnxxxur",
+          pricef: "1,669",
+            pricea: "1,490",
+          pricec: "1,490",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12H-FFAmUCZ_6Hubetx0-xgdhrhAA3snrh7FhYYFOcaDU3anacB3scnYA3sFiDAc5oXW6cATrFFcZcoPPn6cFcnans3IcAr3ih-hDobZ5l4hrhhaFhrhrhhacBrWahrhrBi5U6uDDDC3hrFB5QdbKVUQE_Inn ",
+          selection1: [
+            {
+              name: "128 GB",
+            },
+            {
+              name: "class 3 Memory Card",
+            },
+            {
+              name: "Read Speed Up to 200MB/s; Write Speed Up to 140MB/s",
+            },
+            {
+              name: "8.25 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme A2 512GB Class 3 UHS-I Micro SDXC Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1p7vyj5tq",
+          image:
+            "https://cdn1.smartprix.com/rx-ilBcAiYsy-w103-h125/sandisk-extreme-a2-5.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1p7vyj5tq",
+          pricef: "6,594",
+            pricea: "6,490",
+          pricec: " 6,490",
+          flipkart: " ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12H-FFAmUCZ_TOEunu1uRGDdhrhAA3snrh7FhYYFOcaDU3anacnYA3sFiDAc45oW6cATrFFcZc5bPn6cFcnans3IcAr3ih-hDoH54PPhrhhaFhrhrhhacBrWahrhrBi5BG2IQ4UNhrFB5xQFt4KWSy9wA ",
+          selection1: [
+            {
+              name: "512 GB",
+            },
+            {
+              name: "Class 3 Memory Card",
+            },
+            {
+              name: "Read Speed Up to 190MB/s; Write Speed Up to 130MB/s",
+            },
+            {
+              name: "Water Resistant | Shock Resistant | X-ray Resistant",
+            },
+          ],
+          selection2: [
+            {
+              name: "8.25 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme A2 1TB Class 3 UHS-I Micro SDXC Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1our759sv",
+          image:
+            "https://cdn1.smartprix.com/rx-iNtRLY3D1-w103-h125/sandisk-extreme-a2-1.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1our759sv",
+          pricef: "14,994",
+            pricea: "16,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "1 TB",
+            },
+            {
+              name: "Class 3 Memory Card",
+            },
+            {
+              name: "Read Speed Up to 190MB/s; Write Speed Up to 130MB/s",
+            },
+            {
+              name: "Water Resistant | Shock Resistant | X-ray Resistant",
+            },
+          ],
+          selection2: [
+            {
+              name: "8.25 years",
+            },
+          ],
+        },
+        {
+          name: "Lexar 633x Blue Series 64GB Class A1 Micro SDXC Memory Card",
+           brand:" Lexar",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1n9hx2xsq",
+          image:
+            "https://cdn1.smartprix.com/rx-isqO0SoXY-w103-h125/lexar-633x-blue-seri.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1n9hx2xsq",
+          pricef: "729",
+            pricea: "490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Class A1 Micro SDHC/SDXC Memory Card",
+            },
+            {
+              name: "64 GB",
+            },
+            {
+              name: "Class A1 Memory Card",
+            },
+            {
+              name: "Read Speed-100MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "RoHS compliant",
+            },
+            {
+              name: "2 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme PRO 64GB Micro SDXC V90 UHS-II Class 10 Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1ilty05c9",
+          image:
+            "https://cdn1.smartprix.com/rx-ip150B5cj-w103-h125/sandisk-extreme-pro.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1ilty05c9",
+          pricef: "8,349",
+            pricea: "8,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "SDXC Version 90 Class 10",
+            },
+            {
+              name: "64 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "300 MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "3 years, Carry-In Warranty",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme Pro 32GB Class 10 V90 300 MB/s Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1bxacw5ar",
+          image:
+            "https://cdn1.smartprix.com/rx-iZKF8qPqu-w103-h125/sandisk-extreme-pro.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1bxacw5ar",
+          pricef: "4,319",
+            pricea: "4,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "SDHC Version 90 Class 10",
+            },
+            {
+              name: "32 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "300 MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "3 years, Carry-In Warranty",
+            },
+          ],
+        },
+        {
+          name: "Lexar Professional 128GB SDXC UHS-II/U3 1800x Memory Card",
+           brand:"Lexar ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1120rj2bc",
+          image:
+            "https://cdn1.smartprix.com/rx-iqeAZizaA-w103-h125/lexar-professional-1.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1120rj2bc",
+          pricef: "5,169",
+            pricea: "5,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Class 3 Memory Card",
+            },
+            {
+              name: "128 GB",
+            },
+            {
+              name: "Class 3 Memory Card",
+            },
+            {
+              name: "Write Speed- 180MB/s; Read Speed- 270MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "2 years",
+            },
+          ],
+        },
+        {
+          name: "Lexar Professional 64GB SDXC UHS-I/U3 1066x Memory Card",
+           brand:" Lexar",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1udmn5qvh",
+          image:
+            "https://cdn1.smartprix.com/rx-ioj6WoEMC-w103-h125/lexar-professional-6.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1udmn5qvh",
+          pricef: "1,399",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Class 3 Memory Card",
+            },
+            {
+              name: "64 GB",
+            },
+            {
+              name: "Class 3 Memory Card",
+            },
+            {
+              name: "Write Speed- 120MB/s; Read Speed- 160MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "Shock Proof, Vibration Proof, X-ray Proof, Temperature-Proof",
+            },
+            {
+              name: "2 years",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme PRO 128GB Micro SDXC UHS-II Class 10 Memory Card",
+           brand:"SanDisk ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd11ibz1wos",
+          image:
+            "https://cdn1.smartprix.com/rx-imDxOKCA4-w103-h125/sandisk-extreme-pro.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd11ibz1wos",
+          pricef: "15,114",
+            pricea: "16,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "SDXC",
+            },
+            {
+              name: "128 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "260 Mbps",
+            },
+          ],
+          selection2: [
+            {
+              name: "Lifetime Limited Warranty",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Extreme A2 64GB Class 3 UHS-I Micro SDXC Memory Card",
+           brand:" SanDisk",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1d9auh6ln",
+          image:
+            "https://cdn1.smartprix.com/rx-iQjNrph27-w103-h125/sandisk-extreme-a2-6.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1d9auh6ln",
+          pricef: "569",
+            pricea: "490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Memory Card",
+            },
+            {
+              name: "64 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "60 Mbps",
+            },
+          ],
+          selection2: [
+            {
+              name: "Lifetime Limited Warranty",
+            },
+          ],
+        },
+        {
+          name: "SanDisk Ultra 512GB Class 10 UHS Micro SDXC Memory Card",
+           brand:" SanDisk",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1k0kyztw7",
+          image:
+            "https://cdn1.smartprix.com/rx-iMmzgk9L6-w103-h125/sandisk-ultra-512gb.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1k0kyztw7",
+          pricef: "3,718",
+            pricea: "3,490",
+          pricec: "4,290",
+          flipkart: "https://l.smartprix.com/l?k=12Vi-zOf3a0t18vrriU1O5khrhAgTYBOr3Uh7FhYYFOcCTU3rc45ocW6cnYA3sFitAcATrFFc5Pc5oPcn6BFcnans3IcAr3ih-hDh8b54ZbZPrXP5ZbhmBYihkjwwx_d7fzKe.edfxhrhhaFhrhrhhacBrWahrhrBi5OPOIyU8GhrFB5miD~dJgOiS_k ",
+          amazon: " https://l.smartprix.com/l?k=12HVH1zAkO55m7xnxf0stomUhrhArnrysuhyihDRPXmXG0H1Sh-hrhhaFhrhrhhacBrWahrhrBi5OPOIyU8GhrFB5z2bWibe1FYw9",
+          croma: "https://l.smartprix.com/l?k=12H-FFA1T2t0ZUzQu_S56_3lhrhAA3snrh7FhYYFOcCTU3rcnYA3sFiDAc45oW6cATrFFc5Pc5oPn6cFcnans3IcAr3ih-hDoH545lhrhhaFhrhrhhacBrWahrhrBi5OPOIyU8GhrFB5_CTtDGId8l-i ",
+          selection1: [
+            {
+              name: "Memory Card",
+            },
+            {
+              name: "512 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "120 MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "10 years, Warranty",
+            },
+          ],
+        },
+        {
+          name: "Samsung Pro Endurance MB-MJ128KA/AM 128GB Memory Card",
+           brand:"Samsung ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd15u0o2pnw",
+          image:
+            "https://cdn1.smartprix.com/rx-idHlC7ssP-w103-h125/samsung-pro-enduranc.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd15u0o2pnw",
+          pricef: "2,130",
+            pricea: "2,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "Micro SD",
+            },
+            {
+              name: "128 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "100 Mb/s",
+            },
+          ],
+        },
+        {
+          name: "Samsung Pro Endurance MB-MJ128GA/AM 128GB SDXC Memory Card",
+          brand:"Samsung ",
+          category:"MemoryCard",
+          url: "https://www.smartprix.com/nf/pd/pd1rs6ptq1i",
+          image:
+            "https://cdn1.smartprix.com/rx-iRbVOGBBC-w103-h125/samsung-pro-enduranc.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1rs6ptq1i",
+          pricef: "9,350",
+            pricea: "9,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12HVH1zreY2U~uRU9WSyiBw4hrhArnrysuhyihDRPGRlXHS-4h-hrhhaFhrhrhhacBrWahrhrBi53FbBUN5YhrFB5eqWl.5kTZPIi",
+          croma: " ",
+          selection1: [
+            {
+              name: "Micro SDXC",
+            },
+            {
+              name: "128 GB",
+            },
+            {
+              name: "Class 10 Memory Card",
+            },
+            {
+              name: "100 MB/s",
+            },
+          ],
+          selection2: [
+            {
+              name: "5 years",
+            },
+          ],
+        },
+      ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

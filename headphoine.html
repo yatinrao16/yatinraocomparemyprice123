@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+  <title>Product Information</title>
+ <link rel="stylesheet" href="allcss.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <div class="websitelogo">
+        <img src="oie_png.png" alt="image" width="50px" />
+      </div>
+      <div class="websitename">
+        <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+      </div>
+    </div>
+    <div class="Search">
+      <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+      <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+       <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+    </div>
+<div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+  </header>
+  <div class="popup-background" id="popupBackground"></div>
+  <div id="suggestionContainer"></div>
+  <div class="filters">
+   
+    <div class="brand">
+      <label for="brand-filter">Brand:</label>
+      <select id="brand-filter">
+        <option value="">All Brands</option>
+        <option value="OPPO">OPPO</option>
+        <option value="Realme">Realme</option>
+        <option value="OnePlus">OnePlus</option>
+        <option value="IQOO">IQOO</option>
+        <option value="Boat">Boat</option>
+        <option value="ptron">Ptron</option>
+        <option value="Xiaomi">Xiaomi</option>
+      </select>
+    </div>
+    <div class="price">
+      <div class="flip">
+        <a href="" class="">Flipkart</a>
+        <div class="min">
+          <label for="min-pricef"></label>
+
+          <input type="number" id="min-pricef" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricef"></label>
+          <input type="number" id="max-pricef" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="amaze">
+        <a href="" class=" ">Amazon</a>
+        <div class="min">
+          <label for="min-pricea"></label>
+          <input type="number" id="min-pricea" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricea"></label>
+          <input type="number" id="max-pricea" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="crom">
+        <a href="" class=" ">Croma</a>
+        <div class="min">
+          <label for="min-pricec"></label>
+          <input type="number" id="min-pricec" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricec"></label>
+          <input type="number" id="max-pricec" placeholder="Max()" />
+        </div>
+      </div>
+    </div>
+
+    <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+  </div>
+  <div class="productlist">
+    <div id="products-container" class="products-container"></div>
+  </div>
+  <div class="comparison-popup" id="comparisonPopup">
+    <div class="comparison-content">
+      <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+      <h1>Comparison</h1>
+
+      <div class="content">
+        <a class="image">Product Image</a>
+        <a class="name">Product Name</a>
+        <a class="brand">Product Brand</a>
+        <a class="price">Product Prices</a>
+        <a class="productdetails"> Product Desc.</a>
+      </div>
+      <div class="comparison-container" id="comparison-container"></div>
+      <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+    </div>
+  </div>
+
+    <script>
+      const products = [
+
+      {
+          name: "Microsoft Xbox Series X Halo Infinite Limited Edition Gaming Console",
+          brand:" Microsoft",
+          category:"Gaming",
+          url: "https://www.smartprix.com/gaming_consoles/microsoft-xbox-series-x-halo-infinite-limited-ppd1uaxzsewr",
+          pricef: "out of stock",
+          pricea: "out of stock",
+          pricec: "out of atock",
+          image:
+            "https://cdn1.smartprix.com/rx-imAIDH2c0-w103-h125/microsoft-xbox-serie.jpg",
+          image_url:
+            "https://www.smartprix.com/gaming_consoles/microsoft-xbox-series-x-halo-infinite-limited-ppd1uaxzsewr",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "3.8 GHz, Custom AMD 7nm",
+            },
+            {
+              name: "Octa Core",
+            },
+            {
+              name: "16 GB RAM",
+            },
+            {
+              name: "1 TB Storage, SSD",
+            },
+          ],
+          selection2: [
+            {
+              name: "12 teraflops 1.825GHz (locked)",
+            },
+            {
+              name: "4K Support, HDR Support",
+            },
+            {
+              name: "Wi-Fi, Bluetooth, HDMI",
+            },
+            {
+              name: "Vibration",
+            },
+          ],
+        },
+        {
+          name: "OPPO Enco Air 3 Pro True Wireless Earbuds",
+          brand:"OPPO",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/oppo-enco-air-3-pro-true-wireless-earbuds-ppd1zbqfzz5d",
+          pricef: "4,999",
+            pricea: "4,490",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12VPm7PJK~TBXEm_.B0uUH2hrhAgTYBOr3Uh7sBBscauAscrY3ZcB3scYuiCFU3IcgY3FUcAsnBsFhsc6rn6sscgY6a3cruAcZPtcBTrIUYnacgrFUcAtr3Wac6TCaUssUtctariFaUh-hDh8ZXabaZZoZgZbbhmBYihkjww7~~ZVSEJwX7-EhrhhaFhrhrhhacBrWahrhrBi5y6Ngyy4ihrFB5y9HJqP2J4Ol7 ",
+          amazon: " https://l.smartprix.com/l?k=12HRUnrJOqkiOqFGr3tzq1IQhrhArnrysuhyihDRPwl~4XK7~h-hrhhaFhrhrhhacBrWahrhrBi5y6Ngyy4ihrFB5b2PYKWVmwx9w",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iQLfb8EAE-w103-h125/oppo-enco-air-3-pro.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/oppo-enco-air-3-pro-true-wireless-earbuds-ppd1zbqfzz5d",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Active Noise Cancellation",
+            },
+            {
+              name: "Microphone",
+            },
+            {
+              name: "20 m Range",
+            },
+            {
+              name: "10 Hz (Min) - 40 kHz (Max) Frequency Response",
+            },
+          ],
+        },
+        {
+          name: "Realme Buds Wireless 3 Neckband",
+          brand:"Realme ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/realme-buds-wireless-3-ppd1xo0h5rhs",
+          pricef: "1,799",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " https://l.smartprix.com/l?k=12VPm7PJK~TY-CA9THp-~PUhrhAgTYBOr3Uh73arTnac6CiFc8Y3aTaFFcZcZPi6cruAcZbPciaW3aacFBrUYrTcrCiYscCBUscHPctsC3FcBTrI6huc6TCaUssUtctariFaUh-hDh8iob5P4ZaPXHGohmBYihkjww7~_0-Xf-SKSZHhrhhaFhrhrhhacBrWahrhrBi5DsPt43tFhrFB5Y2T9a58Pa75_",
+          amazon: "https://l.smartprix.com/l?k=12HRUnrJOqkii~9kpo8-Q8CthrhArnrysuhyihDRPwX0-57~~h-hrhhaFhrhrhhacBrWahrhrBi5DsPt43tFhrFB5aQEmp0wTU_fs ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-ihFxXCkF0-w103-h125/realme-buds-wireless.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/realme-buds-wireless-3-ppd1xo0h5rhs",
+          selection1: [
+            {
+              name: "Neckband",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Active Noise Cancellation",
+            },
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+          ],
+        },
+        {
+          name: "boAt Airdopes Alpha True Wireless Earbuds",
+          brand:" Boat",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-airdopes-alpha-true-wireless-earbuds-ppd1riko2hjm",
+          pricef: "999",
+            pricea: "990",
+          pricec: " --",
+          flipkart: " https://l.smartprix.com/l?k=12Gmo9VTolJjQE.7ossXYyhrhAgTYBOr3Uh76srUcrY3isBaFcrTBtrcZ4ct3FcBTrI6huc5Znnci3YhCFciCrTcnYAFcauDc6arFUcnsiac6TCaUssUtctariFaUh-hDh855X5gl546X5aAhmBYihkjww71oS-jZSVSzxHhrhhaFhrhrhhacBrWahrhrBi53YOsotQnhrFB5wzXaAn_avBRV",
+          amazon: " https://l.smartprix.com/l?k=12-IYOOpYmCyIf8m~uw2JmZhrhA6srUcTYgaFUITah7hhaFh-rY3isBaFcrTBtrcU3Cac8Y3aTaFFcar36CiFhrhhaFhrhrhhacBrWahrhrBi53YOsotQnhrFB5u~2Idkgon9Pu",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iyJOgVi9s-w103-h125/boat-airdopes-alpha.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-airdopes-alpha-true-wireless-earbuds-ppd1riko2hjm",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "13 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "boAt Airdopes Max True Wireless Earbuds",
+          brand:" Boat",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-airdopes-max-true-wireless-earbuds-ppd1jk92a51x",
+          pricef: "1,199",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12HRUnrJOqXk-xlCGduv514ghrhArnrysuhyihDRPwGwpp0z-h-hrhhaFhrhrhhacBrWahrhrBi5QOlor45DhrFB5.HrEqwKwrVR~",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-is3a7Cr6c-w103-h125/boat-airdopes-max-tr.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-airdopes-max-true-wireless-earbuds-ppd1jk92a51x",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "13 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "OnePlus Nord Buds 2R True Wireless Earbuds",
+          brand:"OnePlus ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/oneplus-nord-buds-2r-true-wireless-earbuds-ppd15t83jbh5",
+          pricef: "2,199",
+            pricea: "2,490",
+          pricec: "2,199",
+          flipkart: "https://l.smartprix.com/l?k=12VPm7o~sY0D-d7UgkQyISShrhAgTYBOr3Uh7hFBTCFcus3ic6CiFco3cU3Cac8Y3aTaFFcar3car36CiFc5ocHnnci3YhCFcYB44c3rUhNc6TCaUssUtctariFaUh-hDh8o4bPgbgl65i46hmBYihkjww7~vwovS--eVEjhrhhaFhrhrhhacBrWahrhrBi54UXZQ6t4hrFB5sj1AyZ6iUQIu ",
+          amazon: " https://l.smartprix.com/l?k=12HRUnrfW8yq.k7i9QZ9-0AehrhArnrysuhyihDRPwX-RZ74Jh-hrhhaFhrhrhhacBrWahrhrBi54UXZQ6t4hrFB5lKT4728qFzBj",
+          croma: "https://l.smartprix.com/l?k=12FvrmXRREB.qi3Im.iqGYRqhrhAnIuU3rh7SarihOFh-kua1TCFh-kua1TCFcds3icRCiFco3cz3CacJY3aTaFFcYucqr3cqr36CiFc8YUtcpYAh-oZGZXoZPh-6CIhrhhaFhrhrhhacBrWahrhrBi54UXZQ6t4hrFB5.-GNnos5dbKv",
+          image:
+            "https://cdn1.smartprix.com/rx-iohUgHCUd-w103-h125/oneplus-nord-buds-2r.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/oneplus-nord-buds-2r-true-wireless-earbuds-ppd15t83jbh5",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Active Noise Cancellation",
+            },
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+          ],
+        },
+        {
+          name: "OnePlus Bullets Z3 Wireless Neckband",
+          brand:" OnePlus",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/oneplus-bullets-z3-wireless-neckband-ppd1w8betmnh",
+          pricef: "2,599",
+            pricea: "3,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-ip8260eL5-w103-h125/oneplus-bullets-z3-w.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/oneplus-bullets-z3-wireless-neckband-ppd1w8betmnh",
+          selection1: [
+            {
+              name: "Neckband",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Active Noise Cancellation",
+            },
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+          ],
+        },
+        {
+          name: "Xiaomi Buds 4 Pro",
+          brand:"Xiaomi ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/xiaomi-buds-4-pro-ppd1fnz8zhbo",
+          pricef: "15,999",
+            pricea: "16,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-im7tbBaN5-w103-h125/xiaomi-buds-4-pro.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/xiaomi-buds-4-pro-ppd1fnz8zhbo",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Active Noise Cancellation",
+            },
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 2 kHz (Max) Frequency Response",
+            },
+          ],
+        },
+        {
+          name: "boAt Airdopes Atom 81 True Wireless Earbuds",
+          brand:"Boat ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-airdopes-atom-81-true-wireless-earbuds-ppd18we03q7w",
+          pricef: "899",
+            pricea: "1,190",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12HRQduYT9r8I7JAqznjH1UnhrhA6srUcTYgaFUITah7hhaFh-rY3isBaFcrUsncX5cU3Cac8Y3aTaFFcar36CiFhrhhaFhrhrhhacBrWahrhrBi5X8aPZNG8hrFB5W~p0UlYbT-F. ",
+          amazon: "https://l.smartprix.com/l?k=125_m.HqK9G._tIilfWBt8YhrhArnrysuhyihDRPRV741~bzh-hrhhaFhrhrhhacBrWahrhrBi5X8aPZNG8hrFB5aaKCJHUu7WzG ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iVm3mzVwd-w103-h125/boat-airdopes-atom-8.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-airdopes-atom-81-true-wireless-earbuds-ppd18we03q7w",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "13 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "iQOO TWS Air Gaming True Wireless Earbuds",
+          brand:"IQOO ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/iqoo-tws-air-gaming-true-wireless-earbuds-ppd13anhd0es",
+          pricef: "1,599",
+            pricea: "Upcoming",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iWWzjCfOd-w103-h125/iqoo-tws-air-gaming.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/iqoo-tws-air-gaming-true-wireless-earbuds-ppd13anhd0es",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "Deep Bass",
+            },
+            {
+              name: "Sweat Proof",
+            },
+          ],
+        },
+        {
+          name: "OPPO Enco Buds 2 True Wireless Earbuds",
+          brand:"OPPO ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/oppo-enco-buds-2-true-wireless-earbuds-ppd1cmhx8njv",
+          pricef: "1,499",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12VPmxIrw6u5mZVJuPRFBqlhrhAgTYBOr3Uh7sBBscauAsc6CiFcocoXctsC3Fc6rUhUIcTYgaciaaBcusYFacAruAaTTrUh3c6TCaUssUtctariFaUh-hDh8ZZHHgrob45XaihmBYihkjww7SGf.fbjS7wS-hrhhaFhrhrhhacBrWahrhrBi5AntDXuQ2hrFB5fXeRFx0Oad.K ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-injFnRDpj-w103-h125/oppo-enco-buds-2-tru.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/oppo-enco-buds-2-true-wireless-earbuds-ppd1cmhx8njv",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.2",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "10 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "boAt Nirvana Ion True Wireless Earbuds",
+          brand:"Boat ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-nirvana-ion-true-wireless-earbuds-ppd1c7ybeq48",
+          pricef: "2,299",
+            pricea: "2,490",
+          pricec: "2,299",
+          flipkart: "https://l.smartprix.com/l?k=12Fe0y~mIUDuFt-zAmmd-IaohrhA6srUcTYgaFUITah7hhaFh-uY32rurch3c6TCaUssUtc8Y3aTaFFcar36CiFhrhhaFhrhrhhacBrWahrhrBi5AGI6aNHXhrFB53-V.v_YsP0DU ",
+          amazon: " https://l.smartprix.com/l?k=12HRUnrrA79fgqk~.i~xgeQQhrhArnrysuhyihDRPRJXz_--oh-hrhhaFhrhrhhacBrWahrhrBi5AGI6aNHXhrFB5G03JkfYb3s1k",
+          croma: "https://l.smartprix.com/l?k=12HRYxQVG~3dBTl4bHei3iWehrhAA3snrh76srUcuY32rurch3cU8Fcar36CiFc8YUtcau2Y3suh2UrTcusYFacAruAaTTrUh3cYBDHc8rhUc3aFYFUruUc5oPctsC3FcBTrI6huchhgch-hDoGPHZXhrhhaFhrhrhhacBrWahrhrBi5AGI6aNHXhrFB5buIbbOmu1wbz ",
+          image:
+            "https://cdn1.smartprix.com/rx-iE7VOgOjb-w103-h125/boat-nirvana-ion-tru.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-nirvana-ion-true-wireless-earbuds-ppd1c7ybeq48",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.2",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "10 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "iQOO TWS 1 True Wireless Earbuds",
+          brand:"IQOO ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/iqoo-tws-1-true-wireless-earbuds-ppd1cjzebhhc",
+          pricef: "4,199",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iaAPWCyJF-w103-h125/iqoo-tws-1-true-wire.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/iqoo-tws-1-true-wireless-earbuds-ppd1cjzebhhc",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth",
+            },
+          ],
+          selection2: [
+            {
+              name: "Active Noise Cancellation",
+            },
+            {
+              name: "Microphone",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "12.2 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "OnePlus Bullets Z2 Wireless Neckband",
+          brand:"OnePlus ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/oneplus-bullets-wireless-z2-ppd1z0feb199",
+          pricef: "1,999",
+            pricea: "1,490",
+          pricec: "1,599",
+          flipkart: "https://l.smartprix.com/l?k=12FvrmXRjuVbkngyff6C8CtxhrhAnIuU3rh7SarihOFh-kua1TCFh-kua1TCFcRCTTaUFc.ocRTCaUssUtcJY3aTaFFcYucqr3cqr3hOFc8YUtcpYAh-oZo5XHbbh-6CIhrhhaFhrhrhhacBrWahrhrBi5yPga65llhrFB5UmA36blnPjRl ",
+          amazon: "https://l.smartprix.com/l?k=12HRUnrrA7o6PZfBHtAW_V~HhrhArnrysuhyihDRPRZpdf7zJh-hrhhaFhrhrhhacBrWahrhrBi5yPga65llhrFB5pZopI7ouwT.O ",
+          croma: " https://l.smartprix.com/l?k=12HRYxQVG~6~jr-z6XaRJn_WhrhAA3snrh7hFBTCFc6CTTaUFcyocuaAO6hYc8YUtcrYcusYFacAruAaTTrUh3cYB44c8rhUc3aFYFUruUcgrFUcAtr3WhNcQryycW3aauch-hDoGZoZohrhhaFhrhrhhacBrWahrhrBi5yPga65llhrFB5dofRBFa6KvRd",
+          image:
+            "https://cdn1.smartprix.com/rx-i4dJm1ukh-w103-h125/oneplus-bullets-z2-w.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/oneplus-bullets-wireless-z2-ppd1z0feb199",
+          selection1: [
+            {
+              name: "Neckband",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.0",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "12.4 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "pTron PlayBuds 1 Pro True Wireless Earbuds",
+          brand:"pTron ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/ptron-playbuds-pro-2-true-wireless-earbuds-ppd1zvpw8lmz",
+          pricef: "1,199",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12HRUnrJOqXEwzPKBNlk5uOQhrhArnrysuhyihDRPwZfvp-Z0h-hrhhaFhrhrhhacBrWahrhrBi5y2B8XTnyhrFB5CtBKBs41xseX ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iUu7Qossc-w103-h125/ptron-playbuds-1-pro.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/ptron-playbuds-pro-2-true-wireless-earbuds-ppd1zvpw8lmz",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "13 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "JBL Tour Pro 2 True Wireless Earbuds",
+          brand:"JBL ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/jbl-tour-pro-2-true-wireless-earbuds-ppd1m2bsa76q",
+          pricef: "18,990",
+            pricea: "16,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-i1mZY3w79-w103-h125/jbl-tour-pro-2-true.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/jbl-tour-pro-2-true-wireless-earbuds-ppd1m2bsa76q",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "10 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "boAt Airdopes Kick True Wireless Earbuds",
+          brand:" Boat",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-airdopes-kick-true-wireless-earbuds-ppd148o0z4c4",
+          pricef: "1,499",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iMBntpRpU-w103-h125/boat-airdopes-kick-t.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-airdopes-kick-true-wireless-earbuds-ppd148o0z4c4",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "13 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "boAt Immortal 171 True Wireless Earbuds",
+          brand:"Boat ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-immortal-171-true-wireless-earbuds-ppd1pfeke8cj",
+          pricef: "1,499",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iXOJnkGk5-w103-h125/boat-immortal-171-tr.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-immortal-171-true-wireless-earbuds-ppd1pfeke8cj",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "40 hours Battery Life with Case",
+            },
+          ],
+        },
+        {
+          name: "boAt Airdopes Crude True Wireless Earbuds",
+          brand:"Boat ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-airdopes-crude-true-wireless-earbuds-ppd1nd0jv87h",
+          pricef: "1,499",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iYOPveu0B-w103-h125/boat-airdopes-crude.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-airdopes-crude-true-wireless-earbuds-ppd1nd0jv87h",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "10 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "boAt Airdopes 141 True Wireless Earbuds",
+          brand:"Boat ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-airdopes-141-true-wireless-earbuds-ppd11sdvwvpt",
+          pricef: "999",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iP8UNBXrc-w103-h125/boat-airdopes-141-tr.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-airdopes-141-true-wireless-earbuds-ppd11sdvwvpt",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.0",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "8 mm Driver",
+            },
+          ],
+        },
+        {
+          name: "boAt Immortal 150 True Wireless Earbuds",
+          brand:"Boat ",
+          category:"Headphone",
+          url: "https://www.smartprix.com/mobile_headphones/boat-immortal-150-true-wireless-earbuds-ppd1giwtbbmi",
+          pricef: "1,199",
+            pricea: "1,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-ilJhT4uBV-w103-h125/boat-immortal-150-tr.jpg",
+          image_url:
+            "https://www.smartprix.com/mobile_headphones/boat-immortal-150-true-wireless-earbuds-ppd1giwtbbmi",
+          selection1: [
+            {
+              name: "TWS Earbuds",
+            },
+            {
+              name: "In the Ear",
+            },
+            {
+              name: "Wireless Headphones",
+            },
+            {
+              name: "Bluetooth 5.3",
+            },
+          ],
+          selection2: [
+            {
+              name: "Microphone",
+            },
+            {
+              name: "10 m Range",
+            },
+            {
+              name: "20 Hz (Min) - 20 kHz (Max) Frequency Response",
+            },
+            {
+              name: "10 mm Driver",
+            },
+          ],
+        },
+      ];
+
+     
+    </script>
+    <script src="alljs.js"></script>
+  </body>
+</html>

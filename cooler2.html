@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+        <div class="brand">
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter">
+              <option value="">All Brands</option>
+              <option value="Crompton">Crompton</option>
+              <option value="Symphony">Symphony</option>
+              <option value="Bajaj">Bajaj</option>
+              <option value="Orient">Orient</option>
+              <option value="Novamax">Novamax</option>
+              <option value="Moonair">Moonair</option>
+              <option value="Yeti">Yeti</option>
+            </select>
+          </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+      const products = [
+      {
+        name: "Crompton Zelus DAC43 43 L Desert Air Cooler",
+        brand: "Crompton ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1c2ciagy4",
+        image:
+          "https://cdn1.smartprix.com/rx-iHGU1OKa5-w103-h125/crompton-zelus-dac43.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1c2ciagy4",
+        pricef: "6,799",
+        pricea: "7,387",
+        pricec: "",
+        flipkart: " https://l.smartprix.com/l?k=12H7JRWPXex694tG_JYw6GXehrhAgTYBOr3Uh7A3snBUsucHZcTciaFa3UcrY3cAssTa3h-hDh8iiP4ia4GaoZXPhmBYihkj9w7Rq4xbx~dSd0zhrhhaFhrhrhhacBrWahrhrBi5AoAYrWIHhrFB5QaN6ml.8qwRn",
+        amazon: "https://l.smartprix.com/l?k=12Ue.noF3eCyur3Fw~.qsgEGhrhArnrysuhyihDRPl_R5w0pxh-hrhhaFhrhrhhacBrWahrhrBi5AoAYrWIHhrFB5CN-b0Ug2Swmr ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "43 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 Way Air Deflection",
+          },
+          {
+            name: "35 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber",
+          },
+          {
+            name: "Overflow Indicator",
+          },
+        ],
+      },
+      {
+        name: "Crompton Ginie Neo 10 L Personal Air Cooler",
+        brand: " Crompton",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1bypk4pgd",
+        image:
+          "https://cdn1.smartprix.com/rx-i2aj4ldXX-w103-h125/crompton-ginie-neo-1.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1bypk4pgd",
+        pricef: "3,690",
+        pricea: "3,490",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12H7JRWoHes~vDp_3068u_TIhrhAgTYBOr3Uh7A3snBUsuc5PcTcUs8a3crY3cAssTa3h-hDh85XZaZgoogiGa4hmBYihkj9w7SV4Zqov_0o-0hrhhaFhrhrhhacBrWahrhrBi56IBOHBWihrFB54sZj0p-rGjlg ",
+        amazon: " https://l.smartprix.com/l?k=12Ue.noN2epjk6bECdQD-xF1hrhArnrysuhyihDRPXHovRXZzh-hrhhaFhrhrhhacBrWahrhrBi56IBOHBWihrFB5Qd6ytwyntBf_",
+        croma: " ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "10 L Tank Capacity",
+          },
+          {
+            name: "18.58 m² Coverage Area",
+          },
+          {
+            name: "5 Star Energy Rating",
+          },
+        ],
+        selection2: [
+          {
+            name: "2400 RPM Speed",
+          },
+          {
+            name: "4 Ways Air Deflection",
+          },
+          {
+            name: "35 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber, Auto Fill",
+          },
+        ],
+      },
+      {
+        name: "Symphony Sumo 75XL 75 L Air Cooler",
+        brand: " Symphony",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1aadc5sj6",
+        image:
+          "https://cdn1.smartprix.com/rx-iprxsDgt6-w103-h125/symphony-sumo-75xl-7.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1aadc5sj6",
+        pricef: "12,490",
+        pricea: "11,707",
+        pricec: "11,999",
+        flipkart: "https://l.smartprix.com/l?k=12Ri5QBa29n197jzwJsqq_4TAhrhAgTYBOr3Uh7FInBtsuIcG4cTciaFa3UcrY3cAssTa3h-hDh86Gl6Z5bG4bA5ZhmBYihkj9w7S4ZKjEeVeEVXhrhhaFhrhrhhacBrWahrhrBi5rriA4FQbhrFB5uZNQoTtaYHUr ",
+        amazon: "https://l.smartprix.com/l?k=12ovjU0Dn7iPvu6GHiA_X_6oJjhrhArnrysuhyihDRPR~SvHG7.h-hrhhaFhrhrhhacBrWahrhrBi5rriA4FQbhrFB5ztyKsvRr3ggs ",
+        croma: "https://l.smartprix.com/l?k=12ovjk4kONB3qTzmof2PyTgP9NhrhAA3snrh7FInBtsuIcFCnscG4cTYU3aFciaFa3UcrY3cAssTa3cYcBC3acUaAtusTsWIcG4cDTchhgch-hDooZo4ZhrhhaFhrhrhhacBrWahrhrBi5rriA4FQbhrFB5KWfEe1IRwjR9 ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "75 L Tank Capacity",
+          },
+          {
+            name: "36.98 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "40 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber",
+          },
+          {
+            name: "Empty Tank Alarm",
+          },
+          {
+            name: "Auto Louver Movement",
+          },
+        ],
+      },
+      {
+        name: "Bajaj PMH 25 DLX 24L Personal Air Cooler",
+        brand: "Bajaj ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1l8wu906f",
+        image:
+          "https://cdn1.smartprix.com/rx-i9TkBKHSl-w103-h125/bajaj-pmh-25-dlx-24l.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1l8wu906f",
+        pricef: "4,649",
+        pricea: "4,658",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12H7JRWoZTosxOZl~rO6.zdBhrhAgTYBOr3Uh76rQrQcoHcTc3ssncBa3FsurTcrY3cAssTa3h-hDh85Z6APXXbiXi4ghmBYihkj9w7R7bX1d_.fwp1hrhhaFhrhrhhacBrWahrhrBi5TX8ClPbghrFB5a6xkOomEU873 ",
+        amazon: " https://l.smartprix.com/l?k=12Ue.noN8jGngpCSRajgkuH.hrhArnrysuhyihDRPlvZ-~Z1lh-hrhhaFhrhrhhacBrWahrhrBi5TX8ClPbghrFB5XCu4V~gk-r2n",
+        croma: " ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "24 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "4 Ways Air Deflection",
+          },
+        ],
+        selection2: [
+          {
+            name: "18 ft Air Throw",
+          },
+          {
+            name: "Overflow Indicator",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+          {
+            name: "Auto Louver Movement",
+          },
+        ],
+      },
+      {
+        name: "Symphony Sumo 40XL 40 L Room Air Cooler",
+        brand: " Symphony",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1qnmfkk6j",
+        image:
+          "https://cdn1.smartprix.com/rx-i12IBGjE4-w103-h125/symphony-sumo-40xl-4.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1qnmfkk6j",
+        pricef: "",
+        pricea: "6,891",
+        pricec: "5,999",
+        flipkart: " ",
+        amazon: " https://l.smartprix.com/l?k=12Ue.noF3zRZ-Pv87oNuoC52hrhArnrysuhyihDRPR~S~d77vh-hrhhaFhrhrhhacBrWahrhrBi5NungOObQhrFB5ksYAx5VI5b5l",
+        croma: "https://l.smartprix.com/l?k=12UekxRApiQFvfPaSR6iND.qhrhAA3snrh7FInBtsuIcFCnscHPcTYU3aFcBa3FsurTcrY3cAssTa3cYcBC3acUaAtusTsWIcrAsBaZXGchhgch-hDoHXXG4hrhhaFhrhrhhacBrWahrhrBi5NungOObQhrFB5D26-aProvuI1 ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "40 L Tank Capacity",
+          },
+          {
+            name: "16.26 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter Compatible",
+          },
+          {
+            name: "Ice Chamber, Auto Drain",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Novamax Blaze 40 L Desert Air Cooler",
+        brand: "Novamax ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1agoy6tgu",
+        image:
+          "https://cdn1.smartprix.com/rx-iLdsny7MM-w103-h125/novamax-blaze-40-l-d.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1agoy6tgu",
+        pricef: "6,550",
+        pricea: "",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12H7JRWPXvyv3xNxuquFJtWphrhAgTYBOr3Uh7us2rnrDc4PcTc3ssncBa3FsurTcrY3cAssTa3h-hDh8ool6Gi44b665rhmBYihkj9w7pdpxpS-Jpd~whrhhaFhrhrhhacBrWahrhrBi5rWsIbUWChrFB5Qs~rJCIb4XN3 ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "40 L Tank Capacity",
+          },
+          {
+            name: "46.45 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter Compatible",
+          },
+          {
+            name: "1400 RPM Speed",
+          },
+          {
+            name: "4 Way Air Deflection",
+          },
+          {
+            name: "55 ft Air Throw",
+          },
+        ],
+      },
+
+      {
+        name: "Bajaj Px97 Platini 36 L Room Air Cooler",
+        brand: "Bajaj ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1x1t0d8o7",
+        image:
+          "https://cdn1.smartprix.com/rx-iIvdgfIuf-w103-h125/bajaj-px97-platini-3.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1x1t0d8o7",
+        pricef: "6,340",
+        pricea: "",
+        pricec: "",
+        flipkart: " https://l.smartprix.com/l?k=12H7JRWPXvyv3k0RK_qN6S6JhrhAgTYBOr3Uh76rQrQcZbcTc3ssncBa3FsurTcrY3cAssTa3h-hDh85aaPZHXAgAG6ohmBYihkj9w7jfRZeX-oee0ehrhhaFhrhrhhacBrWahrhrBi5D4YZCTtnhrFB5PQN21q2RdsEF",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Height: 40 cm",
+          },
+          {
+            name: "Tank Capacity: 36 L",
+          },
+          {
+            name: "Power Consumption - Cooling: 100 W",
+          },
+          {
+            name: "3 Speed Settings",
+          },
+        ],
+        selection2: [
+          {
+            name: "Type: Room/Personal",
+          },
+        ],
+      },
+      {
+        name: "MoonAir Gulmarg 65 L Desert Air Cooler",
+        brand: " Moonair",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1fnevzdcs",
+        image:
+          "https://cdn1.smartprix.com/rx-ivpV84VRo-w103-h125/moonair-gulmarg-65-l.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1fnevzdcs",
+        pricef: "4,990",
+        pricea: "",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12H7JRWPXvyvsXV67.GFmwHahrhAgTYBOr3Uh7nssurY3cb4cTciaFa3UcrY3cAssTa3h-hDh8agH6a6a4GGXG6hmBYihkj9w71RfRJdEw07xjhrhhaFhrhrhhacBrWahrhrBi5gua2yiAFhrFB5B6XoapoKSrFz ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Tower Air Cooler",
+          },
+          {
+            name: "65 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "Overflow Indicator",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+          {
+            name: "Auto Louver Movement",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Yeti Cube 40 L Tower Air Cooler",
+        brand: " Yeti",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd145dmz03l",
+        image:
+          "https://cdn1.smartprix.com/rx-ikxlb2y4X-w103-h125/yeti-cube-40-l-tower.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd145dmz03l",
+        pricef: "4,099",
+        pricea: "5,990",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12H7JRWPXex6w6._Gy1CdjDahrhAgTYBOr3Uh7IaUYcHPcTcUs8a3crY3cAssTa3h-hDh8H4l4XHaH6bribhmBYihkj9w7dZj.dxlfxbJ-hrhhaFhrhrhhacBrWahrhrBi5H4inyPZThrFB5mUg3BJJKf7IA ",
+        amazon: "https://l.smartprix.com/l?k=12Ue.noF3eCyOSbRVUtUQ-RghrhArnrysuhyihDRPRJKSdbJzh-hrhhaFhrhrhhacBrWahrhrBi5H4inyPZThrFB56Qr21PPDVlA8 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Tower Air Cooler",
+          },
+          {
+            name: "40 L Tank Capacity",
+          },
+          {
+            name: "9.29 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "2600 RPM Speed",
+          },
+          {
+            name: "16 ft Air Throw",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+          {
+            name: "Auto Louver Movement",
+          },
+        ],
+      },
+      {
+        name: "Novamax Rambo JR 75L Air Cooler",
+        brand: "Novamax",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1iyjrrlkw",
+        image:
+          "https://cdn1.smartprix.com/rx-iySa4Wuut-w103-h125/novamax-rambo-jr-75l.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1iyjrrlkw",
+        pricef: "",
+        pricea: "13,990",
+        pricec: "",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12ovjU0Dn7A9j4-qBqP7leWUo.hrhArnrysuhyihDRPRwVHxzK1h-hrhhaFhrhrhhacBrWahrhrBi5YIQ33TO8hrFB5aIxEliTT2J1l ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "75 L Tank Capacity",
+          },
+          {
+            name: "83.61 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter Compatible",
+          },
+          {
+            name: "1400 RPM Speed",
+          },
+          {
+            name: "4 Way Air Deflection Air Deflection",
+          },
+          {
+            name: "80 ft Air Throw",
+          },
+        ],
+      },
+      {
+        name: "Moonair Sumo 65 L Desert Air Cooler",
+        brand: " Moonair",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd14n0fdr8z",
+        image:
+          "https://cdn1.smartprix.com/rx-icfAhqI46-w103-h125/moonair-sumo-65-l-de.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd14n0fdr8z",
+        pricea: "5,999",
+        pricef: "",
+        pricec: "",
+        flipkart: " ",
+        amazon: "https://l.smartprix.com/l?k=12Ue.noN2eb5ZuY5bYDs8g1VhrhArnrysuhyihDRPlz_15Jedh-hrhhaFhrhrhhacBrWahrhrBi5HuPgi3XyhrFB5g-RNbptHTDtf ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "65 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "4 Ways Air Deflection",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Crompton Optimus 100 L Desert Air Cooler",
+        brand: "Crompton ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1sh7m9dgg",
+        image:
+          "https://cdn1.smartprix.com/rx-iH0xlIHhL-w103-h125/crompton-optimus-100.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1sh7m9dgg",
+        pricef: "13,899",
+        pricea: "",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12Ri5QBEdZY5tYvtGlisA-R~RhrhAgTYBOr3Uh7A3snBUsuc5PPcTciaFa3UcrY3cAssTa3cnsUs3cshCTsricB3sUaAUh3crCUsci3rYuh-hDh86H4ZHP6bo5oG6hmBYihkj9wx.HXS7f11d111hrhhaFhrhrhhacBrWahrhrBi5FtGnliWWhrFB5mjJ6TR61SP.V ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "100 L Tank Capacity",
+          },
+          {
+            name: "55.74 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "5 Star Energy Rating",
+          },
+          {
+            name: "2000 RPM Speed",
+          },
+          {
+            name: "4 Ways Air Deflection",
+          },
+          {
+            name: "50 ft Air Throw",
+          },
+        ],
+      },
+      {
+        name: "Croma AZ55 55 L Tower Air Cooler",
+        brand: " Croma",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd11hldim1b",
+        image:
+          "https://cdn1.smartprix.com/rx-i3U48wemB-w103-h125/croma-az55-55-l-towe.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd11hldim1b",
+        pricef: "",
+        pricea: "",
+        pricec: "6,990",
+        flipkart: " ",
+        amazon: " ",
+        croma: "https://l.smartprix.com/l?k=12UekxRApiKg_PkoaGKwt73thrhAA3snrh7A3snrcry44c44cTYU3aFcUs8a3crY3cAssTa3cruUYc6rAhUYrTcthFIAsn6cBricUruOcA3TA44T3AroXH4P5chhgcW3aIch-hDobb4HPhrhhaFhrhrhhacBrWahrhrBi55tTiYn56hrFB5BHn7.OX~~peF ",
+        selection1: [
+          {
+            name: "Tower Air Cooler",
+          },
+          {
+            name: "55 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "1350 RPM Speed",
+          },
+          {
+            name: "30 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber, Auto Drain",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+        ],
+      },
+      {
+        name: "Symphony Winter 80B 80L Personal Air Cooler",
+        brand: "Symphony ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1ddmjsinj",
+        image:
+          "https://cdn1.smartprix.com/rx-itv0OFlNW-w103-h125/symphony-winter-80b.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1ddmjsinj",
+        pricef: "18,490",
+        pricea: "19,999",
+        pricec: "19,999",
+        flipkart: "https://l.smartprix.com/l?k=12Ri5QBEdZY_NUiPZ3wkfPPJVhrhAgTYBOr3Uh7FInBtsuIcXPcTc3ssncBa3FsurTcrY3cAssTa3h-hDh8XXoPAAZaGHX4XhmBYihkj9w71ol.~pSR-Z11hrhhaFhrhrhhacBrWahrhrBi5iinQFYuQhrFB5rBrnn6oPPQE. ",
+        amazon: "https://l.smartprix.com/l?k=12ovjU0D8sFH-mks_yz2NmEy1BhrhArnrysuhyihDRPRe_wR470h-hrhhaFhrhrhhacBrWahrhrBi5iinQFYuQhrFB55_06_emftUuW ",
+        croma: "https://l.smartprix.com/l?k=12ovjk4kONB3qBb4YvUip-gqKnhrhAA3snrh7FInBtsuIc8YuhUcXP6cXPcTYU3aFciaFa3UcrY3cAssTa3c6TiAcUaAtusTsWIcrAsUsHP4chhgch-hDoGPPHbhrhhaFhrhrhhacBrWahrhrBi5iinQFYuQhrFB5TliJA0TyPiDy ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "80 L Tank Capacity",
+          },
+          {
+            name: "14.49 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter Compatible, Remote Control",
+          },
+          {
+            name: "4 Ways Air Deflection",
+          },
+          {
+            name: "10 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber, Auto Fill",
+          },
+        ],
+      },
+      {
+        name: "Symphony Siesta 95 XL 95 L Desert Air Cooler",
+        brand: " Symphony",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1l9j2giti",
+        image:
+          "https://cdn1.smartprix.com/rx-iS1nGWRVI-w103-h125/symphony-siesta-95-x.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1l9j2giti",
+        pricef: "11,591",
+        pricea: "12,379",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12Ri5QBEdZPJXP4vAuJmQBygbhrhAgTYBOr3Uh7FInBtsuIcl4cTciaFa3UcrY3cAssTa3h-hDh8g656a6barbo4bhmBYihkj9w7d77~dbezeKe4hrhhaFhrhrhhacBrWahrhrBi5TlQoWYUYhrFB5rSYUp1b1VG6q ",
+        amazon: "https://l.smartprix.com/l?k=12ovjU0D3_QBmFKxvbQdtmf1I_hrhArnrysuhyihDRPR_17SG_oh-hrhhaFhrhrhhacBrWahrhrBi5TlQoWYUYhrFB5ogUAsoTkftGZ ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Desert Air Cooler",
+          },
+          {
+            name: "95 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "Ice Chamber, Auto Drain",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+          {
+            name: "1 year",
+          },
+        ],
+      },
+      {
+        name: "Voltas Delite 36 L Personal Air Cooler",
+        brand: " Voltas",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd125y3jaxv",
+        image:
+          "https://cdn1.smartprix.com/rx-imG0w27E4-w103-h125/voltas-delite-36-l-p.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd125y3jaxv",
+        pricef: "5,999",
+        pricea: "",
+        pricec: "",
+        flipkart: "https://l.smartprix.com/l?k=12H7JRWPXvyvN93307Oy4FCIhrhAgTYBOr3Uh72sTUrFcZbcTc3ssncBa3FsurTcrY3cAssTa3h-hDh8iZGioZo4lgX6AhmBYihkj9w7dXVj.d1j~bfJhrhhaFhrhrhhacBrWahrhrBi5o4IZQrD2hrFB5e-WifysXJY-b",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "36 L Tank Capacity",
+          },
+          {
+            name: "33.91 m² Coverage Area",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter Compatible",
+          },
+          {
+            name: "1350 RPM Speed",
+          },
+          {
+            name: "4 Ways Air Deflection",
+          },
+          {
+            name: "23 ft Air Throw",
+          },
+        ],
+      },
+      {
+        name: "Croma AZ24 24 L Personal Air Cooler",
+        brand: "Croma ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1em77xwwi",
+        image:
+          "https://cdn1.smartprix.com/rx-ihin8p2i4-w103-h125/croma-az24-24-l-pers.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1em77xwwi",
+        pricef: "3,994",
+        pricea: "",
+        pricec: "",
+        flipkart: " ",
+        amazon: " ",
+        croma: "https://l.smartprix.com/l?k=12UekxRApiKg~Jgzmk~i6u3QhrhAA3snrh7A3snrcryoHcoHcTYU3aFcBa3FsurTcrY3cAssTa3cruUYc6rAhUYrTcthFIAsn6cBricUruOcA3TAoHT3Ar5G4PP5chhgcW3aIch-hDobb4b4hrhhaFhrhrhhacBrWahrhrBi5anGGD88YhrFB5.zoSP~N3ZyQw ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "24 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "1300 RPM Speed",
+          },
+          {
+            name: "27 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber, Auto Drain",
+          },
+          {
+            name: "Dust Filter",
+          },
+        ],
+      },
+      {
+        name: "Croma AZ40 40 L Personal Air Cooler",
+        brand: " Croma",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd1kkg47lav",
+        image:
+          "https://cdn1.smartprix.com/rx-i1MEzxY11-w103-h125/croma-az40-40-l-pers.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd1kkg47lav",
+        pricef: "",
+        pricea: "",
+        pricec: "3,994",
+        flipkart: " ",
+        amazon: " ",
+        croma: "https://l.smartprix.com/l?k=12UekxRApiKg~Jgzmk~i6u3QhrhAA3snrh7A3snrcryHPcHPcTYU3aFcBa3FsurTcrY3cAssTa3cruUYc6rAhUYrTcthFIAsn6cBricUruOcA3TAHPT3Ar5G4PP5chhgcW3aIch-hDobb4bXhrhhaFhrhrhhacBrWahrhrBi5OOWHGTr2hrFB5KjJ.RTq3ENek ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "40 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "1300 RPM Speed",
+          },
+          {
+            name: "4 Ways Air Deflection",
+          },
+          {
+            name: "27 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber, Auto Drain",
+          },
+        ],
+      },
+      {
+        name: "Orient Electric Ministorm 22L Personal Air Cooler",
+        brand: "Orient ",
+        category: "Cooler",
+        url: "https://www.smartprix.com/nf/pd/pd13wkgd6qj",
+        image:
+          "https://cdn1.smartprix.com/rx-ijLhwhR9z-w103-h125/orient-electric-prem.jpg",
+        image_url: "https://www.smartprix.com/nf/pd/pd13wkgd6qj",
+        pricef: "9,090",
+        pricea: "",
+        pricec: "",
+        flipkart: " https://l.smartprix.com/l?k=12H7JRWPXvyvDv06Z_dUwC-qhrhAgTYBOr3Uh7s3YauUcaTaAU3YAcoocTc3ssncBa3FsurTcrY3cAssTa3h-hDh8P6ZgZabA5iZ4GhmBYihkj9w7wxzdx7veXVG_hrhhaFhrhrhhacBrWahrhrBi5I3buAbIIhrFB5~BjWlo5441TI",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Room Air Cooler",
+          },
+          {
+            name: "26 L Tank Capacity",
+          },
+          {
+            name: "Honeycomb Cooling Pads",
+          },
+          {
+            name: "Inverter Compatible",
+          },
+        ],
+        selection2: [
+          {
+            name: "24.93 ft Air Throw",
+          },
+          {
+            name: "Ice Chamber",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "4 Castor Wheels",
+          },
+        ],
+      },
+    ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

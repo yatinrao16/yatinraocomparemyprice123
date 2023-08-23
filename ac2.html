@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+        <div class="brand">
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter">
+              <option value="">All Brands</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Panasonic">Panasonic</option>
+              <option value="Lloyd">Lloyd</option>
+              <option value="Voltas">Voltas</option>
+            </select>
+          </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+       const products = [
+      {
+        name: "Samsung 1.5 Ton 5 Star Inverter Split AC ( Convertible 5-in-1 Cooling Mode, 2023 ModelWhite)",
+        brand: " Samsung",
+        image:
+          "https://m.media-amazon.com/images/I/51XI2FLjJ4L._AC_UL480_FMwebp_QL65_.jpg",
+
+        pricef: "42,500",
+        pricea: "42,499",
+        pricec: "45,490",
+        flipkart:
+          "https://www.flipkart.com/samsung-convertible-5-in-1-cooling-2023-model-1-5-ton-5-star-split-inverter-ac-white/p/itm8402ff1a817ea?pid=ACNGHRDQFGRZWRK2&lid=LSTACNGHRDQFGRZWRK23E0EE3&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_5&otracker=search&otracker1=search&fm=Search&iid=201b7fa7-97bf-4d4b-8dfe-44558f4f0dda.ACNGHRDQFGRZWRK2.SEARCH&ppt=sp&ppn=sp&ssid=n8al7nba5c0000001689224092552&qH=4d224797ad2948df ",
+        amazon:
+          "https://www.amazon.in/Samsung-Inverter-Convertible-Anti-Bacteria-AR18CYNZABE/dp/B0BRQD9Y92/ref=sr_1_1?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689224299&refinements=p_85%3A10440599031%2Cp_89%3ASamsung&rnid=3837712031&rps=1&s=kitchen&sr=1-1 ",
+        croma:
+          "https://www.croma.com/samsung-5-in-1-convertible-1-5-ton-5-star-inverter-split-ac-with-copper-anti-bacterial-filter-2023-model-copper-condenser-ar18cy5zawk-/p/268799 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "Digital LED Panel Display",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+        ],
+        selection2: [
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+          {
+            name: "Self Diagnosis, Memory Feature",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Panasonic CS/CU-AU18ZKY5F 1.5 Ton 5 Star 2023 Inverter Split AC",
+        brand: "panasonic ",
+
+        image:
+          "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/b/j/y/-original-imagmxwtwz65b9hh.jpeg?q=70",
+
+        pricef: "44,490",
+        pricea: "44,490",
+        pricec: "48,990",
+        flipkart:
+          "https://www.flipkart.com/panasonic-convertible-7-in-1-additional-ai-mode-cooling-2023-model-1-5-ton-5-star-split-inverter-4-way-swing-pm-0-1-air-purification-filter-ac-wi-fi-connect-white/p/itm86cc4ea6a661d?pid=ACNGHHH2YUCDY9AZ&lid=LSTACNGHHH2YUCDY9AZ1UBDVJ&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_2_44&otracker=search&otracker1=search&fm=Search&iid=c93fcd88-ff56-4b3c-bd6e-9b293e4b6c5e.ACNGHHH2YUCDY9AZ.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          "https://www.amazon.in/Panasonic-Convertible-additional-Purification-CU-NU18YKY5W/dp/B0BRJ1973T/ref=sr_1_3?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689226031&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CVoltas%2Cp_72%3A1318476031&rnid=1318475031&rps=1&s=kitchen&sr=1-3 ",
+        croma:
+          "https://www.croma.com/panasonic-7-in-1-convertible-1-5-ton-5-star-inverter-split-smart-ac-with-amazon-alexa-and-google-assistant-support-2023-model-copper-condenser-cs-cu-au18zky5f-/p/267632 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "636 CFM circulation",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Lloyd GLS18I3LWSBA 1.5 Ton 5 Star 2023 Inverter Split AC",
+        brand: "Lloyd ",
+        image:
+          "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/o/q/d/-original-imagmgxyanshq6ph.jpeg?q=70",
+
+        pricef: "39,990",
+        pricea: "",
+        pricec: "40,990",
+        flipkart:
+          "https://www.flipkart.com/lloyd-1-5-ton-5-star-split-inverter-ac-white/p/itmcba912275a7d5?pid=ACNGHTGZFZSTDZTH&lid=LSTACNGHTGZFZSTDZTHIENWRE&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_3_50&otracker=search&otracker1=search&fm=Search&iid=cd06548b-ca4c-4774-a326-d0ce8d076b0e.ACNGHTGZFZSTDZTH.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon: " ",
+        croma:
+          "https://www.croma.com/lloyd-5-in-1-convertible-1-5-ton-5-star-inverter-split-smart-ac-with-rapid-cooling-function-copper-condenser-gls18i5fwrba-/p/271917 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Panasonic CS/CU-TU18ZKYF 1.5 Ton 5 Star Inverter Split AC",
+        brand: "Panasonic ",
+        image:
+          "https://m.media-amazon.com/images/I/61ZzcguzB1L._AC_UL480_QL65_.jpg",
+
+        pricef: "43,990",
+        pricea: "44,490 ",
+        pricec: "48,990",
+        flipkart:
+          "https://www.flipkart.com/panasonic-1-5-ton-5-star-split-inverter-ac-wi-fi-connect-white/p/itmf721189c2f0f3?pid=ACNGGX9SRUTPUXZB&lid=LSTACNGGX9SRUTPUXZBSX0ARK&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_18&otracker=search&otracker1=search&fm=Search&iid=14a76be6-7d60-469b-a3de-a6b3fe9c233b.ACNGGX9SRUTPUXZB.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          "https://www.amazon.in/Panasonic-Convertible-additional-Purification-CU-NU18YKY5W/dp/B0BRJ1973T/ref=sr_1_3?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689227089&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CVoltas%2Cp_72%3A1318476031&rnid=1318475031&rps=1&s=kitchen&sr=1-3 ",
+        croma:
+          "https://www.croma.com/panasonic-7-in-1-convertible-1-5-ton-5-star-inverter-split-smart-ac-with-amazon-alexa-and-google-assistant-support-2023-model-copper-condenser-cs-cu-au18zky5f-/p/267632 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "636 CFM circulation",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Samsung 2 Ton 3 Star Wi-fi Enabled Inverter Split AC (Copper, Convertible 5-in-1 Cooling Mode, Anti-bacterial Filter, 2023 Model",
+        brand: " Samsung",
+        image:
+          "https://rukminim2.flixcart.com/image/832/832/xif0q/air-conditioner-new/o/r/3/-original-imagjg73bcfrykkr.jpeg?q=70",
+
+        pricef: "42,999",
+        pricea: " --",
+        pricec: " --",
+        flipkart:
+          "https://www.flipkart.com/samsung-convertible-2-ton-3-star-split-inverter-ac-white/p/itm00fcb447f80a2?pid=ACNGGXDFJEYCMAGF&lid=LSTACNGGXDFJEYCMAGF8MPMP1&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_4&otracker=search&otracker1=search&fm=Search&iid=af060930-6fc0-46d0-9051-58fa1e65a410.ACNGGXDFJEYCMAGF.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Voltas 185V Vectra Eden 1.5 Ton 5 Star 2023 Inverter Split AC",
+        brand: "Voltas ",
+        image:
+          "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1681973528/Croma%20Assets/Large%20Appliances/Air%20Conditioner/Images/271917_b943e9.png?tr=w-400",
+
+        pricef: "",
+        pricea: "",
+        pricec: "43,490",
+        flipkart: " ",
+        amazon: " ",
+        croma:
+          " https://www.croma.com/voltas-vertis-5-in-1-convertible-1-5-ton-5-star-inverter-split-ac-with-4-way-swing-2023-model-copper-condenser-185v-vertis-emerald-marvel-/p/268337 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+        ],
+        selection2: [
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing",
+          },
+          {
+            name: "Night Glow Buttons",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Voltas 183V Vertis Emerald 1.5 Ton 3 star 2022 Inverter Split AC",
+        brand: "Voltas ",
+        image:
+          "https://m.media-amazon.com/images/I/41LlSc9YsnL._AC_UL480_QL65_.jpg",
+
+        pricef: "32,790",
+        pricea: "36,999",
+        pricec: "-- ",
+        flipkart:
+          "https://www.flipkart.com/voltas-1-5-ton-3-star-split-inverter-ac-white/p/itm7301f4e668090?pid=ACNGHUNGZZKVQZPG&lid=LSTACNGHUNGZZKVQZPG0I1YQW&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_17&otracker=search&otracker1=search&fm=Search&iid=af060930-6fc0-46d0-9051-58fa1e65a410.ACNGHUNGZZKVQZPG.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          " https://www.amazon.in/Voltas-Anti-dust-183-Vectra-Elegant/dp/B0BQR2WMHX/ref=sr_1_26?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689228170&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-26",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+        ],
+        selection2: [
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+          {
+            name: "Night Glow Buttons",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Daikin FTKM50UV 1.5 Ton 5 Star Inverter Split AC",
+        brand: "Daikin ",
+        image:
+          "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1686049465/Croma%20Assets/Large%20Appliances/Air%20Conditioner/Images/267584_wa9ybr.png?tr=w-400",
+
+        pricef: "45,590",
+        pricea: "45,490",
+        pricec: "45,390",
+        flipkart:
+          "https://www.flipkart.com/daikin-1-5-ton-5-star-split-inverter-ac-pm-2-5-filter-white/p/itm84f4a6e1680e9?pid=ACNGB2YAZEB79THV&lid=LSTACNGB2YAZEB79THVLGIGWW&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_2_27&otracker=search&otracker1=search&fm=Search&iid=003b5753-fdf2-446c-8cdf-281bd51268a1.ACNGB2YAZEB79THV.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          "https://www.amazon.in/Daikin-Inverter-Copper-Filter-FTKR50U/dp/B09R4RSN2K/ref=sr_1_30?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689228170&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-30 ",
+        croma:
+          "https://www.croma.com/daikin-standard-1-5-ton-5-star-inverter-split-ac-copper-condenser-dust-filter-mtkm50u-/p/267584",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+        ],
+        selection2: [
+          {
+            name: "Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing",
+          },
+          {
+            name: "Night Glow Buttons",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "LG RS-Q19YNZE 1.5 Ton 5 Star 2023 AI Dual Inverter Split AC",
+        brand: "LG ",
+        image:
+          "https://cdn1.smartprix.com/rx-indAKIIdN-w103-h125/lg-rs-q19ynze-1-5-to.jpg",
+
+        pricef: "46,990",
+        pricea: "44,490 ",
+        pricec: "44,990",
+        flipkart:
+          "https://www.flipkart.com/lg-ai-convertible-6-in-1-cooling-2023-model-1-5-ton-5-star-split-dual-inverter-plasmaster-ionizer-4-way-swing-hd-filter-anti-virus-protection-ac-white/p/itm7f1d36abb0bb7?pid=ACNGHBX44K9BPFXH&lid=LSTACNGHBX44K9BPFXH9YNKXE&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_2_45&otracker=search&otracker1=search&fm=Search&iid=003b5753-fdf2-446c-8cdf-281bd51268a1.ACNGHBX44K9BPFXH.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          " https://www.amazon.in/LG-Convertible-Anti-Virus-Protection-RS-Q19YNZE/dp/B0BQ3MXML8/ref=sr_1_1?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689228886&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-1",
+        croma:
+          "https://www.croma.com/lg-6-in-1-convertible-1-5-ton-5-star-ai-dual-inverter-split-ac-with-4-way-swing-2023-model-copper-condenser-rs-q19anze-/p/267022",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "Magic Display Panel Display",
+          },
+          {
+            name: "4 Ways Swing circulation",
+          },
+        ],
+        selection2: [
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Blue Star IA318DKU 1.5 Ton 4 Star 2022 Inverter Split AC",
+        brand: " BlueStar",
+        image:
+          "https://m.media-amazon.com/images/I/61wRWlWadGL._AC_UL480_QL65_.jpg",
+
+        pricef: " --",
+        pricea: "40,990",
+        pricec: " --",
+        flipkart: " ",
+        amazon:
+          "https://www.amazon.in/Blue-Star-Convertible-Stabalizer-IA418DNU/dp/B0BQQZFRB1/ref=sr_1_25?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689228962&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-25 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Panasonic CS/CU-KU18ZKYF1 1.5 Ton 3 Star 2023 Inverter Split AC",
+        brand: " Panasonic",
+        image:
+          "https://m.media-amazon.com/images/I/61PWjQFDtQL._AC_UL480_QL65_.jpg",
+
+        pricef: "36,490",
+        pricea: "36,490",
+        pricec: " --",
+        flipkart:
+          "https://www.flipkart.com/panasonic-convertible-7-in-1-additional-ai-mode-cooling-2023-model-1-5-ton-3-star-split-inverter-2-way-swing-pm-0-1-air-purification-filter-ac-wi-fi-connect-white/p/itm690062d929416?pid=ACNGHHH24J62PGNV&lid=LSTACNGHHH24J62PGNVODJGXG&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_2&otracker=search&otracker1=search&fm=Search&iid=88ce9e60-64f2-45ad-a461-732b3df05a31.ACNGHHH24J62PGNV.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          "https://www.amazon.in/Panasonic-Convertible-additional-Purification-CU-SU18YKYWT/dp/B0BRJ5QH8G/ref=sr_1_3?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689229281&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-3 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Voltas 185V Vertis Emerald 1.5 Ton 5 Star 2023 Inverter Split AC",
+        brand: "Voltas ",
+        image:
+          "https://m.media-amazon.com/images/I/61a-F8WxWOL._AC_UL480_QL65_.jpg",
+
+        pricef: "39,490",
+        pricea: "42,999",
+        pricec: "43,490",
+        flipkart:
+          " https://www.flipkart.com/voltas-1-5-ton-5-star-split-inverter-ac-white/p/itmf88b19b31614f?pid=ACNGHUNGHUAGZFUZ&lid=LSTACNGHUNGHUAGZFUZL6FNSG&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_6&otracker=search&otracker1=search&fm=Search&iid=88ce9e60-64f2-45ad-a461-732b3df05a31.ACNGHUNGHUAGZFUZ.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df",
+        amazon: " ",
+        croma:
+          "https://www.croma.com/voltas-vertis-5-in-1-convertible-1-5-ton-5-star-inverter-split-ac-with-4-way-swing-2023-model-copper-condenser-185v-vertis-emerald-marvel-/p/268337",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+        ],
+        selection2: [
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+          {
+            name: "Self Diagnosis",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "LG RS-Q18TNXE 1.5 Ton 3 Star 2023 Inverter Split AC",
+        brand: "LG ",
+        image:
+          "https://m.media-amazon.com/images/I/51JFb7FctDL._AC_UL480_QL65_.jpg",
+
+        pricef: "35,990",
+        pricea: "37,990",
+        pricec: " --",
+        flipkart:
+          "https://www.flipkart.com/lg-convertible-5-in-1-cooling-2023-model-1-5-ton-3-star-split-dual-inverter-2-way-swing-hd-filter-anti-virus-protection-ac-white/p/itma67e516a27f2e?pid=ACNGN26NG4PQN87H&lid=LSTACNGN26NG4PQN87HW0G8DX&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_14&otracker=search&otracker1=search&fm=Search&iid=88ce9e60-64f2-45ad-a461-732b3df05a31.ACNGN26NG4PQN87H.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          " https://www.amazon.in/LG-Convertible-Anti-Virus-Protection-RS-Q19JNXE/dp/B0BQ3MJ1TG/ref=sr_1_2?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689229675&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-2",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "2 way swing circulation",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Blue Star IC518VNU 1.5 Ton 5 Star 2023 Inverter Split AC",
+        brand: "BlueStar ",
+        image:
+          "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1681449127/Croma%20Assets/Large%20Appliances/Air%20Conditioner/Images/268951_0_uqydbk.png?tr=w-400",
+
+        pricef: "43,980",
+        pricea: " --",
+        pricec: "43,990",
+        flipkart:
+          "https://www.flipkart.com/blue-star-convertible-5-1-cooling-2023-model-1-5-ton-split-inverter-multi-sensors-stabalizer-free-operation-self-diagnosis-dust-filter-ac-white/p/itm466ad0792a882?pid=ACNGMA7HFKHFHU59&lid=LSTACNGMA7HFKHFHU59N6MLML&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_15&otracker=search&otracker1=search&fm=Search&iid=88ce9e60-64f2-45ad-a461-732b3df05a31.ACNGMA7HFKHFHU59.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon: " ",
+        croma:
+          "https://www.croma.com/blue-star-5-in-1-convertible-1-5-ton-5-star-inverter-split-ac-with-self-diagnosis-2023-model-copper-condenser-ic518rnu-/p/268951 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "610 CFM circulation",
+          },
+        ],
+        selection2: [
+          {
+            name: "Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Panasonic CS/CU-NU18YKY5W 1.5 Ton 5 Star 2023 Inverter Split AC",
+        brand: " Panasonic",
+        image:
+          "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1681448933/Croma%20Assets/Large%20Appliances/Air%20Conditioner/Images/267632_0_zzvgeg.png?tr=w-400",
+
+        pricef: " --",
+        pricea: "25,499",
+        pricec: "48,990",
+        flipkart:
+          " https://www.flipkart.com/panasonic-1-5-ton-5-star-split-inverter-ac-wi-fi-connect-white/p/itmf721189c2f0f3?pid=ACNGGX9SRUTPUXZB&lid=LSTACNGGX9SRUTPUXZBSX0ARK&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_1_18&otracker=search&otracker1=search&fm=Search&iid=88ce9e60-64f2-45ad-a461-732b3df05a31.ACNGGX9SRUTPUXZB.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df",
+        amazon: " ",
+        croma:
+          "https://www.croma.com/panasonic-7-in-1-convertible-1-5-ton-5-star-inverter-split-smart-ac-with-amazon-alexa-and-google-assistant-support-2023-model-copper-condenser-cs-cu-au18zky5f-/p/267632 ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "636 CFM circulation",
+          },
+        ],
+        selection2: [
+          {
+            name: "Dehumidification, Inverter",
+          },
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Daikin FTKL50UV16V-3 1.5 Ton 3 Star 2022 Inverter Split AC",
+        brand: "Daikin ",
+        image:
+          "https://m.media-amazon.com/images/I/410ih0eEMfL._AC_UL480_QL65_.jpg",
+
+        pricef: "36,999",
+        pricea: "38,650",
+        pricec: " --",
+        flipkart:
+          "https://www.flipkart.com/daikin-1-5-ton-3-star-split-inverter-ac-white/p/itm2fe43ae92925f?pid=ACNGNDAFXSMPFARS&lid=LSTACNGNDAFXSMPFARSJAZBFF&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&spotlightTagId=BestsellerId_j9e%2Fabm%2Fc54&srno=s_1_10&otracker=search&otracker1=search&fm=Search&iid=88ce9e60-64f2-45ad-a461-732b3df05a31.ACNGNDAFXSMPFARS.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          " https://www.amazon.in/Daikin-Fixed-Copper-Filter-FTL50U/dp/B09R4QLDWK/ref=sr_1_20?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689230310&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-20",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "Airflow Rate (CFM): 572 circulation",
+          },
+          {
+            name: "Dehumidification, Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing, Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Blue Star IA318DNU 1.5 Ton 3 Star Inverter Split AC",
+        brand: "BlueStar ",
+        image:
+          "https://rukminim2.flixcart.com/image/312/312/xif0q/air-conditioner-new/l/s/o/-original-imagph33hz7uptah.jpeg?q=70",
+
+        pricef: "35,990",
+        pricea: " --",
+        pricec: "-- ",
+        flipkart:
+          "https://www.flipkart.com/blue-star-convertible-5-1-cooling-2023-model-1-5-ton-3-split-inverter-multi-sensors-stabalizer-free-operation-self-diagnosis-dust-filter-ac-white/p/itmc933e20076387?pid=ACNGHBGY3ZUJY9RA&lid=LSTACNGHBGY3ZUJY9RAWFZIT3&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_3_58&otracker=search&otracker1=search&fm=Search&iid=2b79733b-6af2-455a-8600-d773de575c73.ACNGHBGY3ZUJY9RA.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon: " ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "LED Panel Display",
+          },
+          {
+            name: "Inverter",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control, Timer",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Air Swing",
+          },
+        ],
+        category: "AC",
+      },
+      {
+        name: "Daikin FTL50UV16U3/V3 1.5 Ton 3 Star Split AC",
+        brand: " Daikin",
+        image:
+          "https://rukminim2.flixcart.com/image/312/312/l0y6qa80/air-conditioner-new/j/a/t/-original-imagcmh2wk4pyqkh.jpeg?q=70",
+
+        pricef: "36,790",
+        pricea: "36,490",
+        pricec: " --",
+        flipkart:
+          "https://www.flipkart.com/daikin-1-5-ton-3-star-split-ac-white/p/itmd06d09119f14f?pid=ACNGCBREQTGKSZQD&lid=LSTACNGCBREQTGKSZQDMYICRF&marketplace=FLIPKART&q=Air+Conditioners&store=j9e%2Fabm%2Fc54&srno=s_3_63&otracker=search&otracker1=search&fm=Search&iid=2b79733b-6af2-455a-8600-d773de575c73.ACNGCBREQTGKSZQD.SEARCH&ppt=sp&ppn=sp&qH=4d224797ad2948df ",
+        amazon:
+          "https://www.amazon.in/Daikin-Inverter-Copper-Filter-FTKY50UV/dp/B0BXB8W2BM/ref=sr_1_5?pd_rd_r=87dda701-6df2-435b-a151-5e8933049165&pd_rd_w=w2Xrv&pd_rd_wg=31aIK&pf_rd_p=0fbbbf4f-28a3-416c-9a01-83f0ac37db7a&pf_rd_r=MNKT0C08Z6H8KPTP3X6J&qid=1689230878&refinements=p_85%3A10440599031%2Cp_89%3ABLUE+STAR%7CDaikin%7CLG%7CLloyd%7CPanasonic%7CSamsung%7CVoltas%2Cp_72%3A1318476031&rnid=3837712031&rps=1&s=kitchen&sr=1-5 ",
+        croma: " ",
+        selection1: [
+          {
+            name: "Split AC",
+          },
+          {
+            name: "1.5 Ton Capacity",
+          },
+          {
+            name: "586 CFM circulation",
+          },
+          {
+            name: "Dehumidification",
+          },
+        ],
+        selection2: [
+          {
+            name: "Remote Control",
+          },
+          {
+            name: "Turbo Mode, Sleep Mode",
+          },
+          {
+            name: "Dust Filter",
+          },
+          {
+            name: "Auto Restart",
+          },
+        ],
+        category: "AC",
+      },
+    ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

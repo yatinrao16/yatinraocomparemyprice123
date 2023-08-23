@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"> -->
+
+
+    <style>
+        * {
+            background-color: rgba(248, 249, 250);
+        }
+
+        .comparisonbody {
+            display: none;
+            top: 3rem;
+            margin: 3rem;
+            height: 46rem;
+            width: 80rem;
+            border: 1px solid black;
+        }
+
+        .comparisonbody h1 a i {
+            cursor: pointer;
+            position: absolute;
+            color: #fff;
+            background-color: transparent;
+            top: 3.5rem;
+            left: 79rem;
+            height: 1.6rem;
+            padding-bottom: 10px;
+        }
+
+
+        .comparisonbody h1 {
+            text-align: center;
+            background-color: black;
+            color: white;
+            height: 3rem;
+            padding-top: 10px;
+            margin: 0;
+        }
+
+        .upperbox p {
+            left: 1rem;
+            width: 15rem;
+            position: relative;
+        }
+
+        .upperbox th {
+            position: relative;
+            width: 15rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg-light1 {
+            height: 15rem;
+            position: relative;
+        }
+
+        .bg-light1 td {
+            position: relative;
+
+        }
+
+        .bg-light1 img {
+            margin-left: 6rem;
+            height: 14rem;
+           width: 10rem;
+            position: relative;
+            object-fit: contain;
+        }
+
+        .bg-light1 th {
+            text-align: start;
+            position: relative;
+            margin-left: 0;
+            text-align: center;
+            align-items: center;
+            padding-left: 2rem;
+        }
+
+
+        .bg-light {
+            height: 3rem;
+            position: relative;
+
+        }
+
+        .bg-light th {
+            text-align: start;
+            padding-left: 5rem;
+            display: flex;
+            padding-top: 15px;
+            height: 2rem;
+        }
+
+
+        .bg-light2 {
+            height: 4rem;
+
+        }
+
+        #desc1,
+        #desc2,
+        #brand1,
+        #brand2,
+        #batt1,
+        #batt2,
+        #war1,
+        #war2,
+        #pricea1,
+        #pricea2,
+        #pricef1,
+        #pricef2,
+        #pricec1,
+        #pricec2,
+        #proce1,
+        #proce2,
+        #dis1,
+        #dis2 {
+            text-align: start;
+            position: relative;
+        }
+
+        #pricef1 {
+            position: absolute;
+            display: flex;
+            z-index: 1;
+            top: 1px;
+            background-color: rgb(250, 218, 88);
+            background-image: url(flipkart1.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            margin-left: 15.2rem;
+            padding-top: 10px;
+           width: 7rem;
+            padding-left: 1.2rem;
+            height: 1.5rem;
+            border-radius: 20px;
+            left: 3rem;
+            font-weight: bolder;
+            font-size: 1rem;
+            color: rgba(2, 2, 245, 0.772);
+            justify-content: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+
+        }
+
+        #pricea1 {
+            position: absolute;
+            background-image: url(amazon1.jpg);
+            background-repeat: no-repeat;
+            background-color: #de530f;
+            background-size: contain;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            display: flex;
+            z-index: 1;
+            top: 1px;
+            margin-left: 15.2rem;
+            padding-top: 10px;
+           width: 7rem;
+            padding-left: 1.2rem;
+            height: 1.5rem;
+            left: 13rem;
+            border-radius: 20px;
+            font-weight: bolder;
+            font-size: 1rem;
+            color: #fff;
+            justify-content: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+
+        }
+
+        #pricec1 {
+            position: absolute;
+            display: flex;
+            background-image: url(croma1.jpg);
+            background-repeat: no-repeat;
+            background-color: black;
+            background-size: contain;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            top: 1px;
+            margin-left: 15.2rem;
+            padding-top: 10px;
+           width: 7rem;
+            padding-left: 1.2rem;
+            height: 1.5rem;
+            left: 23rem;
+            border-radius: 20px;
+            font-weight: bolder;
+            font-size: 1rem;
+            color: #fff;
+            justify-content: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+
+        }
+
+        #pricef2 {
+            position: absolute;
+            display: flex;
+            background-color: rgb(250, 218, 88);
+            background-image: url(flipkart1.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            top: 1px;
+            margin-left: 15.4rem;
+            padding-top: 10px;
+           width: 7rem;
+            padding-left: 1.2rem;
+            height: 1.5rem;
+            left: 35rem;
+            border-radius: 20px;
+            font-weight: bolder;
+            font-size: 1rem;
+            color: rgba(2, 2, 245, 0.772);
+            justify-content: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+        }
+        #pricea2 {
+            position: absolute;
+            display: flex;
+            background-image: url(amazon1.jpg);
+            background-repeat: no-repeat;
+            background-color: #de530f;
+            background-size: contain;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            top: 1px;
+            margin-left: 15.4rem;
+            padding-top: 10px;
+           width: 7rem;
+            padding-left: 1.2rem;
+            height: 1.5rem;
+            left: 45rem;
+            border-radius: 20px;
+            font-weight: bolder;
+            font-size: 1rem;
+            color: #fff;
+            justify-content: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+        }
+        #pricec2 {
+            position: absolute;
+            display: flex;
+            background-image: url(croma1.jpg);
+            background-repeat: no-repeat;
+            background-color: black;
+            background-size: contain;
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            top: 1px;
+            margin-left: 15.4rem;
+            padding-top: 10px;
+            width: 7rem;
+            padding-left: 1.2rem;
+            height: 1.5rem;
+            left: 55rem;
+            border-radius: 20px;
+            font-weight: bolder;
+            font-size: 1rem;
+            color: #fff;
+            justify-content: center;
+            padding-bottom: 2px;
+            cursor: pointer;
+           
+        }
+
+        .formcontrol {
+            position: relative;
+            display: flex;
+            height: 1.7rem;
+            font-size: 1rem;
+            z-index: 1;
+            margin-left: 2rem;
+        }
+
+        .colu {
+            position: relative;
+            width: 80rem;
+            display: flex;
+        }
+
+        #select1,
+        #select2 {
+            position: relative;
+            width: 30rem;
+
+        }
+
+        .table tr td {
+            position: relative;
+            justify-content: center;
+            padding-left: 5rem;
+        }
+    </style>
+    <title>Title</title>
+</head>
+
+<body>
+    <button type="button" onclick="openback()">search</button>
+    <div class="comparisonbody" id="comparisonbody">
+
+        <h1><a href="" id="backButton" onclick="goneback()"><i class="uis uis-multiply"></i></a>Mobile Comparison</h1>
+
+        <div class="container1">
+            <div class="colu">
+
+                <table class="table">
+                    <tr class="upperbox">
+                        <th>
+                            <p>Select Product</p>
+                        </th>
+
+                        <th>
+                            <select class="formcontrol" id="select1" onchange="item1(this.value)">
+                                <option value="0">-- Select Anyone --</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="formcontrol" id="select2" onchange="item2(this.value)">
+                                <option value="0">-- Select Anyone --</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr class="bg-light1">
+                        <th>Product Image</th>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                                id="img1" alt=" ">
+
+                        </td>
+                        <td>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                                id="img2" alt=" ">
+
+                        </td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th>Product Price</th>
+                        <td id="pricef1" href=""></td>
+                        <td id="pricea1" href=""></td>
+                        <td id="pricec1" href=""></td>
+                        <td id="pricef2" href=""></td>
+                        <td id="pricea2" href=""></td>
+                        <td id="pricec2" href=""></td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th>Camera</th>
+                        <td id="desc1"></td>
+                        <td id="desc2"></td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th>Storage</th>
+                        <td id="brand1"></td>
+                        <td id="brand2"></td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th>Battery</th>
+                        <td id="batt1"></td>
+                        <td id="batt2"></td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th>Processor</th>
+                        <td id="proce1"></td>
+                        <td id="proce2"></td>
+                    </tr>
+                    <tr class="bg-light">
+                        <th>Display</th>
+                        <td id="dis1"></td>
+                        <td id="dis2"></td>
+                    </tr>
+                    <tr class="bg-light bg-light2">
+                        <th>Warranty</th>
+                        <td id="war1"></td>
+                        <td id="war2"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js "></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js "></script> -->
+</body>
+
+</html>
+
+<script src="data.js"></script>
+<script>
+    for (var i = 1; i < product.length; i++) {
+        document.getElementById("select1").innerHTML += `
+        <option value="${i}">${product[i].name}</option>
+        `;
+        document.getElementById("select2").innerHTML += `
+        <option value="${i}">${product[i].name}</option>
+        `;
+    }
+
+    function item1(a) {
+        var select2 = document.getElementById("select1").value;
+        if (a != select1) {
+            document.getElementById("img1").src = product[a].image
+            document.getElementById("pricef1").innerHTML = "Rs." + product[a].pricef
+            document.getElementById("pricef1").href = product[a].flipkart
+            document.getElementById("pricea1").innerHTML = "Rs." + product[a].pricea
+            document.getElementById("pricea1").href = product[a].amazon
+            document.getElementById("pricec1").innerHTML = "Rs." + product[a].pricec
+            document.getElementById("pricec1").href = product[a].croma
+            document.getElementById("desc1").innerHTML = product[a].camera
+            document.getElementById("brand1").innerHTML = product[a].storage
+            document.getElementById("proce1").innerHTML = product[a].processor
+            document.getElementById("war1").innerHTML = product[a].warranty
+            document.getElementById("dis1").innerHTML = product[a].display
+            document.getElementById("batt1").innerHTML = product[a].battery
+
+        } else {
+            document.getElementById("select1").selectedIndex = 0;
+            document.getElementById("img1").src = product[0].image
+            document.getElementById("price1").innerHTML = ""
+            document.getElementById("desc1").innerHTML = ""
+            document.getElementById("brand1").innerHTML = ""
+
+        }
+    }
+
+    function item2(a) {
+        var select1 = document.getElementById("select2").value;
+        if (a != select2) {
+            document.getElementById("img2").src = product[a].image
+            document.getElementById("pricef2").innerHTML = "Rs." + product[a].pricef
+            document.getElementById("pricef2").href = product[a].flipkart
+            document.getElementById("pricea2").innerHTML = "Rs." + product[a].pricea
+            document.getElementById("pricea2").href = product[a].amazon
+            document.getElementById("pricec2").innerHTML = "Rs." + product[a].pricec
+            document.getElementById("pricec2").href = product[a].croma
+            document.getElementById("desc2").innerHTML = product[a].camera
+            document.getElementById("brand2").innerHTML = product[a].storage
+            document.getElementById("proce2").innerHTML = product[a].processor
+            document.getElementById("war2").innerHTML = product[a].warranty
+            document.getElementById("dis2").innerHTML = product[a].display
+            document.getElementById("batt2").innerHTML = product[a].battery
+
+        } else {
+            document.getElementById("select2").selectedIndex = 0;
+            document.getElementById("img2").src = product[0].image
+            document.getElementById("price2").innerHTML = ""
+            document.getElementById("desc2").innerHTML = ''
+            document.getElementById("brand2").innerHTML = ""
+
+        }
+    }
+
+    function openback() {
+      const comparisonPopup = document.getElementById('comparisonbody');
+      comparisonPopup.style.display = 'block';
+      document.getElementById('popupBackground').style.display = 'block';
+    }
+
+    function closeback() {
+      const comparisonPopup = document.getElementById('comparisonbody');
+      comparisonPopup.style.display = 'none';
+      document.getElementById('popupBackground').style.display = 'none';
+    }
+
+    function goneback() {
+      closeback();
+    }
+</script>
+<!-- <script src="main.js"></script> -->

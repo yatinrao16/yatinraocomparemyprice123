@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+  <title>Product Information</title>
+  <link rel="stylesheet" href="allcss.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <div class="websitelogo">
+        <img src="oie_png.png" alt="image" width="50px" />
+      </div>
+      <div class="websitename">
+        <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+      </div>
+    </div>
+    <div class="Search">
+      <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+       <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+    </div>
+<div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+  </header>
+  <div id="suggestionContainer"></div>
+  <div class="popup-background" id="popupBackground"></div>
+  <div class="filters">
+    
+    <div class="brand">
+      <label for="brand-filter">Brand:</label>
+      <select id="brand-filter">
+        <option value="">All Brands</option>
+        <option value="Synology">Synology</option>
+        <option value="WD">WD</option>
+        <option value="Consistent">Consistent</option>
+        <option value="Seagate">Seagate</option>
+        <option value="Consistent">Consistent</option>
+        <option value="Toshiba">Toshiba</option>
+      </select>
+    </div>
+    <div class="price">
+      <div class="flip">
+        <a href="" class="">Flipkart</a>
+        <div class="min">
+          <label for="min-pricef"></label>
+
+          <input type="number" id="min-pricef" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricef"></label>
+          <input type="number" id="max-pricef" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="amaze">
+        <a href="" class=" ">Amazon</a>
+        <div class="min">
+          <label for="min-pricea"></label>
+          <input type="number" id="min-pricea" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricea"></label>
+          <input type="number" id="max-pricea" placeholder="Max()" />
+        </div>
+      </div>
+      <div class="crom">
+        <a href="" class=" ">Croma</a>
+        <div class="min">
+          <label for="min-pricec"></label>
+          <input type="number" id="min-pricec" placeholder="Min()" />
+        </div>
+        <h5>To</h5>
+        <div class="max">
+          <label for="max-pricec"></label>
+          <input type="number" id="max-pricec" placeholder="Max()" />
+        </div>
+      </div>
+    </div>
+
+    <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+  </div>
+  <div class="productlist">
+    <div id="products-container" class="products-container"></div>
+  </div>
+  <div class="comparison-popup" id="comparisonPopup">
+    <div class="comparison-content">
+      <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+      <h1>Comparison</h1>
+
+      <div class="content">
+        <a class="image">Product Image</a>
+        <a class="name">Product Name</a>
+        <a class="brand">Product Brand</a>
+        <a class="price">Product Prices</a>
+        <a class="productdetails"> Product Desc.</a>
+      </div>
+      <div class="comparison-container" id="comparison-container"></div>
+      <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+    </div>
+  </div>
+    <script>
+      const products = [
+        {
+          name: "Synology DiskStation DS223j Network Attached Storage Drive",
+          brand:"Synology ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1o7qr8481",
+          image:
+            "https://cdn1.smartprix.com/rx-iQAsVNAx7-w103-h125/synology-diskstation.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1o7qr8481",
+          pricef: "34,999",
+            pricea: "upcoming",
+          pricec: "upcoming",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "NAS",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Warranty",
+            },
+            {
+              name: "880 g",
+            },
+          ],
+          selection2: [
+            {
+              name: "Wired",
+            },
+            {
+              name: "Cloud Backup",
+            },
+            {
+              name: "CPU Model: Realtek RTD1619B",
+            },
+            {
+              name: "AES-NI Encryption",
+            },
+          ],
+        },
+        {
+          name: "Synology DiskStation DS224 Plus Network Attached Storage Drive",
+          brand:"Synology ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1b64ga5c8",
+          image:
+            "https://cdn1.smartprix.com/rx-itA6YV3er-w103-h125/synology-diskstation.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1b64ga5c8",
+          pricef: "47,999",
+          pricea: "upcoming",
+          pricec: "upcoming",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "NAS",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Warranty",
+            },
+            {
+              name: "2180 g",
+            },
+          ],
+          selection2: [
+            {
+              name: "Wired",
+            },
+            {
+              name: "Cloud Backup",
+            },
+            {
+              name: "CPU Model: Intel Celeron J4125",
+            },
+            {
+              name: "AES-NI Encryption",
+            },
+          ],
+        },
+        {
+          name: "Synology DiskStation DS423 Plus Network Attached Storage Drive",
+          brand:" Synology",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd10m9daf6r",
+          image:
+            "https://cdn1.smartprix.com/rx-icJvAh1LV-w103-h125/synology-diskstation.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd10m9daf6r",
+          pricea: "50,935",
+            pricef: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12VTfKzYQ_XVTTgf7J_kIQNVXhrhArnrysuhyihDRPR_pel7xxh-hrhhaFhrhrhhacBrWahrhrBi5Pnlirgb3hrFB54SaRdTdnPmSG ",
+          croma: " ",
+          selection1: [
+            {
+              name: "NAS",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Warranty",
+            },
+            {
+              name: "2180 g",
+            },
+          ],
+          selection2: [
+            {
+              name: "Wired",
+            },
+            {
+              name: "Cloud Backup",
+            },
+            {
+              name: "CPU Model: Intel Celeron J4125",
+            },
+            {
+              name: "AES-NI Encryption",
+            },
+          ],
+        },
+        {
+          name: "Synology DiskStation DS723 Plus Network Attached Storage Drive",
+          brand:"Synology ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1pg07ppwz",
+          image:
+            "https://cdn1.smartprix.com/rx-iNvpvd8MZ-w103-h125/synology-diskstation.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1pg07ppwz",
+          pricea: "51,711",
+            pricef: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12VTfKzYQ_XVnlZA2O6.WS05XhrhArnrysuhyihDRPRvdl-5-dh-hrhhaFhrhrhhacBrWahrhrBi5BWPGBB8yhrFB55Psj0B5dFXaT ",
+          croma: " ",
+          selection1: [
+            {
+              name: "NAS",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Warranty",
+            },
+            {
+              name: "1510 g",
+            },
+          ],
+          selection2: [
+            {
+              name: "Wired",
+            },
+            {
+              name: "Cloud Backup",
+            },
+            {
+              name: "CPU Model: AMD Ryzen R1600",
+            },
+            {
+              name: "AES-NI Encryption",
+            },
+          ],
+        },
+        {
+          name: "Synology DiskStation DS923 Plus Network Attached Storage Drive",
+          brand:"Synology ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1yotdhp1o",
+          image:
+            "https://cdn1.smartprix.com/rx-icrEYpjel-w103-h125/synology-diskstation.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1yotdhp1o",
+          pricea: "62,027",
+            pricef: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12VTfKzYQ_XVFxEeOrlEsrdJfhrhArnrysuhyihDRPRpGVKdbvh-hrhhaFhrhrhhacBrWahrhrBi5IsUitB5shrFB5.j5XjVvWfpSX",
+          croma: " ",
+          selection1: [
+            {
+              name: "NAS",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Warranty",
+            },
+            {
+              name: "2240 g",
+            },
+          ],
+          selection2: [
+            {
+              name: "Wired",
+            },
+            {
+              name: "Cloud Backup",
+            },
+            {
+              name: "CPU Model: AMD Ryzen R1600",
+            },
+            {
+              name: "AES-NI Encryption",
+            },
+          ],
+        },
+        {
+          name: "WD My Cloud Expert 24 TB External Hard Disk Drive",
+          brand:"WD ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd102ex0yik",
+          image:
+            "https://cdn1.smartprix.com/rx-iTL86gYIV-w103-h125/wd-my-cloud-expert-2.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd102ex0yik",
+          pricef: "1,19 ,000",
+            pricea: "1,19 ,000",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12HpHSZSmmJpn6-aS4rDSdtRUFhrhAgTYBOr3Uh78icnIcATsCicaDBa3UcoHcU6caDhUurTctr3iciYFOci3Y2actiicFUs3rWah-hDh8gAWACoDyZuZ3ahmBYihkjwwxw7wEH7KHKKKzhrhhaFhrhrhhacBrWahrhrBi5PoaDPIYOhrFB5br9t4miwuE36 ",
+          amazon: " ",
+          croma: "https://l.smartprix.com/l?k=12Crq6V-nvFdjSE_XYqH5stzJShrhAA3snrh78aFhUuciYWYUrTcnIcATsCicoHcU6cCF6cZcPcuaU8s3OcrUUrAtaicFUs3rWacQ6sicarFIcFaUcCBc8i68yaPoHPO6Oc6aFuchnch-hDoHPGX4hrhhaFhrhrhhacBrWahrhrBi5PoaDPIYOhrFB52KSBJVBDfFP0 ",
+          selection1: [
+            {
+              name: "24 TB Storage",
+            },
+            {
+              name: "115 Mbps (USB 3.0)",
+            },
+            {
+              name: "USB 1.1",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "3.5 Inches Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "7780 g",
+            },
+            {
+              name: "Cloud Backup",
+            },
+          ],
+        },
+        {
+          name: "Consistent 1TB External Hard Drive",
+          brand:"Consistent ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd19iwcu9ux",
+          image:
+            "https://cdn1.smartprix.com/rx-igeEz9Glt-w103-h125/consistent-1tb-exter.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd19iwcu9ux",
+          pricea: "7,000",
+            pricef:  "",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12GAp4W41XNDZ5RvEzmz4RazhrhArnrysuhyihDRPX~pSm7x.h-hrhhaFhrhrhhacBrWahrhrBi5lY8AClCDhrFB5JBrjWBBJZC0n ",
+          croma: " ",
+          selection1: [
+            {
+              name: "1 TB Storage",
+            },
+            {
+              name: "eSATA",
+            },
+            {
+              name: "External Hard Drive",
+            },
+            {
+              name: "2.5 Inches Hard Drive",
+            },
+          ],
+          selection2: [
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "220 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name: "Hybrid Drive",
+            },
+          ],
+        },
+        {
+          name: "Seagate Backup Plus Hub 14TB External Hard Drive",
+          brand:"Seagate ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1you1bpi1",
+          image:
+            "https://cdn1.smartprix.com/rx-iYblFa1Sl-w103-h125/seagate-backup-plus.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1you1bpi1",
+          pricea: "25,499",
+            pricef:  "",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12VTfKzYQ_XV021fDe~bQAdYYhrhArnrysuhyihDRPXGvoGS~0h-hrhhaFhrhrhhacBrWahrhrBi5IsC56BY5hrFB58saZ.ok.vYCr ",
+          croma: " ",
+          selection1: [
+            {
+              name: "14 TB Storage",
+            },
+            {
+              name: "USB 3.0",
+            },
+            {
+              name: "External Hard Drive",
+            },
+            {
+              name: "2.5 Inches Hard Drive",
+            },
+          ],
+          selection2: [
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "1060 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name: "Data Recovery Services",
+            },
+          ],
+        },
+        {
+          name: "Seagate Ultra Touch 5TB External Hard Drive",
+          brand:" Seagate",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1xiif7zpn",
+          image:
+            "https://cdn1.smartprix.com/rx-iJ2pp5aKw-w103-h125/seagate-ultra-touch.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1xiif7zpn",
+          pricea: "14,499",
+            pricef: "16,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " https://l.smartprix.com/l?k=12VTfKzYQ_XV13k.ePpkBQbfuhrhArnrysuhyihDRPRdHK_vwbh-hrhhaFhrhrhhacBrWahrhrBi5DYYgGyBuhrFB5O9QjCTAB0EiI",
+          croma: " ",
+          selection1: [
+            {
+              name: "5 TB Storage",
+            },
+            {
+              name: "USB 3.0",
+            },
+            {
+              name: "HDD",
+            },
+            {
+              name: "2.5 Inches Hard Drive",
+            },
+          ],
+          selection2: [
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "267 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name:"5400 RPM",
+            },
+          ],
+        },
+        {
+          name: "Toshiba Canvio Partner USB-C 1 TB External Hard Disk Drive",
+          brand:" Toshiba",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1lxfrwtjv",
+          image:
+            "https://cdn1.smartprix.com/rx-iSTCjh8TN-w103-h125/toshiba-canvio-partn.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1lxfrwtjv",
+          pricef: "3,750",
+            pricea: "3,490",
+          pricec: " --",
+          flipkart: " https://l.smartprix.com/l?k=12rm6ob5wwryi5Z2p~COi7khrhAgTYBOr3Uh7UsFtY6rcAru2YscBr3Uua3cCF6cAc5cU6caDhUurTctr3iciYFOci3Y2actiih-hDh8aZHbbAiH6ZGlghmBYihkjww7dREzKREHHR7lhrhhaFhrhrhhacBrWahrhrBi5TDg38UQ2hrFB5ZsNXk~jHXUJN",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "1 TB Storage",
+            },
+            {
+              name: "5 Gbps (USB 3.0)",
+            },
+            {
+              name: "Plastic Body",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Portable Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "149 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+        {
+          name: "Seagate One Touch Hub 6TB External Hard Drive (STLC6000400)",
+          brand:"Seagate ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1st2zr9sa",
+          image:
+            "https://cdn1.smartprix.com/rx-iWQvqkAR1-w103-h125/seagate-one-touch-hu.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1st2zr9sa",
+          pricef: "11,999",
+            pricea: "11,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: "https://l.smartprix.com/l?k=12VTfKzYTzllSzj-oIVtqlZyPhrhArnrysuhyihDRPlZJ_Vpmeh-hrhhaFhrhrhhacBrWahrhrBi5FUoy3lFrhrFB55oIf5gEziJzF ",
+          croma: "https://l.smartprix.com/l?k=1256H38uazwEs13HHP1ugdYTIhrhAgTYBOr3Uh7FarWrUacbcU6caDhUurTctr3iciYFOci3Y2actiih-hDh84i5rZrGolg5rXhmBYihkjww7SG_HwJqX4E-phrhhaFhrhrhhacBrWahrhrBi5FUoy3lFrhrFB5j-3IQ5vQnDvX ",
+          selection1: [
+            {
+              name: "6 TB Storage",
+            },
+            {
+              name: "HDD",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+          ],
+          selection2: [
+            {
+              name: "1240 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name: "5400 RPM",
+            },
+            {
+              name: "Seagate",
+            },
+          ],
+        },
+        {
+          name: "Seagate Game Drive 4TB External Hard Drive (STLL4000200)",
+          brand:"Seagate ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1ydqmqd4a",
+          image:
+            "https://cdn1.smartprix.com/rx-ik8vRCpxX-w103-h125/seagate-game-drive-4.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1ydqmqd4a",
+          pricef: "9,699",
+            pricea: "7,490",
+          pricec: " --",
+          flipkart: "https://l.smartprix.com/l?k=12rm6ob5weaQKDBewHHJWOPhrhAgTYBOr3Uh7FarWrUacHcU6caDhUurTctr3iciYFOci3Y2actiih-hDh8GblXHHPiAXX5HhmBYihkjww7SG_HVzo.7jSzhrhhaFhrhrhhacBrWahrhrBi5IiNnNiHrhrFB5fGRPKBdWfgjv ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "4 TB Storage",
+            },
+            {
+              name: "120 Mbps (USB 3.0)",
+            },
+            {
+              name: "5400 RPM Body",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Portable Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "249 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+        {
+          name: "Seagate One Touch Hub 8TB External Hard Drive (STLC8000400)",
+          brand:"Seagate ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1vjkclfqe",
+          image:
+            "https://cdn1.smartprix.com/rx-inBKloU5T-w103-h125/seagate-one-touch-hu.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1vjkclfqe",
+          pricef: "15,999",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "8 TB Storage",
+            },
+            {
+              name: "HDD",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+          ],
+          selection2: [
+            {
+              name: "1240 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name: "Seagate",
+            },
+          ],
+        },
+        {
+          name: "Seagate One Touch Hub 10TB External Hard Drive (STLC10000400)",
+          brand:" Seagate",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1j8y0lq25",
+          image:
+            "https://cdn1.smartprix.com/rx-i0WYQhzPG-w103-h125/seagate-one-touch-hu.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1j8y0lq25",
+          pricef: "20,999",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "10 TB Storage",
+            },
+            {
+              name: "160 Mbps (USB 2.0)",
+            },
+            {
+              name: "HDD",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+          ],
+          selection2: [
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "1240 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name: "7200 RPM",
+            },
+          ],
+        },
+        {
+          name: "Seagate One Touch Hub 18TB External Hard Drive (STLC18000402)",
+          brand:"Seagate ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd187dbfncv",
+          image:
+            "https://cdn1.smartprix.com/rx-iEqXga28o-w103-h125/seagate-one-touch-hu.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd187dbfncv",
+          pricef: "35,499",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "18 TB Storage",
+            },
+            {
+              name: "120 Mbps (USB 2.0)",
+            },
+            {
+              name: "HDD",
+            },
+            {
+              name: "Desktop Hard Drive",
+            },
+          ],
+          selection2: [
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "1240 g",
+            },
+            {
+              name: "Wired",
+            },
+            {
+              name: "5400 RPM",
+            },
+          ],
+        },
+        {
+          name: "Toshiba Canvio Partner USB-C 2 TB External Hard Disk Drive",
+          brand:"Toshiba ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1gl38zvgj",
+          image:
+            "https://cdn1.smartprix.com/rx-iC4YmuPpZ-w103-h125/toshiba-canvio-partn.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1gl38zvgj",
+          pricef: "4,454",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "2 TB Storage",
+            },
+            {
+              name: "5 Gbps (USB 2.0)",
+            },
+            {
+              name: "Plastic Body",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Portable Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "149 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+        {
+          name: "Toshiba Canvio Partner USB-C 4 TB External Hard Disk Drive",
+          brand:"Toshiba ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd15lxiuqeu",
+          image:
+            "https://cdn1.smartprix.com/rx-ix4j78kkq-w103-h125/toshiba-canvio-partn.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd15lxiuqeu",
+          pricef: "7,589",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "4 TB Storage",
+            },
+            {
+              name: "5 Gbps (USB 2.0)",
+            },
+            {
+              name: "Plastic Body",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Portable Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "217.5 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+        {
+          name: "Toshiba Canvio Advance 4TB USB 3.0 External Hard Disk Drive",
+          brand:" Toshiba ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd10wby9bhe",
+          image:
+            "https://cdn1.smartprix.com/rx-iq0WJI0AI-w103-h125/toshiba-canvio-advan.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd10wby9bhe",
+          pricef: "7,599",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "4 TB Storage",
+            },
+            {
+              name: "5 Gbps (USB 2.0)",
+            },
+            {
+              name: "Textured Finish Body",
+            },
+            {
+              name: "External Hard Disk Drive",
+            },
+          ],
+          selection2: [
+            {
+              name: "2.5 Inches Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "218 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+        {
+          name: "Toshiba Canvio Partner 2TB External Hard Disk Drive",
+          brand:"Toshiba ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd1nsejowl0",
+          image:
+            "https://cdn1.smartprix.com/rx-iBVfStlD1-w103-h125/toshiba-canvio-partn.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1nsejowl0",
+          pricef: "5,304",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "2 GB Storage",
+            },
+            {
+              name: "5 Gbps (USB 2.0)",
+            },
+            {
+              name: "Plastic Body",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Portable Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "149 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+        {
+          name: "Toshiba Canvio Partner 1TB External Hard Disk Drive",
+          brand:"Toshiba ",
+          category:"Harddisk",
+          url: "https://www.smartprix.com/nf/pd/pd133js03q9",
+          image:
+            "https://cdn1.smartprix.com/rx-iInMJsb1T-w103-h125/toshiba-canvio-partn.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd133js03q9",
+          pricef: "3,903",
+            pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          selection1: [
+            {
+              name: "1 TB Storage",
+            },
+            {
+              name: "5 Gbps (USB 2.0)",
+            },
+            {
+              name: "Plastic Body",
+            },
+            {
+              name: "HDD",
+            },
+          ],
+          selection2: [
+            {
+              name: "Portable Hard Drive",
+            },
+            {
+              name: "Manufacturer Warranty",
+            },
+            {
+              name: "149 g",
+            },
+            {
+              name: "Wired",
+            },
+          ],
+        },
+      ]; 
+    </script>
+    <script src="alljs.js"></script>
+  </body>
+</html>

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="oie_png.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="oie_png.png" />
+        <link rel="stylesheet" href="allcss.css">
+    <title>E-commerce Site</title>
+      
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="websitelogo">
+                <img src="oie_png.png" alt="image" width="50px" />
+            </div>
+            <div class="websitename">
+                <img src="COMP__2_-removebg (1).png" alt="" width="300px" height="60px" />
+            </div>
+        </div>
+        <div class="Search">
+            <input type="text" id="search-input" class="searchbar" placeholder="search for products,brands & more.." />
+            <button id="clearButton" class="clear-button" onclick="clearSearchInput()"><a>&#10005;</a></button>
+            <button id="search" class="button"><i class="fas fa-search"></i>.</button>
+        </div>
+        <div id="menu-icon" class="menu-icon"><i id="menuicon1" class="uil uil-filter"></i><a>Filters</a></div>
+    </header>
+    <div id="suggestionContainer"></div>
+    <div class="popup-background" id="popupBackground"></div>
+    <div class="filters">
+
+      <div class="brand">
+        <label for="brand-filter">Brand:</label>
+        <select id="brand-filter">
+          <option value="">All Brands</option>
+          <option value="Samsung">Samsung</option>
+          <option value="ViewSonic">ViewSonic</option>
+          <option value="LG">LG</option>
+          <option value="MarQ">MarQ</option>
+          <option value="Acer">Acer</option>
+          <option value="Lenovo">Lenovo</option>
+          <option value="Asus">Asus</option>
+          <option value="Philips">Philips</option>
+          <option value="Frontech">Frontech</option>
+        </select>
+      </div>
+        <div class="price">
+            <div class="flip">
+                <a href="" class="">Flipkart</a>
+                <div class="min">
+                    <label for="min-pricef"></label>
+
+                    <input type="number" id="min-pricef" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricef"></label>
+                    <input type="number" id="max-pricef" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="amaze">
+                <a href="" class=" ">Amazon</a>
+                <div class="min">
+                    <label for="min-pricea"></label>
+                    <input type="number" id="min-pricea" placeholder="Min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricea"></label>
+                    <input type="number" id="max-pricea" placeholder="Max()" />
+                </div>
+            </div>
+            <div class="crom">
+                <a href="" class=" ">Croma</a>
+                <div class="min">
+                    <label for="min-pricec"></label>
+                    <input type="number" id="min-pricec" placeholder="min()" />
+                </div>
+                <h5>To</h5>
+                <div class="max">
+                    <label for="max-pricec"></label>
+                    <input type="number" id="max-pricec" placeholder="Max()" />
+                </div>
+            </div>
+        </div>
+
+        <button id="apply-filter-btn">Apply Filters</button>
+        <button id="removeFiltersBtn">Remove Filters</button>
+    </div>
+    <div class="productlist">
+        <div id="products-container" class="products-container"></div>
+    </div>
+    <div class="comparison-popup" id="comparisonPopup">
+        <div class="comparison-content">
+          <span class="close-button" onclick="closeComparisonPopup()">&times;</span>
+          <h1>Comparison</h1>
+    
+          <div class="content">
+            <a class="image">Product Image</a>
+            <a class="name">Product Name</a>
+            <a class="brand">Product Brand</a>
+            <a class="price">Product Prices</a>
+            <a class="productdetails"> Product Desc.</a>
+          </div>
+          <div class="comparison-container" id="comparison-container"></div>
+          <button class="remove-button" onclick="removeComparisonPopup()"><i class="uis uis-arrow-circle-left"></i></button>
+        </div>
+      </div>
+    <script>
+       const products = [
+        {
+          name: "Samsung ViewFinity S9 27 inch 5K OLED Gaming Monitor",
+          brand:"Samsung ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/monitors/samsung-viewfinity-s9-5k-oled-gaming-monitor-ppd1s0gyq1bf",
+          pricef: "1,19 ,000",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iLeZY2s57-w103-h125/samsung-viewfinity-s.jpg",
+          image_url:
+            "https://www.smartprix.com/monitors/samsung-viewfinity-s9-5k-oled-gaming-monitor-ppd1s0gyq1bf",
+          selection1: [
+            {
+              name: "27 in Display",
+            },
+            {
+              name: "5120 x 2880 pixels (5K UHD+)",
+            },
+            {
+              name: "Flat Monitor",
+            },
+            {
+              name: "2 x USB Type-C",
+            },
+          ],
+          selection2: [
+            {
+              name: "Display Port",
+            },
+            {
+              name: "HDMI",
+            },
+            {
+              name: "Anti Glare",
+            },
+            {
+              name: "1 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "Acer SA241Y H 23.8 Inch Full HD Monitor",
+          brand:"Acer ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1coj137a2",
+          pricef: "8,149",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-izDFVt3u8-w103-h125/acer-sa241y-h-23-8-i.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1coj137a2",
+          selection1: [
+            {
+              name: "23.8 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1 x HDMI v1.4",
+            },
+            {
+              name: "3 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "Acer EK240Y H 23.8 inch Full HD Monitor",
+          brand:"Acer ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1nkqqfi8a",
+          pricef: "6,793",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iPEJTJQaX-w103-h125/acer-ek240y-h-23-8-i.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1nkqqfi8a",
+          selection1: [
+            {
+              name: "23.8 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1 x HDMI v1.4",
+            },
+            {
+              name: "3 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "LG UltraFine 27BQ85U 27 inch Ultra HD 4K Monitor",
+          brand:"LG ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd117cc76tc",
+          pricef: "49,999",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iCs5XsMgW-w103-h125/lg-ultrafine-27bq85u.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd117cc76tc",
+          selection1: [
+            {
+              name: "27 in Display",
+            },
+            {
+              name: "3840 x 2160 pixels (4K UHD)",
+            },
+            {
+              name: "1.07 B Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1400:1 (Min), 2000:1 (Typ) Contrast Ratio",
+            },
+            {
+              name: "1 x USB Type-C",
+            },
+            {
+              name: "1 x Display Port v1.4",
+            },
+            {
+              name: "2 x HDMI v2.0",
+            },
+          ],
+        },
+        {
+          name: "LG 43SQ700 43 inch Ultra HD 4K Smart Monitor",
+          brand:"LG ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1kk6vscyw",
+          pricef: "36,999",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iPkYyWD0B-w103-h125/lg-43sq700-43-inch-u.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1kk6vscyw",
+          selection1: [
+            {
+              name: "43 in Display",
+            },
+            {
+              name: "3840 x 2160 pixels (4K UHD)",
+            },
+            {
+              name: "Flat Monitor",
+            },
+            {
+              name: "1200:1 Contrast Ratio",
+            },
+          ],
+          selection2: [
+            {
+              name: "1 x USB Type-C",
+            },
+            {
+              name: "2 x HDMI",
+            },
+            {
+              name: "Wi-Fi",
+            },
+            {
+              name: "Bluetooth",
+            },
+          ],
+        },
+        {
+          name: "LG 27QN850 27 inch Quad HD Monitor",
+          brand:"LG ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1ffsawqqz",
+          pricef: "25,899",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iMNzvngdw-w103-h125/lg-27qn850-27-inch-q.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1ffsawqqz",
+          selection1: [
+            {
+              name: "27 in Display",
+            },
+            {
+              name: "2560 x 1440 pixels (QHD)",
+            },
+            {
+              name: "Flat Monitor",
+            },
+            {
+              name: "1000:1 Contrast Ratio",
+            },
+          ],
+          selection2: [
+            {
+              name: "1 x USB Type-C",
+            },
+            {
+              name: "1 x Display Port",
+            },
+            {
+              name: "2 x HDMI",
+            },
+            {
+              name: "Plug And Play",
+            },
+          ],
+        },
+        {
+          name: "ViewSonic VA2432-H-W 24 Inch Full HD Monitor",
+          brand:"ViewSonic ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1ilurs2q8",
+          pricef: "21,800",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-ilG0Ohu0Y-w103-h125/viewsonic-va2432-h-w.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1ilurs2q8",
+          selection1: [
+            {
+              name: "24 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1300:1 (Typ), 50M:1 (Dynamic) Contrast Ratio",
+            },
+            {
+              name: "1 x HDMI v1.4",
+            },
+            {
+              name: "Anti Glare",
+            },
+            {
+              name: "5 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "Asus TUF Gaming VG34VQL3A 34 inch WQHD Monitor",
+          brand:"Asus ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd16c2df822",
+          pricef: "35,000",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iOmbOLu3x-w103-h125/asus-tuf-gaming-vg34.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd16c2df822",
+          selection1: [
+            {
+              name: "34 in Display",
+            },
+            {
+              name: "3440 x 1440 pixels (WQHD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Curved Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "4000:1 Contrast Ratio",
+            },
+            {
+              name: "2 x Display Port v1.4",
+            },
+            {
+              name: "2 x HDMI v2.0",
+            },
+            {
+              name: "Anti Glare",
+            },
+          ],
+        },
+        {
+          name: "HP E273D 27 inch Full HD Monitor",
+          brand:"HP ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1po6fzp3c",
+          pricef: "47,700",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-i1tDzu4jd-w103-h125/hp-e273d-27-inch-ful.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1po6fzp3c",
+          selection1: [
+            {
+              name: "27 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1000:1 Contrast Ratio",
+            },
+            {
+              name: "1 x USB Type-C",
+            },
+            {
+              name: "1 x Display Port v1.2",
+            },
+            {
+              name: "HDMI",
+            },
+          ],
+        },
+        {
+          name: "Samsung ViewFinity S5 LS34C500GAW 34 inch WQHD Monitor",
+          brand:" Samsung",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1cw1nmz7e",
+          pricef: "33,899",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iov0eev0y-w103-h125/samsung-viewfinity-s.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1cw1nmz7e",
+          selection1: [
+            {
+              name: "34 in Display",
+            },
+            {
+              name: "3440 x 1440 pixels (WQHD)",
+            },
+            {
+              name: "1.07 B Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "3000:1 Contrast Ratio",
+            },
+            {
+              name: "1 x Display Port v1.2",
+            },
+            {
+              name: "2 x HDMI v2.0",
+            },
+            {
+              name: "3 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "Samsung LS24C310EAW 24 inch Full HD Monitor",
+          brand:"Samsung ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd19gjw0uvz",
+          pricef: "8,999",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-izpPprMc0-w103-h125/samsung-ls24c310eaw.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd19gjw0uvz",
+          selection1: [
+            {
+              name: "24 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1000:1 Contrast Ratio",
+            },
+            {
+              name: "1 x HDMI v1.4",
+            },
+            {
+              name: "3 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "MarQ by Flipkart 27FHDMIQII2G 27 inch Full HD Monitor",
+          brand:"MarQ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1tempi5ac",
+          pricef: "11,999",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-i2h4mMepk-w103-h125/marq-by-flipkart-27f.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1tempi5ac",
+          selection1: [
+            {
+              name: "27 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1000:1 Contrast Ratio",
+            },
+            {
+              name: "1 x Display Port v1.2",
+            },
+            {
+              name: "2 x HDMI v1.4",
+            },
+            {
+              name: "1 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "ViewSonic ColorPro VP-16 15.6 inch Full HD Portable OLED Monitor",
+          brand:"ViewSonic ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd15zbrdpxq",
+          pricef: "49,999",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iXFcQwQBc-w103-h125/viewsonic-colorpro-v.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd15zbrdpxq",
+          selection1: [
+            {
+              name: "15.6 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "1.07 B Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "100,000:1 Contrast Ratio",
+            },
+            {
+              name: "Touch Screen",
+            },
+            {
+              name: "2 x USB Type-C",
+            },
+            {
+              name: "1 x Micro HDMI",
+            },
+          ],
+        },
+        {
+          name: "Acer DA430 43 Inch Full HD Smart Monitor",
+          brand:"Acer ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1rklhuxhg",
+          pricef: "21,599",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-itwhViv4e-w103-h125/acer-da430-43-inch-f.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1rklhuxhg",
+          selection1: [
+            {
+              name: "43 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "3 x HDMI v1.4",
+            },
+            {
+              name: "Wi-Fi",
+            },
+            {
+              name: "Bluetooth",
+            },
+            {
+              name: "3 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "ViewSonic VX2428 24 Inch Full HD Gaming Monitor",
+          brand:" ViewSonic",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1iazi6aue",
+          pricef: "16,782",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-ic4j27hDa-w103-h125/viewsonic-vx2428-24.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1iazi6aue",
+          selection1: [
+            {
+              name: "24 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1000:1 (Typ), 80M:1 (Dynamic) Contrast Ratio",
+            },
+            {
+              name: "1 x Display Port v1.4",
+            },
+            {
+              name: "2 x HDMI v1.4",
+            },
+            {
+              name: "Anti Glare",
+            },
+          ],
+        },
+        {
+          name: "Acer CB342CK 34 inch Quad HD Monitor",
+          brand:"ACer",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1syoszh8a",
+          pricef: "29,999",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-i9eKS4ohH-w103-h125/acer-cb342ck-34-inch.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1syoszh8a",
+          selection1: [
+            {
+              name: "34 in Display",
+            },
+            {
+              name: "3440 x 1440 pixels (WQHD)",
+            },
+            {
+              name: "16.7 Million Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "100,000,000:1 Contrast Ratio",
+            },
+            {
+              name: "1 x Display Port",
+            },
+            {
+              name: "1 x HDMI",
+            },
+            {
+              name: "3 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "ViewSonic VX2728J 27 inch Full HD Gaming Monitor",
+          brand:" ViewSonic",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd13bf7ff88",
+          pricef: "21,902",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iJbolDCmR-w103-h125/viewsonic-vx2728j-27.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd13bf7ff88",
+          selection1: [
+            {
+              name: "27 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1000:1 (Typ), 80M:1 (Dynamic) Contrast Ratio",
+            },
+            {
+              name: "1 x Display Port v1.4",
+            },
+            {
+              name: "2 x HDMI v1.4",
+            },
+            {
+              name: "Anti Glare",
+            },
+          ],
+        },
+        {
+          name: "Philips 242E2FA/94 24 inch Full HD Monitor",
+          brand:"Philips ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1bi541a5g",
+          pricef: "12,943",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iqCmPGjgc-w103-h125/philips-242e2fa-94-2.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1bi541a5g",
+          selection1: [
+            {
+              name: "23.8 in Display",
+            },
+            {
+              name: "1920 x 1080 pixels (Full HD)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1000:1 Contrast Ratio",
+            },
+            {
+              name: "1 x Display Port",
+            },
+            {
+              name: "1 x HDMI",
+            },
+            {
+              name: "Plug And Play",
+            },
+          ],
+        },
+        {
+          name: "Frontech MON-0058 22 Inch HD+ Monitor",
+          brand:"Frontech ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1z2jx9yba",
+          pricef: "4,577",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iUbdw0WJH-w103-h125/frontech-mon-0058-22.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1z2jx9yba",
+          selection1: [
+            {
+              name: "22 in Display",
+            },
+            {
+              name: "1680 x 1050 pixels (HD+)",
+            },
+            {
+              name: "16.7 M Colors",
+            },
+            {
+              name: "Flat Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "1 x HDMI",
+            },
+            {
+              name: "1 Year Warranty",
+            },
+          ],
+        },
+        {
+          name: "Lenovo ThinkVision P49w-30 49 inch Dual Quad HD Curved Monitor",
+          brand:" ",
+          category:"Monitor",
+          url: "https://www.smartprix.com/nf/pd/pd1mhutgx01",
+          pricef: "1,56 ,000",
+          pricea: "36,490",
+          pricec: " --",
+          flipkart: " ",
+          amazon: " ",
+          croma: " ",
+          image:
+            "https://cdn1.smartprix.com/rx-iS4xCQhzS-w103-h125/lenovo-thinkvision-p.jpg",
+          image_url: "https://www.smartprix.com/nf/pd/pd1mhutgx01",
+          selection1: [
+            {
+              name: "49 in Display",
+            },
+            {
+              name: "5120 x 1440 pixels",
+            },
+            {
+              name: "1.07 B Colors",
+            },
+            {
+              name: "Curved Monitor",
+            },
+          ],
+          selection2: [
+            {
+              name: "2000:1 Contrast Ratio",
+            },
+            {
+              name: "3 x USB Type-C",
+            },
+            {
+              name: "1 x Display Port v1.4",
+            },
+            {
+              name: "2 x HDMI v2.1",
+            },
+          ],
+        },
+      ];
+    </script>
+    <script src="alljs.js"></script>
+</body>
+
+</html>

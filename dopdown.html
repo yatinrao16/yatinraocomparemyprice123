@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Option-Specific Dropdowns</title>
+<style>
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-button {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .option-dropdown {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    z-index: 1;
+  }
+
+  .option-item {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="dropdown-container">
+  <div class="dropdown-button" onclick="toggleDropdown('mainDropdown')">Select Option</div>
+  <div class="option-dropdown" id="mainDropdown">
+    <div class="option-item" onclick="openOptionDropdown('optionDropdown1', this)">Option 1</div>
+    <div class="option-item" onclick="openOptionDropdown('optionDropdown2', this)">Option 2</div>
+    <div class="option-item" onclick="openOptionDropdown('optionDropdown3', this)">Option 3</div>
+    <div class="option-item" onclick="openOptionDropdown('optionDropdown4', this)">Option 4</div>
+  </div>
+</div>
+
+<div class="option-dropdown" id="optionDropdown1">
+  <div class="option-item">Sub-Option 1.1</div>
+  <div class="option-item">Sub-Option 1.2</div>
+  <div class="option-item">Sub-Option 1.3</div>
+</div>
+
+<div class="option-dropdown" id="optionDropdown2">
+  <div class="option-item">Sub-Option 2.1</div>
+  <div class="option-item">Sub-Option 2.2</div>
+</div>
+
+<div class="option-dropdown" id="optionDropdown3">
+  <div class="option-item">Sub-Option 3.1</div>
+  <div class="option-item">Sub-Option 3.2</div>
+  <div class="option-item">Sub-Option 3.3</div>
+</div>
+
+<div class="option-dropdown" id="optionDropdown4">
+  <div class="option-item">Sub-Option 4.1</div>
+  <div class="option-item">Sub-Option 4.2</div>
+  <div class="option-item">Sub-Option 4.3</div>
+  <div class="option-item">Sub-Option 4.4</div>
+</div>
+
+<script>
+  let currentOpenOptionDropdown = null;
+
+  function toggleDropdown(dropdownId) {
+    const dropdown = document.getElementById(dropdownId);
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function openOptionDropdown(optionDropdownId, optionElement) {
+    if (currentOpenOptionDropdown) {
+      currentOpenOptionDropdown.style.display = 'none';
+    }
+
+    const optionDropdown = document.getElementById(optionDropdownId);
+    optionDropdown.style.display = 'block';
+
+    const dropdownButton = document.querySelector('.dropdown-button');
+    const buttonRect = dropdownButton.getBoundingClientRect();
+    const optionRect = optionElement.getBoundingClientRect();
+    const optionIndex = Array.from(dropdownButton.nextElementSibling.children).indexOf(optionElement);
+    const nextOption = dropdownButton.nextElementSibling.children[optionIndex +1];
+
+    if (nextOption) {
+      const nextOptionRect = nextOption.getBoundingClientRect();
+      const optionDropdownHeight = optionDropdown.offsetHeight;
+
+      optionDropdown.style.top = optionRect.bottom + 'px';
+      optionDropdown.style.left = (optionRect.left + optionRect.width / 2 - nextOptionRect.width / 2) + 'px';
+
+      const newButtonHeight = buttonRect.height + optionDropdownHeight;
+      dropdownButton.style.height = newButtonHeight + 'px';
+    } else {
+      optionDropdown.style.top = optionRect.bottom + 'px';
+      optionDropdown.style.left = optionRect.left + 'px';
+    }
+
+    currentOpenOptionDropdown = optionDropdown;
+  }
+</script>
+</body>
+</html>
