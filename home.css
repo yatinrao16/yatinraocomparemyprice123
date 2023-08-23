@@ -404,7 +404,7 @@
     left: .1rem;
     display: flex;
     position: relative;
-    width: 22rem;
+    width: 21rem;
     border: 1px solid black;
     height: 9.2rem;
     background-color: wheat;
@@ -424,7 +424,7 @@
     position: absolute;
     display: flex;
     left: 0rem;
-    width: 23.5rem;
+    width: 22.5rem;
     padding: 0;
     border: 1px solid black;
     top: 3rem;
@@ -458,7 +458,7 @@
     height: 2rem;
     color: white;
     background-color: #0a3a75;
-    width: 3rem;
+    width: 2rem;
      z-index:10;
      left: 17rem;
     font-size: 1rem;
@@ -485,7 +485,7 @@
     background-color:white;
     width: 15rem;
     top: 3rem;
-    left: 8.5rem;
+    left: 7.5rem;
     height: 42rem;
     border: 1px solid black;
   }
@@ -523,7 +523,7 @@
     margin-right: 10px;
   }
   .product-image:hover {
-    zoom: 1.09;
+    zoom: 1;
   }
   .product-details {
     font-family: Arial, sans-serif;
@@ -535,8 +535,8 @@
     position: absolute;
     top: .6rem;
     left: .5rem;
-    width: 23rem;
-    font-size:.9rem;
+    width: 22rem;
+    font-size:.7rem;
     margin: 0;
   }
   
@@ -554,7 +554,7 @@
   .product-selection2 {
     position: absolute;
     top: 3rem;
-    left: 15rem;
+    left: 14rem;
     width: 8rem;
     font-size: .6rem;
     margin-bottom: 5px;
@@ -565,25 +565,25 @@
   .flipkart:hover {
     filter: drop-shadow(10px 10px 10px black);
     font-weight: bolder;
-    zoom: 1.01;
+    zoom: 1;
   }
   
   .amazon:hover {
     filter: drop-shadow(10px 10px 10px black);
     font-weight: bolder;
-    zoom: 1.01;
+    zoom: 1;
   }
   
   .croma:hover {
     filter: drop-shadow(10px 10px 10px black);
     font-weight: bolder;
-    zoom: 1.01;
+    zoom: 1;
   }
   
   
   .flipkart {
     position: absolute;
-    left: 8rem;
+    left: 8.5rem;
     background-image: url(flipkart1.jpg);
     text-decoration: none;
     background-repeat: no-repeat;
@@ -593,7 +593,7 @@
     top: 8.5rem;
     padding-left: 1rem;
     height: 1.5rem;
-    width: 4rem;
+    width: 3.5rem;
     padding-right: 0;
     margin-bottom: 4px;
     border: 0;
@@ -622,7 +622,7 @@
     border-radius: 20px;
     font-weight: bolder;
     padding-left: 1rem;
-    width: 4rem;
+    width: 3.5rem;
     line-height: 2.5;
     font-size: .7rem;
     text-align: center;
@@ -635,7 +635,7 @@
   .croma {
     position: absolute;
     text-decoration: none;
-    left: 18rem;
+    left: 17.5rem;
     height: 1.5rem;
     top: 8.5rem;
     margin-bottom: 4px;
@@ -646,8 +646,8 @@
     font-weight: bolder;
     border: 0;
     padding-left: 1rem;
-    width: 4rem;
-    line-height: 2.5;
+    width: 3.5rem;
+    line-height: 2;
     font-size: .7rem;
     text-align: center;
     color: #fff;
@@ -737,7 +737,7 @@
     display: none;
     position: fixed;
     top: 3rem;
-    left: .5rem;
+    left: 0rem;
     width: 22.5rem;
     height: 35rem;
     background-color: rgba(0, 0, 0, 0.5);
@@ -769,8 +769,8 @@
     border-radius: 5px;
     top:0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    width: 22.5rem;
-    height: 37.2rem;
+    width: 21rem;
+    height: 38.7rem;
   }
   
   .comparison-content .remove-button {
@@ -789,8 +789,8 @@
 
   .comparison-content .remove-button i{
     position: relative;
-    left: -1.5rem;
-    top: -.5rem;
+    left: -1.7rem;
+    top: -1rem;
     font-size: 1rem;
   }
   
@@ -816,7 +816,7 @@
     font-size: 1rem;
     top: -.7rem;
     height: 2rem;
-    width: 22.5rem;
+    width: 21rem;
   }
   
   
@@ -826,9 +826,9 @@
     justify-content: center;
     flex-direction: row;
     top: 2.5rem;
-    left: 12rem;
-    width: 15rem;
-    height: 30rem;
+    left: 3rem;
+    width: 18rem;
+    height: 36rem;
     border: 1px solid black;
 
   }
@@ -837,14 +837,14 @@
     border: 1px solid #ccc;
     padding: 10px;
     top: -.2rem;
-    left: -6.1rem;
+    left: 0rem;
     display:grid;
     position:relative;
     gap: 5px;
     grid-template-columns: 3.7rem 3.7rem;
     width: 25rem;
     border: 1px solid black;
-    height: 33.5rem;
+    height: 35rem;
     background-color: wheat;
     margin-bottom: 3px;
     border-radius: 0.3rem;
@@ -874,7 +874,7 @@
     margin: 5px 0;
     position: absolute;
     top: 11.5rem;
-    left: 1.5rem;
+    left: 2rem;
     font-size: .9rem;
     font-weight: bold;
   }
@@ -885,7 +885,7 @@
     flex-direction: column;
     border: 1px solid black;
     position: absolute;
-    height: 14.5rem;
+    height: 16rem;
     width: 5.5rem;
     padding-left: 3rem;
     line-height: 1.5;
@@ -905,7 +905,7 @@
   
   .product-card1 .product-selection2 {
     position: absolute;
-    top: 7rem;
+    top: 8rem;
     left: .5rem;
     width: 6rem;
     margin-bottom: 5px;
@@ -969,6 +969,82 @@
     left: 5rem;
     font-weight: bold;
     top: 22rem;
+  }
+
+  .flipkart1 {
+    position: absolute;
+    left: 1.5rem;
+    background-image: url(flipkart1.jpg);
+    text-decoration: none;
+    background-repeat: no-repeat;
+    color: blue;
+    background-size: contain;
+    border-radius: 20px;
+    top: 13.5rem;
+    padding-left: 1rem;
+    height: 1.4rem;
+    width: 5rem;
+    padding-right: 0;
+    border: 0;
+    font-weight: bolder;
+    line-height: 2;
+    font-size: .8rem;
+    padding-bottom: 5px;
+    text-align: center;
+    color: blue;
+    background-color: yellow;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .amazon1 {
+    position: absolute;
+    left: 1.5rem;
+    top: 15.5rem;
+    text-decoration: none;
+    padding-bottom: 4px;
+    padding: 0;
+    border: 0;
+    padding-bottom: 5px;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.4rem;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: #de530f;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .croma1 {
+    position: absolute;
+    text-decoration: none;
+    left: 1.5rem;
+    height: 1.5rem;
+    top: 17.5rem;
+    padding-bottom: 5px;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    font-weight: bolder;
+    border: 0;
+    padding-left: 1rem;
+    width: 5rem;
+    line-height: 2;
+    font-size: .8rem;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   }
 
 }
