@@ -1917,7 +1917,7 @@ header div {
   header {
     background-color: #0a3a75;
     color: white;
-    width: 24rem;
+    width: 22.5rem;
     display: flex;
     position: fixed;
     top: 0;
@@ -1948,7 +1948,7 @@ header div {
     top: .3rem;
     z-index: 20;
     color: #fff;
-    left: 21rem;
+    left: 20rem;
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -1974,10 +1974,10 @@ header div {
     border: 3px solid white;
     border-radius: 10px;
     position: absolute;
-    width: 15rem;
+    width: 15.5rem;
     height: 20px;
     top: 10px;
-    left: -4rem;
+    left: -4.5rem;
   }
 
   .clear-button {
@@ -2027,7 +2027,7 @@ header div {
     position: absolute;
     width: 15rem;
     top: 3rem;
-    left: 8.5rem;
+    left: 7.5rem;
     border: 1px solid black;
     z-index: 5;
     background-color:white;
@@ -2211,7 +2211,7 @@ header div {
     left: .1rem;
     display: flex;
     position: relative;
-    width: 22rem;
+    width: 21rem;
     border: 1px solid black;
     height: 9.2rem;
     background-color: wheat;
@@ -2227,7 +2227,7 @@ header div {
     position: absolute;
     display: flex;
     left: 0rem;
-    width: 26rem;
+    width: 22.5rem;
     padding: 0;
     border: 1px solid black;
     top: 3rem;
@@ -2255,9 +2255,9 @@ header div {
   .product-details h2 {
     position: absolute;
     top: .6rem;
-    left: 1rem;
-    width: 23rem;
-    font-size:.9rem;
+    left: .5rem;
+    width: 22rem;
+    font-size:.8rem;
     margin: 0;
   }
   
@@ -2265,20 +2265,20 @@ header div {
     position: relative;
     margin-bottom: 5px;
     display: flex;
-    top: 2.5rem;
+    top: 3rem;
     width: 8rem;
-    font-size: .6rem;
-    left: 6rem;
+    font-size: .55rem;
+    left: 5.6rem;
     flex-direction: column;
     overflow: hidden;
   }
   
   .product-selection2 {
     position: absolute;
-    top: 3rem;
-    left: 15rem;
+    top: 3.5rem;
+    left: 14rem;
     width: 8rem;
-    font-size: .6rem;
+    font-size: .55rem;
     margin-bottom: 5px;
     display: flex;
     flex-direction: column;
@@ -2287,7 +2287,7 @@ header div {
 
   .flipkart {
     position: absolute;
-    left: 8rem;
+    left: 7rem;
     background-image: url(flipkart1.jpg);
     text-decoration: none;
     background-repeat: no-repeat;
@@ -2313,7 +2313,7 @@ header div {
   
   .amazon {
     position: absolute;
-    left: 13rem;
+    left: 12rem;
     top: 8.5rem;
     text-decoration: none;
     margin-bottom: 4px;
@@ -2339,7 +2339,7 @@ header div {
   .croma {
     position: absolute;
     text-decoration: none;
-    left: 18rem;
+    left: 17rem;
     height: 1.5rem;
     top: 8.5rem;
     margin-bottom: 4px;
@@ -2386,13 +2386,13 @@ header div {
     background-color: white;
     z-index: 100;
     top: 2.2rem;
-    width: 14.6rem;
-    font-size: .8rem;
+    width: 15.7rem;
+    font-size: .6rem;
     height: 10rem;
-    padding-left: 1rem;
+    padding-left: .2rem;
     overflow-x: hidden;
     overflow-y: scroll;
-    left: 4.2rem;
+    left: 3.2rem;
     cursor: pointer;
   }
 
@@ -2400,7 +2400,7 @@ header div {
     display: none;
     position: fixed;
     top: 3rem;
-    left: .5rem;
+    left:0rem;
     width: 22.5rem;
     height: 35rem;
     background-color: rgba(0, 0, 0, 0.5);
@@ -2433,7 +2433,7 @@ header div {
     top:0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     width: 22rem;
-    height: 37.2rem;
+    height: 39.2rem;
   }
   
   .comparison-content .remove-button {
@@ -2479,7 +2479,7 @@ header div {
     font-size: 1rem;
     top: -.7rem;
     height: 2rem;
-    width: 22.5rem;
+    width: 22rem;
   }
   
   
@@ -2489,9 +2489,9 @@ header div {
     justify-content: center;
     flex-direction: row;
     top: 2.5rem;
-    left: 12rem;
-    width: 15rem;
-    height: 30rem;
+    left: 3rem;
+    width: 19rem;
+    height: 36rem;
     border: 1px solid black;
 
   }
@@ -2500,14 +2500,14 @@ header div {
     border: 1px solid #ccc;
     padding: 10px;
     top: .35rem;
-    left: -6.1rem;
+    left: 0rem;
     display:grid;
     position:relative;
     gap: 5px;
     grid-template-columns: 3.7rem 3.7rem;
     width: 25rem;
     border: 1px solid black;
-    height: 33rem;
+    height: 35rem;
     background-color: wheat;
     margin-bottom: 3px;
     border-radius: 0.3rem;
@@ -2536,8 +2536,8 @@ header div {
   .product-card1 p {
     margin: 5px 0;
     position: absolute;
-    top: 11.8rem;
-    left: 3rem;
+    top: 12.5rem;
+    left: 2rem;
     font-size: .9rem;
     font-weight: bold;
   }
@@ -2548,12 +2548,12 @@ header div {
     flex-direction: column;
     border: 1px solid black;
     position: absolute;
-    height: 14.5rem;
+    height: 15rem;
     width: 5.5rem;
     padding-left: 3rem;
     line-height: 1.5;
-    top: 19.5rem;
-    left: .2rem;
+    top: 21rem;
+    left: .3rem;
   }
   
   .product-card1 .product-selection1 {
@@ -2568,7 +2568,7 @@ header div {
   
   .product-card1 .product-selection2 {
     position: absolute;
-    top: 7rem;
+    top: 7.5rem;
     left: .5rem;
     width: 6rem;
     margin-bottom: 5px;
@@ -2601,7 +2601,7 @@ header div {
     color: blue;
     background-size: contain;
     border-radius: 20px;
-    top: 13.5rem;
+    top: 14.5rem;
     padding-left: 1rem;
     height: 1.5rem;
     width: 5rem;
@@ -2621,7 +2621,7 @@ header div {
   .amazon1 {
     position: absolute;
     left: 1.5rem;
-    top: 15.5rem;
+    top: 16.5rem;
     text-decoration: none;
     padding-bottom: 4px;
     padding: 0;
@@ -2649,7 +2649,7 @@ header div {
     text-decoration: none;
     left: 1.5rem;
     height: 1.5rem;
-    top: 17.5rem;
+    top: 18.5rem;
     padding-bottom: 4px;
     background-image: url(croma1.jpg);
     background-repeat: no-repeat;
@@ -2681,7 +2681,7 @@ header div {
     font-size: 1.1rem;
     left: 5rem;
     font-weight: bold;
-    top: 14.5rem;
+    top: 15rem;
   }
   
   .name {
@@ -2697,7 +2697,7 @@ header div {
     font-size: 1.1rem;
     left: 5rem;
     font-weight: bold;
-    top: 18rem;
+    top: 19rem;
   }
   
   .productdetails {
@@ -2705,7 +2705,7 @@ header div {
     font-size: 1.1rem;
     left: 5rem;
     font-weight: bold;
-    top: 22rem;
+    top: 23rem;
   }
   
 
