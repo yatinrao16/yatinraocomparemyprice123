@@ -91,6 +91,9 @@ function showSlides1(n) {
 function closeComparisonPopup() {
   location.reload();
 }
+function closeComparisonPopup1() {
+  location.reload();
+}
 
 function removeComparisonPopup() {
   closeComparisonPopup();
@@ -12911,6 +12914,7 @@ function filterProducts() {
   renderProducts(filteredProducts);
   suggestionContainer.style.display = 'none';
   menuIcon2.style.display='none';
+  menuIcon.style.display='none';
   
 }
 
