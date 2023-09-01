@@ -132,7 +132,7 @@ button {
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-.logintap{
+.logintap {
   display: none;
 }
 
@@ -154,7 +154,7 @@ button {
   position: relative;
   top: 15px;
   right: 10px;
-  left: -.5rem;
+  left: -0.5rem;
 }
 
 .login a {
@@ -175,7 +175,7 @@ button {
   position: absolute;
   top: 3rem;
   height: 3.9rem;
-  padding-left: .9rem;
+  padding-left: 0.9rem;
   padding-top: 5px;
   margin: 0;
   width: 100px;
@@ -248,7 +248,7 @@ nav {
   padding: 20px;
   margin: 0;
   position: relative;
-  z-index:0;
+  z-index: 0;
 }
 
 nav ul li {
@@ -270,7 +270,7 @@ nav ul li a:hover {
 }
 
 .sm-dropdown {
-  display:none;
+  display: none;
 }
 
 nav ul li:hover .sm-dropdown {
@@ -552,7 +552,6 @@ section img {
   filter: drop-shadow(10px 10px 10px 10px black);
 }
 
-
 .red {
   display: grid;
   grid-template-columns: repeat(auto-fill, 85px);
@@ -620,7 +619,6 @@ section img {
   height: 15rem;
   overflow: hidden;
   scroll-behavior: smooth;
- 
 }
 
 .swiperwrapper {
@@ -1238,7 +1236,7 @@ footer {
   left: 26.2rem;
   cursor: pointer;
 }
-.menuicon2{
+.menuicon2 {
   display: none;
 }
 
@@ -1600,7 +1598,7 @@ footer {
 .comparisonbody {
   display: none;
   position: fixed;
-  top: .4rem;
+  top: 0.4rem;
   left: 1rem;
   margin: 3rem;
   height: 46rem;
@@ -1621,7 +1619,6 @@ footer {
   padding-bottom: 10px;
   z-index: 2;
 }
-
 
 .comparisonbody h1 {
   text-align: center;
@@ -1652,13 +1649,12 @@ footer {
 
 .bg-light1 td {
   position: relative;
-
 }
 
 .bg-light1 img {
   margin-left: 6rem;
   height: 14rem;
- width: 10rem;
+  width: 10rem;
   position: relative;
   object-fit: contain;
 }
@@ -1672,11 +1668,9 @@ footer {
   padding-left: 2rem;
 }
 
-
 .bg-light {
   height: 3rem;
   position: relative;
-
 }
 
 .bg-light th {
@@ -1687,10 +1681,8 @@ footer {
   height: 2rem;
 }
 
-
 .bg-light2 {
   height: 4rem;
-
 }
 
 #desc1,
@@ -1725,10 +1717,10 @@ footer {
   background-repeat: no-repeat;
   background-size: contain;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   margin-left: 15.2rem;
   padding-top: 10px;
- width: 7rem;
+  width: 7rem;
   padding-left: 1.2rem;
   height: 1.5rem;
   border-radius: 20px;
@@ -1739,7 +1731,6 @@ footer {
   justify-content: center;
   padding-bottom: 2px;
   cursor: pointer;
-
 }
 
 #pricea1 {
@@ -1749,13 +1740,13 @@ footer {
   background-color: #de530f;
   background-size: contain;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   display: flex;
   z-index: 1;
   top: 1px;
   margin-left: 15.2rem;
   padding-top: 10px;
- width: 7rem;
+  width: 7rem;
   padding-left: 1.2rem;
   height: 1.5rem;
   left: 13rem;
@@ -1766,7 +1757,6 @@ footer {
   justify-content: center;
   padding-bottom: 2px;
   cursor: pointer;
-
 }
 
 #pricec1 {
@@ -1777,12 +1767,12 @@ footer {
   background-color: black;
   background-size: contain;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   z-index: 1;
   top: 1px;
   margin-left: 15.2rem;
   padding-top: 10px;
- width: 7rem;
+  width: 7rem;
   padding-left: 1.2rem;
   height: 1.5rem;
   left: 23rem;
@@ -1793,7 +1783,6 @@ footer {
   justify-content: center;
   padding-bottom: 2px;
   cursor: pointer;
-
 }
 
 #pricef2 {
@@ -1804,12 +1793,12 @@ footer {
   background-repeat: no-repeat;
   background-size: contain;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   z-index: 1;
   top: 1px;
   margin-left: 15.4rem;
   padding-top: 10px;
- width: 7rem;
+  width: 7rem;
   padding-left: 1.2rem;
   height: 1.5rem;
   left: 35rem;
@@ -1829,12 +1818,12 @@ footer {
   background-color: #de530f;
   background-size: contain;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   z-index: 1;
   top: 1px;
   margin-left: 15.4rem;
   padding-top: 10px;
- width: 7rem;
+  width: 7rem;
   padding-left: 1.2rem;
   height: 1.5rem;
   left: 45rem;
@@ -1854,7 +1843,7 @@ footer {
   background-color: black;
   background-size: contain;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   z-index: 1;
   top: 1px;
   margin-left: 15.4rem;
@@ -1870,7 +1859,6 @@ footer {
   justify-content: center;
   padding-bottom: 2px;
   cursor: pointer;
- 
 }
 
 .formcontrol {
@@ -1892,7 +1880,6 @@ footer {
 #select2 {
   position: relative;
   width: 30rem;
-
 }
 
 .table tr td {
@@ -1909,21 +1896,1322 @@ footer {
   display: none;
 }
 
-
-.filtersbtn{
+.filtersbtn {
   display: none;
 }
 
-.remove-button1{
+.remove-button1 {
   display: none;
 }
 
+@media screen and (max-width: 415px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body{
+    overflow-x: hidden;
+    width: 20rem;
+  }
+  
 
+  header {
+    background-color: #0a3a75;
+    color: white;
+    width: 25.8rem;
+    display: flex;
+    position: absolute;
+    top: 0;
+    height: 3rem;
+    z-index: 10;
+  }
+  .websitelogo {
+    position: relative;
+    display: flex;
+    top: 0.3rem;
+    left: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  #menu-icon {
+    display: flex;
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    top: 0.4rem;
+    left: 22rem;
+    width: 2rem;
+    height: 2rem;
+    z-index: 6;
+    color: white;
+    background-color: #0a3a75;
+  }
+
+  .menu.active {
+    transition-delay: 0s;
+    left: 14rem;
+  }
+
+  .menu {
+    display: block;
+    position: absolute;
+    border: 1px solid white;
+    background-color: #0a3a75;
+    top: 6rem;
+    left: -14rem;
+    width: 6rem;
+    height: 12rem;
+    padding-top: 0.5rem;
+    z-index: 1000;
+  }
+
+  .menu .allnone {
+    display: none;
+  }
+
+  .menu li {
+    position: relative;
+    display: flex;
+    left: -4rem;
+    font-size: 1rem;
+    width: 7rem;
+    line-height: 1.5;
+  }
+
+  .sm-dropdown {
+    display: none;
+  }
+
+  .menu li:hover .sm-dropdown {
+    display: inline-block;
+    position: absolute;
+    top: 0rem;
+    margin: 0;
+    width: 5rem;
+    padding: 0;
+    z-index: 1;
+    height: 0;
+    align-items: center;
+    left: -8.3rem;
+    border: black solid 1px;
+  }
+
+  .menu li:hover .sm-dropdown img {
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    padding: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    left: -1rem;
+  }
+
+  .menu li:hover .sm-dropdown li {
+    padding: 0 20px;
+    margin: 0;
+    width: 100px;
+    right: 60px;
+    border: black solid 1px;
+    background-color: rgb(17, 17, 104);
+    height: 2rem;
+    font-size: 0.7rem;
+  }
+  .menu li:hover .sm-dropdown li a {
+    width: 80px;
+    position: relative;
+    display: flex;
+    text-align: justify;
+    left: 5px;
+  }
+  .websitename img {
+    display: none;
+  }
+
+  .Search {
+    position: relative;
+    display: flex;
+    z-index: 1;
+  }
+
+  .searchbar {
+    border: 3px solid white;
+    border-radius: 10px;
+    position: absolute;
+    width: 14rem;
+    height: 20px;
+    top: 10px;
+    left: 4rem;
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 10px;
+    padding-bottom: 4px;
+    top: 8px;
+    width: 2rem;
+    height: 0.01px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    left: 15rem;
+    background: none;
+    /* text-align: center;
+    align-items: center; */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .clear-button a {
+    position: relative;
+    top: -7px;
+    color: black;
+  }
+
+  .button {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 10px;
+    font-size: 1rem;
+    background-position: 1rem;
+    width: 2.3rem;
+    text-align: center;
+    position: absolute;
+    top: 4px;
+    left: 16rem;
+    height: 0.01px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+  .logintap {
+    display: flex;
+    height: 2rem;
+    width: 1.7rem;
+    padding-top: 0.4rem;
+    padding-left: 0.5rem;
+    left: 19rem;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1px;
+    z-index: 20;
+    background-color: #0a3a75;
+  }
+
+  .login {
+    position: absolute;
+    background-color: #0a3a75;
+    display: flex;
+    border: 1px solid white;
+    top: 2.5rem;
+    left: -100.5rem;
+    width: 7rem;
+    padding-top: 0.5rem;
+    height: 2rem;
+  }
+  .login.active {
+    position: absolute;
+    background-color: #0a3a75;
+    display: flex;
+    border: 1px solid white;
+    top: 2.5rem;
+    left: -1.5rem;
+    width: 7rem;
+    height: 2rem;
+  }
+  .login img {
+    border-radius: 50%;
+    position: relative;
+    top: 1px;
+    height: 1.5rem;
+    width: 1.5rem;
+    right: 10px;
+    left: 0.5rem;
+  }
+
+  .login a {
+    position: relative;
+    top: 1px;
+    left: 0.8rem;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .login:hover .sm-dropdown2 {
+    display: flex;
+    text-decoration: none;
+    position: absolute;
+    top: 2.5rem;
+    height: 3.9rem;
+    padding-left: 0.9rem;
+    padding-top: 15px;
+    margin: 0;
+    width: 97px;
+    align-items: center;
+    left: 0;
+    z-index: 1;
+    background-color: #0a3a75;
+    border: #fff solid 1px;
+  }
+
+  .login:hover .sm-dropdown2 ul li {
+    position: relative;
+    display: inline-block;
+    top: -1rem;
+    right: 30px;
+    width: 50px;
+    padding: 3px;
+    padding-top: 10px;
+    left: -2.5rem;
+    text-decoration: none;
+  }
+
+  nav {
+    background-color:black;
+    color: white;
+    padding: 20px;
+    margin: 0;
+    position: relative;
+    z-index: -100;
+    top: -3rem;
+  }
+  .more a {
+    display: none;
+  }
+  .comparisonicon {
+    position: absolute;
+    top: 42rem;
+    height: 2.2rem;
+    left: 1rem;
+    margin: 0;
+    z-index: 100;
+    background-color: #0a3a75;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    overflow: hidden;
+    width: 8rem;
+    border-radius: 3rem;
+    animation-name: logosize1;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .comparisonicon img {
+    position: absolute;
+    top: 2px;
+    left: -95px;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+  .comparisonicon a {
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    width: 1rem;
+    height: 2rem;
+    left: 5rem;
+    border-radius: 3rem;
+  }
+  .comparisonicon span {
+    position: relative;
+    display: flex;
+    padding-left: 10px;
+    padding-top: 12px;
+    top: 3rem;
+    left: -1px;
+  }
+  @keyframes logosize1 {
+    0% {
+      width: 2.2rem;
+    }
+
+    50% {
+      width: 8rem;
+    }
+    100% {
+      width: 2.2rem;
+    }
+  }
+
+  .static span {
+    position: relative;
+    font-size: 0.9rem;
+    left: -4rem;
+    top: -0.2rem;
+  }
+  section {
+    top: 3rem;
+    height: 30px;
+    display: flex;
+    width: 24.5rem;
+    background-color: #f3c1c1;
+    position: absolute;
+    margin: 0;
+  }
+
+  section a {
+    position: relative;
+    display: inline-block;
+    height: 2rem;
+    text-decoration: none;
+  }
+
+  .section_link {
+    display: flex;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 3rem;
+  }
+
+  section img {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    display: inline-block;
+  }
+
+  section a:hover {
+    zoom: 0;
+  }
+
+  section span {
+    display: none;
+  }
+
+  .image_offer {
+    position: absolute;
+    top: 5.2rem;
+  }
+
+  .mySlides img {
+    width: 25.5rem;
+    height: 10rem;
+    top: 1rem;
+    left: 0.1rem;
+    position: relative;
+    border: 1px solid black;
+  }
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 14px;
+    margin-top: -22px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  .next {
+    position: absolute;
+    padding-right: 1.2rem;
+    left: 23.3rem;
+  }
+  .prev1,
+  .next1 {
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  .dots {
+    position: absolute;
+    display: flex;
+    top: 11rem;
+    left: 11rem;
+  }
+
+  #hotdeals {
+    height: 15rem;
+    position: absolute;
+    z-index: 3;
+    top: 10rem;
+    width: 22rem;
+    left: 1.5rem;
+    background-color: black;
+    z-index: 6;
+  }
+  .mySlides1 img {
+    position: absolute;
+    height: 10rem;
+    width: 22rem;
+    top: -1rem;
+  }
+
+  #remove-button3 a {
+    position: absolute;
+    font-size: 1.4rem;
+    color: white;
+    top: -35px;
+    left: 19rem;
+    cursor: pointer;
+  }
+  .slideshow-container1 {
+    position: relative;
+    display: flex;
+  }
+
+  .red a {
+    top: -2px;
+    position: relative;
+    display: flex;
+    height: 5rem;
+    left: 0rem;
+    font-size: 9px;
+    width: 3rem;
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  .red a img {
+    position: relative;
+    height: 3rem;
+    width: 2.5rem;
+    top: 0rem;
+    margin-left: 0;
+  }
+
+  .red a span {
+    position: relative;
+    top: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+    left: -0.1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .red {
+    display: grid;
+    grid-template-columns: 80px 80px 80px 80px 80px;
+    grid-gap: 1px;
+    height: 170px;
+    margin: 0;
+    padding-bottom:1rem;
+    padding: 10px;
+    background-color: burlywood;
+    text-align: center;
+    align-items: center;
+    justify-content: contain;
+    position: absolute;
+    top: 16.5rem;
+    width: 24.3rem;
+    border: 1px solid black;
+  }
+
+  .red img:hover {
+    image-rendering: none;
+    filter: none;
+    zoom: 0;
+  }
+
+  .item3 {
+    text-align: center;
+    position: relative;
+    line-height: 1.1;
+    width: 5.4rem;
+    border: 1px solid black;
+    height: 9rem;
+    left: 1px;
+    top: -0.2rem;
+  }
+
+  .item3 img {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+  }
+
+  .item3 .details {
+    position: relative;
+    top: 1rem;
+  }
+  .item3 .details h4 {
+    position: relative;
+    font-size: 0.7rem;
+    height: 1.5rem;
+    font-weight: small;
+  }
+  .item3 .details h5 {
+    position: relative;
+    font-size: 0.7rem;
+    font-weight: small;
+  }
+  .item3 .details p {
+    position: relative;
+    font-size: 0.7rem;
+    top: 0.1rem;
+    font-weight: small;
+  }
+
+  .latestproducts {
+    position: absolute;
+    top: 28.5rem;
+    width: 24rem;
+    height: 20rem;
+    border: 1px solid black;
+  }
+  .latestproducts h2 {
+    position: relative;
+    font-size: 0.9rem;
+  }
+  .productlist {
+    position: relative;
+    display: grid;
+    grid-template-columns: 95px 95px 95px 95px;
+    grid: 20px;
+    margin-left: 1.9rem;
+    height: 17rem;
+    width: 22rem;
+    left: -2.5rem;
+  }
+  .popular {
+    position: absolute;
+    top: 50.2rem;
+    height: 15rem;
+    width: 25.7rem;
+  }
+  .popular h2 {
+    position: relative;
+    font-size: 1rem;
+    top: 2px;
+  }
+
+  .outline {
+    position: relative;
+    width: 21.65rem;
+    top: -1rem;
+    left: 2rem;
+    height: 11.3rem;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+
+  .swiperwrapper {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    transition: all 1s ease;
+    height: 100%;
+    list-style: none;
+    left: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiperslide {
+    text-align: center;
+    border: 1px solid black;
+    position: relative;
+    top: 5px;
+    height: 10rem;
+    width: 6.5rem;
+    padding: 5px;
+    cursor: pointer;
+    user-select: none;
+    float: left;
+  }
+
+  .selection1 {
+    display: none;
+  }
+
+  /* Rest of the CSS styles remain the same */
+  .productImage {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0.7rem;
+    left: -6.5rem;
+  }
+
+  .productImage img {
+    height: 5rem;
+    width: 4rem;
+  }
+
+  .productName {
+    position: absolute;
+    top: 5.5rem;
+    font-size: 0.9rem;
+    left: 0.5rem;
+    width: 5.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .productPrice {
+    font-weight: medium;
+    position: absolute;
+    color: #008000;
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    font-size: 0.8rem;
+    top: 8.5rem;
+    left: 1.5rem;
+    width: 4rem;
+  }
+
+  .prev2,
+  .next2 {
+    cursor: pointer;
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: 55.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  .prev2 {
+    padding-left: 15px;
+    padding-right: 5px;
+    border-radius: 3px 0 0 3px;
+  }
+  .next2 {
+    left: 23.7rem;
+    padding-right: 20px;
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .upcomingproducts {
+    position: absolute;
+    top: 65.8rem;
+    height: 18rem;
+    width: 24.5rem;
+  }
+ 
+  .upcoming {
+    top: 4.8rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 75px 75px 75px;
+    grid: 15px;
+    border: 1px solid black;
+    height: 15rem;
+    width: 26rem;
+    left: -5rem;
+    padding-left: 0rem;
+  }
+  .upcomingproducts h2 {
+    position: relative;
+    font-size: 1rem;
+  }
+
+  .item2 {
+    margin: 5px;
+    top: 5px;
+    left: 5px;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    align-items: center;
+    border: 1px solid #000;
+    width: 7rem;
+    height: 6rem;
+  }
+
+  .details {
+    text-align: center;
+    font-size: medium;
+    position: relative;
+    top: 10px;
+    font-size: 1.4rem;
+  }
+
+  .details p {
+    font-size: 1rem;
+    position: relative;
+    top: -2.5rem;
+  }
+
+  .item2 img {
+    width: 4rem;
+    text-align: center;
+    position: relative;
+    left: 5px;
+    top: -1rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 20px;
+  }
+
+  footer {
+    margin: 0;
+    position: absolute;
+    top: 84.6rem;
+    padding: 20px;
+    width: 23.5rem;
+    background-color: rgb(17, 17, 104);
+    height: 19rem;
+    color: #f2f2f2;
+  }
+  .row {
+    display: flex;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .col-2 {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    left: -13.5rem;
+    top: 2.5rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .nav-item {
+    position: relative;
+    width: 7rem;
+  }
+  .websitename1 {
+    position: relative;
+    top: -1rem;
+    left: 1rem;
+  }
+  .copyright {
+    position: relative;
+    top: 3rem;
+    font-size: 0.7rem;
+    left: 1.5rem;
+  }
+  .copyright p {
+    position: relative;
+    width: 21rem;
+  }
+  .copyright p a {
+    position: relative;
+    text-decoration: none;
+    color: red;
+    font-size: 0.8rem;
+  }
+
+  .centre {
+    position: relative;
+    top: 2rem;
+    left: -5rem;
+  }
+
+  .col-4 {
+    position: relative;
+    left: -23rem;
+    font: 1rem;
+    top: 5rem;
+  }
+
+  .form-control {
+    position: relative;
+    top: 4.6rem;
+    width: 9rem;
+    left: -7rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .col-4 h5 {
+    font-size: 0.8rem;
+    position: relative;
+    top: 4.5rem;
+    left: -4rem;
+    width: 15rem;
+  }
+  .col-4 p {
+    position: relative;
+    font-size: 0.7rem;
+    top: 4.5rem;
+    left: -7rem;
+    width: 20rem;
+  }
+  .col-4 .btn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    position: relative;
+    width: 5rem;
+    height: 1.9rem;
+    top: 4.7rem;
+    left: -7rem;
+    color: #fff;
+    text-shadow: 3px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .comparisonbody {
+    display: none;
+    position: fixed;
+    top: 0.4rem;
+    left: 0rem;
+    margin: 3rem;
+    height: 30rem;
+    width: 19rem;
+    background-color: wheat;
+    border: 1px solid black;
+    z-index: 10;
+  }
+
+  .comparisonbody h1 a i {
+    cursor: pointer;
+    position: absolute;
+    color: #fff;
+    background-color: transparent;
+    top: 10px;
+    left: 17rem;
+    height: 1.6rem;
+    padding-bottom: 10px;
+    z-index: 2;
+  }
+
+  .comparisonbody h1 {
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 2rem;
+    left: -5rem;
+    font-size: 1rem;
+    padding-top: 10px;
+    margin: 0;
+    width: 19rem;
+  }
+
+  .upperbox th p {
+    width: 5rem;
+    padding-left: 0;
+    margin-left: 0;
+    font-size: 0.5rem;
+    text-align: start;
+    position: absolute;
+  }
+
+  .upperbox th {
+    position: relative;
+    width: 5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bg-light1 {
+    height: 15rem;
+    position: relative;
+  }
+
+  .bg-light1 td {
+    position: relative;
+    width: 5rem;
+    left: 0.5rem;
+  }
+
+  .bg-light1 img {
+    margin-left: 0;
+    top: 1rem;
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    object-fit: contain;
+  }
+
+  .bg-light1 th {
+    text-align: start;
+    position: absolute;
+    height: 3rem;
+    top: 3rem;
+    width: 5rem;
+    padding-top: 5rem;
+    margin-left: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.5rem;
+  }
+
+  .bg-light {
+    height: 1rem;
+    position: relative;
+  }
+
+  .bg-light th {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    padding-top: 1px;
+    height: 1rem;
+    padding-left: 1rem;
+    padding-top: 10px;
+    font-size: 0.5rem;
+    top: -3.5rem;
+    width: 5rem;
+  }
+  .bg-light .pp {
+    position: absolute;
+    height: 5rem;
+    padding-top: 2rem;
+    top: -7.5rem;
+  }
+
+  .bg-light2 {
+    height: 4rem;
+  }
+
+  #desc1,
+  #desc2,
+  #brand1,
+  #brand2,
+  #batt1,
+  #batt2,
+  #war1,
+  #war2,
+  #pricea1,
+  #pricea2,
+  #pricef1,
+  #pricef2,
+  #pricec1,
+  #pricec2,
+  #proce1,
+  #proce2,
+  #dis1,
+  #dis2 {
+    text-align: start;
+    position: relative;
+    top: -3.5rem;
+    left: 0;
+    height: 1.5rem;
+    font-size: 0.5rem;
+    width: 6rem;
+  }
+
+  #pricef1 {
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    top: -8rem;
+    background-color: rgb(250, 218, 88);
+    background-image: url(flipkart1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1rem;
+    align-items: center;
+    height: 1rem;
+    border-radius: 20px;
+    left: 5rem;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: rgba(2, 2, 245, 0.772);
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+
+  #pricea1 {
+    position: absolute;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-color: #de530f;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    display: flex;
+    z-index: 1;
+    top: -6.1rem;
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1.2rem;
+    height: 1rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: #fff;
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
+    left: 5rem;
+  }
+
+  #pricec1 {
+    position: absolute;
+    display: flex;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-color: black;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    top: -4.3rem;
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1.2rem;
+    height: 1rem;
+    left: 5rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: #fff;
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+
+  #pricef2 {
+    left: 11.5rem;
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    top: -8rem;
+    background-color: rgb(250, 218, 88);
+    background-image: url(flipkart1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1rem;
+    align-items: center;
+    height: 1rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: rgba(2, 2, 245, 0.772);
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+  #pricea2 {
+    position: absolute;
+    background-image: url(amazon1.jpg);
+    background-repeat: no-repeat;
+    background-color: #de530f;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    display: flex;
+    z-index: 1;
+    top: -6.1rem;
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1.2rem;
+    height: 1rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: #fff;
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
+    left: 11.5rem;
+  }
+  #pricec2 {
+    position: absolute;
+    display: flex;
+    background-image: url(croma1.jpg);
+    background-repeat: no-repeat;
+    background-color: black;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    top: -4.3rem;
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1.2rem;
+    height: 1rem;
+    left: 11.5rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: #fff;
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+
+  .formcontrol {
+    position: relative;
+    display: flex;
+    height: 1rem;
+    font-size: 1rem;
+    z-index: 1;
+    margin: 0;
+  }
+
+  .colu {
+    position: relative;
+    width: 80rem;
+    display: flex;
+  }
+
+  #select1,
+  #select2 {
+    position: relative;
+    width: 6rem;
+    font-size: 0.5rem;
+  }
+
+  .table tr td {
+    position: relative;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .box {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    width: 20rem;
+    left: 1.5rem;
+    top: 10rem;
+    height: 30rem;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .box form {
+    position: absolute;
+    inset: 5px;
+    top: 5px;
+    background: #222;
+    padding: 30px 40px;
+    border-radius: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .box form h2 {
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.5;
+  }
+
+  .box form .inputbox {
+    position: relative;
+    width: 15rem;
+    margin-top: 10px;
+  }
+
+  .box form .inputbox i {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    width: 15rem;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+
+  .box form input[type="submit"] {
+    border: none;
+    position: relative;
+    bottom: 20px;
+    left: 9rem;
+    outline: none;
+    padding: 10px 20px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  .box form .links a {
+    position: relative;
+    margin: 10px 0;
+    left: 10px;
+    font-size: 1em;
+    color: #8f8f8f;
+    text-decoration: none;
+  }
+
+  #remove-button2 a {
+    position: absolute;
+    font-size: 1rem;
+    color: white;
+    top: -3.5rem;
+    left: 13rem;
+  }
+
+  #remove-button1 {
+    display: flex;
+    position: absolute;
+    height: 1.8rem;
+    width: 1.8rem;
+    background-color: red;
+    left: 22rem;
+    top: 0.5rem;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    z-index: 5;
+  }
+  #remove-button1 i {
+    position: relative;
+    display: flex;
+    padding-top: 0;
+    padding-left: 0;
+    top: -0.1rem;
+    font-size: 2rem;
+    left: -0.1rem;
+  }
+}
 @media screen and (max-width: 376px) {
   * {
     margin: 0;
+    padding: 0;
   }
-  
+
   header {
     background-color: #0a3a75;
     color: white;
@@ -1953,13 +3241,13 @@ footer {
     width: 2rem;
     height: 2rem;
     z-index: 6;
-    color:white;
+    color: white;
     background-color: #0a3a75;
   }
 
-  .menu.active{
+  .menu.active {
     transition-delay: 0s;
-  left: 14rem;
+    left: 14rem;
   }
 
   .menu {
@@ -1971,11 +3259,11 @@ footer {
     left: -14rem;
     width: 6rem;
     height: 12rem;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     z-index: 1000;
   }
 
-  .menu .allnone{
+  .menu .allnone {
     display: none;
   }
 
@@ -1991,32 +3279,32 @@ footer {
   .sm-dropdown {
     display: none;
   }
-  
+
   .menu li:hover .sm-dropdown {
     display: inline-block;
     position: absolute;
-    top:0rem;
+    top: 0rem;
     margin: 0;
     width: 5rem;
     padding: 0;
     z-index: 1;
-    height:0;
+    height: 0;
     align-items: center;
     left: -8.3rem;
     border: black solid 1px;
   }
-  
+
   .menu li:hover .sm-dropdown img {
     display: inline-block;
-    position:absolute;
-    border-radius:50%;
+    position: absolute;
+    border-radius: 50%;
     padding: 0;
     height: 1.5rem;
     width: 1.5rem;
     left: -1rem;
   }
-  
- .menu li:hover .sm-dropdown li {
+
+  .menu li:hover .sm-dropdown li {
     padding: 0 20px;
     margin: 0;
     width: 100px;
@@ -2024,15 +3312,14 @@ footer {
     border: black solid 1px;
     background-color: rgb(17, 17, 104);
     height: 2rem;
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
-  .menu li:hover .sm-dropdown li a{
+  .menu li:hover .sm-dropdown li a {
     width: 80px;
     position: relative;
     display: flex;
     text-align: justify;
     left: 5px;
-
   }
   .websitename img {
     display: none;
@@ -2095,21 +3382,21 @@ footer {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
       inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   }
-  .logintap{
+  .logintap {
     display: flex;
     height: 2rem;
-    width: 2rem;
-    padding-top: .5rem;
-    padding-left: .5rem;
+    width: 1.7rem;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
     left: 16.7rem;
     font-size: 1.5rem;
     position: absolute;
     top: 1px;
     z-index: 20;
-    background-color: #0a3a75;;
+    background-color: #0a3a75;
   }
 
-  .login{
+  .login {
     position: absolute;
     background-color: #0a3a75;
     display: flex;
@@ -2117,10 +3404,10 @@ footer {
     top: 2.5rem;
     left: -100.5rem;
     width: 7rem;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     height: 2rem;
   }
-  .login.active{
+  .login.active {
     position: absolute;
     background-color: #0a3a75;
     display: flex;
@@ -2137,13 +3424,13 @@ footer {
     height: 1.5rem;
     width: 1.5rem;
     right: 10px;
-    left: .5rem;
+    left: 0.5rem;
   }
-  
+
   .login a {
     position: relative;
     top: 1px;
-    left: .8rem;
+    left: 0.8rem;
     color: #fff;
     text-decoration: none;
   }
@@ -2154,7 +3441,7 @@ footer {
     position: absolute;
     top: 2.5rem;
     height: 3.9rem;
-    padding-left: .9rem;
+    padding-left: 0.9rem;
     padding-top: 15px;
     margin: 0;
     width: 97px;
@@ -2164,7 +3451,7 @@ footer {
     background-color: #0a3a75;
     border: #fff solid 1px;
   }
-  
+
   .login:hover .sm-dropdown2 ul li {
     position: relative;
     display: inline-block;
@@ -2176,17 +3463,14 @@ footer {
     left: -2.5rem;
     text-decoration: none;
   }
-  
 
   nav {
     display: none;
     position: relative;
   }
 
-
   .more a {
     display: none;
-  
   }
   .comparisonicon {
     position: absolute;
@@ -2285,7 +3569,7 @@ footer {
     display: inline-block;
   }
 
-  section a:hover{
+  section a:hover {
     zoom: 0;
   }
 
@@ -2400,16 +3684,16 @@ footer {
     position: relative;
     height: 3rem;
     width: 2.5rem;
-    top:0rem;
-    margin-left:0;
+    top: 0rem;
+    margin-left: 0;
   }
 
   .red a span {
     position: relative;
-    top:.5rem;
+    top: 0.5rem;
     width: 5rem;
     height: 5rem;
-    left:-.1rem;
+    left: -0.1rem;
     justify-content: center;
     align-items: center;
   }
@@ -2626,7 +3910,7 @@ footer {
     height: 15rem;
     width: 22rem;
     left: -5rem;
-    padding-left:0rem;
+    padding-left: 0rem;
   }
   .upcomingproducts h2 {
     position: relative;
@@ -2707,7 +3991,7 @@ footer {
   .websitename1 {
     position: relative;
     top: -1rem;
-    left: -.5rem;
+    left: -0.5rem;
   }
   .copyright {
     position: relative;
@@ -2842,7 +4126,7 @@ footer {
   .bg-light1 td {
     position: relative;
     width: 5rem;
-    left: .5rem;
+    left: 0.5rem;
   }
 
   .bg-light1 img {
@@ -2918,9 +4202,9 @@ footer {
     text-align: start;
     position: relative;
     top: -3.5rem;
-    left:0;
+    left: 0;
     height: 1.5rem;
-    font-size: .5rem;
+    font-size: 0.5rem;
     width: 6rem;
   }
 
@@ -2936,7 +4220,7 @@ footer {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
       inset -2px -2px 3px rgba(0, 0, 0, 0.6);
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1rem;
     align-items: center;
@@ -2944,7 +4228,7 @@ footer {
     border-radius: 20px;
     left: 5rem;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: rgba(2, 2, 245, 0.772);
     justify-content: center;
     padding-bottom: 2px;
@@ -2963,13 +4247,13 @@ footer {
     z-index: 1;
     top: -6.1rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -2989,14 +4273,14 @@ footer {
     z-index: 1;
     top: -4.3rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     left: 5rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -3004,30 +4288,30 @@ footer {
   }
 
   #pricef2 {
-      left: 11.5rem;
-      position: absolute;
-      display: flex;
-      z-index: 1;
-      top: -8rem;
-      background-color: rgb(250, 218, 88);
-      background-image: url(flipkart1.jpg);
-      background-repeat: no-repeat;
-      background-size: contain;
-      box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-        inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-      margin-left: 0;
-      padding-top:0;
-      width: 5rem;
-      padding-left: 1rem;
-      align-items: center;
-      height: 1rem;
-      border-radius: 20px;
-      font-weight: medium;
-      font-size: .85rem;
-      color: rgba(2, 2, 245, 0.772);
-      justify-content: center;
-      padding-bottom: 2px;
-      cursor: pointer;
+    left: 11.5rem;
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    top: -8rem;
+    background-color: rgb(250, 218, 88);
+    background-image: url(flipkart1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1rem;
+    align-items: center;
+    height: 1rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: rgba(2, 2, 245, 0.772);
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
   }
   #pricea2 {
     position: absolute;
@@ -3041,13 +4325,13 @@ footer {
     z-index: 1;
     top: -6.1rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -3066,14 +4350,14 @@ footer {
     z-index: 1;
     top: -4.3rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     left: 11.5rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -3099,7 +4383,7 @@ footer {
   #select2 {
     position: relative;
     width: 6rem;
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 
   .table tr td {
@@ -3113,16 +4397,14 @@ footer {
     position: absolute;
     z-index: 999;
     width: 20rem;
-    left:1.5rem;
+    left: 1.5rem;
     top: 10rem;
     height: 30rem;
     background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
   }
-  
-  
-  
+
   .box form {
     position: absolute;
     inset: 5px;
@@ -3134,20 +4416,20 @@ footer {
     display: flex;
     flex-direction: column;
   }
-  
+
   .box form h2 {
     color: #fff;
     font-weight: 400;
     text-align: center;
     letter-spacing: 0.5;
   }
-  
+
   .box form .inputbox {
     position: relative;
-    width:15rem;
+    width: 15rem;
     margin-top: 10px;
   }
- 
+
   .box form .inputbox i {
     position: absolute;
     left: 0;
@@ -3160,8 +4442,7 @@ footer {
     transition: 0.5s;
     pointer-events: none;
   }
-  
- 
+
   .box form input[type="submit"] {
     border: none;
     position: relative;
@@ -3185,7 +4466,7 @@ footer {
     color: #8f8f8f;
     text-decoration: none;
   }
-  
+
   #remove-button2 a {
     position: absolute;
     font-size: 1rem;
@@ -3195,36 +4476,33 @@ footer {
   }
 
   #remove-button1 {
-    display: flex; 
+    display: flex;
     position: absolute;
     height: 1.8rem;
     width: 1.8rem;
     background-color: red;
     left: 19.7rem;
-    top: .5rem;
+    top: 0.5rem;
     border-radius: 50%;
     margin: 0;
     padding: 0;
     z-index: 5;
   }
-  #remove-button1 i{
+  #remove-button1 i {
     position: relative;
     display: flex;
-    padding-top:0;
-    padding-left:0;
-    top: -.1rem;
+    padding-top: 0;
+    padding-left: 0;
+    top: -0.1rem;
     font-size: 2rem;
-    left:-.1rem;
+    left: -0.1rem;
   }
-
-
-  
 }
 @media screen and (max-width: 320px) {
   * {
     margin: 0;
   }
-  
+
   header {
     background-color: #0a3a75;
     color: white;
@@ -3254,9 +4532,9 @@ footer {
     left: 19.7rem;
   }
 
-  .menu.active{
+  .menu.active {
     transition-delay: 0s;
-  left: 13rem;
+    left: 13rem;
   }
 
   .menu {
@@ -3268,11 +4546,11 @@ footer {
     left: -13rem;
     width: 6rem;
     height: 12rem;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     z-index: 100;
   }
 
-  .menu .allnone{
+  .menu .allnone {
     display: none;
   }
 
@@ -3289,32 +4567,32 @@ footer {
   .sm-dropdown {
     display: none;
   }
-  
+
   .menu li:hover .sm-dropdown {
     display: inline-block;
     position: absolute;
-    top:0rem;
+    top: 0rem;
     margin: 0;
     width: 5rem;
     padding: 0;
     z-index: 1;
-    height:0;
+    height: 0;
     align-items: center;
     left: -8.3rem;
     border: black solid 1px;
   }
-  
+
   .menu li:hover .sm-dropdown img {
     display: inline-block;
-    position:absolute;
-    border-radius:50%;
+    position: absolute;
+    border-radius: 50%;
     padding: 0;
     height: 1.5rem;
     width: 1.5rem;
     left: -1rem;
   }
-  
- .menu li:hover .sm-dropdown li {
+
+  .menu li:hover .sm-dropdown li {
     padding: 0 20px;
     margin: 0;
     width: 100px;
@@ -3322,15 +4600,14 @@ footer {
     border: black solid 1px;
     background-color: rgb(17, 17, 104);
     height: 2rem;
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
-  .menu li:hover .sm-dropdown li a{
+  .menu li:hover .sm-dropdown li a {
     width: 80px;
     position: relative;
     display: flex;
     text-align: justify;
     left: 5px;
-
   }
   .websitename img {
     display: none;
@@ -3393,21 +4670,21 @@ footer {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
       inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   }
-  .logintap{
+  .logintap {
     display: flex;
     height: 2rem;
     width: 2rem;
-    padding-top: .5rem;
-    padding-left: .5rem;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
     left: 17rem;
     font-size: 1.5rem;
     position: absolute;
     top: 1px;
     z-index: 20;
-    background-color: #0a3a75;;
+    background-color: #0a3a75;
   }
 
-  .login{
+  .login {
     position: absolute;
     background-color: #0a3a75;
     display: flex;
@@ -3415,10 +4692,10 @@ footer {
     top: 2.5rem;
     left: -100.5rem;
     width: 7rem;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
     height: 2rem;
   }
-  .login.active{
+  .login.active {
     position: absolute;
     background-color: #0a3a75;
     display: flex;
@@ -3435,13 +4712,13 @@ footer {
     height: 1.5rem;
     width: 1.5rem;
     right: 10px;
-    left: .5rem;
+    left: 0.5rem;
   }
-  
+
   .login a {
     position: relative;
     top: 1px;
-    left: .8rem;
+    left: 0.8rem;
     color: #fff;
     text-decoration: none;
   }
@@ -3452,7 +4729,7 @@ footer {
     position: absolute;
     top: 2.5rem;
     height: 3.9rem;
-    padding-left: .9rem;
+    padding-left: 0.9rem;
     padding-top: 15px;
     margin: 0;
     width: 97px;
@@ -3462,7 +4739,7 @@ footer {
     background-color: #0a3a75;
     border: #fff solid 1px;
   }
-  
+
   .login:hover .sm-dropdown2 ul li {
     position: relative;
     display: inline-block;
@@ -3474,18 +4751,14 @@ footer {
     left: -2.5rem;
     text-decoration: none;
   }
-  
 
   nav {
     display: none;
     position: relative;
   }
 
-
-
   .more a {
     display: none;
-  
   }
   .comparisonicon {
     position: absolute;
@@ -3684,7 +4957,7 @@ footer {
     position: relative;
     display: flex;
     height: 5rem;
-    left: .4rem;
+    left: 0.4rem;
     font-size: 10px;
     width: 3rem;
     border: 1px solid black;
@@ -3990,7 +5263,7 @@ footer {
   .websitename1 {
     position: relative;
     top: -1rem;
-    left: .5rem;
+    left: 0.5rem;
   }
   .copyright {
     position: relative;
@@ -4124,7 +5397,7 @@ footer {
   .bg-light1 td {
     position: relative;
     width: 5rem;
-    left: .5rem;
+    left: 0.5rem;
   }
 
   .bg-light1 img {
@@ -4200,9 +5473,9 @@ footer {
     text-align: start;
     position: relative;
     top: -3.5rem;
-    left:0;
+    left: 0;
     height: 1.5rem;
-    font-size: .5rem;
+    font-size: 0.5rem;
     width: 6rem;
   }
 
@@ -4218,7 +5491,7 @@ footer {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
       inset -2px -2px 3px rgba(0, 0, 0, 0.6);
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1rem;
     align-items: center;
@@ -4226,7 +5499,7 @@ footer {
     border-radius: 20px;
     left: 5rem;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: rgba(2, 2, 245, 0.772);
     justify-content: center;
     padding-bottom: 2px;
@@ -4245,13 +5518,13 @@ footer {
     z-index: 1;
     top: -6.1rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -4271,14 +5544,14 @@ footer {
     z-index: 1;
     top: -4.3rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     left: 5rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -4286,30 +5559,30 @@ footer {
   }
 
   #pricef2 {
-      left: 11.5rem;
-      position: absolute;
-      display: flex;
-      z-index: 1;
-      top: -8rem;
-      background-color: rgb(250, 218, 88);
-      background-image: url(flipkart1.jpg);
-      background-repeat: no-repeat;
-      background-size: contain;
-      box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-        inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-      margin-left: 0;
-      padding-top:0;
-      width: 5rem;
-      padding-left: 1rem;
-      align-items: center;
-      height: 1rem;
-      border-radius: 20px;
-      font-weight: medium;
-      font-size: .85rem;
-      color: rgba(2, 2, 245, 0.772);
-      justify-content: center;
-      padding-bottom: 2px;
-      cursor: pointer;
+    left: 11.5rem;
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    top: -8rem;
+    background-color: rgb(250, 218, 88);
+    background-image: url(flipkart1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+      inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin-left: 0;
+    padding-top: 0;
+    width: 5rem;
+    padding-left: 1rem;
+    align-items: center;
+    height: 1rem;
+    border-radius: 20px;
+    font-weight: medium;
+    font-size: 0.85rem;
+    color: rgba(2, 2, 245, 0.772);
+    justify-content: center;
+    padding-bottom: 2px;
+    cursor: pointer;
   }
   #pricea2 {
     position: absolute;
@@ -4323,13 +5596,13 @@ footer {
     z-index: 1;
     top: -6.1rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -4348,14 +5621,14 @@ footer {
     z-index: 1;
     top: -4.3rem;
     margin-left: 0;
-    padding-top:0;
+    padding-top: 0;
     width: 5rem;
     padding-left: 1.2rem;
     height: 1rem;
     left: 11.5rem;
     border-radius: 20px;
     font-weight: medium;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     justify-content: center;
     padding-bottom: 2px;
@@ -4381,7 +5654,7 @@ footer {
   #select2 {
     position: relative;
     width: 6rem;
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 
   .table tr td {
@@ -4395,16 +5668,14 @@ footer {
     position: absolute;
     z-index: 999;
     width: 20rem;
-    left:1.5rem;
+    left: 1.5rem;
     top: 10rem;
     height: 30rem;
     background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
   }
-  
-  
-  
+
   .box form {
     position: absolute;
     inset: 5px;
@@ -4416,20 +5687,20 @@ footer {
     display: flex;
     flex-direction: column;
   }
-  
+
   .box form h2 {
     color: #fff;
     font-weight: 400;
     text-align: center;
     letter-spacing: 0.5;
   }
-  
+
   .box form .inputbox {
     position: relative;
-    width:15rem;
+    width: 15rem;
     margin-top: 10px;
   }
- 
+
   .box form .inputbox i {
     position: absolute;
     left: 0;
@@ -4442,8 +5713,7 @@ footer {
     transition: 0.5s;
     pointer-events: none;
   }
-  
- 
+
   .box form input[type="submit"] {
     border: none;
     position: relative;
@@ -4467,7 +5737,7 @@ footer {
     color: #8f8f8f;
     text-decoration: none;
   }
-  
+
   #remove-button2 a {
     position: absolute;
     font-size: 1rem;
@@ -4475,7 +5745,4 @@ footer {
     top: -3.5rem;
     left: 13rem;
   }
-
-
-  
 }
