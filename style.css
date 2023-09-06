@@ -4003,8 +4003,8 @@ footer {
   .copyright p {
    position: relative;
     display: flex;
-    width: 20rem;
-    left: .3rem;
+    width: 21rem;
+    left: 1rem;
   }
   .copyright p a {
     position: relative;
