@@ -4001,8 +4001,10 @@ footer {
     left: -1rem;
   }
   .copyright p {
-    position: relative;
-    width: 21rem;
+   position: relative;
+    display: flex;
+    width: 20rem;
+    left: .3rem;
   }
   .copyright p a {
     position: relative;
@@ -4045,7 +4047,7 @@ footer {
   .col-4 h5 {
     font-size: 0.8rem;
     position: relative;
-    top: 5rem;
+    top: 4.8rem;
     left: -4rem;
     width: 15rem;
   }
