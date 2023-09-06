@@ -3974,11 +3974,12 @@ footer {
     color: #fff;
   }
 
+  
   .col-2 {
     position: relative;
     color: white;
     text-decoration: none;
-    left: -18.5rem;
+    left: -15.5rem;
     top: 2.5rem;
     font-size: 0.8rem;
     line-height: 1.5;
@@ -3997,7 +3998,7 @@ footer {
     position: relative;
     top: 3rem;
     font-size: 0.7rem;
-    left: -1.5rem;
+    left: -1.3rem;
   }
   .copyright p {
     position: relative;
@@ -4018,9 +4019,18 @@ footer {
 
   .col-4 {
     position: relative;
-    left: -29.5rem;
+    left: -24.5rem;
     font: 1rem;
     top: 5rem;
+  }
+
+  .form-control {
+    position: relative;
+    top: 4.6rem;
+    width: 9rem;
+    left: -7rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
   }
 
   .form-control {
