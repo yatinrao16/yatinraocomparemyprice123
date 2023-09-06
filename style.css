@@ -4047,15 +4047,15 @@ footer {
   .col-4 h5 {
     font-size: 0.8rem;
     position: relative;
-    top: 4.8rem;
-    left: -4rem;
+    top: 4.5rem;
+    left: -4.5rem;
     width: 15rem;
   }
   .col-4 p {
     position: relative;
     font-size: 0.7rem;
     top: 4.5rem;
-    left: -7rem;
+    left: -7.5rem;
     width: 20rem;
   }
   .col-4 .btn {
