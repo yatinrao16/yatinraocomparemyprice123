@@ -3979,7 +3979,7 @@ footer {
     position: relative;
     color: white;
     text-decoration: none;
-    left: -15.5rem;
+    left: -15rem;
     top: 2.5rem;
     font-size: 0.8rem;
     line-height: 1.5;
@@ -3998,7 +3998,7 @@ footer {
     position: relative;
     top: 3rem;
     font-size: 0.7rem;
-    left: -1.3rem;
+    left: -1rem;
   }
   .copyright p {
     position: relative;
@@ -4045,7 +4045,7 @@ footer {
   .col-4 h5 {
     font-size: 0.8rem;
     position: relative;
-    top: 4.5rem;
+    top: 5rem;
     left: -4rem;
     width: 15rem;
   }
